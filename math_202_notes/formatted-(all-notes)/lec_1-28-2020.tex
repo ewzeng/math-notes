@@ -1,0 +1,29 @@
+\section{Lecture 1-29-2020}
+For vector space $V$, the following are equivalant:
+\begin{itemize}
+    \item The topology on $V$ is the initial topology from a collection of semi-norms on $V$.
+
+    \item The topology on $V$ is translation invariant and has a subbase of convex sets.
+\end{itemize}
+When the above scenarios occur, we say the topology on $V$ is \textbf{locally convex}.
+
+\begin{thm}[Alaoglu's theorem]
+    If $V$ is a normed vector space, then the closed unit ball $B$ in $V'$ is compact for the weak-* topology.
+\end{thm}
+\begin{remark}
+    A possible point of confusion: two different topologies are used in the statement of the theorem. The closed unit ball is defined by the norm-topology, but the actual topology on $V'$ is weak-*.
+\end{remark}
+\begin{details}{Proof gist}
+    Use Tynchoff's theorem to construct a compact space and establish a homeomorphism between that compact space and $B$ with the weak-* topology.
+\end{details}
+\begin{details}{More detail}
+    Define $D_v = \{t \in \bR: |t| < ||v|| \}$. Then consider the map
+    \[
+        J: B \rightarrow \prod^{\i}_{v \in V}D_v = P
+    \]
+    given by the (informal) expression
+    \[
+        J(\phi) \mapsto \prod^{\i}_{v \in V}\phi(v).
+    \]
+    By comparing the subbases of $B$ and $J(B)$, we conclude they are homeomorphic. To show $J(B)$ is closed (hence compact), we note each element of $P$ determines a function $f$. If $f$ is in the closure of $J(B)$, then by approximating $f$ by elements of $J(B)$, we show $f$ is linear and thus an element of $J(B)$. 
+\end{details}

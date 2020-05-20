@@ -1,0 +1,28 @@
+\section{Lecture 4-2-2020}
+\begin{thm}
+    If $T \in \cB(\cH)$ is a self-adjoint compact operator, then $\|T\|$ and/or $-\|T\|$ are eigenvalues.
+\end{thm}
+\begin{details}{Proof gist}
+    Construct a sequence $\{\z_n\}$ such that $\|\z_n\| = 1$ and $T(\z_n) - \|T\|\z_n \rightarrow 0$ or $T(\z_n) + \|T\|\z_n \rightarrow 0$ (This is called an ``approximate eigenvector"). Use compactness to select the limit $\z$ of a subsequence of $\z_n$.
+\end{details}
+\begin{details}{More detail}
+    For self-adjoint operators, note $ \sup\{|\langle T(\z), \z\rangle|: \|\z\| \leq 1\} = \|T\|$. This is how we construct the sequence.
+\end{details}
+\begin{thm}
+    Let $T \in \cB(\cH)$ be a self-adjoint compact operator. Then
+    \[
+        \cH = \overline{\bigoplus \cH_\l}, \quad \l \ \text{eigenvalue}
+    \]
+    where $\cH_\l$ is the $\l$-eigenspace.
+\end{thm}
+\begin{details}{Proof gist}
+    Let
+    \[
+        \cK = \overline{\bigoplus \cH_\l}, \quad \l \ \text{eigenvalue}.
+    \]
+    Note $T$ is invariant over $\cK^\perp$, so $T_{\cK^\perp} = T_*$ makes sense. As $T_*$ has eigenvalues $\|T_*\|$ or $-\|T_*\|$, we conclude that $\cK^{\perp} = \{0\}$.
+\end{details}
+\begin{remark}
+    This is one example of studying operator by studying the invariant subspaces. This is a powerful technique.
+\end{remark}
+From the theroem above, we can construct a orthonormal basis of eigenvectors (i.e. the spectral thereom).

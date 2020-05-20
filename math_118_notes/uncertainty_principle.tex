@@ -1,0 +1,47 @@
+\section{FT Application II: An Uncertainty Principle}
+\begin{dfn}
+    Define the dispersion of $f$ at $a$ to be
+    \[
+        \D_a f = \frac{\int_{-\i}^\i |t-a|^2|f(t)|^2dt}{
+        \int_{-\i}^\i |f(t)|^2dt}
+    \]
+    whenever the RHS makes sense.
+\end{dfn}
+Note a small dispersion means that $f$ is ``localized" around $a$. We note state an uncertainty principle, which intuitively says that both $f$ and $\hat{f}$ cannot both be localized.
+\begin{thm}
+    For $f$ such that $\D_a f$, $\D_\a \hat{f}$ make sense,
+    \[
+        \D_a f \D_\a \hat{f} \geq \frac{1}{4}.
+    \]
+\end{thm}
+The proof of this statement is rather slick, so we before we present the proof, we first provide a historial note.
+
+Heisenberg's uncertainty principle states that momentum and position cannot be simultaneously well determined. Physicists in the 20th century generalized the ideas of momentum and position as the following two linear operators:
+\[
+    \text{Momentum:} \ \frac{d}{dx}: f(x) \rightarrow f'(x), \quad \text{Position:} \ x\mathbbm{1}: f(x) \rightarrow xf(x).
+\]
+The key mathematical reason behind Heisenberg's uncertainty principle is the fact that the two linear operators do not commute! This is our motivation.
+\begin{details}{Proof gist}
+    Observe that the operators $ \frac{d}{dx}$ and $x \mathbbm 1$ do not commute.
+\end{details}
+\begin{proof}
+    By translation and multiplication by a phase factor, we may assume $a = \a = 0$. For simplicity of this proof, we also assume $f$ vanishes at $\pm \i$. Then note
+    \[
+        \begin{split}
+            \|f\|\|\hat{f}\| &= \|f\|^2\\
+                             &= \langle f, f\rangle\\
+                             &= \langle ( \frac{d}{dx})(x\mathbbm 1)f -
+                             (x \mathbbm 1)( \frac{d}{dx}) f, f \rangle\\
+                             &= \langle \frac{d}{dx}(x \mathbbm 1)f, f\rangle
+                             -
+                             \langle (x \mathbbm 1)( \frac{d}{dx}) f, f\rangle\\
+                             &= \langle (x \mathbbm 1)f, (- \frac{d}{dx})f\rangle
+                             -
+                             \langle ( \frac{d}{dx}) f, xf\rangle\\
+                             &= -2\Re( \langle xf, f' \rangle)\\
+                             &\leq 2\|xf\|\|f'\|\\
+                             &= 2\|xf(x)\|\|w\hat{f}(w)\|
+        \end{split}
+    \]
+    where the fifth equality comes from the fact that $ \frac{d}{dx}$ is anti-Hermitian (use integration by parts and $f$ vanishing at $\pm \i$).
+\end{proof}

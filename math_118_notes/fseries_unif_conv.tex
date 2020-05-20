@@ -1,0 +1,11 @@
+\section{Uniform Convergence of Fourier Series}
+\begin{thm}
+    The Fourier series of $f$ converges uniformly to $f$ if $f$ is $2\pi$-periodic and $f \in C^2(\bR)$.
+\end{thm}
+\begin{details}{Proof gist}
+    Use double integration by parts to show the $k$-th Fourier coefficent $c_k \sim \Theta( \frac{1}{k^2})$. Then invoke pointwise convergence.
+\end{details}
+\begin{remark}
+    The proof can be generalized to show that smoother functions have faster decaying Fourier coefficents. A more rigorous proof can be used to generalize the result to continuous $2\pi$-periodic functions that are piecewise $C^1$.
+\end{remark}
+

@@ -1,0 +1,118 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} %To avoid compiler warnings (12pt too small)
+\fancyhead[L]{Edward Zeng, SID: 3034036984}
+\fancyhead[C]{Math 202B Notes}
+\fancyhead[R]{\today}
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+\pagestyle{fancy}
+\textbf{Reisz-Markov.} If $\phi$ is a positive radon measure on $X$, then
+\[
+    \phi(f) = \int f d\mu_\phi,
+\]
+where $\mu_\phi$ is inner regular for open sets, outer regular, the $\s$-algebra of $\mu_\phi$ contains the Borel sets.
+
+The proof of the properties of $\mu_\phi$ are easy. The proof of the integral representation can be divided into two parts.
+
+\noindent\rule{\textwidth}{1pt}
+\textbf{Part I: $\phi$ and $\int d\mu_\phi$ play well with each other.} Let $f \in C_c(X)$. Then
+\[
+    \chi_A \leq f \leq \chi_B \implies \int \chi_A d\mu_\phi = \mu_\phi(A) \leq \phi(f) \leq \mu_\phi(B) = \int \chi_B d\mu.
+\]
+
+\textbf{Proof gist.} We prove each inequality separately. We always first prove for open sets, and then generalize.
+
+\textbf{More detail.} We need to play around with the following tricks.
+\begin{itemize}
+    \item Vector lattice tricks (see lecture 3-3-2020).
+    \item Positive radon measures are continuous for the inductive limit topology! So if $\{f_n\} \rightarrow f$ converges in the inductive limit topology, then $\phi(f_n) \rightarrow f$.
+\end{itemize}
+
+\noindent\rule{\textwidth}{1pt}
+\textbf{Part II.} For $f \in C_c(X)$ and $\e > 0$,
+\[
+    |\phi(f) - \int f d\mu_\phi| < \e.
+\]
+
+From an intuitive perspective, it is not hard to see that Part I is an important tool to craft out Part II. The harder part is the formalization and fleshing out the details.
+
+\textbf{Proof gist.} Break apart $f$ into the sum of many small functions, apply Part I to the small functions, and the use the triangle inequality to put everthing back.
+
+\textbf{More detail.} The explicit construction is to break up the range of $f$. Define $f_n = f \wedge n\e$, let $g_n = f_{n+1} - f_n$, and observe
+\[
+    \e \{x: f(x) > (n + 1)\e\} \leq g_n \leq \e \{x: f(x) > n\e\}.
+\]
+
+
+\end{document}

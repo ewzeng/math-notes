@@ -1,0 +1,104 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} %To avoid compiler warnings (12pt too small)
+\fancyhead[L]{Edward Zeng, SID: 3034036984}
+\fancyhead[C]{Math 202B Notes}
+\fancyhead[R]{\today}
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+\pagestyle{fancy}
+\textbf{Gauge.} Let $V$ be a vector space. A gauge is a function $p: V \rightarrow \bR$ that is ``half-linear", i.e.
+\begin{itemize}
+\item
+For $r > 0$, we have $p(rv) = rp(v)$.
+\item
+$p(u + v) \leq p(u) + p(v)$.
+\end{itemize}
+
+\noindent\rule{\textwidth}{1pt}
+\textbf{Main lemma for Hahn-Banach.} A linear functional defined on a subspace $W$ of $V$ subordinate to gauge $p$ can be extended to a subordinate linear functional defined on $W \oplus \text{span}(v_0)$.
+
+\textbf{Proof gist.} Show the existence of $\alpha$ such that
+\[
+\tilde{\phi}(w + rv_0) = \phi(w) + r \alpha
+\]
+is subordinate to $p$. Key trick is a separation of variables.
+
+\noindent\rule{\textwidth}{1pt}
+\textbf{Hahn-Banach.} A linear functional defined on a subspace $W$ of $V$ subordinate to gauge $p$ can be extended to a subordinate linear functional defined on $V$.
+
+\textbf{Proof gist.} The main lemma extends linear functionals one dimension at a time. Apply Zorn's lemma to it (by considering the family of pairs of vector subspaces and subordinate linear functionals defined on them).
+
+\textbf{Remark.} To show the existence of continous linear functionals on normed vector spaces, let the gauge $p$ be the norm. Then any linear functional subordinate to $p$ is continuous (indeed, Lipschitz).
+
+\end{document}

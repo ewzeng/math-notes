@@ -1,0 +1,40 @@
+\section{Lecture 4-23-2020}
+We begin by introducing a notation for rank 1 operators.
+\begin{dfn}
+    For $\xi, \eta \in \cH$, let $D_{\xi \eta}(\zeta) = \langle \zeta, \eta) \xi$
+\end{dfn}
+By Riesz-Representation, all rank 1 operators can be represented as so.
+\begin{thm}
+    $\cB(\cH) = (\cB^1(\cH))'$, where $M \mapsto \t(M \cdot)$.
+\end{thm}
+\begin{details}{Surjectivity}
+    To show all continuous functionals are of the form $\t(M \cdot)$, suppose $\phi \in (\cB^1(\cH))'$. We constuct $M$ such that $\phi$ and $\t(M \cdot)$ agree on all rank 1 operators, and thus $\phi = \t(M \cdot)$. To do this, we apply the Riesz-Representation of bounded sesquilinear forms to find an $M$ such that
+    \[
+        \langle M\xi, \nu \rangle = \phi(D_{\xi \eta}).
+    \]
+\end{details}
+\begin{thm}
+    $\cB^1(\cH) = (\cB_c(\cH))'$, where $T \mapsto \t(\cdot T)$.
+\end{thm}
+\begin{details}{Surjectivity}
+    To show all continuous functionals are of the form $\t(\cdot T)$, suppose $\psi \in (\cB_c(\cH))'$. Maneuver into the setting $\psi \in (\cB^2(\cH))'$ and as $\cB^2(\cH)$ is a Hilbert space, apply Riesz-Representation to get
+    \[
+        \psi(S) = \t(TS) = \t(ST)
+    \]
+    on $\cB^2(\cH)$. (Play around to show the commutativity.) Then apply finite projection trick and polar decomposition to show $T \in \cB^1(\cH)$. As $\cB^2(\cH)$ is dense in $\cB^1(\cH)$, this result extends to $\cB^1(\cH)$.
+\end{details}
+\begin{remark}
+    If we see trace as an integral, then we obtain some familiar expressions. $\t(M\cdot)$ becomes
+    \[
+        \int M \cdot d\mu
+    \]
+    and $\t(\cdot T)$ becomes
+    \[
+        \int \cdot T d\mu.
+    \]
+    Moreover, $\t(T^*S)$ becomes
+    \[
+        \int T^*S d\mu.
+    \]
+    This suggests that the motivation for some expressions involving trace (or weights in general) come from seeing trace (and weights) as some sort of integral.
+\end{remark}

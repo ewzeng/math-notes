@@ -1,0 +1,37 @@
+\subsection{Heat Equation on an Interval}
+We want to solve the IVP
+\[
+    u_t = ku_{xx},
+\]
+\[
+    u(x,0) = f(x),
+\]
+for $t \geq 0$, $x \in [0, 2\pi]$ and either homogeneous Neumann or Dirichlet boundary conditions.
+\begin{details}{Physical interpretation}
+    We are studying heat propagation over a finite insulated rod. Homogeneous Neumann BC $\implies$ the ends of the rod are insulated; homogeneous Dirichlet BC $\implies$ the ends are attached to isothermal heat sinks.
+\end{details}
+
+\subsubsection{Separation of Variables}
+We solve the heat equation on an interval with a powerful Ansatz technique called separation of variables, i.e. we assume
+\[
+    u(x,t) = A(x)B(t).
+\]
+Then the heat equation becomes $A''(x)B(t) = A(x)B'(t)$ (assume $k = 1$). Rearranging, we get
+\[
+    \frac{A(x)}{A''(x)} = \frac{B(t)}{B'(t)} = c, \quad c \ \text{constant}.
+\]
+Therefore one solution is
+\[
+    A(x) = e^{\sqrt{c}x}, B(t) = e^{ct}
+\]
+where $\sqrt{c}$ is imaginary when $c < 0$. Because homogeneous Neumann and Dirichlet BCs imply heat cannot increase to $\i$, thus we may assume $c = -\l^2 < 0$, and a solution to the heat equation becomes
+\[
+    u(x,t) = e^{-\l^2t + i\l x}.
+\]
+We take linear combinations of this solution (varying $\l$) to satisfy the initial and BCs.
+\begin{remark}
+    We can satisfy the initial conditions because of Fourier series. Satisfying BCs requires more care: use a sine or cosine Fourier series.
+\end{remark}
+
+
+

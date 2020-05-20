@@ -1,0 +1,43 @@
+\section{Lecture 4-16-2020}
+We construct $L^2(A,w)$ in the following manner:
+\begin{itemize}
+    \item Observe $ \langle a, b \rangle := \o(b^*a) $ is an pre-inner product on vector space $\mathfrak n_\o$. (Use the polarization identity for *-algebras to show $b^*a \in \mathfrak m_\o$.)
+    \item Apply a quotient $\mathfrak n_\o \rightarrow \mathfrak n_\o/\cN_\o$ to turn the pre-inner product into an inner product.
+    \item Complete $\mathfrak n_\o/\cN_\o$ to get $L^2(A,w)$, a Hilbert space.
+\end{itemize}
+\begin{thm}[C* Representation]
+    \label{*-embedding}
+    There is a *-embedding from $A$ into $\cB(L^2(A,w))$.
+\end{thm}
+\begin{details}{Proof gist}
+    The embedding is given by $a \rightarrow L_a$, where $L_a$ is left multiplication by $a$.
+\end{details}
+\begin{details}{Key trick}
+    To show $L_a$ is bounded, note $b^*cb \leq \|c\|b^*b$. As $\o$ is positive, this eventually implies
+    \[
+        \langle L_ab, L_ab \rangle \leq \|a^*a\| \langle b,b \rangle.
+    \]
+\end{details}
+Note that Theorem \ref{*-embedding} hints at the representation of arbitrary C*-algebras as a C*-algebra of bounded operators on a Hilbert space (big Gelfand-Naimark theorem).
+
+We now turn back to trace.
+\begin{thm}
+    We have:
+    \begin{itemize}
+        \item $\mathfrak m_\t = \{T \in \cB(\cH): \t(|T|) < \i \} = \cB^1(\cH) \subset \cB_c(\cH)$
+        \item $\mathfrak n_\t = \{T \in \cB(\cH): \t(|T|^2) < \i \} = \cB^2(\cH) \subset \cB_c(\cH)$
+    \end{itemize}
+\end{thm}
+\begin{details}{Key Trick}
+    To prove $\cB^1(\cH)$ and $\cB^2(\cH)$ consist of compact operators, observe
+    \[
+        \|T\| \leq \t(T), \quad T \geq 0.
+    \]
+    Use this link between norm and trace to build finite rank approximations.
+\end{details}
+\begin{details}{Key Trick}
+    Once $\cB^1(\cH) \subset \cB_c(\cH)$ is established, apply polar decomposition ($T = V|T|$), reverse polar decomposition ($V^*T = |T|$), and the fact that $\mathfrak m_\t$ is an ideal to prove the first statement. The second statement is obvious.
+\end{details}
+\begin{dfn}
+    The operators in $\cB^2(\cH)$ are called Hilbert-Schmidt operators.
+\end{dfn}

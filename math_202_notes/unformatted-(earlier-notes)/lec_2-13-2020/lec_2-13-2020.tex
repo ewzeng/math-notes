@@ -1,0 +1,124 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+
+\textbf{Key Equation.} Suppose $\mu, \nu$ are two $\sigma$-finite measures. Observe that the map
+\[
+    \phi(f) = \int f d\nu
+\]
+is an element of the dual space of $\cL^1(\mu + \nu)$. Thus there exists an $h \in \cL^\i(\mu + \nu)$ such that
+\[
+    \int f d\nu = \int fh d(\mu + \nu) = \int fh d\mu + \int fh d\nu,
+\]
+i.e.
+\[
+    \int f(1-h) d\nu = \int fh d\mu.
+\]
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{Lebesgue Decomposition.} Observe $\|h\| \leq 1$. Define
+\[
+    E = \{x : h(x) = 1\}, \quad F = X\backslash E
+\]
+and use the equation to note that $\nu|_E$ is singular to $\mu$ and $\nu|_F$ is absolutely continuous to $\mu$.
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{Radon-Nikodyn.} When the set $\{x : h(x) = 1\}$ has measure 0 (i.e. $\nu$ is absolutely continuous w/r/t $\mu$), we choose $f = \chi_G$ and note
+\[
+    \nu(G) = \int \chi_G d \nu = \int \frac{h\chi_G}{1 - h} d\mu.
+\]
+
+\newpage
+
+\textbf{Theorem.} For $1 < p < \i$, $ \frac{1}{p} + \frac{1}{q} = 1$, and finite measure space $X$, there is an isometric bijection between the positive elements of $\big(\cL^p(\mu)\big)'$ and $\cL^{q}(\mu)$.
+
+\textbf{Proof gist.} For positive $\phi \in \big(\cL^p(\mu)\big)'$, observe
+\[
+    \nu(E) = \int \phi(\chi_E) d\mu
+\]
+is a measure absolutely continuous to $\mu$. Then by Radon-Nikodyn, there exists a positive $g$ such that
+\[
+    \nu(E) = \int_E g d\mu.
+\]
+We show that $g \in \cL^{q}(\mu)$. The other direction comes from Holder and the following observation proved via simple functions:
+\[
+    \phi(f) = \int f d\nu = \int fg d\mu
+\]
+
+\textbf{Remark.} In the usual fashion, this can be extended to the $\s$-finite case.
+
+\end{document}

@@ -1,0 +1,30 @@
+\section{Lecture 2-11-2020}
+\begin{thm}
+For $\mu(x) < \i$, $\Big(\cL^1(X, \cS, \mu)\Big)'$ is isometric and isomorphic to $L^\i(X, \cS, \mu)$.
+\end{thm}
+\begin{details}{Main idea}
+Manuever $\cL^1$ into the $\cL^2$ setting and apply the Reisz-Representation theorem.
+\end{details}
+\begin{details}{More detail}
+Observe for $\mu(X) < \i$, we have $\big(\cL^1(\mu)\big)' \subset \big(\cL^2(\mu)\big)'$. Thus by R-R, for every $\phi \in \big(\cL^1(\mu)\big)'$ there exists a $g$ such that
+\[
+    \phi(f) = \int fg.
+\]
+We then show $g \in \cL^\i(\mu)$. Conversely, we then show every $g \in \cL^\i(\mu)$ defines a continuous linear functional on $\cL^1(\mu)$ by the equation above.
+\end{details}
+
+\begin{details}{Key trick}
+To $g$ is bounded a.e., we show for a closed set $C$, we have
+\[
+    \frac{1}{\mu(E)}\int_E g \in C, \text{  } \forall \text{ } \mu(E) > 0 \implies g(x) \in C \text{ a.e.}
+\]
+To do this, we show any open ball disjoint with $C$ must have preimage measure 0. Then as the range of $g$ is separable, we take a countable union of all such open balls.
+\end{details}
+
+\begin{details}{Motivation for first step}
+For spaces of finite measure, $\cL^2 \subset \cL^1$. Thus it makes sense for linear functionals on $\cL^1$ to also be linear functionals on $\cL^1$.
+\end{details}
+
+\begin{remark}
+This theorem can be extended to $\s$-finite measures (as many statements about finite measures can).
+\end{remark}

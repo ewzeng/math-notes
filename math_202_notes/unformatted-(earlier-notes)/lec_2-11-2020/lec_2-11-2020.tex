@@ -1,0 +1,97 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+
+\textbf{Theorem.} For $\mu(x) < \i$, $\Big(\cL^1(X, \cS, \mu)\Big)'$ is isometric and isomorphic to $L^\i(X, \cS, \mu)$.
+
+\textbf{Main idea.} Manuever $\cL^1$ into the $\cL^2$ setting and apply the Reisz-Representation theorem.
+
+\textbf{More detail.} Observe for $\mu(X) < \i$, we have $\big(\cL^1(\mu)\big)' \subset \big(\cL^2(\mu)\big)'$. Thus by R-R, for every $\phi \in \big(\cL^1(\mu)\big)'$ there exists a $g$ such that
+\[
+    \phi(f) = \int fg.
+\]
+We then show $g \in \cL^\i(\mu)$. Conversely, we then show every $g \in \cL^\i(\mu)$ defines a continuous linear functional on $\cL^1(\mu)$ by the equation above.
+
+\textbf{Key trick.} To $g$ is bounded a.e., we show for a closed set $C$, we have
+\[
+    \frac{1}{\mu(E)}\int_E g \in C, \text{  } \forall \text{ } \mu(E) > 0 \implies g(x) \in C \text{ a.e.}
+\]
+To do this, we show any open ball disjoint with $C$ must have preimage measure 0. Then as the range of $g$ is separable, we take a countable union of all such open balls.
+
+\textbf{Motivation for first step.} For spaces of finite measure, $\cL^2 \subset \cL^1$. Thus it makes sense for linear functionals on $\cL^1$ to also be linear functionals on $\cL^1$.
+
+\textbf{Extension remarks.} This theorem can be extended to $\s$-finite measures (as many statements about finite measures can).
+
+\end{document}

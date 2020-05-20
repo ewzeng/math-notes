@@ -1,0 +1,41 @@
+\section{Lecture 4-16-2020}
+We would like to study $\mathfrak m_\t$, $\mathfrak n_\t$. First, we give a basic overview of some properties of $\mathfrak m_\t$ and $\mathfrak n_\t$.
+\begin{itemize}
+    \item $\mathfrak m_\t$ and $\mathfrak n_\t$ are vector spaces. The first is by definition, the second follows from the parallelogram inequality for *-algebras:
+        \[
+            (S+T)^*(S+T) + (S-T)^*(S-T) = 2S^*S + 2T^*T.
+        \]
+    \item $\mathfrak n_\t$ is an left ideal. Key trick is to note $S^*TS \leq \|T\|S^*S$, which implies
+        \begin{equation}
+            \label{left ideal equation}
+            \t\big((TS)^*(TS)\big) \leq \|T^*T\|\t(S^*S) = \|T\|^2\t(S^*S)
+        \end{equation}
+        as $\t$ is a positive operator. This equation will appear again in the next lecture.
+    \item $\mathfrak m_\t$ is a *-subalgebra $\implies$ $\mathfrak n_\t$ is a *-subalgebra $\implies$ $\mathfrak n_\t$ is a two-sided ideal.
+    \item By positive operator representation, $\mathfrak n_\t$ is a two-sided ideal $\implies$ $\mathfrak m_\t$ is is two-sided ideal.
+\end{itemize}
+
+Now we link trace and compactness.
+\begin{lem}
+    Let $T \in \cB(\cH)$. If $\t(|T|^n) < \i$ for some $n \in \bZ^+$, then $T$ is compact.
+\end{lem}
+\begin{details}{Key Trick}
+    Observe compactness is preserved in the following links: $T \leftrightarrow |T| \leftrightarrow \sqrt{|T|^n}$. Use $\t(|T|^n) < \i$ to construct a finite rank projection $P$ such that
+    \[
+        \|\sqrt{|T|^n}-\sqrt{|T|^n}P\| < \e.
+    \]
+\end{details}
+From the lemma, we deduce that $\mathfrak m_\t, \mathfrak n_\t  \subset \cB_c(\cH)$. Thus we can focus our attention to only compact operators.
+\begin{thm}
+    We have:
+    \begin{itemize}
+        \item $\mathfrak m_\t = \{T \in \cB_c(\cH): \t(|T|) < \i \} = \cB^1(\cH)$
+        \item $\mathfrak n_\t = \{T \in \cB_c(\cH): \t(|T|^2) < \i \} = \cB^2(\cH)$
+    \end{itemize}
+\end{thm}
+\begin{details}{Key Trick}
+    For $m_\t$, use polar decomposition, the fact that $\mathfrak m_\t$ is an ideal, and the spectral theorem.
+\end{details}
+\begin{dfn}
+    The operators in $\cB^2(\cH)$ are called Hilbert-Schmidt operators.
+\end{dfn}

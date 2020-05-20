@@ -1,0 +1,29 @@
+\section{Haar Decomposition}
+We now begin our discussion on signal processing. Our first aim is to develop a new orthogonal decomposition for $L^2(\bR)$ of $\bR$-valued functions.
+\begin{dfn}
+    Let
+    \begin{itemize}
+        \item[(a)] $\phi = \chi_{[0,1]}$, the Haar scaling function.
+        \item[(b)] $\psi = \frac{1}{2}\chi_{[0, \frac{1}{2}]} 
+            - \frac{1}{2}\chi_{[ \frac{1}{2},1]}$, the Haar wavelet.
+        \item[(c)] $V_j = \spann\{\phi(2^jx - k): k \in \bZ\}$.
+        \item[(d)] $W_j = \spann\{\psi(2^jx - k): k \in \bZ\}$.
+    \end{itemize}
+\end{dfn}
+Using translation properties, it is easy to check that $V_j \oplus W_j = V_{j+1}$, an orthogonal direct sum. Then it is not hard to see the following orthogonal decomposition:
+\[
+    L^2(\bR) = \overline{\spann\{V_j\}}
+    = \overline{V_0 \oplus W_0 \oplus  W_1 \oplus \dots}.
+\]
+Thus by Hilbert space theory, we conclude:
+\begin{thm}[Haar Decomposition]
+    For $f \in L^2(\bR)$, we have
+    \[
+        f = P_{V_0}f + \sum_{i = 0}^\i P_{W_i}f,
+    \]
+    where $P_U f$ denotes the orthogonal projection of $f$ onto $U$.
+\end{thm}
+Intuitively, this means we can breakdown a signal $f$ as $v_0 + \sum_{j \geq 0} w_j$ where $v_0$ is a baseline approximation, and each $w_j$ adds finer and finer detail.
+
+In practice, computing these projections is (relatively) slow. However, by sampling $f$ at the right points, we can produce an approximation $\tilde{f} \in V_n$ for some big $n$, and then iteratively apply a fast decomposition algorithm that gives us $V_j = V_{j-1} \oplus W_{j-1}$. This gives a good approximation.
+

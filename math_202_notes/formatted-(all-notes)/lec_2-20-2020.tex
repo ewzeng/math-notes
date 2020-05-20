@@ -1,0 +1,26 @@
+\section{Lecture 2-20-2020}
+\begin{thm}[Dense Subsets of $C_\bR(X)$]
+Let $X$ be a compact space, and $L$ a subspace and sublattice of $C(X)$. If $L$ strongly separates points in $X$, then $L$ is dense in $C(X)$ (for the sup norm).
+\end{thm}
+\begin{remark}
+Strong seperation implies $X$ is necessarily Hausdorff.
+\end{remark}
+\begin{details}{Proof gist}
+Given $f \in C(X)$, we construct a $g \in L$ such that $\|f-g\| < \e$. To do this, we use strong separation to generate families of functions in $L$, then piece these functions together using compactness and the $\wedge$, $\vee$ operators.
+\end{details}
+\begin{thm}[Real Stone-Weierstrass]
+Same statement as before, but instead of $L$, we consider subalgebra $A$.
+\end{thm}
+\begin{details}{Proof gist}
+We prove $\bar{A}$ is a subspace and sublattice, then invoke our previous theorem.
+\end{details}
+\begin{details}{Key tricks.}
+There are two key tricks to show that $\bar{A}$ is sublattice. The first is to note
+\[
+    f + g = \frac{f + g + |f-g|}{2}, \quad |f| = \sqrt{f^2}.
+\]
+The second is to observe that $\sqrt{t}$ can be uniformly approximated on a compact interval by a polynomial $p(t)$. This uses some power series knowledge.
+\end{details}
+\begin{remark}
+We can extend Stone-Weierstrass to the complex case if we force $A$ to be closed under complex conjugation.
+\end{remark}

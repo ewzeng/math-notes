@@ -1,0 +1,45 @@
+\section{Pointwise Convergence of Fourier Series}
+When does a Fourier series converge pointwise to the original function? To answer this question, we need the following tool:
+\begin{lem}[Riemann-Lebesgue]
+    Let $f$ be a piecewise continuous function defined on $[-\pi,\pi]$. Then
+    \[
+        \int_{-\pi}^\pi f(x)e^{ikx}dx \rightarrow 0
+    \]
+    as $k \rightarrow \i$ or $k \rightarrow -\i$.
+\end{lem}
+\begin{details}{Proof gist}
+    Prove for $f \in C^1$ using integration by parts. Then extend to continuous functions via uniform approximation by $C^1$ functions.
+\end{details}
+\begin{remark}
+    The lemma still holds when we replace $e^{ikx}$ with $\sin(kx)$ or $\cos(kx)$.
+\end{remark}
+Now we are ready to state the result on pointwise convergence.
+\begin{thm}
+    \label{ptconv}
+    The Fourier series of $f$ converges pointwise to itself if $f$ is $2\pi$-periodic and $C^1(\bR)$.
+\end{thm}
+\begin{details}{Proof gist}
+    Use Riemann-Lebesgue to prove
+    \[
+        \Big| f(x) - \frac{1}{2\pi}\Big(\sum_{n=-k}^k \int_{-\pi}^\pi f(t)e^{-int}dt\Big)
+        e^{inx}\Big| \rightarrow 0
+    \]
+    as $k \rightarrow \i$.
+\end{details}
+\begin{details}{Key trick}
+    To evaluate the above expression, we introduce the Dirichlet kernel
+    \[
+        D_k(x) = \frac{1}{2\pi} \sum^{k}_{n=-k}e^{inx} = \frac{\sin(k+ \frac{1}{2})x}{\sin \frac{1}{2}x}
+    \]
+    and rewrite the expression as
+    \[
+        \Big|\int_{-\pi}^\pi \big(f(x)-f(t)\big) D_k(x-t)dt\Big|.
+    \]
+\end{details}
+\begin{remark}
+    We require $f$ to be $2\pi$-periodic and $f \in C^1(\bR)$ instead of just $f \in C^1([-\pi,\pi])$ to avoid some technical issues on the boundary.
+\end{remark}
+\begin{remark}
+    Because of our formulation of Riemann-Lebesgue, Theorem \ref{ptconv} can be extended to continuous $2\pi$-periodic functions that are piecewise $C^1$ with no extra effort.
+\end{remark}
+

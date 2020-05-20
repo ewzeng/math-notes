@@ -1,0 +1,34 @@
+\section{Lecture 1-21-2020}
+\begin{dfn}
+    Let $V$ be a vector space. A gauge is a function $p: V \rightarrow \bR$ that is ``half-linear", i.e.
+    \begin{itemize}
+    \item
+    For $r > 0$, we have $p(rv) = rp(v)$.
+    \item
+    $p(u + v) \leq p(u) + p(v)$.
+    \end{itemize}
+\end{dfn}
+
+\begin{thm}[Main lemma for Hahn-Banach]
+A linear functional defined on a subspace $W$ of $V$ subordinate to gauge $p$ can be extended to a subordinate linear functional defined on $W \oplus \text{span}(v_0)$.
+\end{thm}
+
+\begin{details}{Proof gist}
+    Show the existence of $\alpha$ such that
+    \[
+    \tilde{\phi}(w + rv_0) = \phi(w) + r \alpha
+    \]
+    is subordinate to $p$. Key trick is a separation of variables.
+\end{details}
+
+\begin{thm}[Hahn-Banach]
+    A linear functional defined on a subspace $W$ of $V$ subordinate to gauge $p$ can be extended to a subordinate linear functional defined on $V$.
+\end{thm}
+
+\begin{details}{Proof gist}
+    The main lemma extends linear functionals one dimension at a time. Apply Zorn's lemma to it (by considering the family of pairs of vector subspaces and subordinate linear functionals defined on them).
+\end{details}
+
+\begin{remark}
+    To show the existence of continous linear functionals on normed vector spaces, let the gauge $p$ be the norm. Then any linear functional subordinate to $p$ is continuous.
+\end{remark}

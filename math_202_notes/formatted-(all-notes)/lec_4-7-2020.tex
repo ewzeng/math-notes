@@ -1,0 +1,33 @@
+\section{Lecture 4-7-2020}
+We first develop a important theorem regarding the decomposition of compact operators.
+\begin{dfn}
+    A linear map $T: V \rightarrow W$ is a partial isometry if $V = U \oplus U^\perp$, $T$ is an isometry on $U$, and $T(U^\perp) = 0$.
+\end{dfn}
+\begin{dfn}
+    For compact operator $T \in \cB(\cH)$, define $|T| = \sqrt{T^*T}$.
+\end{dfn}
+\begin{remark}
+    The square root is well defined because $T^*T$ is a positive compact operator, so it has basis of eigenvectors of positive eigenvalues. Take the square root of the eigenvalues, but keep the corresponding eigenspaces.
+\end{remark}
+\begin{thm}[Polar Decomposition]
+    For compact operator $T \in B(\cH)$, we have
+    \[
+        T = V|T|,
+    \]
+    where $V \in \cB(\cH)$ is a partial isometry.
+\end{thm}
+\begin{details}{Proof gist}
+    Define $V(|T|(x)) = T(x)$, extend to closure, and map the orthogonal complement to 0.
+\end{details}
+\begin{remark}
+    Polar decomposition is really SVD in disguise. If you diagonalize $|T|$ and make some trivial tweaks, you get compact SVD.
+\end{remark}
+\begin{thm}
+    Compact operators are well approximated by finite rank operators.
+\end{thm}
+\begin{details}{Proof gist}
+    Apply polar decomposition and then show $|T|$ can be well approximated by finite rank operators. 
+\end{details}
+\begin{details}{Approximation of $|T|$}
+Recall for compact operators that nonzero eigenspaces are finite and there are only finitely many eigenvalues $> \e$ for a given $\e > 0$.
+\end{details}

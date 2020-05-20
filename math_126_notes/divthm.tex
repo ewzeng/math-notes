@@ -1,0 +1,26 @@
+\section{Divergence Theorem}
+A vector field is a smooth map from $\bR^n \rightarrow \bR^n$.
+\begin{dfn}
+    Let $F$ be the vector field given by $F = (f_1, \dots, f_n)$.
+    The divergence of $F$ is given by
+    \[
+        \nabla \cdot F
+        =
+        \sum^{n}_{i=1} \frac{\partial f_i}{\partial e_i}.
+    \]
+\end{dfn}
+\begin{details}{Physical interpretation}
+    $\nabla \cdot F(x)$ measures the ``outwardness" of the vector field arrows at $x$. In other words, the amount of vector field arrows $x$ spews out minus the amount of arrows $x$ absorbs.
+\end{details}
+\begin{thm}[Divergence Theorem]
+    Let $B \subset \bR^n$, and let $n$ be the normal vector on $\partial B$. Then
+    \[
+        \int_B \nabla \cdot F = \int_{\partial B} F \cdot n.
+    \]
+\end{thm}
+\begin{details}{Physical interpretation}
+    Integrating divergence over $B$ gives the net difference of vector field arrows spewed out and absorbed in $B$. This is, intuitively, the amount of vector field arrows crossing the boundary, i.e. flux.
+\end{details}
+\begin{remark}
+    We do not go into the conditions we impose on $B$ (compact smooth orientable MwB, etc.). Most ``nice" objects work.
+\end{remark}

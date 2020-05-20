@@ -1,0 +1,39 @@
+\section{Lecture 4-28-2020}
+In the last two lectures of this semester, we develop the theory needed to prove Theorem \ref{positive operator representation}, i.e. the ability to take square roots of positive operators. Throughout, $\cP$ will denote the algebra of polynomials over $\bC$, and $\s$ will denote the spectrum.
+
+In this lecture, we develop some results related to the spectrum.
+
+\begin{thm}[Spectral Mapping Theorem]
+    Suppose $T \in \cB(\cH)$ and $p \in \cP$. Then
+    \[
+        \s(p(T)) = \{p(\l): \l \in \s(T)\}.
+    \]
+\end{thm}
+\begin{details}{Key Trick}
+    Some simple factorizations.
+\end{details}
+
+The following is an important technique for operator algebras. It is obvious - the only technicality is the convergence of the LHS.
+
+\begin{thm}
+    Suppose $T \in \cB(\cH)$ and $\|T\| < 1$. Then
+    \[
+        (1 - T)^{-1} = \sum_{n = 0}^\i T^n.
+    \]
+\end{thm}
+
+A consequence of this theorem is that $\|\s(T)\|_\i \leq \|T\|$ for $T \in \cB(\cH)$. Our final result relates the spectrum to approximate eigenvalues because approximate eigenvalues are easier to work with.
+
+\begin{thm}
+    Suppose $T \in \cB(\cH)$. Then
+    \begin{itemize}
+        \item[(a)] If $\l$ is an approximate eigenvalue, then $\l \in \s(T)$.
+        \item[(b)] If $\l \in \s(T)$, then it is an approximate eigenvalue of $T$ or $T^*$.
+    \end{itemize}
+\end{thm}
+\begin{details}{Proof overview}
+    (a) is simple. For (b), use the Open Mapping Theorem and the relations between the kernels and ranges of $T$ and $T^*$ to link the approximate eigenvalue 0 to invertibility.
+\end{details}
+\begin{remark}
+    Some relation between approximate eigenvalues and the spectrum is almost guaranteed - both ``roughly describe" eigenvalues.
+\end{remark}

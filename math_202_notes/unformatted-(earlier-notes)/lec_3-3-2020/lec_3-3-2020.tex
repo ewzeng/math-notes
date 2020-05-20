@@ -1,0 +1,120 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} %To avoid compiler warnings (12pt too small)
+\fancyhead[L]{Edward Zeng, SID: 3034036984}
+\fancyhead[C]{Math 202B Notes}
+\fancyhead[R]{\today}
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+\pagestyle{fancy}
+
+\textbf{Some observations.} Working in a lattice space allows us to use a few tricks:
+\begin{itemize}
+    \item We can decompose $x = x^+ - x^-$, so we need only study positive elements. We have already seen this many times.
+    \item Given $x$, we can create elements like $x \vee 1$, $x \wedge 1$, etc. More generally, we can ``combine" multiple elements. This is a powerful property for construction (c.f. Stone Weierstrass).
+\end{itemize}
+The following toy example will show the power of the second trick. Then we will use the second trick to prove partitions of unity.
+
+\textbf{Toy example (a generalization of Hahn Decomp).} Suppose $\mu, \nu$ are real measures such that $\mu \wedge \nu = 0$. Then $\mu$ and $\nu$ are mutually singular.
+
+\textbf{Proof gist.} If not, construct a strictly positive measure smaller than both.
+
+\textbf{More detail.} Afer applying Lebesgue Decomposition and then R-N, we get
+\[
+    \int_E h d\mu = \nu_{ac}(E).
+\]
+If $h \neq 0$ a.e., consider the strictly positive measure induced by $h \wedge 1$.
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{Partitions of Unity for LCH Spaces.} If $X$ is LCH, then for any compact $C \subset X$ and open cover $\theta_i$ of $C$, there exists positive functions $f_i \in C_C(X)$ such that $\sum f_i = 1$ on $C$ and supp$(f_i) \subset \theta_i$.
+
+\textbf{Remark.} Support is defined as the closure of the carrier.
+
+\textbf{Proof gist.} Use LCH Urysohn's lemma (and friend) to construct a function
+\[
+    g = \sum g_i \geq 1.
+\]
+Then consider
+\[
+    \frac{g}{g \vee 1}.
+\]
+
+\textbf{Construction for first equation.} We first show there exists closed sets $B_i \subset \theta_i$ such that $C \subset \cup B_i$. (Need LCH Urysohn's friend). Then use LCH Urysohn's lemma to define $g_i(x) = 1$ for $x \in B_i$ and supp$(g_i) \subset \theta_i$.
+\begin{itemize}
+    \item \textit{LCH Urysohn's friend} (used to prove LCH Urysohn). $X$ LCH, subset $C$ compact, $C \subset U$ open. Then there exists open $V$, $\bar{V}$ compact, such that $C \subset V \subset \bar{V} \subset U$.
+    \item \textit{LCH Urysohn's lemma}. If subset $C$ is compact and $C \subset \theta$ is open, then there exists a continuous $f: X \rightarrow [0,1]$ with $f(x) = 1$ for $x \in C$ and $f(x) = 0$ for $x \not \in \theta$.
+\end{itemize}
+Sorry, I come up with weird names.
+
+\end{document}

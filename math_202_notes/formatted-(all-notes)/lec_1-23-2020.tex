@@ -1,0 +1,30 @@
+\section{Lecture 1-23-2020}
+\begin{dfn}[Quotient Norm]
+    If $W$ is a closed subspace of Banach space $V$, then equip $V/W$ with the norm
+    \[
+        \|\pi(v)\| = \text{inf}\{\|v-w\|: w \in W\}.
+    \]
+\end{dfn}
+\begin{remark}
+    Note that if $W$ is not closed, then we only get a semi-norm.
+\end{remark}
+There are a few miscellaneous statements about quotient norms and spaces, and they often use the following technique:
+\begin{itemize}
+    \item Fix $\pi(v)$. Tweak $v \rightarrow v + w$ until you get a specific property.
+\end{itemize}
+\begin{exercise}
+    Use the tweak technique above to show for any $v \in V$, there is a $\phi \in V'$ such that $\phi(W) = 0$, $\phi(v) = \|\pi(v)\|$, and $\|\phi\| = 1$.
+\end{exercise}
+
+\begin{thm}
+    $V/W$ is a Banach space.
+\end{thm}
+\begin{details}{Proof gist}
+    ``Pull back" a rapidly Cauchy sequence from $V/W$ to $V$. Tweak technique is needed.
+\end{details}
+\begin{thm}
+    Space of continuous linear operators $\cB(V, W)$ is a Banach space.
+\end{thm}
+\begin{details}{Proof gist}
+    Let $T$ be the point of convergence of a Cauchy sequence. Show $T$ is bounded and linear (very routine).
+\end{details}

@@ -1,0 +1,28 @@
+\section{Lecture 2-25-2020}
+\begin{thm}
+The dual of a normed vector lattice $V$ is a normed vector lattice (with the order usually associated with functionals).
+\end{thm}
+\begin{details}{Proof gist}
+    Given $\phi \in V'$, we independently construct $\phi^+ \in V'$ and show $\phi^+ = \phi \vee 0$. The translation properties of ordered vector spaces then shows $V'$ is lattice ordered. We then check the rest of the properties of a normed vector lattice (some inequalities and bashing required).
+\end{details}
+\begin{details}{Construction of $\phi^+$}
+We first define $\phi^+$ on $V^+$ by
+\[
+    \phi^+(v) = \sup\{\phi(x): 0 \leq x \leq v\}
+\]
+and prove it is linear. Then we linearly extend $\phi^+$ to $V$ and show it is continuous.
+\end{details}
+
+\begin{details}{Some techniques used}
+\begin{itemize}
+    \item Prove something for positive $v$ and extend via $v = v^+ - v^-$.
+
+    \item Prove some inequality for variables $x$ and $y$ satisfying some condition. The inequality holds if we take the supremum over $x$ and $y$ with this condition.
+
+    \item Use the fact that $V$ is a normed vector lattice!
+\end{itemize}
+\end{details}
+
+\begin{remark}
+We already showed that if $p,q$ are Holder conjugates with $1 < p,q < \i$, then there is an isometric bijection between $(\cL^p)'$ and $\cL^q$. The theorem above extends this statement to all of $(\cL^p)'$ and $\cL^q$.
+\end{remark}

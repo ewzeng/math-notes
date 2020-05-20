@@ -1,0 +1,46 @@
+\begin{thm}[Hahn-Banach Extension]
+    Let $V$ be a real normed vector space. Suppose $O$ and $C$ are disjoint convex subsets, with $O$ open. Then there exists a linear functional $\phi$ that separates $O$ and $C$, i.e.
+    \[
+        \phi(O) < t \leq \phi(C)
+    \]
+    where $t$ is a constant.
+\end{thm}
+
+\begin{details}{Proof gist}
+Use the Hahn-Banach theorem to construct a functional $\phi$ such that
+\[
+    \phi(O-C) < 0.
+\]
+\end{details}
+\begin{details}{In more detail}
+    $O-C$ is an open convex set not containing the origin, and let $v_0 \in O-C$. Pictorially, we have Figure \ref{fig:A-convex-open-set}.
+    If we define $\phi$ on $Rv_0$ with $\phi(-v_0) = 1$ and make the obvious extension (in this finite dimensional case), then clearly $\phi(O-C) < 0$. The general case is a more technical version of this.
+\end{details}
+\begin{figure}[ht]
+    \centering
+    \incfig[0.5]{A-convex-open-set}
+    \caption{A convex open set}
+    \label{fig:A-convex-open-set}
+\end{figure}
+\begin{details}{Extra detail}
+    To pick the appropriate gauge to make the extension in the general case, let $U = O - C - v_0$ and define
+    \[
+        m_u(v) = \inf{\{s \in \bR^+: \frac{v}{s} \in U\}}.
+    \]
+    Then proceed as before, but use the gauge $m_u$ to perform the extension.
+\end{details}
+\begin{thm}[Hahn-Banach Extension for Spaces over $\bC$]
+    Let $V$ be a complex normed vector space, $W$ a subspace, and $p$ a semi-norm. If $\phi$ is a continuous linear functional on $W$ dominated by $p$, then there exists a continuous linear extension $\tilde{\phi}$ on $V$ dominated by $p$.
+\end{thm}
+
+\begin{details}{Proof gist}
+    Use the real Hahn-Banach theorem to construct $\tilde{\phi}$.
+\end{details}
+
+\begin{details}{More detail}
+    Let $\psi = \Re{\phi}$ on $W$, and pretend $V$ is a real vector space (i.e. $iv$ is not a multiple of $v$). Then use the real version of Hahn-Banach to extend $\psi$ to $\tilde{\psi}$ on $V$. Now define
+    \[
+        \tilde{\phi}(v) = \tilde{\psi(v)} - i\tilde{\psi(iv)}
+    \]
+    and show $\tilde{\phi}$ satisfies the properties we want.
+\end{details}

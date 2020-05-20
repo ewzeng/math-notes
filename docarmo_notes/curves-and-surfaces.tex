@@ -1,0 +1,102 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\title{Notes on Curves and Surfaces}
+\author{Edward Zeng, ID: 3034036984}
+
+\begin{document}
+
+\maketitle
+
+\section*{Notation I}
+Suppose $x(u,v)$ is a local parameterization of a surface. Then we write
+\[
+    x_u = \frac{\partial x}{\partial u}, \quad x_v = \frac{\partial x}{\partial v}.
+\]
+Observe that $x_u$ and $x_v$ are the column vectors of the derivative $dx$, i.e.
+\[
+    x_u = dx(u), \quad x_v = dx(v).
+\]
+As parameterizations are diffeomorphisms, $dx$ is invertible, and thus $x_u$ and $x_v$ are linearly independent.
+
+\section*{First fundamental form}
+The first fundamental form at a point $p \in S \subset \bR^3$ is the inner product on $T_p(S)$ inherited from $\bR^3$. It is often expressed as a quadratic form using the basis $x_u, x_v$ as follows:
+\[
+    \langle ax_u + bx_v, ax_u + bx_v \rangle
+    =
+    \langle x_u, x_u \rangle a^2 + 2 \langle x_u, x_v \rangle ab + 
+    \langle x_v, x_v \rangle b^2.
+\]
+The three coefficents are often denoted $E, F, G$.
+\end{document}

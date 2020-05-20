@@ -1,0 +1,115 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+
+\textbf{Hahn-Banach Separation Theorem.} Let $V$ be a real normed vector space. Suppose $O$ and $C$ are disjoint convex subsets, with $O$ open. Then there exists a linear functional $\phi$ that separates $O$ and $C$, i.e.
+\[
+    \phi(O) < t \leq \phi(C)
+\]
+where $t$ is a constant.
+
+\textbf{Proof gist.} Use the Hahn-Banach theorem to construct a functional $\phi$ such that
+\[
+    \phi(O-C) < 0.
+\]
+
+\textbf{In more detail.} $O-C$ is an open convex set not containing the origin, and let $v_0 \in O-C$. Pictorially, we have
+\begin{figure}[ht]
+    \centering
+    \incfig[0.5]{A-convex-open-set}
+    \caption{A convex open set}
+    \label{fig:A-convex-open-set}
+\end{figure}
+
+If we define $\phi$ on $Rv_0$ with $\phi(-v_0) = 1$ and make the obvious extension (in this finite dimensional case), then clearly $\phi(O-C) < 0$. The general case is a more technical version of this.
+
+\textbf{Extra detail.} To pick the appropriate gauge to make the extension in the general case, let $U = O - C - v_0$ and define
+\[
+    m_u(v) = \inf{\{s \in \bR^+: \frac{v}{s} \in U\}}.
+\]
+Then proceed as before, but use the gauge $m_u$ to perform the extension.
+
+\newpage
+
+\textbf{Hahn-Banach Extension for spaces over $\bC$.} Let $V$ be a complex normed vector space, $W$ a subspace, and $p$ a semi-norm. If $\phi$ is a continuous linear functional on $W$ dominated by $p$, then there exists a continuous linear extension $\tilde{\phi}$ on $V$ dominated by $p$.
+
+\textbf{Proof gist.} Use the real Hahn-Banach theorem to construct $\tilde{\phi}$.
+
+\textbf{More detail.} Let $\psi = \Re{\phi}$ on $W$, and pretend $V$ is a real vector space (i.e. $iv$ is not a multiple of $v$). Then use the real version of Hahn-Banach to extend $\psi$ to $\tilde{\psi}$ on $V$. Now define
+\[
+    \tilde{\phi}(v) = \tilde{\psi(v)} - i\tilde{\psi(iv)}
+\]
+and show $\tilde{\phi}$ satisfies the properties we want.
+\end{document}

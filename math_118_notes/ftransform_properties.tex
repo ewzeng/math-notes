@@ -1,0 +1,18 @@
+\section{Properties of the Fourier Transform}
+Of the many properties of the Fourier Transform, the following two are the most imporant. The proofs are straightforward.
+\begin{thm}
+    Let $f,g \in L^1(\bR)$ where $f * g$ makes sense. Then
+    \[
+        \widehat{f * g} = \sqrt{2\pi} \hat{f} \hat{g}.
+    \]
+\end{thm}
+\begin{thm}
+    Let $f \in L^2(\bR)$ such that FT, IFT make sense. Then $\|f\|_2 = \|\hat{f}\|_2$.
+\end{thm}
+\begin{details}{Proof gist}
+    Show $\cF^* = \cF^{-1}$.
+\end{details}
+\begin{remark}
+    The Fourier transform can be linearly extended to all of $L^2(\bR)$ (although for $f \in L^2-L^1$, the Definition \ref{FT} does not hold). Then by the above theorem, the Fourier transform is a unitary operator on $L^2(\bR)$.
+\end{remark}
+

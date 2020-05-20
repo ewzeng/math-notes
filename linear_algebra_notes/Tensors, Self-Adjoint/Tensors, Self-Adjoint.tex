@@ -1,0 +1,115 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\title{Tensors, Self Adjoint Linear Operators}
+\author{Edward Zeng}
+\date{October 19, 2019}
+
+\begin{document}
+
+\maketitle
+
+Today, I decided to take a look at Halmos's book \textit{Finite-Dimensional Vector Spaces}. I was pleasantly surprised by the presentation of the material, and I would like to share a few observations and notes.
+
+\section*{Tensors}
+
+Recall the construction of the tensor product of vector spaces $U$ and $V$ goes something like this:
+\[
+    U \times V \rightarrow \bF \langle U \times V \rangle \rightarrow
+    U \otimes V
+\]
+where the last step involves quotienting out a subspace. (Here, $\bF \langle . \rangle$ denotes the free space.) I've always wanted see alternate contruction, which is why I was excited to see Halmos's simple (and obvious!) solution.
+
+\textbf{Definiton.} $U \otimes V$ is the space of bilinear forms $f: U \oplus V \rightarrow \bF$.
+
+Similarly, we can define the $k$-fold exterior algebra of $U$ as the space of alternating multilinear forms on $U \oplus U \oplus \dots \oplus U$. Personally, I prefer this simpler construction over the one I was taught. 
+
+\section*{Self-Adjoint Linear Operators}
+Recall now that a linear map $A: U \rightarrow V$ induces the \textbf{dual map} $A': V' \rightarrow U'$. Halmos calls this the \textbf{adjoint}. The key result here is that the matrix of $A$ with respect with some choice of bases for $U$ and $V$ is the transpose of the matrix $A'$ with respect to the corresponding dual bases.
+
+Now, if $U$ is a (finite-dimensional) inner product space, there is a natural bijection between $U$ and $U'$. More specifically:
+
+\textbf{Theorem.} Suppose $y' \in U'$, where $U'$ is the dual space of a (finite-dimensional) inner product space $U$. There there exists a unique vector $y \in U$ such that
+\[
+    y'(x) = (x, y), \quad \forall x \in U.
+\]
+(Here, (.,.) denotes the inner product.)
+
+In fact, the bijection between $U$ and $U'$ is a conjugate isomorphism, i.e. it happens that
+\[
+    (ay')(x) = (x, \bar{a}y).
+\]
+It also happens that this bijection induces an inner product on $U'$, so we will often denote the dual space $U'$ as $U^*$ instead to emphasize this. We observe now that for any linear operator $A: U \rightarrow U$, our usual definition of the adjoint $A': U^*\rightarrow U^*$ induces a linear map $A^*: U \rightarrow U$ via the identification between $U$ and $U^*$. (Yes, the notation is slightly off. $A'$ is an operator on $U^*$. $A^*$ is an operator on $U$.)
+
+Unlike before, the matrix of $A^*$ is the \textit{conjugate} transpose of the matrix of $A$ (with respect to corresponding bases). This is where the idea of conjugate transpose comes from! (To be sure, the matrix of $A'$ is the transpose of $A$, but the matrix of $A^*$ is the conjugate transpose of $A$, even though $A'$ naturally induces $A^*$.)
+
+Halmos makes an important heuristic observation here: 
+\[
+    \text{\textit{the space of linear operators on $U$ acts like the field of complex numbers.}}
+\]
+For instance, $A \mapsto A^*$ is analogous to conjugation. From this, we deduce that the set of self-adjoint operators (i.e. \textbf{Hermitian matrices}) is analogous to the set of real numbers! (Similarly, the unitary matrices are analogous to the unit circle, the skew-symmetric matrices are analogous to imaginary numbers, etc.)
+
+From this, I am starting to understand the reason why Hermitian matrices were so emphasized in the study of Toeplitz forms. Halmos's heuristic analogy isn't perfect (division breaks down a little), but does hold some fundamental truths. Hint: eigenvalues of Hermitian matrices are always real.
+
+\end{document}

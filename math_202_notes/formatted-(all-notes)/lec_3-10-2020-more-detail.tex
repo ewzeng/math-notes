@@ -1,0 +1,70 @@
+\section{Lecture 3-10-2020}
+Here, we prove that the measurable sets of $\mu_\phi$ contains the Borel $\s$-algebra, and thus can be restricted to the Borel $\s$-algebra. This requires some of the following concepts:
+\begin{dfn}
+If $\mu$ is a measure or outer measure, then $\mu$ is:
+\begin{itemize}
+    \item inner regular if the measures of sets can be approximated from below by the measures of compact sets,
+    \item outer regular if the measures of sets can be approximated from above by the measures of open sets.
+\end{itemize}
+\end{dfn}
+The content $\mu_\phi$ is inner regular for open sets! However, we require a slightly modified definition of inner regularity as $\mu_\phi$ is defined only on the open sets. What we mean is
+\[
+    \mu_\phi(U) = \sup\{\mu_\phi(V): V \ \text{open}, \ \bar{V} \subset U\}, \quad U \ \text{open.}
+\]
+
+\begin{thm}
+Open sets are measurable in $\mu_\phi$.
+\end{thm}
+
+\begin{details}{Proof gist}
+For open set $U$, we want to show for any $A \subset X$, we have
+\[
+    \mu_\phi^*(A - U) + \mu_\phi^*(A \cap U) = \mu_\phi^*(A).
+\]
+Use inner regularity for open sets to prove for $A$ open, then extend using outer regularity.
+\end{details}
+
+Now we are ready for our main theorem.
+
+\begin{thm}[Reisz-Markov]
+If $\phi$ is a positive radon measure on $X$, then
+\[
+    \phi(f) = \int f d\mu_\phi,
+\]
+where $\mu_\phi$ is inner regular for open sets, outer regular, the $\s$-algebra of $\mu_\phi$ contains the Borel sets.
+\end{thm}
+The proof of the properties of $\mu_\phi$ are easy. The proof of the integral representation can be divided into two parts.
+
+\subsection{Part I: $\phi$ and $\int d\mu_\phi$ play well with each other.} Let $f \in C_c(X)$. Then
+\[
+    \chi_A \leq f \leq \chi_B \implies \int \chi_A d\mu_\phi = \mu_\phi(A) \leq \phi(f) \leq \mu_\phi(B) = \int \chi_B d\mu.
+\]
+
+\begin{details}{Proof gist}
+We prove each inequality separately. We always first prove for open sets, and then generalize.
+\end{details}
+\begin{details}{More detail}
+We need to play around with the following tricks.
+\begin{itemize}
+    \item Vector lattice tricks (see lecture 3-3-2020).
+    \item Positive radon measures are continuous for the inductive limit topology! So if $\{f_n\} \rightarrow f$ converges in the inductive limit topology, then $\phi(f_n) \rightarrow \phi(f)$.
+\end{itemize}
+\end{details}
+
+\subsection{Part II.} 
+For $f \in C_c(X)$ and $\e > 0$,
+\[
+    |\phi(f) - \int f d\mu_\phi| < \e.
+\]
+\begin{remark}
+From an intuitive perspective, it is not hard to see that Part I is an important tool to craft out Part II. The harder part is the formalization and fleshing out the details.
+\end{remark}
+\begin{details}{Proof gist}
+Break apart $f$ into the sum of many small functions, apply Part I to the small functions, and the use the triangle inequality to put everthing back.
+\end{details}
+\begin{details}{More detail}
+The explicit construction is to break up the range of $f$. Define $f_n = f \wedge n\e$, let $g_n = f_{n+1} - f_n$, and observe
+\[
+    \e \{x: f(x) > (n + 1)\e\} \leq g_n \leq \e \{x: f(x) > n\e\}.
+\]
+\end{details}

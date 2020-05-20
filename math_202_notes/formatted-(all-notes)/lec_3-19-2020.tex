@@ -1,0 +1,10 @@
+% Note: 3-17-2020 was the midterm!
+\section{Lecture 3-19-2020}
+Motivation for integral operators come from matrix multiplication. (Side note: integral operators are to matrices as convolution (considered as a type of integral operator) are to Toeplitz matrices. The relation between convolution and FT is the reason that Toeplitz matrices are diagonalized by the FFT.)
+\begin{dfn}[Integral Operators]
+    For $K \in \cL^p(X\times Y)$, define $T_K: \cL^q(Y) \rightarrow \cL^p(X)$ by
+    \[
+        T_K(f)(x) = \int K(x,y)f(y)dy.
+    \]
+\end{dfn}
+The above definition makes sense because of Holder ($q$ is chosen to be the Holder conjugate of $p$). Also, as Fubini/Tonelli are important when working with integral operators, we usually assume we are working in a $\s$-finite space.

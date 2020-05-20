@@ -1,0 +1,30 @@
+\input{../preamble.tex}
+\begin{document}
+\pagestyle{fancy}
+\section{Haar Measure}
+\begin{dfn}{Haar Measure}
+A Haar measure is a left-multiplication invariant Borel measure defined on a locally compact topological group $G$. 
+\end{dfn}
+We describe how to compute Haar measures for $G$ naturally homeomorphic to open subsets $U \subset \bR^n$. The key is to guess that the Haar measure is a Radon measure absolutely continuous to the Lebesgue measure. In other words,
+\[
+    \phi(f) = \int_G f(x)w(x)dx.
+\]
+where $dx$ is the inherited Lebesgue measure on $G$. Invariance under left multiplication means
+\[
+    \phi(f) = \int_G f(x)w(x)dx = \int_G f(yx)w(x)dx = \phi(f(y\cdot \_)).
+\]
+Let $T$ be the change of variables $x \rightarrow yx$. When $G$ is identified with $U$, we can compute $S(x) = \text{det}(dT_x)$. Then our equation becomes
+\[
+    \int_G f(x)w(x)dx = \int_G f(x)w(y^{-1}x)|S(x)|dx.
+\]
+We can apply the change of variables formula because we are working in the Lebesgue measure. Then it remains to guess a $w$ such that
+\[
+    w(x) = w(y^{-1}x)|S(x)|.
+\]
+\begin{remark}
+    Haar proved Haar measures are unique up to multiplication by a constant.
+\end{remark}
+\begin{remark}
+    One can also derive right-invariant Haar measures by composing the left-invariant Haar measure with the group inverse.
+\end{remark}
+\end{document}

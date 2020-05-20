@@ -1,0 +1,42 @@
+\subsection{Heat Equation on $\bR$}
+Because the heat equation is easiest to study without boundary conditions, we first study the heat equation on $\bR$.
+\subsubsection{Fundamental Solution}
+An important solution to the heat equation on $\bR$ for $t > 0$ is given by the Gaussian:
+\[
+    \Phi(x,t) = \frac{1}{\sqrt{4\pi kt}}e^{ \frac{-x^2}{4kt}}.
+\]
+$\Phi$ is called the kernel kernel/fundamental solution and is often derived via an Ansatz.
+\begin{remark}
+    $\Phi$ is undefined for $t = 0$. It is only a solution for $t > 0$ but it approaches the Dirac delta as $t \rightarrow 0$.
+\end{remark}
+\subsubsection{Initial Conditions}
+Now suppose we are given the initial conditions $u(x,0) = g(x)$. First observe that $\Phi(x-y,t)g(y)$ is a solution to the heat equation. By linearity, this suggests that
+\[
+    \Phi * g = \int_\bR \Phi(x-y,t)g(y) dy
+\]
+is a solution to the heat equation.
+
+Note $\Phi * g$ is not defined at $t = 0$. But because $\Phi$ limits to the Dirac delta as $t \rightarrow 0$, thus $\Phi * g \rightarrow g$ as $t \rightarrow 0$. It is in this sense that we have solved the IVP.
+
+\subsubsection{Nonhomogeneous Equation}
+The nonhomogeneous heat equation is
+\[
+    u_t = ku_{xx} + f(x,t).
+\]
+\begin{details}{Physical interpretation}
+    Heat is being generated at a \textbf{rate} of $f(x,t)$ (in addition to regular heat flow).
+\end{details}
+This is a standard application of Duhamel's principle. The key idea behind Duhamel is that heat generation at a rate $r$ over the time period $[s,s+\e]$ can be approximated by adding
+\[
+    v(x,t,s) =
+    \begin{cases}
+        0   &   t < s\\
+        \tilde{u}(x,t-s) & t > s,
+    \end{cases}
+\]
+where $\tilde{u}(x,t)$ is the solution to the homogeneous wave equation with the initial condition $\tilde{u}(x,0) = \e r$. 
+
+Thus, by linearity, the solution to nonhomogeneous heat equation with the initial condition $u(x,0) = 0$ can be well approximated by adding together the solutions of many homogeneous heat equations. We take the limit of this approximation, turn a Riemann sum into an integral, and get
+\[
+    u(x,t) = \int_0^t \int_\bR \Phi(x - y, t-s)f(y,s)dyds.
+\]

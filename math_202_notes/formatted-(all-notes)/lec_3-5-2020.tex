@@ -1,0 +1,20 @@
+\section{Lecture 3-5-2020}
+In the next few lectures, we wish to study the dual space of $C_c(X)$, where $X$ is LCH. We call a positive linear functional on $C_c(X)$ a positive Radon measure (PRM). It is our end goal to characterize all PRMs as integrals (Riesz-Markov),
+so we begin by constructing a measure for every PRM.
+\begin{details}{Motivation}
+    In general, for a positive linear functional $\phi$, we have
+    \[
+        \phi(f) = \int f d\mu_\phi, \quad \mu_\phi(E) = \phi(\chi_E).
+    \]
+    We have seen this type of construction when studying $(\cL^p)'$. However, as PRMs are only defined on continuous functions, we have to play some technical tricks.
+\end{details}
+\begin{dfn}
+If $\phi$ is a PRM, define $\mu_\phi$ on open sets by
+\[
+    \mu_\phi(U) = \sup \{ \phi(f): 0 \leq f \leq \chi_U, \ \text{supp}\{f\} \subset U\}.
+\]
+\end{dfn}
+It is not too hard to show $\mu_\phi$ is a content, i.e. a ``finitely additive measure." (Use partitions of unity to show countable subadditivity.) We then do the standard extension: content $\mu_\phi$ $ \rightarrow $ outer measure $\mu_\phi^*$ $ \rightarrow $ measure $\mu_\phi$.
+\begin{remark}
+A possible point of confusion: $\mu_\phi$ denotes both the measure and the content. Use context.
+\end{remark}

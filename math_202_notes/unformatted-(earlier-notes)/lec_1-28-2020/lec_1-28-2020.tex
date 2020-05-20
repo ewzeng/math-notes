@@ -1,0 +1,103 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+
+For vector space $V$, the following are equivalant:
+\begin{itemize}
+    \item The topology on $V$ is the initial topology from a collection of semi-norms on $V$.
+
+    \item The topology on $V$ is translation invariant and has a subbase of convex sets.
+\end{itemize}
+When the above scernaios occur, we say the topology on $V$ is \textbf{locally convex}.
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{Alaoglu's theorem.} If $V$ is a normed vector space, then the closed unit ball $B$ in $V'$ is compact for the weak-* topology.
+
+\textbf{Point of confusion.} Two different topologies are used in the statement of the theorem. The closed unit ball is defined by the norm-topology, but the actual topology on $V'$ is weak-*.
+
+\textbf{Proof gist.} Use Tynchoff's theorem to construct a compact space and establish a homeomorphism between that compact space and $B$ with the weak-* topology.
+
+\textbf{More detail.} Define $D_v = \{t \in \bR: |t| < ||v|| \}$. Then consider the map
+\[
+    J: B \rightarrow \prod^{\i}_{v \in V}D_v = P
+\]
+given by the (informal) expression
+\[
+    J(\phi) \mapsto \prod^{\i}_{v \in V}\phi(v).
+\]
+By comparing the subbases of $B$ and $J(B)$, we conclude they are homeomorphic. To show $J(B)$ is closed (hence compact), we note each element of $P$ determines a function $f$. If $f$ is in the closure of $J(B)$, then by approximating $f$ by elements of $J(B)$, we show $f$ is linear and thus an element of $J(B)$. 
+
+\end{document}

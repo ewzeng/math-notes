@@ -1,0 +1,43 @@
+\section{Lecture 4-14-2020}
+We now return to Hilbert spaces operators. The following is an interesting representation trick for positive operators.
+\begin{thm}[Positive Operator Representation]
+    \label{positive operator representation}
+    If $T \in \cB(\cH)$ is a positive operator, then there exists positive $S \in \cB(\cH)$ such that $T = S^2$. We often denote $S = \sqrt{T}$.
+\end{thm}
+\begin{remark}
+    (1) We define $T$ to be positive if $ \langle Tv, v \rangle \geq 0$ for all $v \in \cH$. (2) Our previous use of $\sqrt{ }$ is a specific instance of this definition. In particular, we can now define $|T|$ for any $T \in \cB(\cH)$, not just compact $T$. (3) We will prove this theorem later.
+\end{remark}
+Now we are ready to introduce the concept of trace.
+\begin{dfn}[Trace]
+    Let $T \in \cB(\cH)$ be a positive operator. Then define the trace
+    \[
+        \tau(T) = \sum \langle Te_i, e_i\rangle
+    \]
+    where $\{e_i\}$ is any orthonormal basis.
+\end{dfn}
+\begin{remark}
+    The difficulty of defining trace in general are technicalities surrounding the convergence of the sum. Therefore we first define trace for the positive operators and then extend to a larger class of operators.
+\end{remark}
+\begin{details}{Some technical details}
+To show $\tau(T)$ is irrespective of (orthonormal) basis comes from the positive operator representation trick followed by Parseval's identity.
+\end{details}
+
+We now extend the idea of trace.
+
+\begin{dfn}
+    Let
+    \begin{itemize}
+        \item $\mathfrak{m}_\t \subset \cB(\cH)$ be the $\bC$-span of the positive operators with finite trace.
+        \item $\mathfrak{n}_\t \subset \cB(\cH)$ be the set of elements $S$ s.t. $S^*S \in \mathfrak{m}_\t$.
+    \end{itemize}
+\end{dfn}
+
+Trace can be naturally defined on $\mathfrak{m}_\t$ (note it may be complex but not infinite). We would like to study $\mathfrak{m}_\t$ and $\mathfrak{n}_\t$. To do so, we go to a more general setting.
+
+\begin{dfn}
+    Let $A$ be a C*-algebra. A weight is a function $\o: A^+ \rightarrow \bR^+ \cup \i$ such that $\o(a+b) = \o(a) + \o(b)$ and $\o(ra) = r\o(a)$ when $r \geq 0$.
+\end{dfn}
+
+\begin{remark}
+    In this generalization, we replace $\cB(\cH)$ with $A$ and $\t$ with $\o$. $\mathfrak m_\o$ and $\mathfrak n_\o$ are defined analogously.
+\end{remark}

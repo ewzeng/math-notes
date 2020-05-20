@@ -1,0 +1,38 @@
+\section{Filters}
+A filter takes an input signal and outputs an output signal. More formally, a filter is a map between function spaces, often $L^1$, $L^2$, or piecewise continuous functions. We are purposely vague on the precise domain and codomain, as they may differ depending on context.
+\begin{dfn}
+    A filter $L$ is
+    \begin{itemize}
+        \item[(a)] time-invariant if $(L[f])(x-a) = (L[f(\_-a)])(x)$.
+        \item[(b)] causal if $f(x) = 0$ for $x < 0$ implies $L[f](x) = 0$ for $x < 0$.
+    \end{itemize}
+\end{dfn}
+In practice, we only care about linear time-invariant causal filters. Here, we attempt an informal characterization of such filters.
+\begin{exercise}
+    Consider the convolutional filter $L: L^2 \rightarrow L^2$ defined as $L[f] = f * g$ for some fixed $g \in L^2$. Show $L$ is linear and time-invariant.
+\end{exercise}
+\begin{thm}
+    Under some mild assumptions, all time-invariant linear filters are convolution filters.
+\end{thm}
+\begin{remark}
+    We add ``mild assumptions" because we present an informal argument. We will not delve into the conditions that will make this argument formal.
+\end{remark}
+The motivation for this proof is to note that for any convolutional filter $L$, we have $g = L[\d]$, where $\d$ is the Dirac delta function.
+\begin{details}{Proof gist}
+    Show $L[f] = f * L[\d]$.
+\end{details}
+\begin{proof}
+    \[
+        \begin{split}
+            (f * L[\d])(t) &= \int_{-\i}^\i f(x)L[\d](t-x)dx\\
+                           &= \int_{-\i}^\i f(x)L[\d_x](t)dx\\
+                           &= L[\int_{-\i}^{\i} f(x)\d_xdx](t)\\
+                           &= L[f](t)
+        \end{split}
+    \]
+    Here, the second equality comes from time invariance, and the third equality comes from linearity (intuitively, the integral can be seen as a sum).
+\end{proof}
+\begin{exercise}
+    Show that a convolutional filter $L$ is causal iff $g(x) = 0$ a.e. when $x < 0$.
+\end{exercise}
+

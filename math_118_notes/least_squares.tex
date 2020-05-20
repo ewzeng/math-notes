@@ -1,0 +1,24 @@
+\section{Least Squares}
+Suppose $T: V \rightarrow \bR^n$ is linear and $y \in \bR^n$. As the solution to the equation $Tx = y$ may not exist, we are concerned with the best $\ell^2$ approximation of $y$ from $\ran(T)$. This is the least squares problem.
+
+To correctly formulate the theorem, we require the following exercise.
+\begin{exercise}
+    \label{least-squares-formulation}
+    Show that $T$ is injective on $\ran(T^*)$. Deduce that $T^*$ is injective on $\ran(T)$. Conclude that $T^*T$ can be restricted to an automorphism on $\ran(T^*)$.
+\end{exercise}
+
+\begin{thm}
+    The least squares approximation of $y$ is $T(T^*T)^{-1}T^*y$. Consequently, we best approximate $y$ when we set $x = (T^*T)^{-1}T^*y$.
+\end{thm}
+
+\begin{remark}
+    Above, $T^*T$ denotes the map $T^*T$ restricted to $\ran(T^*)$. See Exercise \ref{least-squares-formulation}.
+\end{remark}
+
+\begin{details}{Proof gist}
+    Observe $T(T^*T)^{-1}T^*$ is the projection onto $\ran(T)$.
+\end{details}
+
+\begin{details}{Key trick}
+    Suppose $W$ is a subspace of $\bR^n$. Then $P$ is the orthogonal projection to $W$ iff $P^*=P$, $P^2 = P$, and $\ran(P) = W$.
+\end{details}

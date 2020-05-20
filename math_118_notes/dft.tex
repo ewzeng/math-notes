@@ -1,0 +1,41 @@
+\section{The Discrete Fourier Transform}
+We now develop Fourier series in a different direction. Computers often compute integrals as Riemann sums, so the coefficents of Fourier series are often approximated as
+\[
+    c_k \approx a_k := \frac{1}{n} \sum^{n-1}_{j=0} f( \frac{2\pi j}{n}) e^{-ik \frac{2\pi j}{n}}.
+\]
+Thus given these $n$ sample points, we can approximately calculate all Fourier coefficents. This is the discrete Fourier transform. We express our finding more compactly in the following definition.
+\begin{dfn}
+    DFT is the following matrix multiplication:
+    \[
+        \begin{pmatrix}
+            a_1 \\ a_2 \\ \vdots \\ a_n
+        \end{pmatrix}
+        =
+        \frac{1}{n}
+        \overline{F_n}
+        \begin{pmatrix}
+            f( 0) \\
+            f( \frac{2\pi}{n}) \\
+            \vdots\\
+            f( \frac{2\pi(n-1)}{n})
+        \end{pmatrix},
+        \quad
+        F_n =
+        \begin{pmatrix}
+            1   &   1   &   1   &   \dots   &   1\\
+            1   &   w   &   w^2 &   \dots   &   w^{n-1}\\
+            1   &   w^2 &   w^4 &   \dots   &   w^{2(n-1)}\\
+            \vdots&\vdots&\vdots& \ddots    & \vdots\\
+            \hdots&\hdots&\hdots&\hdots     & w^{(n-1)^2}
+        \end{pmatrix},
+        \quad
+        w = e^{ \frac{2\pi i}{n}}.
+    \]
+\end{dfn}
+\begin{remark}
+    As the $a_i$'s are cyclic, we need not calculate more than $a_1, \dots, a_n$.
+\end{remark}
+One key property of DFT is that it can be computed in $\cO(n\log{n})$ time (using a divide-and-conquer technique called the FFT). This provides another reason why DFT is often preferable in practical situations.
+\begin{remark}
+    There are many FT analogs in DFT, but the proofs are much easier in the discrete case (as many technicalities disappear).
+\end{remark}

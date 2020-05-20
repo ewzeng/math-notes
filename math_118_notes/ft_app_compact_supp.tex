@@ -1,0 +1,13 @@
+\section{FT Application I: Compact Support}
+Compact support is a powerful property that allows us to avoid difficult technicalities. The following is an important example.
+\begin{thm}[Shannon-Whittaker]
+    Let $f$ we defined so FT, IFT make sense. Then if $\hat{f}$ is continuous, piecewise $C^1$, and supported on $[-\O, \O]$, we have
+    \[
+        f(t) = \sum^{\i}_{j=-\i} f( \frac{j\pi}{\O}) \sinc(\O t-j\pi)
+    \]
+    where the series converges uniformly.
+\end{thm}
+\begin{details}{Proof gist}
+    Represent $\hat{f}$ with its Fourier series (which converges uniformly to $\hat{f}$) and then apply IFT. Key trick is to replace $\int_{-\i}^\i$ with $\int_{-\O}^{\O}$.
+\end{details}
+However, compact support is so powerful that it may be too good to always wish for. For instance, if both $f$ and $\hat{f}$ are compactly supported, one can show using Leibniz's rule that $\hat{f}$ is infinitely differentiable. In fact, with some complex analysis, we can show that $\hat{f}$ is holomorphic! However, the only holomorphic function with compact support is the trivial map.

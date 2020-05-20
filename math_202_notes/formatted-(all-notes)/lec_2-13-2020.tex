@@ -1,0 +1,44 @@
+\section{Lecture 2-13-2020}
+\textbf{Key Equation.} Suppose $\mu, \nu$ are two $\sigma$-finite measures. Observe that the map
+\[
+    \phi(f) = \int f d\nu
+\]
+is an element of the dual space of $\cL^1(\mu + \nu)$. Thus there exists an $h \in \cL^\i(\mu + \nu)$ such that
+\[
+    \int f d\nu = \int fh d(\mu + \nu) = \int fh d\mu + \int fh d\nu,
+\]
+i.e.
+\[
+    \int f(1-h) d\nu = \int fh d\mu.
+\]
+\begin{details}{Proof gist for Lebesgue Decomp}
+Observe $\|h\| \leq 1$. Define
+\[
+    E = \{x : h(x) = 1\}, \quad F = X\backslash E
+\]
+and use the equation to note that $\nu|_E$ is singular to $\mu$ and $\nu|_F$ is absolutely continuous to $\mu$.
+\end{details}
+
+\begin{details}{Proof gist for Radon-Nikodyn}
+When the set $\{x : h(x) = 1\}$ has measure 0 (i.e. $\nu$ is absolutely continuous w/r/t $\mu$), we choose $f = \chi_G$ and note
+\[
+    \nu(G) = \int \chi_G d \nu = \int \frac{h\chi_G}{1 - h} d\mu.
+\]
+\end{details}
+
+\begin{thm}
+For $1 < p < \i$, $ \frac{1}{p} + \frac{1}{q} = 1$, and finite measure space $X$, there is an isometric bijection between the positive elements of $\big(\cL^p(\mu)\big)'$ and $\cL^{q}(\mu)$.
+\end{thm}
+\begin{details}{Proof gist}
+For positive $\phi \in \big(\cL^p(\mu)\big)'$, observe $\nu(E) = \phi(\chi_E)$ is a measure absolutely continuous to $\mu$. Then by Radon-Nikodyn, there exists a positive $g$ such that
+\[
+    \nu(E) = \int_E g d\mu.
+\]
+We show that $g \in \cL^{q}(\mu)$. The other direction comes from Holder and the following observation proved via simple functions:
+\[
+    \phi(f) = \int f d\nu = \int fg d\mu
+\]
+\end{details}
+\begin{remark}
+In the usual fashion, this can be extended to the $\s$-finite case.
+\end{remark}

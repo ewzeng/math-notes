@@ -1,0 +1,101 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} %To avoid compiler warnings (12pt too small)
+\fancyhead[L]{Edward Zeng, SID: 3034036984}
+\fancyhead[C]{Math 202B Notes}
+\fancyhead[R]{\today}
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+\pagestyle{fancy}
+In the next few lectures, we wish to study the dual space of $C_c(X)$, where $X$ is LCH. We call a positive linear functional on $C_c(X)$ a positive Radon measure (PRM). It is our end goal to characterize all PRMs as integrals (Riesz-Markov), so we begin by constructing a measure for every PRM. An overview of the construction is as follows: PRM $ \rightarrow $ content $ \rightarrow $ outer measure $ \rightarrow $ measure.
+
+\noindent\rule{\textwidth}{1pt}
+
+If $\phi$ is a PRM, define $\mu_\phi$ on open sets by
+\[
+    \mu_\phi(U) = \sup \{ \phi(f): 0 \leq f \leq \chi_U, \ \text{supp}\{f\} \subset U\}.
+\]
+Then $\mu_\phi$ is a \textbf{content}, i.e. it satisfies
+\begin{itemize}
+    \item If $U$ is open with $\bar{U}$ compact, then $\mu_\phi(U)$ is finite. This is because if $U$ is open with $\bar{U}$ compact, then $C_\i(U) \subset C_c(X)$.
+    \item $\mu_\phi$ is monotone. Easy.
+    \item $\mu_\phi$ is countably subadditive. Use partition of unity to break up a large function to one defined on many small domains.
+    \item $\mu_\phi$ is finitely additive. Not hard.
+\end{itemize}
+A content can be thought about ``finitely additive measure." We extend content $\mu_\phi$ to an outer measure by defining
+\[
+    \mu_\phi^*(A) = \inf\{\mu_\phi(U): A \subset U\}.
+\]
+Countable subadditivity follows from definition and countable subadditivity of $\nu$. We then use Caratheodory's theorem to filter the outer measure into a measure, which we also denote as $\mu_\phi$ (note $\mu_\phi$ denotes both the content and the measure).
+
+\end{document}

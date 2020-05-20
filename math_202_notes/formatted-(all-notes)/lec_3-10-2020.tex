@@ -1,0 +1,43 @@
+\section{Lecture 3-10-2020}
+Here, we prove that the measurable sets of $\mu_\phi$ contains the Borel $\s$-algebra, and thus can be restricted to the Borel $\s$-algebra. This requires some of the following concepts:
+\begin{dfn}
+If $\mu$ is a measure or outer measure, then $\mu$ is:
+\begin{itemize}
+    \item inner regular if the measures of sets can be approximated from below by the measures of compact sets,
+    \item outer regular if the measures of sets can be approximated from above by the measures of open sets.
+\end{itemize}
+\end{dfn}
+The content $\mu_\phi$ is inner regular for open sets! However, we require a slightly modified definition of inner regularity as $\mu_\phi$ is defined only on the open sets. What we mean is
+\[
+    \mu_\phi(U) = \sup\{\mu_\phi(V): V \ \text{open}, \ \bar{V} \subset U\}, \quad U \ \text{open.}
+\]
+
+\begin{thm}
+Open sets are measurable in $\mu_\phi$.
+\end{thm}
+
+\begin{details}{Proof gist}
+For open set $U$, we want to show for any $A \subset X$, we have
+\[
+    \mu_\phi^*(A - U) + \mu_\phi^*(A \cap U) = \mu_\phi^*(A).
+\]
+Use inner regularity for open sets to prove for $A$ open, then extend using outer regularity.
+\end{details}
+
+Now we are ready for our main theorem.
+
+\begin{thm}[Reisz-Markov]
+If $\phi$ is a positive radon measure on $X$, then
+\[
+    \phi(f) = \int f d\mu_\phi,
+\]
+where $\mu_\phi$ is inner regular for open sets, outer regular, the $\s$-algebra of $\mu_\phi$ contains the Borel sets.
+\end{thm}
+\begin{details}{Proof details for integral representation}
+    Show $\phi$ and $\int d\mu_\phi$ well approximate each other for simple scenarios, i.e.
+\[
+    \chi_A \leq f \leq \chi_B \implies \int \chi_A d\mu_\phi \leq \phi(f) \leq \int \chi_B d\mu.
+\]
+Generalize to arbitrary $f \in C_c(X)$ by breaking $f$ apart into many small functions, applying the above equation to each of the functions, and then putting everything back with the triangle inequality.
+\end{details}
+The proof of the properties of $\mu_\phi$ are easy.

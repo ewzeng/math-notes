@@ -1,0 +1,170 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+
+Recently, Terrence Tao posted a few proofs of the following theorem on his blog:
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+    Let $A$ be an $n \times n$ Hermitian matrix, with eigenvalues $\l_1(A), \l_2(A), \dots, \l_n(A)$. Let $v_i$ be a unit eigenvector corresponding to the eigenvalue $\l_i(A)$, and let $v_{i,j}$ be the $j$-th component of $v_i$. Then
+    \[
+        |v_{i,j}|^2 \prod_{k = 1; k \neq i}^n (\l_k(A) - \l_i(A))
+        = \prod_{k = 1}^{n-1}(\l_k(M_j) - \l_i(A))
+    \]
+    where $M_j$ is the $(n-1) \times (n-1)$ Hermitian matrix formed by deleting the $j$-th row and column from $A$.
+\end{tcolorbox}
+Here, I will provide an alternate proof.
+
+\textbf{Proof.} We start by making a few simplifying assumptions. Set $j = 1$ and fix $i$. Note that if $\l_i(A) \neq 0$, we can instead consider the Hermitian matrix $A - \l_i(A)I$, so we may suppose $\l_i(A) = 0$. Therefore, the identity becomes
+\[
+    |v_{i,1}|^2 \prod_{k = 1; k \neq i}^n \l_k(A)
+    = \det(M_1). 
+\]
+Recall that every Hermitian operator has a basis of eigenvectors. Therefore, if 0 is an eigenvalue of multiplicity $>$ 1, then the kernel of $A$ has dimension $>$ 1. As a result, any principal minor has a kernel with dimension $>$ 0, and the above identity trivially holds. Hence we may assume $A$ has all nonzero eigenvalues except $\l_i(A)$.
+
+Suppose $A = (a_{mn})$. Consider now the matrix
+\[
+    A_t = 
+    \begin{pmatrix}
+        a_{11} + t  & a_{12}    & \dots\\
+        a_{21}      & a_{22}    & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}.
+\]
+Observe that $\det(A_t) = t\det(M_1)$. Thus, to prove the theorem, it suffices to show
+\[
+    \frac{\det(A_t)}{
+    t|v_{i,1}|^2 \prod_{k = 1; k \neq i}^n \l_k(A)
+    } \rightarrow 1
+\]
+as $t \rightarrow 0$. We do just that. (Remark: the denominator is nonzero. Why?).
+
+From linear algebra, we know that every Hermitian matrix can be diagonalized by a change of basis represented by a unitary matrix. In particular, if $v_1, v_2, \dots, v_n$ form a basis of unit eigenvectors, then
+\[
+    \begin{pmatrix}
+        \overline{v_{1,1}}   & \overline{v_{1,2}} & \dots\\
+        \overline{v_{2,1}}   & \overline{v_{2,2}} & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}
+    A
+    \begin{pmatrix}
+        v_{1,1} & v_{2,1} & \dots\\
+        v_{1,2} & v_{2,2} & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \l_1(A) & & \\
+        & \l_2(A) & \\
+        & & \ddots
+    \end{pmatrix}.
+\]
+
+Now note that
+\[
+    \begin{pmatrix}
+        \overline{v_{1,1}}   & \overline{v_{1,2}} & \dots\\
+        \overline{v_{2,1}}   & \overline{v_{2,2}} & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}
+    A_t
+    \begin{pmatrix}
+        v_{1,1} & v_{2,1} & \dots\\
+        v_{1,2} & v_{2,2} & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \l_1(A) & & \\
+        & \l_2(A) & \\
+        & & \ddots
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        t\overline{v_{1,1}}v_{1,1}   & t\overline{v_{1,1}}v_{2,j} & \dots\\
+        t\overline{v_{2,1}}v_{1,1}   & t\overline{v_{2,1}}v_{2,j} & \dots\\
+        \vdots                  & \vdots                & \ddots
+    \end{pmatrix}.
+\]
+
+We may rewrite the resulting matrix as
+\[
+    B_t = 
+    \begin{pmatrix}
+        t|v_{1,1}|^2 + \l_1(A)   & t\overline{v_{1,1}}v_{2,j} & \dots\\
+        t\overline{v_{2,1}}v_{1,1}   & t|v_{2,j}|^2 + \l_2(A) & \dots\\
+        \vdots                  & \vdots                & \ddots
+    \end{pmatrix}.
+\]
+Keeping in mind that $\l_i(A) = 0$, we get
+\[
+    \det(B_t) = t|v_{1,i}|^2 \prod_{k = 1; k \neq i}^n \l_k(A)
+    + t^2\Big( \cdots \cdots \Big).
+\]
+As $\det(A_t) = \det(B_t)$, thus we have shown what we set out to prove.
+    
+
+
+\end{document}

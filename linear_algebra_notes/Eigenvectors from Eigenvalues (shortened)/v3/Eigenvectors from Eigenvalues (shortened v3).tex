@@ -1,0 +1,65 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\textbf{Proof.} Set $j = 1$. WLOG assume $\lambda_i(A) = 0$. Then the formula to be proved is
+\begin{equation}
+    |v_{i,1}|^2 \prod_{k = 1; k \neq i}^n \lambda_k(A)
+    = \det(M_1). 
+\end{equation}
+
+First we note any Hermitian matrix $A$ can be diagonalized by a unitary transformation
+\[
+    T^*AT = 
+    \begin{pmatrix}
+        \lambda_1(A) & & \\
+        & \lambda_2(A) & \\
+        & & \ddots
+    \end{pmatrix}
+\]
+where the column vectors of $T$ form a basis of unit eigenvectors,
+\[
+    T = (\vec{v}_1, \vec{v}_2, \dots, \vec{v}_n).
+\]
+Now observe the following lemma, which follows directly from how determinants are computed.
+
+\begin{lemma}
+Let
+\[
+    A_t = A +
+    \begin{pmatrix}
+        t  & 0    & \dots\\
+        0      & 0    & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a_{11} + t  & a_{12}    & \dots\\
+        a_{21}      & a_{22}    & \dots\\
+        \vdots      & \vdots    & \ddots
+    \end{pmatrix}.
+\]
+Then $\det(A_t) = \det(A) + t\det(M_1)$.
+\end{lemma}
+
+Applying $T$-transformation to $A_t$, we obtain
+\[
+    T^*A_tT =
+    \begin{pmatrix}
+        \lambda_1(A) & & \\
+        & \lambda_2(A) & \\
+        & & \ddots
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        t\overline{v_{1,1}}v_{1,1}   & t\overline{v_{1,1}}v_{2,j} & \dots\\
+        t\overline{v_{2,1}}v_{1,1}   & t\overline{v_{2,1}}v_{2,j} & \dots\\
+        \vdots                  & \vdots                & \ddots
+    \end{pmatrix}.
+\]
+When we take the determinant on both sides (using Lemma 1 on the LHS) and collect the $t$-linear terms, we obtain (1).
+
+\end{document}

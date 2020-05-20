@@ -1,0 +1,103 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor} %For colored text
+\usepackage{parskip}
+
+%Title and margin formatting
+\usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt} %To avoid compiler warnings (12pt too small)
+\fancyhead[L]{Edward Zeng, SID: 3034036984}
+\fancyhead[C]{Math 202B Notes}
+\fancyhead[R]{\today}
+
+%Inkscape
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+\begin{document}
+\pagestyle{fancy}
+
+\textbf{Theorem.} The dual of a normed vector lattice $V$ is a normed vector lattice (with the order usually associated with functionals).
+
+\textbf{Proof gist.} Given $\phi \in V'$, we independently construct $\phi^+ \in V'$ and show $\phi^+ = \phi \vee 0$. The translation properties of ordered vector spaces then shows $V'$ is lattice ordered. We then check the rest of the properties of a normed vector lattice (some inequalities and bashing required).
+
+\textbf{Construction of $\phi^+$} We first define $\phi^+$ on $V^+$ by
+\[
+    \phi^+(v) = \sup\{\phi(x): 0 \leq x \leq v\}
+\]
+and prove it is linear. Then we linearly extend $\phi^+$ to $V$ and show it is continuous.
+
+\textbf{Some techniques used.}
+\begin{itemize}
+    \item Prove something for positive $v$ and extend via $v = v^+ - v^-$.
+
+    \item Prove some inequality for variables $x$ and $y$ satisfying some condition. The inequality holds if we take the supremum over $x$ and $y$ with this condition.
+
+    \item Use the fact that $V$ is a normed vector lattice!
+\end{itemize}
+
+\noindent\rule{\textwidth}{1pt}
+\textbf{Remark.} We already showed that if $p,q$ are Holder conjugates with $1 < p,q < \i$, then there is an isometric bijection between $(\cL^p)'$ and $\cL^q$. The theorem above extends this statement to all of $(\cL^p)'$ and $\cL^q$.
+
+\end{document}

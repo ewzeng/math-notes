@@ -1,0 +1,37 @@
+\section{Lecture 2-27-2020}
+\begin{thm}
+The space of real measures $\cS$ forms a vector lattice, with the positive elements of the lattice being the finite positive measures.
+\end{thm}
+
+\begin{details}{Proof gist}
+For $\mu \in \cS$, we show that the total variation measure is $|\mu|$ (here, $| \cdot |$ is interpreted in the lattice sense). As we have seen before, this implies that $\cS$ is a lattice.
+\end{details}
+\begin{details}{More detail}
+Let $\|\mu\|$ denote total variation measure. We show $\|\mu\|$ is countably additive by the usual argument (prove the inequality both ways, consider disjoint unions, etc). Then we show $\|\mu\|$ is finite by the following technicalitiy:
+\begin{itemize}
+    \item Real (and Banach) measures need to be absolutely convergent by definition, i.e. for disjoint sets $E_n$,
+        \[
+            \sum \mu(E_n) = \sum \mu(E_j)
+        \]
+        where $E_j$ represents a different ordering.
+
+    \item If $\|\mu\|(E) = \i$ (i.e. $E$ is unbounded) but $\mu(E) < \i$, we construct a sequence of disjoint sets whose ``partial sums" are not absolutely convergent.
+\end{itemize}
+Finally we show $\|\mu\| = |\mu|$ by using the fact
+\[
+    \|\mu(E)\| = \sup\{ \mu(E_1) - \mu(E_2): E_1 \sqcup E_2 = E\}.
+\]
+\end{details}
+
+\begin{details}{A final detail}
+The construction of the sequence of disjoint sets mentioned above is as follows:
+\begin{itemize}
+    \item split $E$ into two disjoing unbounded sets $E_1, F_1$ where $|\mu(F_1)| > 1$.
+    \item repeat for $E = E_1$
+\end{itemize}
+Our result is $F_1, F_2, F_3 \dots$.
+\end{details}
+
+\begin{remark}
+It is not difficult to see that total variation is also a norm, and this norm plays well with the lattice. In other words, $\cS$ is a normed vector lattice.
+\end{remark}

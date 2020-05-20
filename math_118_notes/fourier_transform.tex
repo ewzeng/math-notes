@@ -1,0 +1,51 @@
+\section{The Fourier Transform}
+\begin{dfn}
+    \label{FT}
+    The Fourier transform of $f$ is
+    \[
+        \hat{f}(w)= \frac{1}{\sqrt{2\pi}}\int_{-\i}^{\i}f(y)e^{-iwy}dy.
+    \]
+\end{dfn}
+The Fourier transform comes about when extending the notion of Fourier series from $L^2([-\pi,\pi])$ to $L^2(\bR)$. We do this extension in 2 steps. First, note that for $f \in L^2([-m,m])$, we have
+\[
+    f(x) = \sum^{\i}_{n=-\i} \frac{1}{2m}
+    \Big( \int_{-m}^m f(y)e^{ \frac{-in\pi y}{m}} dy \Big)
+    e^{ \frac{in\pi x}{m}},
+\]
+where the equality is in the sense of $L^2$. If $f \in L^2(\bR)$, we can (non-rigorously) conclude
+\[
+    f(x) = \lim_{m \rightarrow \i}
+    \sum^{\i}_{n=-\i} \frac{1}{2m}
+    \Big( \int_{-m}^m f(y)e^{ \frac{-in\pi y}{m}} dy \Big)
+    e^{ \frac{in\pi x}{m}}
+    =
+    \frac{1}{2\pi} \int_{-\i}^\i 
+    \Big( \int_{-\i}^\i f(y)e^{-iwy} dy\Big)
+    e^{iwx}dw.
+\]
+Here, the last equality follows by turning a Riemann sum into an integral. When we compare the equations:
+\[
+    f(x) = 
+    \int_{-\i}^\i 
+    \frac{1}{2\pi}
+    \Big( \int_{-\i}^\i f(y)e^{-iwy} dy\Big)
+    e^{iwx} dw, \quad
+    f(x) = 
+    \sum^{\i}_{n=-\i} \frac{1}{2\pi}
+    \Big( \int_{-\pi}^\pi f(y)e^{-iny} dy \Big)
+    e^{inx},
+\]
+we see that the Fourier transform is a generalization of Fourier coefficents (up to a scaling factor).
+
+Note that in our derivation, we have also proved the Fourier inversion formula.
+\begin{thm}
+    If $\hat{f}$ is the Fourier transform of $f$, then
+    \[
+        f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\i}^\i \hat{f}(w) e^{iwx} dw.
+    \]
+\end{thm}
+\begin{remark}
+    As we have followed a nonrigorous derivation, we are not in the place to discuss the conditions to apply FT or IFT. We thus assume (but do not prove) that FT makes sense when $f \in L^1(\bR)$ and IFT makes sense when $f, \hat{f} \in L^1(\bR)$. These conditions will be implicit whenever we are working with FT or IFT.
+\end{remark}
+
+

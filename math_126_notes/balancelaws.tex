@@ -1,0 +1,32 @@
+\section{Balance Laws}
+Continuous mechanics is the study of continuous substances. We present a general method from which PDEs in this field often arise.
+
+Suppose we have a mysterious substance $S$ in $\bR^n$.
+\begin{itemize}
+    \item Let $u(x,t)$ describe the density of $S$.
+    \item Let $Q(x)$ be a vector field that describes how $S$ flows. This usually comes from a physical law.
+    \item Let $f(x,t)$ describe the rate of creation/desruction of $S$. This becomes the nonhomogeneous part of the PDE.
+\end{itemize}
+We pick a region $\O \subset \bR^n$. Then
+\[
+    \frac{d}{dt}\int_\O udV =
+    \begin{pmatrix}
+        \text{rate of in/out}\\
+        \text{flow on $\partial \O$}
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        \text{rate of creation}\\
+        \text{or destruction in}\\
+        \text{$\O$}
+    \end{pmatrix}
+    =
+    - \int_{\partial \O} Q \cdot n dA
+    +
+    \int_\O f dV.
+\]
+Applying the Divergence theorem and Leibiniz's rule, we get
+\[
+    \int_\O u_tdV = -\int_\O \nabla \cdot Q dV + \int_\O fdV.
+\]
+As $\O$ is an arbitrary region, we conclude that $u_t = -\nabla \cdot Q + f$.

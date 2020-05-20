@@ -1,0 +1,38 @@
+\section{Lecture 4-21-2020}
+We describe what we call the finite projection trick, which can be roughly described as follows:
+\begin{itemize}
+    \item To study $T$, we study $PT$, where $P$ is a finite projection. (Or $TP$, $PTP$, etc.)
+    \item Using finite dimensionality, we prove a statement for $PT$ that is independent of $P$.
+    \item We limit $P \rightarrow I$ by projecting to bigger and bigger spaces to prove that statement for $T$.
+\end{itemize}
+\begin{remark}
+    The motif of this trick is used ubiquitously in math: proving for a simpler scenario, and then building up.
+\end{remark}
+
+\begin{thm}
+    $\cB^2(\cH)$ is a Hilbert algebra with inner product $ \langle S, T \rangle = \t(T^*S)$.
+\end{thm}
+\begin{details}{Proof gist}
+    Show $\cB^2(\cH) = \mathfrak n_\t = \mathfrak n_\t /\cN_\t = L^2(\cB(\cH), \t)$ (c.f. Theorem \ref{*-embedding}). Completeness (the last equality) is the only difficulty: if $\|\cdot\|_2$ denotes the norm on $\cB^2(\cH)$, observe
+    \[
+        \|T\| \leq \|T\|_2
+    \]
+    so a $\|T\|_2$ - Cauchy sequence converges to $T_*$ in $\|\cdot\|$. Use the finite projection trick to show it converges to $T_*$ in $\|\cdot\|_2$.
+\end{details}
+\begin{details}{More detail}
+    We use the finite projection trick because $S_i \rightarrow S$ in $\|\cdot\|$ $\implies$ $\t(PS_i) \rightarrow \t(PS)$ if $P$ is a finite projection. It is not nessarily true that $\t(S_i) \rightarrow \t(S)$.
+\end{details}
+Notice that $\|T\|_2 \rightarrow \t(|T|^2)$, which is the obvious choice of a norm if you think about the definition of $\cB^2(\cH)$. This motivates the next theorem:
+\begin{thm}
+    $\cB^1(\cH)$ is a Banach space with the norm $\|T\|_1 = \t(|T|)$.
+\end{thm}
+\begin{details}{Proof gist}
+    Play with inequalities to show $\|\cdot\|_1$ is a norm. Completeness follows in the same manner as before: observe $\|T\| \leq \|T\|_1$ and apply the finite projection trick.
+\end{details}
+\begin{details}{More detail}
+    To show $\|\cdot\|_1$ satisfies $\D$-inequality, apply reverse polar decomposition and note 
+    \[
+        \t(MT) \leq \|M\|\|T\|_1
+    \]
+    if $M \in \cB(\cH)$, $T \in \cB^1(\cH)$.
+\end{details}

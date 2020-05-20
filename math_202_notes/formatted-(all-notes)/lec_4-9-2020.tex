@@ -1,0 +1,24 @@
+\section{Lecture 4-9-2020}
+We take a brief hiatus from Hilbert spaces to talk about certain topological notions of ``volume".
+\begin{dfn}
+    A subset $S$ of topological space $X$ is nowhere dense if $\bar{S}$ contains no nonempty open sets. $S$ is meager if it is a countable union of nowhere dense sets.
+\end{dfn}
+\begin{dfn}
+    A topological space $X$ is a Baire space if it is not a countable union of nowhere dense sets.
+\end{dfn}
+\begin{remark}
+    Intuitively, a Baire space has a certain ``volume." Nowhere dense subsets and meager subsets do not.
+\end{remark}
+\begin{thm}[Baire Category Theorem]
+    LCH spaces and complete metric spaces are Baire spaces.
+\end{thm}
+\begin{details}{Key Trick}
+    Let $C_i$ be a collection of nowhere dense sets. Construct a sequence of open sets $B_i$ such that $\bar{B}_1 \supset \bar{B}_2 \dots$ and $C_i \cap \bar{B}_i = \emptyset$. Then show $\cap \bar{B}_i \neq \emptyset$. (Use F.I.P. or Cauchy sequences.)
+\end{details}
+\begin{thm}[Open Mapping Theorem]
+    Let $T: \cB(V,W)$ for Banach spaces $V, W$. If $T$ is surjective, then $T$ is an open map.
+\end{thm}
+\begin{details}{Proof gist}
+    Use Baire Category Theorem to show $T(Ball(0,1))$ is not meager. Then use contintuity and Cauchy sequences (completeness and pullback!) to show $T(Ball(0,1))$ contains a open set.
+\end{details}
+One consequence of the open mapping theorem is the closed graph theorem, which states that a linear map between Banach spaces $V$ and $W$ with a closed graph (closed w/r/t one of the usual equivalent norms in $V \oplus W$ like $\max\{\|\cdot\|_v, \|\cdot\|_w\}$) is bounded. From this, one can deduce that all self-adjoint operators are bounded (Hellinger's Theorem).

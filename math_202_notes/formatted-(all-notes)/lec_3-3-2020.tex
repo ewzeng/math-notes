@@ -1,0 +1,49 @@
+\section{Lecture 3-3-2020}
+\textbf{Some observations.} Working in a lattice space allows us to use a few tricks:
+\begin{itemize}
+    \item We can decompose $x = x^+ - x^-$, so we need only study positive elements. We have already seen this many times.
+    \item Given $x$, we can create elements like $x \vee 1$, $x \wedge 1$, etc. More generally, we can ``combine" multiple elements. This is a powerful property for construction (c.f. Stone Weierstrass).
+\end{itemize}
+The following toy example will show the power of the second trick. Then we will use the second trick to prove partitions of unity.
+
+\begin{thm}[A Toy Example]
+Suppose $\mu, \nu$ are real measures such that $\mu \wedge \nu = 0$. Then $\mu$ and $\nu$ are mutually singular.
+\end{thm}
+
+\begin{details}{Proof gist}
+If not, construct a strictly positive measure smaller than both.
+\end{details}
+
+\begin{details}{More detail}
+Afer applying Lebesgue Decomposition and then R-N, we get
+\[
+    \int_E h d\mu = \nu_{ac}(E).
+\]
+If $h \neq 0$ a.e., consider the strictly positive measure induced by $h \wedge 1$.
+\end{details}
+
+\begin{thm}[Partitions of Unity for LCH Spaces]
+If $X$ is LCH, then for any compact $C \subset X$ and open cover $\theta_i$ of $C$, there exists positive functions $f_i \in C_C(X)$ such that $\sum f_i = 1$ on $C$ and supp$(f_i) \subset \theta_i$.
+\end{thm}
+\begin{remark}
+Support is defined as the closure of the carrier.
+\end{remark}
+\begin{details}{Proof gist}
+Use LCH Urysohn's lemma (and friend) to construct a function
+\[
+    g = \sum g_i \geq 1.
+\]
+Then consider
+\[
+    \frac{g}{g \vee 1}.
+\]
+\end{details}
+
+\begin{details}{Construction of first equation}
+We first show there exists closed sets $B_i \subset \theta_i$ such that $C \subset \cup B_i$. (Need LCH Urysohn's friend). Then use LCH Urysohn's lemma to define $g_i(x) = 1$ for $x \in B_i$ and supp$(g_i) \subset \theta_i$.
+\begin{itemize}
+    \item \textbf{LCH Urysohn's friend (used to prove LCH Urysohn).} $X$ LCH, subset $C$ compact, $U$ open, $C \subset U$. Then there exists open $V$, $\bar{V}$ compact, such that $C \subset V \subset \bar{V} \subset U$.
+    \item \textbf{LCH Urysohn's lemma.} If subset $C$ is compact and $C \subset \theta$ is open, then there exists a continuous $f: X \rightarrow [0,1]$ with $f(x) = 1$ for $x \in C$ and $f(x) = 0$ for $x \not \in \theta$.
+\end{itemize}
+Sorry, I come up with weird names.
+\end{details}
