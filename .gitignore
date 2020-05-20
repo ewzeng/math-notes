@@ -1,1 +1,4 @@
 *.synctex.gz
+**/master.pdf
+
+# Remember to occasionally push master.pdf files
