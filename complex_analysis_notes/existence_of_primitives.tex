@@ -1,0 +1,43 @@
+\subsection{Existence of Primitives}
+We show that holomorphic functions have primitives (anti-derivatives).
+\begin{lem}[Goursat]
+    Suppose $f$ is holomorphic on open set $\O$. Furthermore, suppose $\O$ contains the triangle contour $T$ and its interior. Then
+    \[
+        \int_T f(z) dz = 0.
+    \]
+\end{lem}
+\begin{details}{Proof Overview}
+    We split $T$ into the sum of smaller triangle contours (Figure \ref{fig:triangle_trick}), pick the one that yields the largest integral, and repeat. Thus we generate a sequence of nested triangles $T^n$ that converges to some point $z_0$. Note
+    \[
+        \Big| \int_T f(z) dz \Big| \leq 4^n \Big| \int_{T^n} f(z) dz \Big|.
+    \]
+    We then study the behavior of $f$ around $z_0$ to show RHS vanishes as $n \rightarrow \i$. That is, we note
+    \[
+        f(z) = f(z_0) + (z-z_0)f'(z_0) + \mathfrak e(z-z_0), \quad \mathfrak e(z) \ \text{sublinear.}
+    \]
+\end{details}
+\begin{figure}[ht]
+    \centering
+    \incfig[0.3]{triangle_trick}
+    \caption{Triangle Trick}
+    \label{fig:triangle_trick}
+\end{figure}
+\begin{thm}[Existence of Primitives]
+    Suppose $f$ is holomorphic on the region $\O$. Then there exists $F$ defined on $\O$ such that $F' = f$.
+\end{thm}
+\begin{details}{Proof Overview}
+    WLOG assume $\O$ is path-connected (else consider each path-connected component in turn) and $0 \in \O$. We construct $F$ by defining
+    \[
+        F(w) = \int_P f(z)dz
+    \]
+    where $P$ is any piecewise-linear path from $0$ to $w$. A easy generalization of Goursat to polygons shows this is well-defined. (Note to apply Goursat we need $\O$ to be a region (no holes)).
+\end{details}
+
+By noting existence of primitive $\implies$ integrals of loops vanish, Cauchy's theorem becomes a simple consequence of the above.
+\begin{cor}[Cauchy's Theorem]
+    Suppose $f$ is holomorphic on open set $\O$. If $\O$ contains contour $\gamma$ and its interior (defined by the Jordan Separation Theorem), then
+    \[
+        \int_\gamma f(z) dz = 0.
+    \]
+\end{cor}
+Of course, another way to prove Cauchy's theorem is to consider piecewise linear approximations of $\gamma$ and applying Goursat.
