@@ -1,0 +1,49 @@
+\subsection{Cauchy's Integral Formula}
+Cauchy's Integral Formula is an important representation of holomorphic functions as integrals which illuminates many important properties.
+\begin{thm}[Cauchy's Integral Formula]
+    Suppose $f$ is holomorphic on open set $\O$ which contains contour $T$ and its interior $I$. Then
+    \[
+        f(z) = \frac{1}{2\pi i}\int_T \frac{f(\z)}{\z - z}d\z
+    \]
+    for any $z \in I$.
+\end{thm}
+\begin{proof}
+    Let $C_r$ denote the circle with radius $r$ centered at $z$. By the corridor argument, we have
+    \[
+        \frac{1}{2\pi i}\int_T \frac{f(\z)}{\z - z}d\z
+        =
+        \lim_{r \rightarrow 0} \frac{1}{2\pi i}\int_{C_r} \frac{f(\z)}{\z - z}d\z.
+    \]
+    Some standard computation shows the RHS is $f(z)$.
+\end{proof}
+There are two important consequences that immediately follow from Cauchy's Integral Formula.
+\begin{thm}
+    \label{holo-smooth}
+    Holomorphic functions are infinitely differentiable.
+\end{thm}
+\begin{proof}
+    Apply the difference quotient to Cauchy's Integral Formula to get
+    \[
+        f^{(n)} = \frac{n!}{2\pi i}\int_T \frac{f(\z)}{(\z-z)^{n+1}}d\z.
+    \]
+\end{proof}
+\begin{remark}
+    The formulas in the proof of Theorem \ref{holo-smooth} and Cauchy's Integral Formula are collectively known as the Cauchy Integral Formulas.
+\end{remark}
+\begin{thm}[Power Series Representation]
+    Suppose $f$ is holomorphic on open set $\O$ which the circle contour $C$ centered at $z_0$ and its interior $I$. Then $f$ has a power series expansion at $z_0$ for all $z \in I$.
+\end{thm}
+\begin{details}{Proof overview}
+    The idea is to convert Cauchy's Integral Formula into a geometric series. We use a clever trick to do this:
+    \[
+        \frac{1}{\z-z} = \frac{1}{\z -z_0} \frac{1}{1 - \frac{z-z_0}{\z-z_0}} = \frac{1}{\z-z_0}\sum_{n=0}^\i \Big( \frac{z-z_0}{\z-z_0} \Big)^n.
+    \]
+    We then plug this into Cauchy's Integral Formula.
+\end{details}
+\begin{remark}
+    The reason we don't use an arbitrary contour here is a technical reason. A circular contour guarantees
+    \[
+        \Big| \frac{z - z_0}{\z - z_0} \Big| < 1
+    \]
+    Thus we can turn the fraction into a geometric series.
+\end{remark}
