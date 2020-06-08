@@ -1,0 +1,21 @@
+\subsection{The Corridor Argument}
+We now introduce an important trick based on Cauchy's theorem, Previously, we have been dealing with domains without holes. To make things more
+interesting, let's add a hole. Suppose $f$ is holomorphic on a region $\O - x$,
+and $T$, $S$ are contours in $\O$ around $x$, as in Figure \ref{fig:Contour-around-a-Point}.
+\begin{figure}[ht]
+    \centering
+    \incfig[0.3]{Contour-around-a-Point}
+    \caption{Contours Around a Point}
+    \label{fig:Contour-around-a-Point}
+\end{figure}
+We then add a corridor, as in Figure \ref{fig:Add-a-Keyhole}.
+\begin{figure}[ht]
+    \centering
+    \incfig[0.3]{Add-a-Keyhole}
+    \caption{Add a Corridor}
+    \label{fig:Add-a-Keyhole}
+\end{figure}
+By shrinking the ``corridor" until it disappears 
+and applying Cauchy's Theorem, we conclude that any two contours around $x$ yield the same contour integral.
+
+This corridor argument is an incredibly powerful geometric idea that can be easily be generalized to more complicated situations. In fact, it gives an intuitive proof that two homotopic contours have the same contour integral. (Idea: pick two points that will be close to each other throughout the homotopy and use the path of these points to define the corridor).

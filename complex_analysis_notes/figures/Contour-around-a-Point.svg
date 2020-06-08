@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="137.15431mm"
+   height="85.184608mm"
+   viewBox="0 0 137.15431 85.184608"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Contour-around-a-Point.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="278.17404"
+     inkscape:cy="274.26129"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     width="559mm"
+     inkscape:window-width="1920"
+     inkscape:window-height="1000"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.461542,-192.08177)">
+    <circle
+       id="path818"
+       style="fill:#000000;stroke:none"
+       cx="99.029762"
+       cy="237.84673"
+       r="1.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="100.91965"
+       y="245.02826"
+       id="text824"><tspan
+         sodipodi:role="line"
+         id="tspan822"
+         x="100.91965"
+         y="245.02826"
+         style="stroke-width:0.26458332">$x$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 78.542586,192.82726 c 6.803572,0 6.803572,0 6.803572,0 11.199483,4.42085 24.702982,-2.475 36.663692,1.5119 13.33048,4.4435 4.07743,16.92862 11.71726,24.56846 6.62125,6.62124 28.93253,2.86953 32.12798,9.26041 3.83462,7.66925 7.5884,20.6581 1.13392,28.72619 -8.3815,10.47688 -23.54928,-3.22764 -34.01785,-1.13393 -14.67147,2.9343 -27.55263,25.23982 -45.357145,20.78869 -1.470517,-0.36762 -7.526326,-13.10977 -10.205358,-15.11904 -9.243827,-6.93287 -35.198152,8.41173 -42.522321,-6.23661 -9.624355,-19.24871 37.807303,-7.89876 33.261905,-26.08036 -5.062415,-20.24966 -28.562358,-8.92866 -3.96875,-25.3244 5.327981,-3.55199 0.355593,-14.22565 14.363095,-10.96131 z"
+       id="path3714"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 87.512135,216.6012 H 78.818684"
+       id="path3718" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 78.818684,216.6012 c -48.875269,55.91505 133.149236,33.88044 9.260418,-0.18899"
+       id="path13" />
+  </g>
+</svg>
