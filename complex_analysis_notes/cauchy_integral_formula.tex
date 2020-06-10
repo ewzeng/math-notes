@@ -16,7 +16,9 @@ Cauchy's Integral Formula is an important representation of holomorphic function
     \]
     Some standard computation shows the RHS is $f(z)$.
 \end{proof}
-There are two important consequences that immediately follow from Cauchy's Integral Formula.
+
+\subsubsection{Immediate Consequences}
+There are three important consequences that immediately follow from Cauchy's Integral Formula.
 \begin{thm}
     \label{holo-smooth}
     Holomorphic functions are infinitely differentiable.
@@ -47,3 +49,10 @@ There are two important consequences that immediately follow from Cauchy's Integ
     \]
     Thus we can turn the fraction into a geometric series.
 \end{remark}
+\begin{thm}[Liouville]
+    If $f$ is entire and bounded, it is constant.
+\end{thm}
+\begin{proof}
+    Apply the Cauchy Integral Formula for the first derivative to show $f' = 0$.
+\end{proof}
+Liouville's Theorem provides a proof for the Fundamental Theorem of Algebra. If $p(z)$ is a polynomial with no zeros, we consider $1/p(z)$ and apply the Liouville's Theorem to show $1/p(z)$ is constant.
