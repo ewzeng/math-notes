@@ -1,0 +1,13 @@
+\subsection{Morera's Theorem}
+We now prove a converse of Gorsat's Theorem.
+\begin{thm}[Morera's Theorem]
+    Let $f$ is continuous on open set $\O$ that has no holes, and for any triangle $T$ in $\O$, we have
+    \[
+        \int_T f(z) dz = 0.
+    \]
+    Then $f$ is holomorphic.
+\end{thm}
+\begin{details}{Proof overview}
+    We show: Goursat ``property" + continuity $\implies$ existence of primitive $F$ $\implies$ $f$ is holomorphic as $F$ is inifintely differentiable. The first step is just emulating the proof of the existence of primitives (Theorem \ref{existence-of-primitives}).
+\end{details}
+Morera's Theorem provides a proof that if a sequence of holomorphic functions converges uniformly to $f$, then $f$ is holomorphic. (We simply show continuity and the Goursat ``property" are preserved over uniform convergence.) This is evidently an important result, and can be used to construct holomorphic functions (often with sequences of integrals).
