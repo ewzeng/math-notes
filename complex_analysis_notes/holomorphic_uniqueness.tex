@@ -1,0 +1,16 @@
+\subsection{Uniqueness of Holomorphic Functions}
+We would like to show that if two holomorphic functions agree on an open set, they are the ``same." This essentially boils down to the following result:
+\begin{thm}
+    If $f$ is a holomorphic function defined on a region $\O$ whose zeros have an accumulation point in $\O$, then $f = 0$ on $\O$.
+\end{thm}
+\begin{proof}
+    We use a standard trick of connected domains to prove the theorem. In this case, it works like this:
+    \begin{enumerate}
+        \item Let $U$ be the interior of zeros of $f$.
+        \item Note $U$ is open, closed (consider the power series around of any accumulation point of zeros), and nonempty.
+        \item Thus $U = \O$.
+    \end{enumerate}
+\end{proof}
+One intuitive way to look at this proof is: power series is the reason for local uniqueness, connectedness extends this property to $\O$.
+
+This result of uniqueness is the key to analytic continuation.

@@ -23,14 +23,14 @@ We show that holomorphic functions have primitives (anti-derivatives).
     \label{fig:triangle_trick}
 \end{figure}
 \begin{thm}[Existence of Primitives]
-    Suppose $f$ is holomorphic on the region $\O$. Then there exists $F$ defined on $\O$ such that $F' = f$.
+    Suppose $f$ is holomorphic on the open set $\O$ which has no holes. Then there exists $F$ defined on $\O$ such that $F' = f$.
 \end{thm}
 \begin{details}{Proof Overview}
     WLOG assume $\O$ is path-connected (else consider each path-connected component in turn) and $0 \in \O$. We construct $F$ by defining
     \[
         F(w) = \int_P f(z)dz
     \]
-    where $P$ is any piecewise-linear path from $0$ to $w$. A easy generalization of Goursat to polygons shows this is well-defined. (Note to apply Goursat we need $\O$ to be a region (no holes)).
+    where $P$ is any piecewise-linear path from $0$ to $w$. A easy generalization of Goursat to polygons shows this is well-defined. (Note to apply Goursat we need $\O$ to have no holes).
 \end{details}
 
 By noting existence of primitive $\implies$ integrals of loops vanish, Cauchy's theorem becomes a simple consequence of the above.
