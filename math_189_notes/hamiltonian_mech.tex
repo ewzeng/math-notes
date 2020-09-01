@@ -1,0 +1,29 @@
+\section{Hamiltonian Mechanics}
+The Hamilton equations provide a way to describe many different systems. The components are:
+\begin{itemize}
+    \item $q(t)$: The state, usually a vector of the position of all particles.
+    \item $p(t)$: How the state is changing, usually a vector of the momentum of all the particles.
+    \item $H(p, q)$: The Hamiltonian, which is a value that remains constant as the system evolves, usually total energy. $H$ is given as a function of $p$ and $q$.
+\end{itemize}
+The Hamilton equations are:
+\[
+    \dot{p} = - \frac{\partial H}{\partial q}, \quad \dot{q} = \frac{\partial H}{\partial p}.
+\]
+Intuitively, these equations simply tell us that $p$ and $q$ must evolve in a way that keep $H$ constant.
+
+\hsep
+
+\noindent
+\textbf{Example.} Consider the system of a particle in a conservative force field $F$. Note if $F = -\nabla V$, then $V$ represents potential energy. We let $q$ denote the particle's position, $p$ the particle's momentum, and define:
+\[
+    H(p, q) = \text{kinetic} \ + \ \text{potential} = \frac{p^2}{2m} + V(q).
+\]
+Then the Hamilton equation tell us
+\[
+    \dot{q} = \frac{p}{m}, \quad \dot{p} = - V'(q).
+\]
+The first equation relates position and momentum, and the second tells us that any change in momentum will be reflected in the potential energy of the particle such that the total energy stays constant (e.g. as the particle gains potential energy, it slows down).
+
+\hsep
+
+Observe that given initial conditions and a suitable Hamiltonian, we can use the equations solve for $p(t)$ and $q(t)$ to obtain everything we need to know about the system. In other words, the Hamilton equations fully describe the system. This is the reason why we can reformulate things like Kepler's Laws into Hamilton equations.
