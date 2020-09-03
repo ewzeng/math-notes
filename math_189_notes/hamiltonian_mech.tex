@@ -9,7 +9,7 @@ The Hamilton equations are:
 \[
     \dot{p} = - \frac{\partial H}{\partial q}, \quad \dot{q} = \frac{\partial H}{\partial p}.
 \]
-Intuitively, these equations simply tell us that $p$ and $q$ must evolve in a way that keep $H$ constant.
+Intuitively, these equations tell us that $p$ and $q$ evolve in a way that keep $H$ constant.
 
 \hsep
 
@@ -26,4 +26,10 @@ The first equation relates position and momentum, and the second tells us that a
 
 \hsep
 
-Observe that given initial conditions and a suitable hamiltonian, we can use the equations solve for $p(t)$ and $q(t)$ to obtain everything we need to know about the system. In other words, the Hamilton equations fully describe the system, a powerful property.
+Observe that given initial conditions and a suitable hamiltonian, we can use the equations to solve for $p(t)$ and $q(t)$. In other words, the Hamilton equations fully describe the system, a powerful property.
+
+We call the space of possible $(p, q)$ the \textbf{phase space} and we define \textbf{phase flow} to be the vector field
+\[
+    (\dot{p}, \dot{q}) = \left( - \frac{\partial H}{\partial q}, \frac{\partial H}{\partial p}\right)
+\]
+which represents how the system will evolve from a given point in the phase space. Using Gauss's divergence theorem, we can show that the phase flow is volume preserving (i.e. divergence is zero everywhere). This is an example of a general property of Hamiltonian systems: phase flow preserves the sympletic. For now, think of the sympletic as some volume measurement using differential forms.
