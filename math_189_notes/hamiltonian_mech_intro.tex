@@ -1,4 +1,4 @@
-\section{Hamiltonian Mechanics}
+\subsection{Intoduction}
 The Hamilton equations provide a way to describe many different systems. The components are:
 \begin{itemize}
     \item $q(t)$: The state, usually a vector of the position of all particles.
@@ -14,7 +14,7 @@ Intuitively, these equations tell us that $p$ and $q$ evolve in a way that keep 
 \hsep
 
 \noindent
-\textbf{Example.} Consider the system of a particle in a conservative force field $F$. Note if $F = -\nabla V$, then $V$ represents potential energy. We let $q$ denote the particle's position, $p$ the particle's momentum, and define:
+\textbf{Example.} Consider the system of a particle in a conservative force field $F$. As $F$ is conservative, we can write $F = -\nabla V$, where $V$ represents potential energy. We let $q$ denote the particle's position, $p$ the particle's momentum, and define:
 \[
     H(p, q) = \text{kinetic} \ + \ \text{potential} = \frac{p^2}{2m} + V(q).
 \]
@@ -32,4 +32,4 @@ We call the space of possible $(p, q)$ the \textbf{phase space} and we define \t
 \[
     (\dot{p}, \dot{q}) = \left( - \frac{\partial H}{\partial q}, \frac{\partial H}{\partial p}\right)
 \]
-which represents how the system will evolve from a given point in the phase space. Using Gauss's divergence theorem, we can show that the phase flow is volume preserving (i.e. divergence is zero everywhere). This is an example of a general property of Hamiltonian systems: phase flow preserves the sympletic. For now, think of the sympletic as some volume measurement using differential forms.
+which represents how the system will evolve from a given point in the phase space. Using Gauss's divergence theorem, we can show that the phase flow is volume preserving (i.e. divergence is zero everywhere). This is an example of a general property of Hamiltonian systems: phase flow preserves the symplectic. For now, think of the symplectic as some volume measurement using differential forms.

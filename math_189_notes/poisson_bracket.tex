@@ -1,0 +1,15 @@
+\subsection{Poisson Brackets}
+In a Hamiltonian system, we define an \textbf{observable} to be a smooth function of $p$ and $q$. For observable $F$ in a Hamiltonian system with hamiltonian $H$, we define
+\[
+    \{H, F\} := \frac{dF}{dt}
+\]
+We call this the \textbf{Poisson bracket} of $H$ and $F$. It has the following properties:
+\begin{itemize}
+    \item Anticommutative: $\{H, F\} = - \{F, H\}$
+    \item Bilinear: $\{H, F + G\} = \{H, F\}+ \{H, G\}$
+    \item Jacobi identity: $\{H, \{F,G\}\} + \{G, \{H, F\}\} + \{F, \{G, H\}\} = 0$
+    \item Product rule: $\{H, FG\} = \{H, F\}G + F\{H, G\}$
+\end{itemize}
+Bilinearity and the product rule are obvious because Poisson brackets are basically derivatives. Anticommutativity and the Jacobi identity follow from explicitly computing the Poisson brackets (apply chain rule to definition and substitute-in the Hamiltonian equations).
+
+One powerful result is that any operation $\{ \cdot, \cdot\}$ with the above four properties is the Poisson bracket of some Hamiltonian system. The Poisson bracket also turns the space of observables into a Lie algebra (with the Poisson bracket acting as the Lie derivative).
