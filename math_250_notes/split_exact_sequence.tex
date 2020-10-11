@@ -1,0 +1,14 @@
+\subsection{Split Exact Sequences}
+Suppose we have the exact sequence of algebraic objects
+\[
+    0 \rightarrow N \rightarrow G \rightarrow H \rightarrow 0.
+\]
+In general, the exact sequence tells us $G$ is somehow ``cobbled" together by $N$ and $H$. We say that an exact sequence splits if $G = N \oplus H$. In other words, $G$ is the simplest possible construction from $N$ and $H$.
+
+If $V$ is a vector space and $W \subset V$ is a subspace, then
+\[
+    W \oplus \frac{V}{W} \cong V,
+\]
+which tells us $0 \rightarrow W \rightarrow V \rightarrow V/W \rightarrow 0$ always splits. Thus we can study a vector space by taking a subspace and the corresponding quotient space. A natural question to ask is: can we extend this result to groups?
+
+First, we note that if group $G = N \oplus H$, then the elements $(N, 0)$ commute with the elements $(0, H)$. For an arbitrary group, this is a tough property to satisfy, so we restrict our attention to abelian groups. However, even if $G$ is abelian, we need only last property to guarantee a splitting exact sequence.
