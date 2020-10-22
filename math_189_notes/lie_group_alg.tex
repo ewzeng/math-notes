@@ -1,0 +1,32 @@
+\subsection{Lie Groups and Algebras}
+A matrix Lie group is a topologically closed subgroup of $GL(n; \bC)$, the set of invertible $n \times n$ matrices in $\bC$. A matrix Lie algebra is a vector subspace (over $\bR$) of $M_n(\bC)$ that is closed under the Lie bracket operation, which is defined as the commutator:
+\[
+    [X, Y] = XY - YX.
+\]
+$M_n(\bC)$ is the space of $n \times n$ matrices in $\bC$.
+
+\subsubsection{}
+There is a natural way to associate every Lie group with a Lie algebra. Given a matrix Lie group $G$, we have
+\[
+    G \subset GL(n; \bC) \subset M_n(\bC) \cong \bR^{2n^2}
+\]
+so $G$ can be seen a real manifold inside $M_n(\bC)$. From differential topology, the tangent space of any point on a real manifold is defined as a vector subspace of the Euclidean space the manifold is embedded in. Thus, the tangent space of any point in $G$ is a (real) vector subspace of $M_n(\bC)$. If the tangent space is additionally closed under the Lie bracket operation, it becomes a natural matrix Lie algebra.
+
+The last condition is satisfied for the tangent space $\mathfrak g$ of $G$ at the identity matrix, so $\mathfrak g$ is a Lie algebra. We define $\mathfrak g$ to be the associated Lie algebra of the Lie group $G$.
+
+\subsubsection{}
+Recall the tangent space of a point on a manifold can also be defined as the space of all the derivatives of smooth curves on the manifold passing through that point. In the case of $\mathfrak g$, it happens that we only need to consider a certain class of smooth curves to cover all the derivatives. More specifically, we only need to consider smooth curves of the form
+\[
+    t \rightarrow e^{tX}, \quad e^{tX} \in G \text{ for all } t \in \bR
+\]
+where the matrix exponential is defined by a power series. As
+\[
+    \frac{d e^{tX}}{dt} \Bigr|_{t = 0} = X.
+\]
+we conclude that
+\[
+    \mathfrak g = \{X \in M_n(\bC) : e^{tX} \in G \text{ for all } t \in \bR\}.
+\]
+
+\subsubsection{}
+Every Lie group homomorphism gives rise to a homomorphism between the corresponding Lie algebra in a natural way that respects the exponential relationships above.
