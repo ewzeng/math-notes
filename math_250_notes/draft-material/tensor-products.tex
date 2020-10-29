@@ -1,1 +1,17 @@
 \section{Tensor Products}
+For abelian groups $M$, $N$, the tensor product $M \otimes N$ arises as the universal object when representing the functor $F$ on the category of abelian groups given by
+\[
+    F(X) = \Bil(M, N; X),
+\]
+where $\Bil(M, N; X)$ is the (abelian) group of bilinear maps $M \times N \rightarrow X$. The tensor product is constructed as a certain quotient of the free group
+\[
+    \bigoplus_{M \times N} \bZ.
+\]
+As abelian groups are just $\bZ$-modules, we can extend the definition of tensor product to $A$-modules for commutative ring $A$.
+
+\subsection{Flat Modules}
+The functor on the category of $A$-modules given by $N \rightarrow M \otimes N$ is right-exact.
+\begin{itemize}
+    \item If the functor is exact, we call $M$ flat.
+    \item In fact, we have free $\implies$ projective $\implies$ flat $\implies$ torsion free.
+\end{itemize}
