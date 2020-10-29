@@ -1,0 +1,24 @@
+\section{Dedekind Rings}
+Given a commutative ring $A$, we can ask if the set of non-zero ideals form a group. That is, given ideals $I$ and $J$, we want to be find an ideal $K$ such that
+\[
+    IK = J.
+\]
+This would be a powerful property. However, it would almost never be true. For instance, in $\bZ$, there is no ideal $K$ such that
+\[
+    (2\bZ)K = 3\bZ.
+\]
+However, if we could assign meaning to a ``fractional" ideal
+\[
+    \frac{3}{2}\bZ
+\]
+then things could be different. This is the motivation behind Dedekind rings.
+
+Suppose $A$ generates the field of fractions $K$. Define a fractional ideal $\mathfrak a$ of $A$ to be a non-zero additive subgroup of $K$ such that
+\[
+    A\mathfrak a = \mathfrak a
+\]
+and such that there exists nonzero $c \in A$ with
+\[
+    c\mathfrak a \subset A, \quad \text{(the ``bounded denominator" condition)}
+\]
+Note regular ideals are also fractional ideals. We say that $A$ is a Dedekind ring if the fractional ideals form a group.

@@ -1,0 +1,22 @@
+\section{Localization}
+Given a commutative ring $A$, we can construct the field of fractions:
+\[
+    \left\{ \frac{a}{b} : a, b \in A, b \neq 0\right\}
+\]
+with the equivalence relation
+\[
+    \frac{a}{b} = \frac{c}{d} \iff \text{ there exists nonzero $s'' \in A$ such that } s''(ad - bc) = 0.
+\]
+The $s''$ is needed to make the equivalence relation transitive. If $A$ is an integral domain, we can drop the $s''$ and achieve the usual cross-multiply equivalence relation.
+
+However, there many are ``intermediate" constructions that don't construct all the fractions, but only fractions with certain denominators. Let $S \subset A - \{0\}$ be a set that contains the identity and is closed under multiplication. We can consider $S$ as the set of denominators, and define the ring
+\[
+    S^{-1}A = \left\{ \frac{a}{b} : a \in A, b \in S \right\}
+\]
+with the equivalence relation
+\[
+    \frac{a}{b} = \frac{c}{d} \iff \text{ there exists nonzero $s'' \in S$ such that } s''(ad - bc) = 0.
+\]
+This construction is called a localization. The reason is because if $\mathfrak p \subset A$ is a prime ideal and $S = A - \mathfrak p$, the resulting construction $S^{-1}A$ is a local ring, i.e. it has a unique maximal ideal.
+
+Note $A$ can be naturally embedded in any localization $S^{-1}A$.
