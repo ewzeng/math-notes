@@ -3,7 +3,7 @@ A matrix Lie group is a topologically closed subgroup of $GL(n; \bC)$, the set o
 \[
     [X, Y] = XY - YX.
 \]
-$M_n(\bC)$ is the space of $n \times n$ matrices in $\bC$.
+$M_n(\bC)$ is the space of $n \times n$ matrices in $\bC$. In these notes, all Lie groups and algebras are matrix Lie groups and algebras unless otherwise specified.
 
 \subsubsection{}
 There is a natural way to associate every Lie group with a Lie algebra. Given a matrix Lie group $G$, we have
@@ -30,3 +30,17 @@ we conclude that
 
 \subsubsection{}
 Recall a smooth map between manifolds induces a linear map (called the differential) between corresponding tangent spaces. In the case that the manifold is also a Lie group, the differential between the tangent spaces at the identity is also a Lie algebra homormophism. In this way, every Lie group homomorphism gives rise to a homomorphism between the corresponding Lie algebras.
+
+\subsubsection{}
+As we have seen, every matrix Lie group has a unique associated matrix Lie algebra. This fact can be generalized to abtract Lie groups and algebras. The converse is not true: a Lie algebra can have many associated Lie groups. That is, many Lie groups can generate the same Lie algebra. However, we can do better if we impose some restrictions:
+\begin{itemize}
+    \item Every abstract Lie algebra $\mathfrak g$ corresponds to a unique simply connected abstract Lie group $G^*$
+    \item There is a group homomorphism $\phi$ from $G^*$ to any other connected abstract Lie group $G$ with the same algebra such that $\ker(\phi)$ is discrete.
+\end{itemize}
+In other words, in the category $\cC$ of connected abstract Lie groups with $\mathfrak g$ as their associated Lie algebra, $G^*$ is a universal object. We call $G^*$ the \textbf{universal covering group} because the discreteness of $\ker(\phi)$ implies that $G^*$ can be pictured ``wrapping" around any $G \in \cC$ some number of times. We also say the \textbf{universal cover} of $G$ is $G^*$.
+
+Two more important facts:
+\begin{itemize}
+    \item If $G$ is a compact matrix Lie group, then the universal $G^*$ is a matrix Lie group. This fact allows us to work again in the space of matrix Lie groups.
+    \item $SU(2)$ is a universal cover of $SO(3)$
+\end{itemize}
