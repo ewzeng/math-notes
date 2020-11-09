@@ -15,4 +15,4 @@ And remember, *it doesn't matter how good your notes are initially, as long as y
 
 Here are some cool ideas:
 
-- Organize your notes based on varying levels of detail. One example would be the way proofs are split in the Math 202 notes: a proof overview + a more in-depth look of some tricks and technicalities. 
+- Organize your notes based on varying levels of detail. One example would be the way proofs are split in the Math 202 notes: a proof overview + a more in-depth look at some tricks and technicalities. 
