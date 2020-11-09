@@ -1,6 +1,26 @@
 \section{Flat Modules}
-The functor on the category of $A$-modules given by $N \rightarrow M \otimes N$ is right-exact.
+Suppose $M$ is an $A$-module. Given $A$-modules $N'$ and $N$, every map $f: N' \rightarrow N$ induces a map $f^*: M \otimes N' \rightarrow M \otimes N$ acting on the pure tensors by
+\[
+    m \otimes n' \mapsto m \otimes f(n').
+\]
+(We can construct this map more formally by using the method described in \S \ref{tensor-map-construction}.) Thus we can define the functor $M \otimes \cdot$ on the category of $A$-modules which maps $N \mapsto M \otimes N$.
+
+The functor $M \otimes \cdot$ is right-exact.
 \begin{itemize}
-    \item If the functor is exact, we call $M$ flat.
+    \item If $M \otimes \cdot$ is exact, we call $M$ flat.
     \item In fact, we have free $\implies$ projective $\implies$ flat $\implies$ torsion free.
+\end{itemize}
+The fact that projective $\implies$ flat is rather remarkable because the two concepts are are produced from different functors. Projective modules make $\Hom(M, \cdot)$ functor exact, while flat modules make $M \otimes \cdot$ exact. However, the proof is not difficult. It goes as follows:
+\begin{itemize}
+    \item First note that $M$ is flat iff $M \otimes \cdot$ maps injective homs to injective homs. (We already know $M \otimes \cdot$ is right-exact. Preserving injectivity will turn any right-exact functor into an exact functor).
+    \item Then we show: $M$ is flat iff every direct summand of $M$ is flat. This follows from noting
+        \[
+            \begin{split}
+                \ker\left((M' \oplus M'') \otimes N \rightarrow X\right) &= \ker\left((M' \otimes N) \oplus (M'' \otimes N) \rightarrow X\right)\\
+                                                                        &= \ker\left(M' \otimes N \rightarrow X\right) \oplus \ker\left(M'' \otimes N \rightarrow X\right)
+            \end{split}
+        \]
+        Thus the kernel on the LHS is trivial iff the two kernels on the RHS are trivial. Applying the first bullet point, we conclude $M$ is flat iff $M'$ and $M''$ are flat.
+    \item As $A \otimes N = N$, $A$ is flat. Thus, from the second bullet point, all free modules are flat.
+    \item Thus again from the second bullet point, we conclude that projective modules are flat.
 \end{itemize}

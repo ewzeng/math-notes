@@ -10,4 +10,25 @@ where $\Bil(M, N; X)$ is the (abelian) group of bilinear maps $M \times N \right
 As abelian groups are just $\bZ$-modules, we can extend the definition of tensor product to $A$-modules for commutative ring $A$.
 
 \subsubsection{}
+\label{tensor-map-construction}
 Given an $A$-modules $M$, $N$, and $X$, the correct way to construct a map $M \otimes N \rightarrow X$ is to first define a bilinear map $M \times N \rightarrow X$ and get the corresponding map in $\Hom(M \otimes N, X)$.
+
+\subsubsection{}
+We now show that tensor products distribute over direct sums.
+\begin{thm}
+    Let $M$ be an $A$-module and $\{N_i\}$ be a family of $A$-modules. Then
+    \[
+        M \otimes \left(\bigoplus N_i\right) = \bigoplus (M \otimes N_i).
+    \]
+\end{thm}
+Following the proof provides a way to understand this on a more intuitive level. The proof goes as follows:
+\[
+    \begin{split}
+        \Hom\left(\bigoplus (M \otimes N_i), X \right) &= \prod \Hom\left((M \otimes N_i), X\right)\\
+                                                       &= \prod \Bil(M, N_i; X)\\
+                                                       &= \prod \Hom\left(N_i, \Hom(M, X) \right)\\
+                                                       &= \Hom\left(\bigoplus N_i, \Hom(M, X)\right)\\
+                                                       &= \Bil\left(\bigoplus N_i, M; X\right)\\
+                                                       &= \Hom\left(M \otimes \left(\bigoplus N_i\right), X\right).
+    \end{split}
+\]
