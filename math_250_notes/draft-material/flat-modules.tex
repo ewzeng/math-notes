@@ -16,8 +16,9 @@ The fact that projective $\implies$ flat is rather remarkable because the two co
     \item Then we show: $M$ is flat iff every direct summand of $M$ is flat. This follows from noting
         \[
             \begin{split}
-                \ker\left((M' \oplus M'') \otimes N \rightarrow X\right) &= \ker\left((M' \otimes N) \oplus (M'' \otimes N) \rightarrow X\right)\\
-                                                                        &= \ker\left(M' \otimes N \rightarrow X\right) \oplus \ker\left(M'' \otimes N \rightarrow X\right)
+                &   \ker\left((M' \oplus M'') \otimes N \rightarrow (M' \oplus M'') \otimes X\right)\\ 
+                &= \ker\left((M' \otimes N) \oplus (M'' \otimes N) \rightarrow (M' \otimes X) \oplus (M'' \otimes X)\right)\\
+                &= \ker\left(M' \otimes N \rightarrow M' \otimes X\right) \oplus \ker\left(M'' \otimes N \rightarrow M'' \otimes X\right)
             \end{split}
         \]
         Thus the kernel on the LHS is trivial iff the two kernels on the RHS are trivial. Applying the first bullet point, we conclude $M$ is flat iff $M'$ and $M''$ are flat.

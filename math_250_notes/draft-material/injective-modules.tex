@@ -1,0 +1,27 @@
+\section{Injective Modules}
+Let $M$ be an $A$-module. We say that $M$ is injective if the contravariant functor $\Hom(\cdot, M)$ is exact. As $\Hom(\cdot, M)$ is left-exact for all $M$, an equivalent condition is that every \textit{injective} hom
+\[
+    N' \hookrightarrow N
+\]
+induces a \textit{surjective} map
+\[
+    \Hom(N, M) \rightarrow \Hom(N', M).
+\]
+Put another way, we can extend every $g \in \Hom(N', M)$ to a homomorphism $h \in \Hom(N, M)$.
+\[
+    \begin{tikzcd}
+        N' \arrow[r, hook] \arrow[d, "g"'] & N \arrow[ld, "h", dashed] \\
+        M                                  &                          
+    \end{tikzcd}.
+\]
+
+Injective modules are the dual of projective modules, so they have many dual properties. For example, if $M$ is injective, every short exact sequence
+\[
+    0 \rightarrow M \rightarrow N \rightarrow N'' \rightarrow 0
+\]
+splits. (c.f. the splitting property of projective modules)
+
+TODO: we have Baer's criterion for injective modules. As we have seen, to show module $M$ is injective, we have to show every homomorphism can extend. The proof goes like this:
+\begin{itemize}
+    \item Incrementally extend homomorphism. Apply Zorn's Lemma to get a maximal extension and show that is what we are looking for.
+\end{itemize}
