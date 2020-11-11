@@ -1,0 +1,37 @@
+\section{Finite Dimensional Representations of Lie Groups}
+In quantum mechanics, the state space $V$ is often a $L^2$ space (like $L^2(\bR^3)$) or some subspace thereof. For a variety of reasons, we are often interested in the linear operators on $V$. In this section, we will be assuming that $V$ is finite dimensional.
+
+\subsection{Definitions}
+Let $G$ be a Lie group. There are two types of representations.
+\begin{itemize}
+    \item A ordinary representation of $G$ is a homomorphism $G \rightarrow GL(V)$.
+    \item A projective representation of $G$ is a homomorphism $G \rightarrow PU(V)$.
+\end{itemize}
+In this section, we will only concern ourselves with ordinary representations. When talking about ordinary representations, we often drop the word ``ordinary" and just call them representations. Observe if $G$ is a matrix Lie group, it is a representation of itself.
+
+\subsection{Unitary Representations}
+In quantum mechanics, $V$ is also a Hilbert space, so we are often interested in unitary operators: operators that preserve the inner product. Call a representation $\Pi$ of $G$ a unitary representation if $\Pi(G) \subset U(V)$.
+
+\subsection{Irreducible Representations}
+Now suppose $G$ is a compact Lie group (which will often be true in practice). Suppose we have a representation $\Pi: G \rightarrow GL(V)$. It is a theorem that if $G$ is compact and $W$ is an invariant subspace of $V$ under the operators in $\Pi(G)$, then there exists a complementary subspace $W'$ such that $W \oplus W' = V$ and $W'$ is also an invariant subspace under the operators in $\Pi(G)$. Define
+\[
+    \Pi'(g) = \Pi(g)|_W \in GL(W), \quad \Pi''(g) = \Pi(g)|_{W'} \in GL(W')
+\]
+and observe we can decompose $\Pi$ as a direct sum:
+\[
+    \Pi(g) = \Pi'(g) \oplus \Pi''(g) \in GL(W) \oplus GL(W') \subset GL(V).
+\]
+Thus we can study $\Pi$ by studying $\Pi'$ and $\Pi''$, representations of $G$ over the state subspaces $W$ and $W''$.
+
+We call a representation $\Pi$ irreducible if the only invariant subspaces of $V$ under $\Pi(G)$ are 0 and $V$. From the discussion above, irreducible representations can be seen as building blocks of all representations of a group $G$, so it makes sense to study them in particular.
+
+We can similarly define the notion of an irreducible projective unitary representation $\Pi: G \rightarrow PU(V)$ by considering invariant subspaces of $V$ under all $U$ such that $[U] \in \Pi(G)$.
+
+Colloquially, if $\Pi$ is given, we sometimes say that $W$ ``is a representation of $G$" if $W$ is an invariant subspace.
+
+\subsection{Infinite Dimensional Representations}
+So far, we have only been considering the case when $V$ is finite dimensional. We can remove this restriction if we add in extra technicial conditions in our definitions of representations.
+
+However, we need not worry too much about infinite dimensional representations. If $G$ is a compact Lie group, it happens that all irreducible representations of $G$ are finite dimensional, so the representations we really have to study are finite dimensional.
+
+\textbf{Repeat for emphasis.} We are mostly interested in finite dimensional irreducible representations.
