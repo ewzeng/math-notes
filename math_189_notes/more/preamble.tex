@@ -1,0 +1,125 @@
+% Usage: This preamble assumes the macro \topic has been defined
+% Thus, you should use the preamble like so:
+%
+% \def\topic{topic-name}
+% \input{preamble.tex}
+% \begin{document}
+% ...
+% \end{document}
+
+% ==========================================================================
+% The design of this document is inspired by Berkeley EECS
+% The exam class creates cooler looking documents than the article class
+\documentclass[letterpaper, 12pt]{exam} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+
+% Format header and footer
+% chead[T1]{T2} puts T1 on the first-page header and T2 on the other headers
+% textsf yields san serif font
+\pagestyle{headandfoot}
+\extraheadheight[1.3in]{0in}
+\extrafootheight{-.2in}
+\rhead[\Large \textsf{Notes}\\
+       \vspace{10pt}
+]{}
+\chead[\hrule height 3pt
+       \vspace{10pt}
+       \Large \textsf{Quantum Mechanics}\\
+       \vspace{5pt}
+       \Large \textsf{\topic}\\
+       \vspace{10pt}
+       \hrule height 3pt
+]{}
+\footer{}{\thepage}{}
+
+% Change font for section and subsection headings to san serif
+% The font sizes are kept default
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\sffamily}
+\titleformat*{\subsection}{\large\sffamily}
+\titleformat*{\subsubsection}{\normalsize\sffamily}
+
+% Format paragraphs by setting indents to zero and modifying the space between
+% paragraphs
+\usepackage{parskip}
+
+% The LaTex exam class has the following bug:
+% It states that margins should be 1-in on all sides for letterpaper.
+% However, clearly the left margin is greater than the right margin.
+% This problem does not persist in other types of paper (try a4paper)
+% The hack fix is to include this package. I have no idea why.
+\usepackage{hyperref}
+
+% Theorem Environments
+% Note: everything is un-numbered
+\theoremstyle{definition} % Hack to make theorem environments not italicized
+\newtheorem*{thm}{Theorem}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{dfn}{Definition}
+
+% Be able to draw commutative diagrams
+\usepackage{tikz-cd}
+
+% For forcing figures to appear in certain places
+\usepackage{float} 
+
+% Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+% Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+% Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+% Other macros
+\renewcommand{\i}{\infty}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Endo}{End}
