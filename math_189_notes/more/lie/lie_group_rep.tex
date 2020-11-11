@@ -4,22 +4,22 @@ In quantum mechanics, the state space $V$ is often a $L^2$ space (like $L^2(\bR^
 \subsection{Definitions}
 Let $G$ be a Lie group. There are two types of representations.
 \begin{itemize}
-    \item A ordinary representation of $G$ is a homomorphism $G \rightarrow GL(V)$.
-    \item A projective representation of $G$ is a homomorphism $G \rightarrow PU(V)$.
+    \item A ordinary representation of $G$ is a homomorphism $G \rightarrow \GL(V)$.
+    \item A projective representation of $G$ is a homomorphism $G \rightarrow \PU(V)$.
 \end{itemize}
 In this section, we will only concern ourselves with ordinary representations. When talking about ordinary representations, we often drop the word ``ordinary" and just call them representations. Observe if $G$ is a matrix Lie group, it is a representation of itself.
 
 \subsection{Unitary Representations}
-In quantum mechanics, $V$ is also a Hilbert space, so we are often interested in unitary operators: operators that preserve the inner product. Call a representation $\Pi$ of $G$ a unitary representation if $\Pi(G) \subset U(V)$.
+In quantum mechanics, $V$ is also a Hilbert space, so we are often interested in unitary operators: operators that preserve the inner product. Call a representation $\Pi$ of $G$ a unitary representation if $\Pi(G) \subset \U(V)$.
 
 \subsection{Irreducible Representations}
-Now suppose $G$ is a compact Lie group (which will often be true in practice). Suppose we have a representation $\Pi: G \rightarrow GL(V)$. It is a theorem that if $G$ is compact and $W$ is an invariant subspace of $V$ under the operators in $\Pi(G)$, then there exists a complementary subspace $W'$ such that $W \oplus W' = V$ and $W'$ is also an invariant subspace under the operators in $\Pi(G)$. Define
+Now suppose $G$ is a compact Lie group (which will often be true in practice). Suppose we have a representation $\Pi: G \rightarrow \GL(V)$. It is a theorem that if $G$ is compact and $W$ is an invariant subspace of $V$ under the operators in $\Pi(G)$, then there exists a complementary subspace $W'$ such that $W \oplus W' = V$ and $W'$ is also an invariant subspace under the operators in $\Pi(G)$. Define
 \[
-    \Pi'(g) = \Pi(g)|_W \in GL(W), \quad \Pi''(g) = \Pi(g)|_{W'} \in GL(W')
+    \Pi'(g) = \Pi(g)|_W \in \GL(W), \quad \Pi''(g) = \Pi(g)|_{W'} \in \GL(W')
 \]
 and observe we can decompose $\Pi$ as a direct sum:
 \[
-    \Pi(g) = \Pi'(g) \oplus \Pi''(g) \in GL(W) \oplus GL(W') \subset GL(V).
+    \Pi(g) = \Pi'(g) \oplus \Pi''(g) \in \GL(W) \oplus \GL(W') \subset \GL(V).
 \]
 Thus we can study $\Pi$ by studying $\Pi'$ and $\Pi''$, representations of $G$ over the state subspaces $W$ and $W''$.
 

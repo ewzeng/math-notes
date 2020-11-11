@@ -2,10 +2,10 @@
 It happens that studying finite dimensional irreducible representations of Lie groups is difficult, so we introduce the notion of finite dimensional Lie algebra representations.
 
 \subsection{Definitions}
-The definitions of Lie algebra representations parallel those of Lie groups. Suppose $\mathfrak g$ is a Lie algebra and let $V$ be a finite dimensional state space. Define $gl(V)$ to be the space of operators on $V$, and note it is the associated Lie algebra of Lie group $GL(V)$.
+The definitions of Lie algebra representations parallel those of Lie groups. Suppose $\mathfrak g$ is a Lie algebra and let $V$ be a finite dimensional state space. Define $\gl(V)$ to be the space of operators on $V$, and note it is the associated Lie algebra of Lie group $\GL(V)$.
 \begin{itemize}
-    \item A (ordinary) representation of $\mathfrak g$ is a homomorphism $\mathfrak \pi: g \rightarrow gl(V)$.
-    \item A representation $\pi$ is unitary if $\pi(G) \subset u(v)$, the Lie algebra corresponding to $U(V)$.
+    \item A (ordinary) representation of $\mathfrak g$ is a homomorphism $\mathfrak \pi: g \rightarrow \gl(V)$.
+    \item A representation $\pi$ is unitary if $\pi(G) \subset \uu(v)$, the Lie algebra corresponding to $\U(V)$.
     \item A representation $\pi$ is irreducible if the only invariant subspaces under $\pi$ are $0$ and $V$.
 \end{itemize}
 Observe every representation of $G$ induces a representation of the corresponding Lie algebra $\mathfrak g$ with the differential map, as described previously.
@@ -13,9 +13,9 @@ Observe every representation of $G$ induces a representation of the correspondin
 \subsection{}
 We are now ready for a key result: let $G$ be a connected Lie group and let $\Pi$ be a representation of $G$. Then $\Pi$ is irreducible if and only if the induced Lie algebra representation $\pi$ is irreducible.
 
-Thus, to study finite dimensional irreducible representations of a connected Lie group $G$, we only need to study finite dimensional irreducible representations of the associated Lie algebra $\mathfrak g$. It happens that because Lie algebras are vector spaces, the latter task is easier than the former. This is why we go through all the hassle of defining Lie algebra representations.
+Thus, to study finite dimensional irreducible representations of a connected Lie group $G$, we only need to study finite dimensional irreducible representations of the associated Lie algebra $\mathfrak g$. It happens that because Lie algebras are vector spaces, the latter task is easier than the former. This is one reason why we go through all the hassle of defining Lie algebra representations.
 
 \subsection{A Look at What's to Come}
-We are going to study the hydrogen atom, a physical system with rotational symmetry. We will see that this means the quantum Hamiltonian $\hat{H}$ commutes with the angular momentum operators, which constitute a natural representation $\Pi$ of the Lie group $SO(3)$.
+The hydrogen atom has a quantum Hamiltonians $\hat{H}$ that commutes with the anuglar momentum operators, which constitute a natural representation $\Pi$ of $\SO(3)$.
 
-Recall that we can solve the wave equation if we can find eigenvectors of $\hat{H}$. However, the commutativity with the angular momentum operators implies that the eigenspaces of $\hat{H}$ are invariant under $\Pi$, and thus are representations of $SO(3)$. If we can classify all the irreducible representations of $SO(3)$, this will allow us to find all eigenspaces (and thus eigenvectors) of $\hat{H}$. To classify all the irreducible representations of $SO(3)$, we classify all irreducible representations of $so(3)$.
+Recall that we can solve the wave equation if we can find eigenvectors of $\hat{H}$. However, the commutativity with the angular momentum operators implies that the eigenspaces of $\hat{H}$ are invariant under $\Pi$, and thus are representations of $\SO(3)$. If we can classify all the irreducible representations of $\SO(3)$, this will allow us to find all eigenspaces (and thus eigenvectors) of $\hat{H}$. To classify all the irreducible representations of $\SO(3)$, we classify all irreducible representations of $\so(3)$, the associated Lie algebra.

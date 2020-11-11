@@ -1,5 +1,5 @@
 \section{Lie Groups and Algebras}
-A matrix Lie group is a topologically closed subgroup of $GL(n; \bC)$, the set of invertible $n \times n$ matrices in $\bC$. A matrix Lie algebra is a vector subspace (over $\bR$) of $M_n(\bC)$ that is closed under the Lie bracket operation, which is defined as the commutator:
+A matrix Lie group is a topologically closed subgroup of $\GL(n; \bC)$, the set of invertible $n \times n$ matrices in $\bC$. A matrix Lie algebra is a vector subspace (over $\bR$) of $M_n(\bC)$ that is closed under the Lie bracket operation, which is defined as the commutator:
 \[
     [X, Y] = XY - YX.
 \]
@@ -8,7 +8,7 @@ $M_n(\bC)$ is the space of $n \times n$ matrices in $\bC$. In this section, all 
 \subsection{}
 There is a natural way to associate every Lie group with a Lie algebra. Given a matrix Lie group $G$, we have
 \[
-    G \subset GL(n; \bC) \subset M_n(\bC) \cong \bR^{2n^2}
+    G \subset \GL(n; \bC) \subset M_n(\bC) \cong \bR^{2n^2}
 \]
 so $G$ can be seen a real manifold inside $M_n(\bC)$. From differential topology, the tangent space of any point on a real manifold is defined as a vector subspace of the Euclidean space the manifold is embedded in. Thus, the tangent space of any point in $G$ is a (real) vector subspace of $M_n(\bC)$. If the tangent space is additionally closed under the Lie bracket operation, it becomes a natural matrix Lie algebra.
 
@@ -39,4 +39,4 @@ As we have seen, every matrix Lie group has a unique associated matrix Lie algeb
 \end{itemize}
 In other words, in the category $\cC$ of connected abstract Lie groups with $\mathfrak g$ as their associated Lie algebra, $G^*$ is an universal object. We call $G^*$ the \textbf{universal covering group} because the discreteness of $\ker(\phi)$ implies that $G^*$ can be pictured ``wrapping" around any $G \in \cC$ some number of times. We also say the \textbf{universal cover} of $G$ is $G^*$ and call $\phi$ the \textbf{covering map}.
 
-There is one more important fact: $SU(2)$ is the universal cover of $SO(3)$.
+There is one more important fact: $\SU(2)$ is the universal cover of $\SO(3)$.
