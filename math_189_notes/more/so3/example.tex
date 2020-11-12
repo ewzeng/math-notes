@@ -1,0 +1,31 @@
+\section{(Optional) A Concrete Example}
+Here we provide a concrete example of a finite dimensional irreducible representation of $\so(3)$ with spin $l$. Let $V_l$ be the space of 2 variable homogeneous polynomials of degree $2l$:
+\[
+    V_l = \left\{ \sum_j a_j x^{j}y^{2l-j} : a_j \in \bC \right\}
+\]
+Define
+\[
+    \pi(F_1) = \frac{1}{2i}\left(y \frac{\partial}{\partial x} + x \frac{\partial}{\partial y}\right)
+\]
+\[
+    \pi(F_2) = \frac{1}{2}\left(y \frac{\partial}{\partial x} - x \frac{\partial}{\partial y}\right)
+\]
+\[
+    \pi(F_3) = \frac{1}{2i}\left( y \frac{\partial}{\partial y} - x \frac{\partial}{\partial x}\right)
+\]
+It is not difficult to check that $\pi$ is a Lie algebra homomorphism, and thus a representation of $\so(3)$. Note that the monomials
+\[
+    x^jy^{2j-j}
+\]
+form a chain of eigenvectors of $L_3 = i\pi(F_3)$, with raising and lowering operators:
+\[
+    L^- = y \frac{\partial}{\partial x}, \quad L^+ = x \frac{\partial}{\partial y}.
+\]
+Thus $V_l$ is an irreducible representation. The explicit computation of the raising and lowering operators hopefully provides some illumination to the otherwise abstract ``chain of eigenvectors" structure.
+
+\subsection{Where Does This Come From?}
+Recall that the Lie algebra of $\SU(2)$ is $\so(3)$, so every representation of $\SU(2)$ induces a representation of $\so(3)$. The natural group action of $\SU(2)$ on $V_l$ acting by a linear change of variables is a representation of $\SU(2)$, and induces the representation $\pi$ in the above example.
+
+\begin{remark}
+    In fact $\SU(2)$ is the universal covering group of $\so(3)$. It happens as a consequence that every representation of $\so(3)$ factors through a representation $\SU(2)$, so (unlike $\SO(3)$), the irreducible representations of $\so(3)$ are in correspondance with the irreducible representations of $\SU(2)$.
+\end{remark}
