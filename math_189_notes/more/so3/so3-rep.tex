@@ -1,0 +1,68 @@
+\section{Irreducible Representations of so(3)}
+
+\subsection{}
+Exponentiating $\SO(3)$, it is not hard to show
+\[
+    \so(3) = \{X \in M_n(\bR): X^* = - X\}
+\]
+Thus we have a natural basis for $\so(3)$:
+\[
+    F_1 =
+    \begin{pmatrix}
+        0&0&0\\
+        0&0&-1\\
+        0&1&0
+    \end{pmatrix}
+    \quad
+    F_2 = 
+    \begin{pmatrix}
+        0&0&1\\
+        0&0&0\\
+        -1&0&0
+    \end{pmatrix}
+    \quad
+    F_3 =
+    \begin{pmatrix}
+        0&-1&0\\
+        1&0&0\\
+        0&0&0
+    \end{pmatrix}
+\]
+We are now ready for our main result.
+
+\subsection{Classification of Irreducible Representations}
+\begin{thm}
+    Let $\pi: \so(3) \rightarrow \gl(V)$ be a finite dimensional irreducible representation of $\so(3)$. Define the operators:
+    \[
+        L^+ = i\pi(F_1) - \pi(F_2)
+    \]
+    \[
+        L^- = i\pi(F_1) + \pi(F_2)
+    \]
+    \[
+        L_3 = i\pi(F_3)
+    \]
+    Then there exists a basis of $v_0, \dots, v_{2l}$ of eigenvectors of $L_3$ such that:
+    \[
+        \begin{split}
+            L_3v_j &= (l - j )v_j\\
+           L^- v_j &= 
+        \begin{cases}
+            v_{j+1} & j < 2l\\
+            0   & j = 2l
+        \end{cases}\\
+           L^+ v_j &= 
+        \begin{cases}
+            j(2l + 1 - j)v_{j-1} & j < 2l\\
+            0   & j = 0
+        \end{cases}
+        \end{split}
+    \]
+\end{thm}
+Intuitively, the $v_i$'s form a ``chain" of eigenvectors and the operators $L^+$ and $L^-$ ``raise" and ``lower" eigenvectors along the chain, respectively.
+
+\subsection{Interpretation}
+The theorem states that the structure of any finite dimensional irreducible representation of $\so(3)$ is completely determined by the number $l$ (which may not be an integer if the dimension of $V$ is odd). We call $l$ the \textbf{spin} of the representation $\pi$. 
+
+If $\pi: \so(3) \rightarrow \gl(V)$ is a finite dimensional irreducible representation with spin $l$, we often denote $V = V_l$.
+
