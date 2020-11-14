@@ -3,7 +3,7 @@
 \subsection{Generalizing}
 The quantum Hamiltonian of the wave equation for an electron in a hydrogen atom is:
 \[
-    \hat{H} = - \frac{h^2}{2m}\Delta - \frac{Q^2}{|x|}
+    \hat{H} = - \frac{\hbar^2}{2m}\Delta - \frac{Q^2}{|x|}
 \]
 where $m$ is the mass of the election, $x$ is the (3D) position of the election with respect to a fixed nucleus, and $Q$ is the charge of the electon.
 
@@ -11,8 +11,16 @@ We want to solve this equation. However, it happens that the method of solution 
 
 The quantum Hamiltonian of the wave equation in a three-dimensional quantum system with radial potential is:
 \[
-    \hat{H} = - \frac{h^2}{2m}\Delta + V
+    \hat{H} = - \frac{\hbar^2}{2m}\Delta + V
 \]
 where $V$ is any radial function in $\bR^3$.
 
 \subsection{}
+As always, to solve the wave equation, we first find the eigenvectors of $\hat{H}$. The radial potential of $\hat{H}$ intuitively suggests to us that the eigenvectors (which physically represent a stationary state) are also radially symmetric. That is, eigenvectors look like:
+\[
+    \psi(x) = p(x)f(|x|).
+\]
+where $p(x) \in L^2(S^2)$.
+
+\subsection{}
+There is another perspective of viewing radial symmetry via commutativity with the angular momentum operators. More specifically, ...
