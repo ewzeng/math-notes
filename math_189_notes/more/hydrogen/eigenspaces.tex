@@ -3,15 +3,15 @@ Now that we know the eigenspaces of $\hat{H}$ induce ``sub-representations" of t
 \begin{enumerate}
     \item We note $L^2(S^2)$ is invariant under the operators of $\Pi$, so we can study the induced sub-representation. In particular, we can break down this induced representation further into a direct sum of irreducible sub-representations. From this, we will conclude:
         \[
-            L^2(S^2) = V_0 \oplus V_1 \oplus V_2 \oplus \dots
+            L^2(S^2) = \cH_0 \oplus \cH_1 \oplus \cH_2 \oplus \dots
         \]
-        where each $V_i$ induces an irreducible sub-representation of $\Pi$. The spaces $V_i$ (which we will define shortly) are called the spaces of \textbf{spherical harmonics}.
+        where each $\cH_l$ induces an irreducible sub-representation of $\Pi$. The spaces $\cH_l$ (which we will define shortly) make up the \textbf{spherical harmonics}.
 
     \item We show that if $V \subset L^2(\bR^3)$ induces an irreducible sub-representation of $\Pi$, then it is of the form
         \[
-            \{p(x)f(|x|): p \in V_i\}
+            \{p(x)f(|x|): p \in \cH_l\}
         \]
-        for some $f$ and $V_i$.
+        for some $f$ and $\cH_l$.
 
     \item Recall that every sub-representation of $\Pi$ decomposes into a direct sum of irreducible sub-representations. Then from the previous discussions, we conclude every eigenvalue has an eigenvector of the form
         \[
@@ -19,6 +19,16 @@ Now that we know the eigenspaces of $\hat{H}$ induce ``sub-representations" of t
         \]
         for some $f$ and some spherical harmonic $p$.
 \end{enumerate}
-The reader may have noticed we have begun to use the term ``induces a sub-representation of $\Pi$" instead of the simpler ``invariant subspace under the operators of $\Pi$." The two statements are equivalent, but we the latter is the more intuitive way to think about the decomposition of representations.
+The reader may have noticed we have begun to use the phrase ``induces a sub-representation of $\Pi$" instead of the simpler ``invariant subspace under the operators of $\Pi$." The two statements are equivalent, but we think the latter is the more intuitive way to think.
 
 The rest of this section provides some more detail to the steps described above.
+
+\subsection{A Technicality}
+We want to address a technicality we have kept so far from the reader:
+\begin{quote}
+    Recall that from the notes on Lie groups and algebras that (under nice conditions) an infinite dimensional invariant subspace reduces to a direct sum of finite dimensional irreducible invariant subspaces. However, we omitted the fact that the direct sum is a orthogonal direct sum, i.e. the summands are orthogonal, we do a regular direct sum over them, and then we take the closure.
+\end{quote}
+Thus, when interpreting our discussion above, keep in mind that all direct sums refer to orthogonal direct sums. The importance of this will be manifest very soon.
+
+\subsection{Step 1: Spherical Harmonics}
+We want to decompose $L^2(S^2)$ into a orthogonal direct sum of irreducible invariant spaces (under the operators of $\Pi$). Let $\cP$ be the space of polynomials $\bC[x,y,z]$ restricted to $S^2$, which by Stone-Weierstrass is dense in $L^2(S^2)$. If we can find a regular direct sum decomposition of $\cP$ into orthogonal irreducible invariant spaces, then this direct sum will be an orthogonal direct sum of $L^2(S^2)$ into irreducible invariant spaces.
