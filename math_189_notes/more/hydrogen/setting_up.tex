@@ -1,22 +1,22 @@
 \section{Setting Up}
 
 \subsection{Generalizing}
-The quantum Hamiltonian of the wave equation for an electron in a hydrogen atom is:
+The quantum Hamiltonian for an electron in a hydrogen atom is:
 \[
     \hat{H} = - \frac{\hbar^2}{2m}\Delta - \frac{Q^2}{|x|}
 \]
 where $m$ is the mass of the election, $x$ is the (3D) position of the election with respect to a fixed nucleus, and $Q$ is the charge of the electon.
 
-We want to solve the corresponding wave equation. However, it happens that the method of solution in this system is virtually the same as in a general three dimensional quantum system with radial potential. Thus in this set of notes, we choose to generalize and solve the latter system.
+We want to solve the Schr\"{o}dinger equation for this Hamiltonian. However, it happens that the method of solution in this system is virtually the same as in a general three dimensional system with radial potential. Thus in this set of notes, we choose to generalize and solve the latter system.
 
-The quantum Hamiltonian of the wave equation in a three-dimensional quantum system with radial potential is:
+The quantum Hamiltonian of a particle in a three-dimensional system with radial potential is:
 \[
     \hat{H} = - \frac{\hbar^2}{2m}\Delta + V
 \]
-where $V$ is any radial function in $\bR^3$. 
+where $V$ is any radial function in $\bR^3$. We want to solve the Schr\"{o}dinger equation for this Hamiltonian.
 
 \subsection{}
-As always, to solve the wave equation, we first find the eigenvectors of $\hat{H}$. This will be our next goal.
+As always, to solve the Schr\"{o}dinger equation, we first find the eigenvectors of $\hat{H}$. This will be our next goal.
 
 \subsection{Exploiting Symmetry}
 The rotational symmetry of $\hat{H}$ implies that if we rotate a vector $\psi \in L^2(\bR^3)$, apply $\hat{H}$, and then rotate the resulting vector back, the final vector should be the same vector obtained by applying $\hat{H}$ to $\psi$.
@@ -36,11 +36,11 @@ This gives rise to a infinite dimensional unitary representation of $\SO(3)$:
 This implies $\hat{H}\Pi(R) = \Pi(R)\hat{H}$. That is, $\hat{H}$ commutes with all the rotation operators. Linear algebra tells us this implies the eigenspaces of $\hat{H}$ are invariant under $\Pi(R)$ for all $R \in \SO(3)$. In other words, the eigenspaces $\hat{H}$ induce representations of $\SO(3)$.
 
 \subsection{(Optional) Angular Momentum Operators}
-Let $\pi$ be the Lie algebra representation $\so(3) \rightarrow \gl(L^2(\bR^3))$ induced by $\Pi$. Let $F_1, F_2, F_3$ be the usual basis of $\so(3)$ (see the set of notes of $\SO(3), \so(3)$). Then it happens that
+Let $\pi$ be the Lie algebra representation $\so(3) \rightarrow \gl(L^2(\bR^3))$ induced by $\Pi$. Let $F_1, F_2, F_3$ be the usual basis of $\so(3)$ (see the set of notes of $\SO(3), \so(3)$). Then it happens that the
 \[
     i\hbar\pi(F_j)
 \]
-are the componentwise angular momentum operators. More specifically
+are the componentwise angular momentum operators. More specifically,
 \[
     \begin{split}
         i\hbar\pi(F_1) &= X_2P_3 - X_3P_2\\
@@ -59,7 +59,7 @@ The answer lies in a slight workaround. Let $\mathfrak g$ be the Lie algebra cor
 \]
 If $\Pi'$ is a Lie group homomorphism from $G$, the induced Lie algebra homormophism $\pi'$ can alternatively be defined as the map that satisfies
 \[
-    \Pi'(e^{tX}) = e^{t\pi'(X)}
+    \Pi'(e^{tX}) = e^{t\pi'(X)}.
 \]
 This is an equivalent definition to the one we have been using. However, this definition can be used to define induced homomorphisms when the target is no longer a Lie group. Thus we use it to define $\pi$:
 \[
