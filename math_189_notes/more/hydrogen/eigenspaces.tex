@@ -1,0 +1,24 @@
+\section{Finding Eigenvectors}
+Now that we know the eigenspaces of $\hat{H}$ induce ``sub-representations" of the representation $\Pi$, we proceed as follows:
+\begin{enumerate}
+    \item We note $L^2(S^2)$ is invariant under the operators of $\Pi$, so we can study the induced sub-representation. In particular, we can break down this induced representation further into a direct sum of irreducible sub-representations. From this, we will conclude:
+        \[
+            L^2(S^2) = V_0 \oplus V_1 \oplus V_2 \oplus \dots
+        \]
+        where each $V_i$ induces an irreducible sub-representation of $\Pi$. The spaces $V_i$ (which we will define shortly) are called the spaces of \textbf{spherical harmonics}.
+
+    \item We show that if $V \subset L^2(\bR^3)$ induces an irreducible sub-representation of $\Pi$, then it is of the form
+        \[
+            \{p(x)f(|x|): p \in V_i\}
+        \]
+        for some $f$ and $V_i$.
+
+    \item Recall that every sub-representation of $\Pi$ decomposes into a direct sum of irreducible sub-representations. Then from the previous discussions, we conclude every eigenvalue has an eigenvector of the form
+        \[
+            p(x)f(|x|)
+        \]
+        for some $f$ and some spherical harmonic $p$.
+\end{enumerate}
+The reader may have noticed we have begun to use the term ``induces a sub-representation of $\Pi$" instead of the simpler ``invariant subspace under the operators of $\Pi$." The two statements are equivalent, but we the latter is the more intuitive way to think about the decomposition of representations.
+
+The rest of this section provides some more detail to the steps described above.
