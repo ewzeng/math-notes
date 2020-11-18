@@ -23,7 +23,7 @@ and observe we can decompose $\Pi$ as a direct sum:
 \]
 Thus we can study $\Pi$ by studying $\Pi'$ and $\Pi''$, representations of $G$ over the state subspaces $W$ and $W''$.
 
-We call a representation $\Pi$ irreducible if the only invariant subspaces of $V$ under $\Pi(G)$ are 0 and $V$. From the discussion above, irreducible representations can be seen as building blocks of all representations of a group $G$, so it makes sense to study them in particular.
+We call a representation $\Pi$ irreducible if the only invariant subspaces of $V$ under $\Pi(G)$ are 0 and $V$. From the discussion above, irreducible representations can be seen as building blocks of all representations of a group $G$, so it makes sense to study them in particular. (Indeed, it is not hard to see that every representation is a direct sum of irreducible representations.)
 
 Colloquially, if $\Pi$ is given, we sometimes say that $W$ ``is a representation of $G$" if $W$ is an invariant subspace.
 
@@ -33,3 +33,14 @@ So far, we have only been considering the case when $V$ is finite dimensional. W
 However, we need not worry too much about infinite dimensional representations. If $G$ is a compact Lie group, it happens that all irreducible representations of $G$ are finite dimensional, so the representations we really have to study are finite dimensional.
 
 \textbf{Repeat for emphasis.} We are mostly interested in finite dimensional irreducible representations.
+
+\subsubsection{(Optional) A Technicality}
+The statement ``every representation is a direct sum of irreducible representations" requires some modification in the infinite dimensional case. The argument for the finite dimensional case is to keep decomposing until all representations are irreducible. However, this argument fails in the infinite dimensional case because the decomposition process may not end after finitely many steps.
+
+The more precise statement is: every infinite dimensional representation of $G$ is the closure of the direct sum of irreducible representations. That is, we can write
+\[
+    V = \overline{\oplus V_i}
+\]
+where the $V_i$ do not have nontrivial invariant subspaces under $\Pi$. (Because one of the technical conditions on infinite dimensional representations is for $V$ to be a Hilbert space, we are allowed to take closures.)
+
+For intuition and simplicity, we will still call the process of taking a direct sum and then applying closure a ``direct sum". It will be up to the reader to figure out which direct sum we are refering to.
