@@ -1,0 +1,45 @@
+\section{Solving the Schr\"{o}dinger Equation}
+Now that we know every eigenvalue (i.e. energy level) of $\hat{H}$ has an eigenvector of the form
+\[
+    p(x)f(|x|), \quad p \in \cH_l
+\]
+we can plug this eigenvector back into the equation
+\[
+    \hat{H}\psi = -\frac{\hbar^2}{2m}\D\psi + V(|x|)\psi = E\psi
+\]
+to solve for the eigenvalues $E$. After some calculation, we get
+\[
+    - \frac{\hbar^2}{2m}\left[ \frac{d^2f}{dr^2} + \frac{2(l+1)}{r} \frac{df}{dr} \right] + V(r)f(r) = Ef(r), \quad r = |x|.
+\]
+\subsection{The Hydrogen Atom}
+Unforunately, this is as far as we can get studying a general 3D system with radial potential. To go further, we need to know something about $V$. Thus, we go back to the hydrogen atom, which has a radial potential
+\[
+    V(r) = - \frac{Q^2}{r}.
+\]
+Hence the equation we want to solve is:
+\[
+    - \frac{\hbar^2}{2m}\left[ \frac{d^2f}{dr^2} + \frac{2(l+1)}{r} \frac{df}{dr} \right] - \frac{Q^2}{r}f(r) = Ef(r).
+\]
+It happens that the only eigenvalues we care about are the negative eigenvalues becuase they represent the ``bound states" of an electron in the hydrogen atom. The method of solving for eigenvalues $E < 0$ is as follows:
+\begin{enumerate}
+    \item Notice that for large $r$, the terms with $1/r$ vanish, and we get
+        \[
+            - \frac{\hbar}{2m} \frac{d^2f}{dr^2} \approx Ef
+        \]
+        As $f$ must be $L^2$, it cannot be a growing exponential, so it must behave like a decaying exponential. Thus we guess
+        \[
+            f = g(r) \exp\left\{ - \frac{\sqrt{2mE}}{\hbar}r\right\}
+        \]
+        where $g(r)$ grows at most polynomially. (This is where we use the fact $E < 0$.)
+
+    \item In fact, we guess $g(r)$ is a polynomial. Plugging our solution into the equation, we get a recurrence relation of the coefficents of $g(r)$. We find that the highest exponent $n$ of $g(r)$ must satisfy
+        \[
+            - \frac{\sqrt{2mE}}{\hbar} n = \frac{mQ}{\hbar^2}
+        \]
+        which implies
+        \[
+            E = - \frac{mQ^2}{2\hbar^2n^2}
+        \]
+\end{enumerate}
+Although this derivation can be made more rigorous, it captures the general idea and completely characterizes all the eigenvalues $E < 0$.
+
