@@ -1,11 +1,11 @@
 \section{Finding Eigenvectors}
 Now that we know the eigenspaces of $\hat{H}$ induce ``sub-representations" of the representation $\Pi$, we proceed as follows:
 \begin{enumerate}
-    \item We note $L^2(S^2)$ is invariant under the operators of $\Pi$, so we can study the induced sub-representation. In particular, we can break down this induced representation further into a direct sum of irreducible sub-representations. From this, we will conclude:
+    \item We note $L^2(S^2)$ is invariant under the operators of $\Pi$, so we can study the induced sub-representation. In particular, we can break down this induced representation further into a direct sum of irreducible sub-representations. We find one specific decomposition into \textbf{spherical harmonics} and get
         \[
             L^2(S^2) = \cH_0 \oplus \cH_1 \oplus \cH_2 \oplus \dots
         \]
-        where each $\cH_l$ induces an irreducible sub-representation of $\Pi$. The spaces $\cH_l$ (which we will define shortly) make up the \textbf{spherical harmonics}.
+        We will define the spaces $\cH_l$ shortly.
 
     \item We show that if $V \subset L^2(\bR^3)$ induces an irreducible sub-representation of $\Pi$, then it is of the form
         \[
@@ -21,11 +21,53 @@ Now that we know the eigenspaces of $\hat{H}$ induce ``sub-representations" of t
 \end{enumerate}
 The reader may have noticed we have begun to use the phrase ``induces a sub-representation of $\Pi$" instead of the simpler ``invariant subspace under the operators of $\Pi$." The two statements are equivalent, but we think the latter is the more intuitive way to think.
 
-The rest of this section provides some more detail to the steps described above.
+The rest of this section provides some more detail to the first two steps described above.
 
 \subsection{Step 1: Spherical Harmonics}
-We want to decompose $L^2(S^2)$ into a direct sum of irreducible spaces (under the operators of $\Pi$). Because we are dealing with an infinite dimensional representation, when we say ``direct sum" we mean ``direct sum followed by closure" (see my notes on Lie groups and algebras).
+We want to decompose $L^2(S^2)$ into a direct sum of irreducible spaces (i.e. spaces that induce irreducible sub-representations). Because we are dealing with an infinite dimensional representation, when we say ``direct sum" we mean ``direct sum followed by closure" (see my notes on Lie groups and algebras).
 
 Let $\cP$ be the space of polynomials $\bC[x,y,z]$ restricted to $S^2$, which by Stone-Weierstrass is dense in $L^2(S^2)$. Because of this, if we can find a regular direct sum decomposition of $\cP$ into irreducible spaces, this will be a ``direct sum" of $L^2(S^2)$.
 
-Define $\cP_l \subset \cP$ to be the space of homogenous polynomials of degree $l$.
+Define $\cP_l \subset \cP$ to be the space of homogenous polynomials of degree $l$. Define $\cH_l$ to be the space of spherical harmonics of degree $l$, i.e.
+\[
+    \cH_l = \{p \in \cP_l: \D p = 0\}
+\]
+To show
+\[
+    \cP = \bigoplus \cH_l
+\]
+we make the following (very elegant) argument:
+\begin{enumerate}
+    \item The Laplacian $\D$ is an operator $\cP_l \rightarrow \cP_{l-2}$ with kernel $\cH_l$.
+    \item Multiplication by $r^2 = x^2 + y^2 + z^2$ is an operator $\cP_l \rightarrow \cP_{l+2}$. Note that $r^2p$ and $p$ represent the same function in $L^2(S^2)$ and thus are the same in $\cP$. Thus multiplying by $r^2$ is an embedding $\cP_l \rightarrow \cP_{l+2}$.
+    \item We introduce an inner product on $\cP$ that makes $\D$ and $r^2$ adjoints of each other. This inner product is
+        \[
+            \langle f | g \rangle := \left[ f^*\left( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right) g(x,y,z) \right]_{(x,y,z) = (0, 0, 0)}
+        \]
+    \item The standard kernel and image relationship of adjoints will allow us to conclude that $(r^2\cP_{l-2})^\perp = \cH_l$, where orthogonality is from our newly introduced inner product. Thus we conclude
+        \[
+            \cP_l = \cH_1 \oplus r^2\cP_{l-2}.
+        \]
+    \item Now we are ready for the punchline. Let $p \in \cP$. We know $p \in \cP_l$ for some $l$, so $p = p_0 + q_0$ where $p_0 \in \cH_l$ and $q_0 \in r^2\cP_{l-2}$. Note $q_0$ is a function in $\cP_{l-2}$. If $q_0$ is nonzero, we repeat this process to $q_0$ and eventually get
+        \[
+            p = p_0 + p_1 + \dots + p_k
+        \]
+        where $p_i \in \cH_{l-2i}$.
+\end{enumerate}
+To show the $\cH_l$ are irreducible subspaces, we make the following argument:
+\begin{enumerate}
+    \item As $\D$ is rotationally symmetric, it commutes with all the rotation operators. Thus the kernel (e.g. 0-eigenspace) is an invariant subspace.
+    \item Each $\cP_l$ is an invariant subspace. Then by taking intersections with $\ker(\D)$, we conclude that each $\cH_l$ is an invariant subspace.
+    \item We use our theorem on the classification of irreducible representations of $\so(3)$ to prove each $\cH_l$ is irreducible (see notes on $\SO(3)$, $\so(3)$). More precisely, we show that the $\pi(F_i)$ produce the ``chain of eigenvectors". We can verify this by recalling the relationship between $\pi(F_i)$ and the componentwise angular momentum operators (see the optional section on them).
+\end{enumerate}
+
+\subsection{Step 2}
+To prove that every irreducible invariant subspace $V \subset L^2(\bR^3)$ is of the form
+\[
+    \{p(x)f(|x|): p \in \cH_l\}
+\]
+the basic idea is to project $V$ to $L^2(\bR^3)$ and make some arguments using Schur's lemma. The key reasons why this works come from step 1:
+\begin{itemize}
+    \item Each $\cH_l$ is irreducible.
+    \item The direct sum the $\cH_l$'s is $L^2(S^2)$.
+\end{itemize}
