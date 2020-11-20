@@ -1,5 +1,7 @@
-\section{Algebraic and Trancendental Numbers}
-Let $F$ be a field contained in an ambient field $E$. We say $\a \in E$ is algebraic if it is a root of a polynomial in $F$. Otherwise, we say $\a$ is transcendental. It happens that this small distinction has deep consequences. To see this, we reformulate everything in algebraic terms:
+\section{Algebraic and Transcendental Numbers}
+Let $F$ be a field contained in an ambient field $E$. We say $\a \in E$ is algebraic if it is a root of a polynomial in $F$. Otherwise, we say $\a$ is transcendental. It happens that this small distinction has deep consequences. To see this, we reformulate everything in algebraic terms.
+
+Consider the evaluation map $F[x] \rightarrow E$ that takes a polynomial and evaluates it at $\a$.
 \begin{itemize}
     \item $\a$ is algebraic if the evaluation map $F[x] \rightarrow E$ has a nontrivial kernel. Let $(p)$ be the kernel, and note $p$ must be irreducible. Then $p$ is prime, and thus $(p)$ is maximal. As the image $F[\a]$ is isomorphic to $F[x]/(p)$, we conclude that $F[\a]$ is a field. Also note $F[x]/(p)$ is a finite dimensional extension of $F$ of degree $\deg p$, and thus so is $F[\a]$.
     \item $\a$ is transcendental if the evaluation map $F[x] \rightarrow E$ has a trivial kernel. This implies the image $F[\a]$ is isomorphic to $F[x]$, which is not a field. Also note $F[x]$ has infinite dimension over $F$, and thus so does $F[\a]$.
