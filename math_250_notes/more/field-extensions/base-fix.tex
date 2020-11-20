@@ -1,0 +1,8 @@
+\section{(Optional) Fixing the Base Field}
+In the theory of fields, we will often encounter scenarios where we have a base field $F$ embedded inside larger fields $E_1$, $E_2$, and we want to study homomorphisms $\s: E_1 \rightarrow E_2$ that fix $F$. The key trick is to note that such homomorphisms ``fix" polynomials in $F$. More precisely, $\s$ maps
+\[
+    c_0 + c_1\a + \dots + c_n\a^n \mapsto c_0 + c_1\s(\a) + \dots + c_n\s(\a)^n
+\]
+for coefficents $c_0, \dots, c_n \in F$. This implies that if $\a$ is a root of the polynomial above, then so is $\s(\a)$. A natural consequence is that $\s$ acts as a permutation on the roots of every polynomial in $F$. This is an important observation that leads to many results.
+
+For example, we can use this observation to show that every endomorphism $\s: E \rightarrow E$ of an algebraic extension $E$ of $F$ that fixes $F$ is an automorphism. To see this, we first note that because $\s$ is a nontrivial homomorphism of fields, it is injective. Surjectivity follows from the fact that every element of $E$ is a root of some polynomial in $F$, and $\s$ permutates the roots, so every element is in the range of $\s$.
