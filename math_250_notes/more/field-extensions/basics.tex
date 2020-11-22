@@ -1,0 +1,14 @@
+\section{Basics}
+\subsection{}
+Suppose $F$ is a field embedded in $E$. Then $E$ can be seen as a vector space of $F$. To express this fact, we often write $E$ as $E/F$. We define
+\[
+    [E : F] = \text{ dimension of } E/F
+\]
+and call this the \textbf{degree} of the field extension $E$ over the base field $F$. If we have three fields $k \subset F \subset E$, then we have the following very useful relation:
+\[
+    [E : k] = [E : F] \cdot [F : k].
+\]
+This is very intuitive. The formal proof follows from the fact that if the $\a_i$'s form a basis of $E/F$ and the $\b_j$'s form a basis of $F/k$, then the $\a_i\b_j$'s form a basis of $E/k$.
+
+\subsection{}
+Now suppose $\a \in E$. We denote $F(\a)$ the smallest field in $E$ that contains both $F$ and $\a$. We often say $F(\a)$ is the field $F$ extended by $\a$. We distinguish $F(\a)$ from $F[\a]$, the set of elements in $E$ that can be written as a polynomial in $\a$.

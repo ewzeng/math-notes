@@ -1,19 +1,23 @@
 \section{Algebraic Closures}
-An \textbf{algebraic closure} of $F$ is a ``minimal" algebraically closed field $L$ that $F$ can be embedded in. More precisely, suppose $F$ can be embedded in some algebraically closed field $E$. Then the subfield $L \subset E$ is an algebraic closure of $F$ if it only contains elements that are algebraic over $F$.
+An \textbf{algebraic closure} of $F$ is a ``minimal" algebraically closed field $L$ that $F$ can be embedded in. More precisely, suppose $F$ can be embedded in some algebraically closed field $E$. Then the subfield $L \subset E$ is an algebraic closure of $F$ if it is algebraically closed and only contains elements that are algebraic over $F$.
 
 \subsection{Existence}
 Suppose $F$ is embedded in some algebraically closed field $E$, as above. To prove the existence of an algebraic closure $L \subset E$, we simply define
 \[
     L = \{\text{ all elements in $E$ algebraic over $F$ }\}
 \]
-and show $L$ is a field.
+and show $L$ is an algebraically closed field.
 
 At first glance, this doesn't seem very easy. Suppose $\a$ and $\b$ are roots of two polynomials in $F[x]$. How do we show $\a + \b$ is a root of some polynomial in $F[x]$? Constructing a polynomial with $\a + \b$ as a root is very difficult. However, we can bypass the constructive proof with a very elegant argument:
 \begin{enumerate}
     \item As $\a$ and $\b$ are algebraic, $F(\a, \b)$ is finite dimensional over $F$.
     \item Note $\a + \b \in F(\a, \b)$. As a result, $F(\a + \b) \subset F(\a, \b)$ is finite dimensional over $F$, and thus $\a + \b$ is algebraic.
 \end{enumerate}
-The same argument suffices for $\a\b$ and $\a/\b$. The fact that $L$ is a field follows.
+The same argument suffices for $\a\b$ and $\a/\b$. The fact that $L$ is a field follows. We apply a similar argument to show $L$ is algebraically closed:
+\begin{enumerate}
+    \item Let $a_0 + a_1x + \dots + a_nx^n \in L[x]$, and let $\a \in E$ be a root. Note $F[a_0, \dots, a_n, \a]$ is a finite dimensional extension of $F[a_0, \dots, a_n]$, which is a finite dimensional extension of $F$.
+    \item We conclude $F[\a]$ is finite dimensional over $F$, and thus $\a$ is algebraic, i.e. $\a \in L$.
+\end{enumerate}
 
 \subsection{Uniqueness}
 We prove the following theorem:
