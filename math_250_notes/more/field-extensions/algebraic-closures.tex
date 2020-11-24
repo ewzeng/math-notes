@@ -1,36 +1,35 @@
 \section{Algebraic Closures}
-An \textbf{algebraic closure} of $F$ is a ``minimal" algebraically closed field $L$ that $F$ can be embedded in. More precisely, suppose $F$ can be embedded in some algebraically closed field $E$. Then the subfield $L \subset E$ is an algebraic closure of $F$ if it is algebraically closed and only contains elements that are algebraic over $F$.
+An \textbf{algebraic closure} of $F$ is a minimal algebraically closed field $L$ that $F$ can be embedded in. More precisely, let $F$ be embedded in some algebraically closed field $E$. Then the subfield $L \subset E$ is an algebraic closure of $F$ if $F \subset L$ and there are no algebraically closed subfields of $L$ containing $F$.
 
-\subsection{Existence}
-Suppose $F$ is embedded in some algebraically closed field $E$, as above. To prove the existence of an algebraic closure $L \subset E$, we simply define
+The existence of algebraic closures can be proved by taking intersections of all algebraically closed fields in $E$ that contain $F$.
+
+\subsection{An Explicit Characterization}
+We will now show that algebraic closures are ``as small as they can be." More precisely, suppose $F$ is embedded in some algebraically closed field $E$, as above. We will show that the algebraic closure $L \subset E$ is
 \[
-    L = \{\text{ all elements in $E$ algebraic over $F$ }\}
+    L = \{\text{all elements in $E$ algebraic over $F$}\}
 \]
-and show $L$ is an algebraically closed field.
 
-At first glance, this doesn't seem very easy. Suppose $\a$ and $\b$ are roots of two polynomials in $F[x]$. How do we show $\a + \b$ is a root of some polynomial in $F[x]$? Constructing a polynomial with $\a + \b$ as a root is very difficult. However, we can bypass the constructive proof with a very elegant argument:
+At first glance, it is not obvious $L$ is a field. Suppose $\a$ and $\b$ are roots of two polynomials in $F[x]$. How do we show $\a + \b$ is a root of some polynomial in $F[x]$? Constructing a polynomial with $\a + \b$ as a root is very difficult. However, we can bypass the constructive proof with a very elegant argument:
 \begin{enumerate}
     \item As $\a$ and $\b$ are algebraic, $F(\a, \b)$ is finite dimensional over $F$.
     \item Note $\a + \b \in F(\a, \b)$. As a result, $F(\a + \b) \subset F(\a, \b)$ is finite dimensional over $F$, and thus $\a + \b$ is algebraic.
 \end{enumerate}
 The same argument suffices for $\a\b$ and $\a/\b$. The fact that $L$ is a field follows. We apply a similar argument to show $L$ is algebraically closed:
 \begin{enumerate}
-    \item Let $a_0 + a_1x + \dots + a_nx^n \in L[x]$, and let $\a \in E$ be a root. Note $F[a_0, \dots, a_n, \a]$ is a finite dimensional extension of $F[a_0, \dots, a_n]$, which is a finite dimensional extension of $F$.
+    \item Let $a_0 + a_1x + \dots + a_nx^n \in L[x]$, and let $\a \in E$ be a root. Note $F[a_0, \dots, a_n, \a]$ is finite dimensional over $F[a_0, \dots, a_n]$, which is finite dimensional over $F$.
     \item We conclude $F[\a]$ is finite dimensional over $F$, and thus $\a$ is algebraic, i.e. $\a \in L$.
 \end{enumerate}
 
 \subsection{Uniqueness}
-We prove the following theorem:
+In this section, we will prove the following theorem:
 \begin{center}
     If $K$ and $L$ are algebraic closures of $F$, then $K$ and $L$ are isomorphic.
 \end{center}
-Unforunately, the isomorphism is not unique, so instead of referring to ``the" algebraic closure, we still say ``an" algebraic closure.
-
 The proof is to construct a map $\s: K \rightarrow L$ that is identity on $F$. Then after showing the $\s(K)$ is an algebraic closure of $F$, the observation
 \[
     F \subset \s(K) \subset L
 \]
-will allow us to conclude $\s(K) = L$, and thus $\s$ is an isomorphism. Alternatively, we could make an argument similar to the one presented in the discussion on fixed base fields to deduce that $\s$ is an isomorphism.
+will allow us to conclude $\s(K) = L$, and thus $\s$ is an isomorphism. (Alternatively, we could make an argument similar to the one presented in the discussion on fixed base fields to deduce that $\s$ is an isomorphism.)
 
 To construct $\s$, we start with the natural inclusion $F \rightarrow L$, and keep extending it until we get a map $K \rightarrow L$. More precisely:
 \begin{enumerate}
@@ -40,5 +39,9 @@ To construct $\s$, we start with the natural inclusion $F \rightarrow L$, and ke
             \a \mapsto \text{ a root of the minimal polynomial $p$ of $\a$.}
         \]
         This is indeed a homomorphism because $M(\a)$ is isomorphic to $M[x]/(p)$, so if a map $M[x] \rightarrow L$ vanishes on $(p)$, then it induces a map $M[x]/(p) = M(\a) \rightarrow L$. The map $\s_{M(\a)}$ is induced from this way.
-    \item Repeat until we get a map $\s: K \rightarrow L$. Because every element in $K$ is algebraic, this process will ``eventually" end. We can put things in more formal terms using Zorn's lemma.
+    \item Repeat until we get a map $\s: K \rightarrow L$. Because every element in $K$ is algebraic, this process will ``eventually" end. (We can put things in more formal terms using Zorn's lemma.)
 \end{enumerate}
+
+\subsection{}
+In the proof above, the argument of starting with a homomorphism $\s$ (that maps into an algebraically closed field) and repeatedly extending it will be a recurring motif used in the theory of fields.
+

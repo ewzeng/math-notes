@@ -1,8 +1,10 @@
 \section{Splitting Fields}
-Let $F$ be a field contained in a field $E$. We say a polynomial $f \in F[x]$ \textbf{splits} in $E$ if all the all the roots of $f$ are in $E$. That is, $f$ can be fctored into linear factors in $E$.
+Let $F$ be a field contained in a field $E$. We say a polynomial $f \in F[x]$ \textbf{splits} in $E$ if all the all the roots of $f$ are in $E$. That is, $f$ can be factored into linear factors in $E$.
 
 We say $E$ is an \textbf{splitting field} of $f$ if it is a minimal field extension of $F$ such that $f$ splits. Similar to algebraic closures, we have a uniqueness theorem on splitting fields.
 \begin{center}
     If $K$ and $L$ are splitting fields of $f \in F[x]$, then $K$ and $L$ are isomorphic.
 \end{center}
 The proof is intuitively obvious: suppose the roots of $f$ are $\a_1, \dots, \a_n$ in $K$ and $\b_1, \dots, \b_n$ in $L$. We can construct the isomorphism $\s: K \rightarrow L$ by defining $\s$ to fix $F$ and $\s(\a_i) = \b_i$.
+
+We can make parallel definitions of split and splitting fields for a family of polynomials in $F$. It happens that the uniqueness result still holds - however, the proof is no longer very obvious.

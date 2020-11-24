@@ -1,10 +1,10 @@
 \section{Algebraic and Transcendental Numbers}
-Let $F$ be a field contained in an ambient field $E$. We say $\a \in E$ is \textbf{algebraic} if it is a root of a polynomial in $F$. Otherwise, we say $\a$ is \textbf{transcendental}. It happens that this small distinction has deep consequences. To see this, we reformulate everything in algebraic terms.
+Let $F$ be a field contained in an ambient field $E$. We say $\a \in E$ is \textbf{algebraic} if it is a root of a polynomial in $F$. Otherwise, we say $\a$ is \textbf{transcendental}. It happens that this small distinction has deep consequences, but to see this, we reformulate everything in algebraic terms.
 
-Consider the evaluation map $F[x] \rightarrow E$ that takes a polynomial and evaluates it at $\a$.
+Consider the evaluation map $F[x] \rightarrow E$ that takes a polynomial and evaluates it at $\a$. (Notice the image of this map is $F[\a]$.) Then:
 \begin{itemize}
     \item $\a$ is algebraic if the evaluation map $F[x] \rightarrow E$ has a nontrivial kernel. Let $(p)$ be the kernel, and note $p$ must be irreducible. Then $p$ is prime, and thus $(p)$ is maximal. As the image $F[\a]$ is isomorphic to $F[x]/(p)$, we conclude that $F[\a]$ is a field. Also note $F[x]/(p)$ is a finite dimensional extension of $F$ of degree $\deg p$, and thus so is $F[\a]$.
-    \item $\a$ is transcendental if the evaluation map $F[x] \rightarrow E$ has a trivial kernel. This implies the image $F[\a]$ is isomorphic to $F[x]$, which is not a field. Also note $F[x]$ has infinite dimension over $F$, and thus so does $F[\a]$.
+    \item $\a$ is transcendental if the evaluation map $F[x] \rightarrow E$ has a trivial kernel. This implies the image $F[\a]$ is isomorphic to $F[x]$, which is not a field. Also observe $F[x]$ is ``infinite dimensional" over $F$, and thus so is $F[\a]$.
 \end{itemize}
 When $\a$ is algebraic, the polynomial $p$ (which we can require to be monic) is called the \textbf{minimal polynomial} of $\a$.
 
@@ -14,3 +14,4 @@ We summarize our findings below:
     \item If $\a$ is algebraic, then $F[\a] = F(\a)$, the field $F$ extended by $\a$. The degree of the extension is the degree of the minimal polynomial of $\a$.
     \item If $\a$ is transcendental, then $F(\a)$ is an infinite degree extension. As a result, if $[E : F]$ is finite, then all $\a \in E$ are algebraic over $F$.
 \end{itemize}
+If every element of $E$ is algebraic over $F$, we say $E$ is an \textbf{algebraic extension} of $F$.
