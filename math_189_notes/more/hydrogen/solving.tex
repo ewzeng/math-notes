@@ -24,13 +24,13 @@ It happens that the only eigenvalues we care about are the negative eigenvalues 
 \begin{enumerate}
     \item Notice that for large $r$, the terms with $1/r$ vanish, and we get
         \[
-            - \frac{\hbar}{2m} \frac{d^2f}{dr^2} \approx Ef
+            - \frac{\hbar}{2m} \frac{d^2f}{dr^2} \approx Ef.
         \]
-        As $f$ must be $L^2$, it cannot be a growing exponential, so it must behave like a decaying exponential. Thus we guess
+        Hence when $E < 0$, $f$ must behave like an exponential. As $f$ must be $L^2$, it cannot be a growing exponential, so it must behave like a decaying exponential. Thus we guess
         \[
-            f = g(r) \exp\left\{ - \frac{\sqrt{2mE}}{\hbar}r\right\}
+            f = g(r) \exp\left\{ - \frac{\sqrt{2m|E|}}{\hbar}r\right\}
         \]
-        where $g(r)$ grows at most polynomially. (This is where we use the fact $E < 0$.)
+        where $g(r)$ grows at most polynomially.
 
     \item In fact, we guess $g(r)$ is a polynomial. Plugging our solution into the equation, we get a recurrence relation of the coefficents of $g(r)$. In particular, we find that the highest exponent $n$ of $g(r)$ must satisfy
         \[
@@ -38,7 +38,7 @@ It happens that the only eigenvalues we care about are the negative eigenvalues 
         \]
         which implies
         \[
-            E = - \frac{mQ^2}{2\hbar^2n^2}
+            E = - \frac{mQ^2}{2\hbar^2n^2}.
         \]
 \end{enumerate}
 Although this derivation can be made more rigorous, it captures the general idea and completely characterizes all the eigenvalues $E < 0$.
