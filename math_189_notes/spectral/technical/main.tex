@@ -1,0 +1,222 @@
+\documentclass{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm,graphicx,mathrsfs,url}
+\usepackage{multimedia}
+\AtBeginDocument{%
+  \SetMathAlphabet{\mathrm}{normal}{\encodingdefault}{cmss}{\mddefault}{n}
+  \SetMathAlphabet{\mathrm}{bold}{\encodingdefault}{cmss}{\bfdefault}{n}}
+
+\AtBeginSection{\frame{\sectionpage}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{prb}{Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{oppm}[thm]{Open Problem}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{coex}{Counterexample}[section]
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+
+\beamertemplatenavigationsymbolsempty
+\usetheme{Madrid}
+\institute[UC Berkeley]{University of California, Berkeley}
+
+\title[Spectral Theorem]{Spectral Theorem for Unbounded Self-Adjoint Operators}
+\author[E. Zeng]{Edward Zeng}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Quantum Mechanics}
+    Add some very basic facts of quantum mechanics (like how we work with operators) for causal listeners
+\end{frame}
+
+\begin{frame}{Motivation}
+Why is the Spectral Theorem important?
+\begin{itemize}
+    \item Allows us to define a functional calculus
+    \item Spectral projections...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Overview}
+\begin{itemize}
+    \item State and prove the spectral theorem for \underline{bounded} self-adjoint operators
+    \item State the spectral theorem for \underline{unbounded} self-adjoint operators
+    \item Use the proof in the bounded case as launching pad to prove the unbounded case
+\end{itemize}
+\end{frame}
+
+\section*{Spectral Theorem for Bounded Self-Adjoint Operators}
+
+\begin{frame}{Definitions}
+Let $\cH$ be a Hilbert space, and suppose $A \in \cB(\cH)$, a bounded operator.
+    \begin{itemize}
+        \item Spectrum
+        \item Operator-Valued Integration
+        \item Projection-Valued Measure
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Statement}
+    \begin{theorem}[Spectral Theorem for Bounded Self-Adjoint Operators]
+        If $A \in \cB(\cH)$ is self-adjoint, then there exists a unique projection-valued measure $\mu^A$ on the Borel $\s$-algebra in $\s(A)$, with values in projections on $\cH$, such that
+        \[
+            \int_{\s(A)} \l d\mu^A(\l) = A.
+        \]
+    \end{theorem}
+    \medskip
+    The intuition is that $\mu^A(E)$ is equal to the projection on $\cH$ that projects onto the subspace spanned by ``eigenvectors" of $A$ with eigenvalues $\l \in E$.
+\end{frame}
+
+\begin{frame}{Overview of Proof}
+    The proof can be broken up into three steps:
+    \begin{enumerate}
+        \item Define a \underline{continuous} functional calculus
+        \item Apply the Riesz-Markov Representation theorem
+        \item Generalize from the continuous to the \underline{measurable} case
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Part 1: Define the Continuous Functional Calculus}
+    Let $A \in \cB(\cH)$ be self-adjoint. For each continuous function real-valued function $f \in C(\s(A))$, we want to associate it with an operator $f(A)$.
+
+    \bigskip
+    We construct this association as follows:
+    \begin{itemize}
+        \item Associate $f(x) = x^n$ with $A^n$.
+        \item Extend this association linearly to all polynomials.
+        \item Finally, extend this association to all of $C(\s(A))$ using Stone-Weierstrass.
+            \begin{itemize}
+                \item To do this rigorously, we use the spectral mapping theorem to show that the association $f \mapsto f(A)$ for polynomial $f$ is an isometry.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Part 2: Riesz-Markov}
+    Riesz-Markov tells us that every linear functional on the space of continuous real-valued on a compact space can be written as integral with respect to a certain measure.
+
+    \medskip
+    Let $f \in C(\s(A))$, and let $f(A)$ be the associated operator, as before. Applying Riesz-Markov, we conclude that for each $\psi \in \cH$, there exists a measure $\mu_\psi$ such that
+    \[
+        \langle \psi, f(A)\psi \rangle = \int_{\s(A)} f(\l)d\mu_\psi(\l)
+    \]
+    The goal is now to say something about $f$ that is measurable, but not necessarily continuous. This will allow us to define a functional calculus, i.e. define $f(A)$ for $f$ measurable, but not necessarily continuous.
+\end{frame}
+
+\begin{frame}{Part 3: Continuous to Measurable}
+    Making some arguments with bounded quadratic forms, we see that for any measurable $f$, there exists an operator $f(A)$ such that for each $\psi \in \cH$, there exists a measure $\mu_\psi$ such that
+    \[
+        \langle \psi, f(A)\psi \rangle = \int_{\s(A)} f(\l)d\mu_\psi(\l)
+    \]
+    For continuous $f$, this coincides with the $f(A)$ we have defined before. However, this definition works for $f$ measurable, but not continuous, so this allows us associate each measurable $f$ with $f(A)$.
+\end{frame}
+
+\begin{frame}{End of Proof}
+    Why did we go all this way to constuct a functional calculus? The goal was to be able to define the operator $1_E(A)$ for any indicator function $1_E$. Once we can define this, the construction of $\mu_A(E)$ ends with setting
+    \[
+        \mu_A(E) = 1_E(A).
+    \]
+\end{frame}
+
+\section{Spectral Theorem for Unbounded Self-Adjoint Operators}
+
+\begin{frame}{Unbounded Operators}
+    Define unbounded operators and discuss domain issues.
+\end{frame}
+
+\begin{frame}{Statement}
+    \begin{theorem}[Spectral Theorem for Unbounded Self-Adjoint Operators]
+        If $A$ is self-adjoint on $\cH$, then there exists a unique projection-valued measure $\mu^A$ on the Borel $\s$-algebra in $\s(A)$, with values in projections on $\cH$, such that
+        \[
+            \int_{\s(A)} \l d\mu^A(\l) = A.
+        \]
+    \end{theorem}
+    \medskip
+    The statement is exactly the same as before, except we are considering self-adjoint operators that may not be bounded, and thus all the domain issues that come with it.
+\end{frame}
+
+\begin{frame}{Overview of Proof}
+    The proof can be broken up into two steps:
+    \begin{enumerate}
+        \item Imitiate the previous proof to prove the spectral theorem for bounded normal operators.
+        \item Reduce the unbounded self-adjoint case to the bounded normal case.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Part 1: Imitate proof for bounded self-adjoint operators}
+    The only different from the previous part is that we need to go through extra technicalities to define the continuous functional calculus for bounded normal operators. This is because the spectrum is no longer guaranteed to be real.
+\end{frame}
+
+\begin{frame}{Part 2: Reduce to the Bounded Normal Case}
+    Cayley Transform (explain geometrically what it is doing)
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+    Acknowledgements here.
+\end{frame}
+
+\end{document}

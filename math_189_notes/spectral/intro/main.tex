@@ -1,0 +1,248 @@
+\documentclass{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm,graphicx,mathrsfs,url}
+\usepackage{multimedia}
+\AtBeginDocument{%
+  \SetMathAlphabet{\mathrm}{normal}{\encodingdefault}{cmss}{\mddefault}{n}
+  \SetMathAlphabet{\mathrm}{bold}{\encodingdefault}{cmss}{\bfdefault}{n}}
+
+\AtBeginSection{\frame{\sectionpage}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{prb}{Problem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{oppm}[thm]{Open Problem}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{coex}{Counterexample}[section]
+
+%Macros for Greek Letters
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\newcommand{\s}{\sigma}
+\renewcommand{\th}{\theta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\renewcommand{\S}{\Sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\var}{\varphi}
+\newcommand{\z}{\zeta}
+
+%Macros for math cal letters
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cY}{{\mathcal Y}}
+
+%Macros for blackboard bold letters
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bT}{{\mathbb T}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bF}{{\mathbb F}}
+
+%Other macros
+\renewcommand{\i}{\infty}
+
+
+\beamertemplatenavigationsymbolsempty
+\usetheme{Madrid}
+\title[Spectral Theorem]{Spectral Theorem for Unbounded Self-Adjoint Operators}
+\author[E. Zeng]{Edward Zeng}
+\institute[UC Berkeley]{University of California, Berkeley \protect\\ DRP}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Classical vs Quantum Mechanics}
+    In classical mechanics: study a system by studying observables (e.g. position, momentum).
+
+    \bigskip
+    In quantum mechanics:
+    \begin{itemize}
+        % Don't say ``usually" a Hilbert space. It is a Hilbert space!
+        \item State space $\cH$ is a Hilbert space
+        % Self-adjoint = complex version of symmetric
+        \item Observables correspond to self-adjoint operators on $\cH$
+        \item Instead of studying observables, study corresponding operators
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Position Operator}
+    For a particle in $\bR$, usually:
+    \begin{itemize}
+        % Mention that L^2 means integrable
+        \item $\cH = L^2(\bR)$, each state a ``probability distribution" of the position of particle
+        \item Position operator $X: \psi(x) \mapsto x\psi(x)$
+    \end{itemize}
+
+    \pause
+    \bigskip
+    For many reasons, want to study eigenvalues of $X$:
+    \begin{itemize}
+        \item Eigenvectors represent possible positions of particle
+        \item Eigenvalues encode probability of such positions
+    \end{itemize}
+    So want some sort of a spectral theorem!
+    % Mention spectral theorem for matrices
+\end{frame}
+
+\begin{frame}{Two Technical Problems}
+    Two technical problems:
+    \begin{itemize}
+        % Given an example?
+        \item $X$ is not defined on all of $\cH = \cL^2(\bR)$! $X\psi$ might not be integrable.
+            \begin{itemize}
+                % Mention position operator is just multiplication by $x$
+                \item Ex: $ \frac{1}{x^2} \mapsto \frac{1}{x}$
+            \end{itemize}
+        \item $X$ has no eigenvectors! Proof:
+            \begin{itemize}
+                \item $\l \psi(x) = x\psi(x)$
+                \item $\psi(x)$ is an eigenvector only if $\psi(x) = 0$ everywhere but a point
+            \end{itemize}
+    \end{itemize}
+
+    \pause
+    \bigskip
+    The solutions:
+    \begin{itemize}
+        \item Develop a theory for ``operators" defined on a dense subset of domain
+        \item Don't study eigenvalues, study the spectrum (``eigenvalues" of ``approximate eigenvectors")
+    \end{itemize}
+\end{frame}
+
+\section*{What does the spectral theorem say?}
+
+\begin{frame}{Integration}
+    Let's talk integration!
+    \[
+        \int_E f(\l) d\mu
+    \]
+
+    \bigskip
+    Regular measure-theory integration:
+    \begin{itemize}
+        \item $f: \bR \rightarrow \bR$
+        \item $\mu: \text{Borel subsets of } \bR \rightarrow \bR$
+        \item Integral is some real value
+    \end{itemize}
+
+    \pause
+    \bigskip
+    \textbf{Operator-valued} integration:
+    \begin{itemize}
+        \item $f: \bR \rightarrow \bR$
+        \item $\mu: \text{Borel subsets of } \bR \rightarrow \text{projections}$
+        \item Integral is some \textit{operator}
+    \end{itemize}
+
+    $\mu$ is called a ``projection-valued" measure.
+\end{frame}
+
+
+\begin{frame}{Spectrum vs Eigenvalue}
+    Given operator $A$:
+    \begin{itemize}
+        \item $\l$ is an eigenvalue if $Ax - \l x$ is not \textit{injective}
+        \item $\l$ is part of the \textbf{spectrum} if $Ax - \l x$ is not \textit{invertible}
+    \end{itemize}
+    Spectrum denoted $\s(A)$. Eigenvalues $\subset \s(A)$.
+
+    \pause
+    \bigskip
+    If $A$ self-adjoint:
+    \begin{itemize}
+        \item $\s(A) \subset \bR$
+        \item $\l \in \s(A)$ if exist sequence $\{\psi_n\}$ with $\|\psi_n\| = 1$ and
+            \[
+                \lim_{n \rightarrow \i} \|A\psi_n - \l \psi_n\| = 0
+            \]
+        \item Where the notion ``approximate eigenvector" arises
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Spectrum of $X$}
+    Given any $\l \in \bR$:
+    \begin{itemize}
+        \item Suppose $\psi_n$ has a tall bump near $x = \l$ and zero elsewhere
+        \item Note $X\psi_n = x\psi_n(x) \approx \l \psi_n(x)$
+        \item Can show $\l$ in spectrum
+    \end{itemize}
+
+    So $\s(X) = \bR$. Approximate eigenvector = Dirac delta at $\l$
+\end{frame}
+
+\begin{frame}{Statement}
+    \begin{theorem}[Spectral Theorem for Unbounded Self-Adjoint Operators]
+        If $A$ is self-adjoint, then there exists a unique projection-valued measure $\mu^A$ such that
+        \[
+            \int_{\s(A)} \l d\mu^A = A.
+        \]
+    \end{theorem}
+    \medskip
+    Intuition for $\mu^A$: given $E \subset \bR$
+    \begin{itemize}
+        \item $v_i$ = ``approximate eigenvectors" with ``eigenvalues" in $E$
+        \item $P$ = projection that projects onto $\text{span}\{v_i\}$
+        \item $\mu^A(E) = P$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Proof Sketch}
+    Proof sketch:
+    \begin{enumerate}
+        \item Prove for bounded self-adjoint operators
+            \begin{itemize}
+                \item Define continuous functional calculus
+                \item Generalize to the measurable functions
+            \end{itemize}
+        \item Extend to bounded normal case
+        \item Extend to unbounded self-adjoint case
+            \begin{itemize}
+                \item Cayley transform
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+    \begin{center}
+        THANKS YONAH FOR BEING A WONDERFUL MENTOR!
+    \end{center}
+\end{frame}
+
+\end{document}
