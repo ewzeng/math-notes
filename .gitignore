@@ -1,5 +1,6 @@
 *.synctex.gz
-**/master.pdf
-**/main.pdf
-
-# Remember to occasionally push master.pdf files
+*.aux
+*.log
+master.pdf
+main.pdf
+**/auto
