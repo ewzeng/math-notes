@@ -1,4 +1,5 @@
 *.synctex.gz
+*.out
 *.aux
 *.log
 master.pdf
