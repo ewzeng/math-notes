@@ -1,0 +1,20 @@
+\section{Normal and Separable Extensions}
+
+Let $E$ be an algebraic extension of base field $F$. We are interested in the homomorphisms $\s: E \to \bar{E}$ that fix $F$. Pictorially:
+\[
+    \begin{tikzcd}
+        E \arrow[r, "\sigma"]  & \bar{E} \\
+        F \arrow[u] \arrow[ru] &        
+    \end{tikzcd}
+\]
+We say:
+\begin{itemize}
+    \item $E/F$ is a \textbf{normal extension} if the image of every $\s$ is in $E$. That is, every $\s$ is an automorphism on $E$.
+    \item $E/F$ is a \textbf{separable extension} if $[E : F] = n$ is finite and and there are precisely $n$ distinct $\s$'s.
+\end{itemize}
+
+To get an intuition for these two definitions, we consider the scenario $E = F(\a)$ with $p$ being the minimal polynomial of $\a$. In this case, every $\s: E \to \bar{E}$ is uniquely determined by the value of $\s(\a)$, which must be a root of $p$. This implies:
+\begin{itemize}
+    \item If $E/F$ is normal, then every root of $p$ is in $E$. Thus, $E$ is the splitting field of $p$.
+    \item If $E/F$ is separable, then every root of $p$ is distinct. This is true for most polynomials and thus suggests that most finite extensions that one encounters are separable.
+\end{itemize}
