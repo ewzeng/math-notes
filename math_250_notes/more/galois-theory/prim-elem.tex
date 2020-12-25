@@ -2,16 +2,28 @@
 
 Call an extension $E/F$ \textbf{simple} if $E = F(\a)$ for some $\a$, where $\a$ is called a \textbf{primitive element}. The primitive element theorem states that all separable extensions are simple, and as a consequence, our earlier analysis of separable extensions was complete.
 
-To prove the primitive element theorem, we proceed as follows:
+The proof of the primitive element theorem can be split into three steps:
 \begin{enumerate}
     \item We show that if $E/F$ is separable, then $K/F$ is separable for any intermediate field $F \subset K \subset E$.
     \item We show if $F(\b, \g)/F$ is separable, the there exists $\a$ such that $F(\b, \g) = F(\a)$.
     \item Step 1 allows us to iteratively apply Step 2 to eventually find an $\a$ such that $E = F(\a)$.
 \end{enumerate}
 
-We elaborate more on the first two steps.
+In the following, we will elaborate more on the first two steps.
+
+\subsection{The Separable Degree}
+First, we define the \textbf{separable degree} $[E:F]_s$ of an extension $E:F$ to be the number of homomorphisms $\s: E \to \bar{E}$ that fix $F$. (Note that $E$ is a separable extension if $[E:F]_s = [E:F]$.) One important observation is that $[E:F]_s$ can be reinterpreted as the number of ways of extending any embedding $\t: F \to \bar{E}$ to a map $E \to \bar{E}$. This is because:
+\begin{enumerate}
+    \item Intuitively, there is an equal number of extensions for any embedding $\t$ (all embeddings are ``equal'').
+    \item The identity embedding $\t: F \to F$ has $[E:F]_s$ extensions.
+\end{enumerate}
+
+There are many consequences of this observation. One is that separable degrees are multiplicative. That is, if $K$ is an intermediate field betweeen $E$ and $F$, then
+\[
+    [E:F]_s = [E:K]_s \cdot [K:F]_s.
+\]
 
 \subsection{Step 1: Separability of Intermediate Fields}
 
 \subsection{Step 2: Reduction}
-
+The construction is to take $\a = \b + c\g$ for some choice of $c \in F$.
