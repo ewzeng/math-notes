@@ -36,4 +36,8 @@ If $E/F$ is separable, then $[E:F]_s = [E:F]$. Then the derived bounds on the se
 \subsection{Step 2: Reduction}
 Let $[F(\b,\g):F] = n$. The main idea of this step is to find $\a \in F(\b,\g)$ such that $[F(\a):F]_s = n$. Then the bounds on the separable degree imply $[F(\a):F] = n$, from which we deduce $F(\a) = F(\b,\g)$.
 
-How do we find such $\a$? The construction is to take $\a = \b + c\g$ for some ``good'' choice of $c \in F$.
+How do we find such $\a$? The construction is to take $\a = \b + c\g$ for some ``good'' choice of $c \in F$. If $\s_1, \dots, \s_n$ are the embeddings of $F(\b,\g) \to \overline{F(\b,\g)}$ that fix $F$, we can define the polynomial
+\[
+    p(x) = \prod_{i \neq j} \left( \s_i(\b + x\g) - \s_j(\b + x\g) \right).
+\]
+Note $p$ is a nonzero polynomial, so we let $c$ be chosen such that $p(c) \neq 0$. Then the $\s_i$'s induce distinct embeddings of $F(\b + c\g) = F(\a)$ which implies $[F(\a):F]_s = n$.
