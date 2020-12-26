@@ -9,21 +9,31 @@ The proof of the primitive element theorem can be split into three steps:
     \item Step 1 allows us to iteratively apply Step 2 to eventually find an $\a$ such that $E = F(\a)$.
 \end{enumerate}
 
-In the following, we will elaborate more on the first two steps.
+In the following, we introduce the separable degree and use that to provide an argument for the first two steps.
 
 \subsection{The Separable Degree}
-First, we define the \textbf{separable degree} $[E:F]_s$ of an extension $E:F$ to be the number of homomorphisms $\s: E \to \bar{E}$ that fix $F$. (Note that $E$ is a separable extension if $[E:F]_s = [E:F]$.) One important observation is that $[E:F]_s$ can be reinterpreted as the number of ways of extending any embedding $\t: F \to \bar{E}$ to a map $E \to \bar{E}$. This is because:
+We define the \textbf{separable degree} $[E:F]_s$ of an extension $E:F$ to be the number of homomorphisms $\s: E \to \bar{E}$ that fix $F$. (Note that $E$ is a separable extension if $[E:F]_s = [E:F]$.) One important observation is that $[E:F]_s$ can be reinterpreted as the number of ways of extending any embedding $\t: F \to \bar{E}$ to a map $E \to \bar{E}$. This is because:
 \begin{enumerate}
     \item Intuitively, there is an equal number of extensions for any embedding $\t$ (all embeddings are ``equal'').
     \item The identity embedding $\t: F \to F$ has $[E:F]_s$ extensions.
 \end{enumerate}
 
-There are many consequences of this observation. One is that separable degrees are multiplicative. That is, if $K$ is an intermediate field betweeen $E$ and $F$, then
+A consequence of this observation is that separable degrees are multiplicative. That is, if $K$ is an intermediate field betweeen $E$ and $F$, then
 \[
     [E:F]_s = [E:K]_s \cdot [K:F]_s.
 \]
+This is because there are $[K:F]_s$ maps $K \to \bar{E}$ that fix $F$ and each has $[E:K]_s$ extensions to a map $E \to \bar{E}$.
+
+As $[F(\a):F]_s \leq [F(\a):F]$, the multiplicativity of separable degrees allows us to conclude that $[E:F]_s \leq [E:F]$. In other words, the separable degree is always bounded by the actual degree of the extension.
 
 \subsection{Step 1: Separability of Intermediate Fields}
+The multiplicativity of separable degrees tells us
+\[
+    [E:F]_s = [E:K]_s \cdot [K:F]_s.
+\]
+If $E/F$ is separable, then $[E:F]_s = [E:F]$. Then the derived bounds on the separable degree allow us to conclude $[K:F]_s = [K:F]$. That is, $K$ is separable.
 
 \subsection{Step 2: Reduction}
-The construction is to take $\a = \b + c\g$ for some choice of $c \in F$.
+Let $[F(\b,\g):F] = n$. The main idea of this step is to find $\a \in F(\b,\g)$ such that $[F(\a):F]_s = n$. Then the bounds on the separable degree imply $[F(\a):F] = n$, from which we deduce $F(\a) = F(\b,\g)$.
+
+How do we find such $\a$? The construction is to take $\a = \b + c\g$ for some ``good'' choice of $c \in F$.
