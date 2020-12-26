@@ -1,3 +1,23 @@
-\section{Galois Extensions}
+\section{Galois Theory}
 
-We say $E/F$ is a \textbf{Galois extension} if it is both normal and separable.
+\subsection{Galois Extensions}
+
+We say $E/F$ is a \textbf{Galois extension} if it is both normal and separable. In other words, there are precisely $[E : F] = n$ distinct embeddings $E \to \bar{E}$ that fix $F$, and all of them are automorphisms of $E$. Via composition, these automorphisms form the ($n$-element) group $\Gal(E/F)$ which we call the \textbf{Galois group} of $E/F$.
+
+\subsection{The Galois Correspondance}
+
+The main theorem of Galois Theory states that there is bijection between intermediate fields of a Galois extension $E/F$ and the subgroups of $\Gal(E/F)$. The bijection is expressed as follows:
+\begin{itemize}
+    \item To an intermediate field $F \subset K \subset E$ we associate the subgroup of automorphisms that fix $K$. (In fact, this group is $\Gal(E/K) \subset \Gal(E/F)$. From our previous analysis, it is not hard to show $E/K$ is a Galois extension.)
+    \item Conversely, to an subgroup $H \subset \Gal(E/F)$ we associate the largest field that elements of $H$ leave fixed. This field is denoted as $E^H$.
+\end{itemize}
+
+Pictorally, the Galois correspondance can be expressed as:
+\[
+    \begin{tikzcd}
+        E \arrow[d, no head]   & e \arrow[d, no head] \\
+        E^H \arrow[d, no head] & H \arrow[d, no head] \\
+        F                      & \Gal(E/F)           
+    \end{tikzcd}
+\]
+Notice the Galois correspondance is order-reversing: larger fields correspond to smaller groups and vice versa. The importance of the Galois correspondance has led mathematicians to call any order-reversing bijection a \textbf{Galois connection}.
