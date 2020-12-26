@@ -1,18 +1,18 @@
 \section{Primitive Elements}
 
-Call an extension $E/F$ \textbf{simple} if $E = F(\a)$ for some $\a$, where $\a$ is called a \textbf{primitive element}. The primitive element theorem states that all separable extensions are simple, and as a consequence, our earlier analysis of separable extensions was complete.
+Call an extension $E/F$ \textbf{simple} if $E = F(\a)$ for some $\a$ (called a \textbf{primitive element}). The primitive element theorem states that all separable extensions are simple, and as a consequence, our earlier analysis of separable extensions was complete.
 
 The proof of the primitive element theorem can be split into three steps:
 \begin{enumerate}
     \item We show that if $E/F$ is separable, then $K/F$ is separable for any intermediate field $F \subset K \subset E$.
-    \item We show if $F(\b, \g)/F$ is separable, the there exists $\a$ such that $F(\b, \g) = F(\a)$.
+    \item We show if $F(\b, \g)/F$ is separable, then there exists $\a$ such that $F(\b, \g) = F(\a)$.
     \item Step 1 allows us to iteratively apply Step 2 to eventually find an $\a$ such that $E = F(\a)$.
 \end{enumerate}
 
-In the following, we introduce the separable degree and use that to provide an argument for the first two steps.
+In the following, we provide more detail for the first two steps. To do so, we first introduce the concept of separable degrees.
 
-\subsection{The Separable Degree}
-We define the \textbf{separable degree} $[E:F]_s$ of an extension $E:F$ to be the number of homomorphisms $\s: E \to \bar{E}$ that fix $F$. (Note that $E$ is a separable extension if $[E:F]_s = [E:F]$.) One important observation is that $[E:F]_s$ can be reinterpreted as the number of ways of extending any embedding $\t: F \to \bar{E}$ to a map $E \to \bar{E}$. This is because:
+\subsection{Separable Degree}
+We define the \textbf{separable degree} $[E:F]_s$ of an extension $E/F$ to be the number of homomorphisms $\s: E \to \bar{E}$ that fix $F$. (Note that $E$ is a separable extension if $[E:F]_s = [E:F]$.) One important observation is that $[E:F]_s$ can be reinterpreted as the number of ways of extending any embedding $\t: F \to \bar{E}$ to a map $E \to \bar{E}$. This is because:
 \begin{enumerate}
     \item Intuitively, there is an equal number of extensions for any embedding $\t$ (all embeddings are ``equal'').
     \item The identity embedding $\t: F \to F$ has $[E:F]_s$ extensions.
@@ -22,7 +22,7 @@ A consequence of this observation is that separable degrees are multiplicative. 
 \[
     [E:F]_s = [E:K]_s \cdot [K:F]_s.
 \]
-This is because there are $[K:F]_s$ maps $K \to \bar{E}$ that fix $F$ and each has $[E:K]_s$ extensions to a map $E \to \bar{E}$.
+This is because there are $[K:F]_s$ embeddings $K \to \bar{E}$ that fix $F$ and each has $[E:K]_s$ extensions to an embedding $E \to \bar{E}$.
 
 As $[F(\a):F]_s \leq [F(\a):F]$, the multiplicativity of separable degrees allows us to conclude that $[E:F]_s \leq [E:F]$. In other words, the separable degree is always bounded by the actual degree of the extension.
 
@@ -31,7 +31,7 @@ The multiplicativity of separable degrees tells us
 \[
     [E:F]_s = [E:K]_s \cdot [K:F]_s.
 \]
-If $E/F$ is separable, then $[E:F]_s = [E:F]$. Then the derived bounds on the separable degree allow us to conclude $[K:F]_s = [K:F]$. That is, $K$ is separable.
+If $E/F$ is separable, then $[E:F]_s = [E:F]$. Then from the derived bounds on the separable degree, we conclude $[K:F]_s = [K:F]$. That is, $K$ is separable.
 
 \subsection{Step 2: Reduction}
 Let $[F(\b,\g):F] = n$. The main idea of this step is to find $\a \in F(\b,\g)$ such that $[F(\a):F]_s = n$. Then the bounds on the separable degree imply $[F(\a):F] = n$, from which we deduce $F(\a) = F(\b,\g)$.
