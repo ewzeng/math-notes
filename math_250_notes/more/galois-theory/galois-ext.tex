@@ -4,7 +4,7 @@
 
 We say $E/F$ is a \textbf{Galois extension} if it is both normal and separable. In other words, there are precisely $[E : F] = n$ distinct embeddings $E \to \bar{E}$ that fix $F$, and all of them are automorphisms of $E$. Via composition, these automorphisms form the ($n$-element) group $\Gal(E/F)$ which we call the \textbf{Galois group} of $E/F$.
 
-\subsection{The Galois Correspondance}
+\subsection{The Galois Correspondence}
 
 The main theorem of Galois Theory states that there is bijection between intermediate fields of a Galois extension $E/F$ and the subgroups of $\Gal(E/F)$. The bijection is expressed as follows:
 \begin{itemize}
@@ -12,7 +12,7 @@ The main theorem of Galois Theory states that there is bijection between interme
     \item Conversely, to an subgroup $H \subset \Gal(E/F)$ we associate the largest field that elements of $H$ leave fixed. This field is denoted as $E^H$.
 \end{itemize}
 
-Pictorally, the Galois correspondance can be expressed as:
+Pictorally, the Galois correspondence can be expressed as:
 \[
     \begin{tikzcd}
         E \arrow[d, no head]   & e \arrow[d, no head] \\
@@ -20,4 +20,25 @@ Pictorally, the Galois correspondance can be expressed as:
         F                      & \Gal(E/F)           
     \end{tikzcd}
 \]
-Notice the Galois correspondance is order-reversing: larger fields correspond to smaller groups and vice versa. The importance of the Galois correspondance has led mathematicians to call any order-reversing bijection a \textbf{Galois connection}.
+Notice the Galois correspondence is order-reversing: larger fields correspond to smaller groups and vice versa. The importance of the Galois correspondence has led mathematicians to call any order-reversing bijection a \textbf{Galois connection}.
+
+\subsection{Proof}
+The proof that the Galois correspondence is a bijection can be split into two halves. We first prove $K \rightarrow \Gal(E/K) \rightarrow E^{\Gal(E/K)}$ is the identity on the set of intermediate fields and then prove $H \rightarrow E^H \rightarrow \Gal(E/E^H)$ is the identity on the set of subgroups of $\Gal(E/F)$.
+
+\subsubsection{First Half: $E^{\Gal(E/K)} = K$}
+To prove $E^{\Gal(E/K)} = K$, it suffices to show that every element $\a \in E-K$ is moved by some automorphism $\s \in \Gal(E/K)$. If we let $p$ be the minimal polynomial of $\a$ over $K$, we note that $\a$ can be mapped to any of the roots of $p$. As $E/K$ is Galois and thus separable, $p$ has distinct roots, which implies not all automorphisms fix $\a$.
+
+\subsubsection{Second Half: $H = \Gal(E/E^H)$}
+The proof of the other half is more tricky. The basic idea is to show $E/E^H$ is at most a degree $|H| = n$ extension, which implies $[E : E^H] = |\Gal(E/E^H)| \leq n$. But because $H \subset \Gal(E/E^H)$, this implies $\Gal(E/E^H) = H$.
+
+Showing $[E : E^H] \leq n$ takes three steps:
+\begin{enumerate}
+    \item For each $\a \in E$, we show $E^H(\a)/E^H$ is a separable extension. To show this, consider the polynomial
+        \[
+            p(x) = \prod_{\b \in H\a} (x - \b)
+        \]
+        where $H\a$ denotes the orbit of $\a$ under the action of $H$. As this is invariant under $H$, all the coefficents are in $E^H$, and just $\a$ satifies a polynomial over $E^H$ with distinct roots.
+    \item By the multiplicativity of separable degrees, Step 1 implies $E/E^H$ is a separable extension.
+    \item Applying the primitive element theorem, we conclude $[E : E^H]$ is less than the largest degree of any element $\a \in E$, which is bounded by $|H\a| = |H|$.
+\end{enumerate}
+
