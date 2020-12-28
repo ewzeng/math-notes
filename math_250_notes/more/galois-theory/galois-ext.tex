@@ -2,7 +2,7 @@
 
 \subsection{Galois Extensions}
 
-We say $E/F$ is a \textbf{Galois extension} if it is both normal and separable. In other words, there are precisely $[E : F] = n$ distinct embeddings $E \to \bar{E}$ that fix $F$, and all of them are automorphisms of $E$. Note (via composition) that these automorphisms form a ($n$-element) group. We denote this group as $\Gal(E/F)$ and call it the \textbf{Galois group} of $E/F$.
+We say $E/F$ is a \textbf{Galois extension} if it is both normal and separable. In other words, $E/F$ is Galois if there are precisely $[E : F] = n$ distinct embeddings $E \to \bar{E}$ that fix $F$, and all of them automorphisms of $E$. Note (via composition) that these automorphisms form a ($n$-element) group. We denote this group as $\Gal(E/F)$ and call it the \textbf{Galois group} of $E/F$.
 
 \subsection{The Galois Correspondence}
 
@@ -41,7 +41,7 @@ Showing $[E : E^H] \leq |H|$ takes three steps:
         \[
             p(x) = \prod_{\b \in H\a} (x - \b)
         \]
-        where $H\a$ denotes the orbit of $\a$ under the action of $H$. As $p$ is invariant under $H$, all the coefficents of $p$ are in $E^H$, and thus $\a$ satifies a polynomial over $E^H$ with \underline{distinct} roots.
+        where $H\a$ denotes the orbit of $\a$ under the action of $H$. As $p$ is invariant under $H$, all the coefficents of $p$ are in $E^H$, and thus $\a$ satifies a polynomial over $E^H$ with distinct roots. Hence the minimal polynomial of $\a$ has distinct roots and therefore $E^H(\a)/E^H$ is separable.
     \item We show if $E^H(\a)/E^H$ is separable for all $\a \in E$, then $E/E^H$ is separable. (Build a tower from $E^H$ to $E$ and iteratively apply the multiplicativity of separable degrees.)
     \item Applying the primitive element theorem, we conclude $[E : E^H]$ is equal to the largest possible $[E^H(\a): E^H]$, which is bounded by $|H\a| \leq |H|$ as $\a$ is a root of the polynomial $p$ above.
 \end{enumerate}

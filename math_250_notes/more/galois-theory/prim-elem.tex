@@ -38,6 +38,9 @@ Let $[F(\b,\g):F] = n$. The main idea of this step is to find $\a \in F(\b,\g)$ 
 
 How do we find such $\a$? The construction is to take $\a = \b + c\g$ for some ``good'' choice of $c \in F$. If $\s_1, \dots, \s_n$ are the embeddings of $F(\b,\g) \to \overline{F(\b,\g)}$ that fix $F$, we can define the polynomial
 \[
-    p(x) = \prod_{i \neq j} \left( \s_i(\b + x\g) - \s_j(\b + x\g) \right).
+    \begin{split}
+        p(x) &= \prod_{i \neq j} \left( \s_i(\b) + x\s_i(\g) - \s_j(\b) - x\s_j(\g) \right)\\
+             &= \prod_{i \neq j} \left( \s_i(\b + x\g) - \s_j(\b + x\g) \right) \quad (\text{when } x \in F)\\
+    \end{split}
 \]
-Note $p$ is a nonzero polynomial, so we let $c$ be chosen such that $p(c) \neq 0$. Then the $\s_i$'s induce distinct embeddings of $F(\b + c\g) = F(\a)$ which implies $[F(\a):F]_s = n$.
+Note $p$ is a nonzero polynomial, so we let $c \in F$ be chosen such that $p(c) \neq 0$. Then the $\s_i$'s induce distinct embeddings of $F(\b + c\g) = F(\a)$ which implies $[F(\a):F]_s = n$.
