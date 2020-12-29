@@ -1,1 +1,22 @@
 \section{Chain Maps}
+Given a simplical complex $K$, the chain complex $C(K)$ of $K$ is the chain
+\[
+    \begin{tikzcd}
+        \dots \arrow[r, "\partial"] & C_q(K) \arrow[r, "\partial"] & C_{q-1}(K) \arrow[r, "\partial"] & \dots \arrow[r, "\partial"] & C_0(K) \arrow[r] & 0
+    \end{tikzcd}.
+\]
+A chain map between $C(K)$ and $C(L)$ is a set of maps $\{\phi_q\}$ such that the following diagram commutes:
+\[
+    \begin{tikzcd}
+        \dots \arrow[r, "\partial"]  & C_q(K) \arrow[r, "\partial"] \arrow[d, "\phi_q"] & C_{q-1}(K) \arrow[r, "\partial"] \arrow[d, "\phi_{q-1}"] & \dots \arrow[r, "\partial"]  & C_0(K) \arrow[r] \arrow[d, "\phi_0"] & 0 \\
+        \dots \arrow[r, "\partial"'] & C_q(L) \arrow[r, "\partial"']                 & C_{q-1}(L) \arrow[r, "\partial"']                     & \dots \arrow[r, "\partial"'] & C_0(L) \arrow[r]                  & 0
+    \end{tikzcd}.
+\]
+In particular, the commutativity implies $\phi_q(Z_q(K)) \subset Z_q(L)$ and $\phi_q(B_q(K)) \subset B_q(L)$ and therefore, $\phi_q$ induces a (well-defined) natural map from $H_q(K) = Z_q(K) / B_q(K)$ to $H_q(L) = Z_q(L) / B_q(L)$. That is, a chain map between $C(K)$ and $C(L)$ induces a set of maps between the corresponding homology groups of $K$ and $L$:
+\[
+    \begin{tikzcd}
+        \dots & H_q(K) \arrow[d, "\phi_{q*}"] & H_{q-1}(K) \arrow[d, "\phi_{(q-1)*}"] & \dots & H_0(K) \arrow[d, "\phi_{0*}"] \\
+        \dots & H_q(L)                     & H_{q-1}(L)                         & \dots & H_0(L)                  
+    \end{tikzcd}
+\]
+This set of maps $\{\phi_{q*}\}$ is usually denoted as $\phi_*$.

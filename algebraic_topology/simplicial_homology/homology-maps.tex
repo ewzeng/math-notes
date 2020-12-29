@@ -1,0 +1,24 @@
+\section{Maps between Homology Groups}
+
+Let $f: K \to L$ be a (continuous) map between two objects. Note $f$ takes loops on $K$ to loops on $L$. Also note that deforming a loop on $K$ also deforms its image on $L$. Thus $f$ induces a map from equivalence classes of loops on $K$ to equivalence classes of loops on $L$. We would like to formalize this more rigorously.
+
+That is, given a map $f: |K| \to |L|$ between two simplical complexes, we would like to define a set of induced maps $f_{q*}: H_q(K) \to H_q(L)$ in line with our intuition above. To do this, we first consider $f$ to be simplical, and then extend the definition to all maps $f$ via simplicial approximation.
+
+\subsection{Simplical Maps}
+Given a simplicial map $s: |K| \to |L|$, there is a naturally induced chain map given by:
+\[
+    s_q\left((v_1, \dots v_q)\right) =
+    \begin{cases}
+        \left(s(v_1), \dots, s(v_q)\right) & \text{if the $s(v_i)$ are distinct} \\
+        0 & \text{otherwise}
+    \end{cases}.
+\]
+Thus, from the previous section, we conclude every simplical map $s: K \to L$ induces a set of maps $s_*$ between the corresponding homology groups of $K$ and $L$. (Roughly, $s_*$ takes each $q$-cycle to its image via $s$.)
+
+\subsection{Continuous Maps}
+Now given any map $f: |K| \to |L|$, we can consider a simplicial approximation $s: |K| \to |L|$ and define $f_* = s_*$. The proof that $f_*$ is independent of the choice of $s$ is slightly technical but intuitively obvious.
+
+\subsection{Homotopy Invariance}
+If $f,g: |K| \to |L|$ are homotopic, then $f$- and $g$-images of any $q$-cycle can be deformed from one to another. That is, the induced maps $f_*$ and $g_*$ should be the same.
+
+Now suppose $K$ and $L$ are homotopy equivalent simplices, with $f: |K| \to |L|$, $g: |L| \to |K|$, and $g \circ f \cong Id_{|K|}$ and $f \circ g \cong Id_{|L|}$. Note $Id_{|K|}$ induces the identity map on the homology groups of $K$. Thus, from our previous observation, $(g \circ f)_* = g_* \circ f_*$ is the identity map. Applying the same logic to $(f \circ g)_*$, we conclude $f_*$ and $g_*$ are inverses. Hence we conclude that homology groups of $K$ and $L$ are the same. That is, \textbf{homology is invariant under homotopy equivalence}!
