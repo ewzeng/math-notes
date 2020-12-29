@@ -2,9 +2,9 @@
 
 Let $f: K \to L$ be a (continuous) map between two objects. Note $f$ takes loops on $K$ to loops on $L$. Also note that deforming a loop on $K$ also deforms its image on $L$. Thus $f$ induces a map from equivalence classes of loops on $K$ to equivalence classes of loops on $L$. We would like to formalize this more rigorously.
 
-That is, given a map $f: |K| \to |L|$ between two simplical complexes, we would like to define a set of induced maps $f_{*}: H(K) \to H(L)$ in line with our intuition above. To do this, we first consider $f$ to be simplical, and then extend the definition to all maps $f$ via simplicial approximation.
+That is, given a map $f: |K| \to |L|$ between two simplicial complexes, we would like to define a set of induced maps $f_{*}: H(K) \to H(L)$ in line with our intuition above. To do this, we first consider $f$ to be simplicial, and then extend the definition to all maps $f$ via simplicial approximation.
 
-\subsection{Simplical Maps}
+\subsection{Simplicial Maps}
 Given a simplicial map $s: |K| \to |L|$, there is a naturally induced chain map given by:
 \[
     s_q\left((v_1, \dots v_q)\right) =
@@ -13,7 +13,7 @@ Given a simplicial map $s: |K| \to |L|$, there is a naturally induced chain map 
         0 & \text{otherwise}
     \end{cases}.
 \]
-Thus, from the section on chain maps, we conclude every simplical map $s: K \to L$ induces a set of maps $s_*: H(K) \to H(L)$. (Roughly, $s_*$ takes each $q$-cycle to its image via $s$.)
+Thus, from the section on chain maps, we conclude every simplicial map $s: K \to L$ induces a set of maps $s_*: H(K) \to H(L)$. (Roughly, $s_*$ takes each $q$-cycle to its image via $s$.)
 
 \subsection{Continuous Maps}
 Now given any map $f: |K| \to |L|$, we can consider a simplicial approximation $s$ of $f$ and define $f_* = s_*$. The proof that $f_*$ is independent of the choice of $s$ is slightly technical but intuitively obvious.

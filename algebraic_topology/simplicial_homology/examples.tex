@@ -1,1 +1,31 @@
-\section{Examples}
+\section{Examples and Consequences}
+In this section, we compute some homology groups.
+
+$0$-cycles are vertices. One vertex can be ``deformed'' into another if there is a path connecting the two vertices. Thus we conclude that for a simplicial complex $K$,
+\[
+    H_0(K) = \bZ^n, \quad n = \text{ number of (path) connected components of $K$ }.
+\]
+
+It is theorem that the first homology group $H_1(K)$ of a connected simplicial complex $K$ is the abelianization of its fundamental group. To see this, we first view the fundamental group as a group of edge loops based at some vertex $v$ and then consider the natural embedding of these edge loops into $H_1(K)$:
+\[
+    \phi: E(\pi,v) \to H_1(K).
+\]
+The proof follows after we show $\phi$ is surjective and $\ker(\phi)$ is the commutator $[E(K,v), E(K,v)]$.
+
+Note that the homology groups of a 0-simplex $V$ (i.e. a vertex) are:
+\[
+    H_0(V) = \bZ, H_n(V) = 0 \text{ for $n > 0$ }.
+\]
+Because cones are homotopy equivalent to a vertex, we conclude that homology groups of any cone $C$ is
+\[
+    H_0(C) = \bZ, H_n(C) = 0 \text{ for $n > 0$ }.
+\]
+Let $\D^{n+1}$ be the standard $n+1$-simplex and let $\Sigma^n$ be the simplices in the boundary of $\D^{n+1}$. Note $\Sigma^n$ and $\D^{n+1}$ have the same $n$-skeleton, so they have the same $q$-homology groups up to $q = n - 1$. Because $\D^{n+1}$ is a cone over $\D^n$, we conclude that
+\[
+    H_0(\Sigma^n) = \bZ, H_m(\Sigma^n) = 0 \text{ for $0 < m < n$ }.
+\]
+It is not difficult to see that $H_n(\Sigma^n) = \bZ$ (use the definition of homology groups). As $|\Sigma^n|$ is homeomorphic to $S^n$, we thus deduce:
+\[
+    H_0(S^n) = \bZ, H_m(S^n) = 0 \text{ for $0 < m < n$ }, H_n(S^n) = \bZ.
+\]
+By homotopy invariance, this implies $S^n$ and $S^m$ are not homotopic if $n \neq m$ (and thus not homeomorphic). Using stereographic projection, we conclude that $\bR^n$ and $\bR^m$ are not homeomorphic if $n \neq m$. (This is a surprisingly nontrivial fact to prove.)
