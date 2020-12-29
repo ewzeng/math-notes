@@ -1,5 +1,5 @@
 \section{Chain Maps}
-Given a simplical complex $K$, the chain complex $C(K)$ of $K$ is the chain
+Given a simplical complex $K$, define the chain complex $C(K)$ to be the chain
 \[
     \begin{tikzcd}
         \dots \arrow[r, "\partial"] & C_q(K) \arrow[r, "\partial"] & C_{q-1}(K) \arrow[r, "\partial"] & \dots \arrow[r, "\partial"] & C_0(K) \arrow[r] & 0
@@ -19,4 +19,4 @@ In particular, the commutativity implies $\phi_q(Z_q(K)) \subset Z_q(L)$ and $\p
         \dots & H_q(L)                     & H_{q-1}(L)                         & \dots & H_0(L)                  
     \end{tikzcd}
 \]
-This set of maps $\{\phi_{q*}\}$ is usually denoted as $\phi_*$.
+This set of maps $\{\phi_{q*}\}$ is usually denoted as $\phi_*$ and we often write $\phi_*: H(K) \to H(L)$, where $H(K)$ and $H(L)$ represent the homology groups of $K$ and $L$, respectively.
