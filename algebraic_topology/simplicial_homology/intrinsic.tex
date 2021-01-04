@@ -1,0 +1,20 @@
+\section{Homology as an Intrinsic Property}
+Given an simplicial complex $K$, we intuitively described its $q$-th homology group to be some group of $q$-dimensional loops, identifying two loops to be equivalent if one can be deformed into the other. For the most part, the rigorous definition of the $q$-th homology group follows this idea: we consider some group of $q$-cycles, identifying two cycles to be equivalent if one can be deformed into the other.
+
+However, problems arise when we try to reconcile $q$-cycles with the notion of $q$-dimensional loops. As an example, note:
+\begin{itemize}
+    \item 1-loops: loops on $|K|$
+    \item 1-cycles: edge loops on $K$
+\end{itemize}
+There are two immediate conflicts:
+\begin{itemize}
+    \item 1-cycles are a strict subset of 1-loops
+    \item 1-cycles depend on the triangulation of $|K|$: two different simplicial complexes (with different edge loops) can have the same underlying topology $|K|$
+\end{itemize}
+
+Does this mean our intuition is incorrect? No! Given a triangulation of $|K|$, every 1-loop can be deformed into a 1-cycle. Thus, the set of equivalent 1-loops is the same as the set of equivalent 1-cycles, verifying our intuition. As a result, we conclude that $H_1(K)$ is independent of the triangulation of $|K|$ (that is, it is an intrinsic property).
+
+The situation is paralleled in higher dimensions with $q$-cycles (although our notions of a ``$q$-dimensional loop'' are more murky). In any case, we can still conclude that $H_q(K)$ is independent of the triangulation of $|K|$.
+
+\subsection{Homeomorphisms}
+Our intutive description of homology groups suggests that if two simplicial complexes are homeomorphic, then they have the same homology groups. This allows us to extend the definition of homology to topological objects homeomorphic to a simplicial complex.
