@@ -1,7 +1,16 @@
-\section{Time-Evolution TODO}
-\begin{itemize}
-    \item Schr\"{o}dinger equation, quantum hamiltonian
-    \item Time independent Schr\"{o}dinger equation
-    \item Relation of quantum hamiltonian as a quantization of hamiltonian (and thus energy)
-    \item Turning common hamiltonians into corresponding quantum hamiltonians
-\end{itemize}
+\section{Time-Evolution}
+A state $\psi \in \cH$ of a quantum system $\cS$ is also known as a \textbf{wave function}. So far, we have been considering the state of $\cS$ at a fixed point in time. How the state of $\cS$ evolves over time is given by the \textbf{Schr\"{o}dinger wave equation}:
+\[
+    \frac{d\psi}{dt} = \frac{1}{i\hbar}\hat{H}\psi.
+\]
+$\hat{H}$ is known as the \textbf{quantum Hamiltonian}, and it is dependent on the system $\cS$. It is the quantum observable corresponding to energy.
+
+To solve the Schr\"{o}dinger equation, it suffices to solve the \textbf{time-independent Schr\"{o}dinger equation}
+\[
+    \hat{H}\psi = E\psi.
+\]
+That is, we look for eigenvalues of $\hat{H}$. If $E$ is an eigenvalue and the initial state of a system is $\psi$, then
+\[
+    \psi(t) = e^{-itE}\psi
+\]
+is a solution to the Schr\"{o}dinger wave equation. As two vectors that differ by a scalar represent the same state, $\psi(t)$ represents the same state as $\psi$. Thus, solutions to the time-independent equation are stationary states. Note $E$ represents the energy of this stationary state (from our previous discussion, the probability of observing the energy to be $E$ in this state is 1).
