@@ -1,0 +1,53 @@
+\section{Starting Principles}
+
+The state of a quantum system $\cS$ is represented by a vector $\psi$ in the appropriate Hilbert space $\cH$. Two vectors that differ by a scalar represent the same state.
+\begin{itemize}
+    \item $\cH$ is called the \textbf{state space}.
+    \item In classical mechanics, a state represents a \textbf{configuration} of the system. In quantum mechanics, a state instead encodes a probability distribution of configurations. More precisely, each $\psi \in \cH$ is a function on the space of configurations, and the probability of observing a set of configurations $D$ in a state $\psi$ is
+    \[
+        \frac{\int_D |\psi|^2}{\|\psi\|_2^2}.
+    \]
+    \item Very often, $\cH$ is the space of (complex) $\cL^2$ functions on the configuration space.
+\end{itemize}
+
+A \textbf{classical observable} of $\cS$ (i.e. a physical quantity that can be observed by taking a measurement of $\cS$) is a function $f$ on configuration space of $\cS$. To each classical observable, there exists a corresponding \textbf{quantum observable} $\hat{f}$ which is a self-adjoint operator on $\cH$.
+
+If $\cS$ is in state represented by unit vector $\psi \in \cH$, then the probability distribution for the measurement of some observable $f$ satisfies
+\[
+    \mathbb E[f] = \langle \psi, \hat{f} \psi \rangle.
+\]
+This is the key relationship between $f$ and $\hat{f}$. Notice we are always measuring a classical observable. In a quantum state, a classical observable no longer takes a definite value; the corresponding quantum observable encodes the probabilities of what values the classical observable can take.
+
+\subsection{Eigenvalues}
+
+Suppose quantum observable $\hat{f}$ has an orthonomormal basis of eigenvectors $e_i$ with eigenvalues $\l_i$. Furthermore, suppose $\cS$ is in a state represented by unit vector $\psi \in \cH$, where
+\[
+    \psi = \sum a_i e_i.
+\]
+Note that
+\[
+    \mathbb E[f] = \sum \l_i |a_i|^2, \quad \sum |a_i|^2 = 1.
+\]
+This \underline{suggests but does not imply} that we only observe the $\l_i$'s when we measure $f$, with
+\[
+    \mathbb P(f = \l_i) = |a_i|^2.
+\]
+However, even though it is not implied, the above statement happens to be always true (indeed, it is the most natural). That is, the possible values of $f$ are the eigenvalues of $\hat{f}$. Put more directly, \textbf{we only observe eigenvalues}.
+
+To generalize this notion in the case where $\hat{f}$ does not have an orthonormal basis of eigenvectors, we will need introduce the \textbf{spectrum} and use the spectral theorem for unbounded operators.
+
+\subsection{Example}
+A simple quantum system $\cS$ is a particle on the real line. In this case, we have:
+\begin{itemize}
+    \item Configuration space: $\bR$. Each configuration is a possible position of the particle.
+    \item State space: $\cL^2(\bR)$.
+    \item Common quantum observables are the position operator $X\psi(x) = x\psi(x)$ and the momentum operator $P\psi(x) = -i\bat{h}\frac{d\psi}{dx}$. Indeed, observe if $\psi$ is a unit vector, then
+    \[
+        \langle \psi, X\psi \rangle = \int_\bR x|\psi(x)|^2dx = \mathbb E[\text{position of particle}].
+    \]
+\end{itemize}
+One may have noticed that the position and momentum operators are not defined on the whole domain $\cL^2(\bR)$. Also, one may recall that all self-adjoint operators are bounded, and the position and momentum are clearly not bounded. What's going on here?
+
+It happens that the position and momentum operators can be defined on a dense subset of $\cH = \cL^2(\bR)$, and there is a notion of self-adjointness for such operators. In fact, we generalize the definition of linear operators to include such functions.
+
+Also observe the position operator does not have an othonormal basis of eigenvectors (in fact, it has none!). However, the spectrum of the position operator is $\bR$. This suggests that the particle may be observed anywhere on the real line $\bR$. (Something similar happens with the momentum operator).
