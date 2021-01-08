@@ -2,6 +2,8 @@
 *.out
 *.aux
 *.log
+*.nav
+*.snm
 master.pdf
 main.pdf
 **/auto
