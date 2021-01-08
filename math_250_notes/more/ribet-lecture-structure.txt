@@ -1,0 +1,37 @@
+Previous topics: group theory
+
+---------------------------
+Starting at Sept 22 Lecture
+---------------------------
+
+Def of rings
+Ex: poly, \bZ
+Term: units, hom, ideals, principal rings, PIDs
+Def of com rings
+Prime and max ideals (and properties)
+Noetherian rings (are PIDs Notherian?)
+Chinese RT
+
+Def of modules
+
+Localization (of rings and modules), local rings
+Localization as a functor
+
+Def of UFDs
+Relationship between PIDs, UFDs, prime, irreducible elements
+
+Modules and Hom functors and exactness (and splitting)
+Relation to free modules, projective modules (and relationships)
+
+Dedekind domains
+
+Tensor, flat modules
+Relation between flat modules, projective modules, and torsion free
+
+Injective modules and baer
+
+---------------------------
+Ending at Oct 27 Lecture
+---------------------------
+
+Next topics: polynomials, fields, and Galois
