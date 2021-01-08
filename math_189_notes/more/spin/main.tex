@@ -1,0 +1,25 @@
+\def\topic{Spin}
+\input{../preamble.tex}
+
+\begin{document}
+    \begin{center}
+        \color{blue}
+        \textsf{Notes by Edward Zeng (edwardzeng@berkeley.edu). Please contact for corrections.}
+
+        \color{red}
+        \textsf{Last Updated: \today}
+    \end{center}
+
+    % start notes
+    \section{Spin}
+    It is generally believed that the physics of our (3D) universe is invariant under the rotation group $\SO(3)$. This implies that the state space of the universe should carry a natural projective unitary representation of $\SO(3)$ that commutes with the Hamiltonian operator of the universe. As the state space of the universe is built out of state spaces for each type of particle, this suggests that each particle carries a projective unitary representation.
+
+    The simplest state space of a particle is $\cL^2(\bR^3)$, which carries a natural unitary representation of $\SO(3)$ (and thus projective as well). However, experimental evidence suggests that the state space for each particle should incorporate ``internal degrees of freedom'' and should instead be $\cL^2(\bR^3) \otimes V_l$, where $V_l$ carries an irreducible projective unitary representation of $\SO(3)$ with spin $l$ (see notes on $\so(3)$ and $\SO(3)$).
+
+    \section{Modifications for the Hydrogen Atom}
+    In our study of the hydrogen atom, we used $\cL^2(\bR^3)$ as the state space of the electron. However, because experimental evidence tells us that electrons are spin-$1/2$ particles, the real state space of the system is $\cL^2(\bR^3) \otimes V_{1/2}$.
+
+    This implies that we were using the wrong Schr\"{o}dinger equation! Does this mean our results are incorrect? It happens that the introduction of spin perturbs the system only slightly, so the energy spectrum we derived is extremely close to the energy spectrum that takes spin into consideration.
+    % end notes
+\end{document}
+
