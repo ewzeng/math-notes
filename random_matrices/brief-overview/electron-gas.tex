@@ -1,0 +1,15 @@
+\section{A Gas of Electrons}
+Note we can rewrite the joint distribution of eigenvalues as
+\[
+    \begin{split}
+        P(\l_1, \dots, \l_n) &= Z^{-1} \prod_{i < j} |\l_i-\l_j|^2e^{-n\sum V(\l_i)}\\
+        &= Z^{-1} \exp\left\{- \left( \sum_{i < j} \log |\l_i-\l_j|^{-1} + n \sum V(\l_i) \right) \right\}\\
+    \end{split}
+\]
+In statistical mechanics, this happens to be the equation representing the distribution of an electron gas on the real line!
+\begin{itemize}
+    \item $Z$ happens to be the partition function of this electron gas!
+    \item The position of the electrons are the eigenvalues (the log difference in the equation represents the logarithic Couloumb potential). Thus we have a ``repulsion of eigenvalues.''
+    \item $V$ represents an external confining potential that presents the eigenvalues escaping to infinity.
+\end{itemize}
+

@@ -1,3 +1,4 @@
+
 \documentclass[12pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
@@ -6,6 +7,8 @@
 
 %Title and margin formatting
 \usepackage[left=2cm,top=3cm,bottom=3cm,right=2cm]{geometry} %Customize margins.
+\usepackage{titling} %Customize the position of the title.
+\setlength{\droptitle}{-50pt} %Raise the position of the title.
 
 %Macros for Greek Letters
 \renewcommand{\a}{\alpha}
@@ -60,10 +63,21 @@
 %Other macros
 \renewcommand{\i}{\infty}
 
+\title{An Overview of Basic Random Matrix Theory}
+\author{Edward Zeng}
+
 \begin{document}
 
+\maketitle
+\begin{center}
+    [Based on the lecture notes of Tiago Pereira]
+\end{center}
+
 % Start notes
-\input{spectrum_of_hermitian_operators.tex}
+\input{motivation.tex}
+\input{semi-circular.tex}
+\input{unitary-ensembles.tex}
+\input{electron-gas.tex}
 % End notes
 
 \end{document}

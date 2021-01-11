@@ -1,0 +1,19 @@
+\section{Unitary Ensembles}
+A Guassian Unitary Ensemble (GUE) is a (Hermitian) random matrix ensemble that has a probability density function of the form
+\[
+    P(H) = \frac{1}{Z}\exp\left\{ -\frac{1}{4}Tr H^2 \right\}
+\]
+where $Z$ is the normalization factor.
+
+It happens that any (Hermitian) random matrix ensemble (invariant under unitary transformations) with statistically independent elements is a GUE. In particular, Wigner ensembles are GUEs.
+
+If the elements of the matrix are not neccessarily independent, then we instead get a unitary ensemble, with has a probability density function of the form
+\[
+    P(H) = \frac{1}{Z}\exp\left\{ -\frac{1}{4}Tr V(H) \right\}.
+\]
+Here, $V$ is some polynomial, not necessarily $V(H) = H^2$.
+
+From a unitary ensemble of $n \times n$ Hermitian matrices, we can compute the joint probability disttibution of eigenvalues to get
+\[
+    P(\l_1, \dots \l_n) = \frac{1}{Z}e^{-n \sum_i V(\l_i)} \prod_{i < j} |\l_i-\l_j|^2
+\]
