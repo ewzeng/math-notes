@@ -1,0 +1,16 @@
+\section{Motivation for Random Matrix Theory}
+Computing the energy spectrum of a complicated atom (like uranium) requires solving the eigenvalue problem
+\[
+    H\psi = E\psi.
+\]
+There are two problems with this:
+\begin{itemize}
+    \item The quantum Hamiltonian $H$ is complicated to write down.
+    \item With such complicated $H$, the equation is too difficult to solve.
+\end{itemize}
+
+The solution is to consider a random $N \times N$ Hermitian matrix instead of $H$, and study the eigenvalue distribution as $N \to \i$ (as $H$ is infinite-dimensional self-adjoint).
+\begin{itemize}
+    \item By a random $N \times N$ Hermitian matrix, we mean a Hermitian matrix with entries independently chosen from nice probability distributions.
+\end{itemize}
+Surprisingly, this method provides insight into the general structure of the spectrum of any nuceli too complicated to be understood in detail. The reason is because the spectrum of an arbitrary operator turns out to be well described by the expected value of the spectrum of a random operator.

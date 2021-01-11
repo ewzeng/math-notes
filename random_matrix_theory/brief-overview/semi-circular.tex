@@ -2,23 +2,23 @@
 
 Define a Wigner matrix ensemble to be a random matrix ensemble (a.k.a. distribution) of Hermitian matrices such that:
 \begin{itemize}
-    \item The non-diagonal entries are iid random variables with mean zero and unit variance.
+    \item The non-diagonal entries are iid random variables with mean zero and unit variance. (More precisely, the upper triangular entries, as we are dealing with Hermitian matrices.)
     \item The diagonal entries are iid random variables with bounded mean and variance.
 \end{itemize}
 
 \subsection{Normalization}
-The Bai-Yin theorem states that as a random $n \times n$ Hermitian matrix $H$ increases in size, then almost surely one has
+The Bai-Yin theorem states that (under nice conditions) as a random $n \times n$ symmetric matrix $H$ increases in size, then almost surely one has
 \[
     \limsup_{n \to \i} \frac{\|H\|}{\sqrt{n}} \leq 2.
 \]
-As the spectral radius of $H$ is $\|H\|$, this implies that the spectrum of $H$ will ``increase'' at the rate of $O(\sqrt{n})$. Thus, it is natural to work with the normalized matrix $H/\sqrt{n}$.
+This means that $\|H\|$ grows at a rate of $O(\sqrt{n})$. Thus, it is natural to work with the normalized matrix $H/\sqrt{n}$.
 
 \subsection{Semi-circular Law}
 Wigner's semi-circular law concerns the asymptotic distribution of eigenvalues
 \[
     \l_i\left( \frac{H}{\sqrt{n}}\right)
 \]
-of a random Wigner matrix $H$ as $n \to \i$. It states that the density of eigenvalues converges to the semi-circular shape described by:
+of a random Wigner matrix $H$ as $n \to \i$. It states that the density of eigenvalues converges to a semi-circular shape described by:
 \[
     \mu'_{sc}(x) = \frac{1}{2\pi}(4 - |x|^2)^{1/2}_+dx
 \]
