@@ -1,0 +1,23 @@
+\section*{Concentration of Measure}
+
+Concentration of measure is the notion that it is hard for independent variables to work together. For instance, if we have independent random variables $X_1, \dots, X_n$ that lie in the interval $O(1)$, then
+\[
+    S_n = \sum X_i
+\]
+sharpy concentrates in the interval $O(\sqrt{n})$ (which is much smaller than $O(n)$).
+
+There are two methods used to derive bounds to control the behavior of $S_n$ (also called large deviation inequalities). They are the moment method and the exponential moment method.
+
+\paragraph{Moment Method.} The moment method involves bounding the $k$-th moment $\bE S_n^k$ and then applying Markov's inequality to bound $\bP(S_n^k \geq a^k)$. For even $k$, this allows us to compute bounds for $\bP(S_n \geq a)$.
+
+\paragraph{Exponential Moment Method.} The exponential moment method works by noting
+\[
+    \bP(S_n \geq a) = \bP( e^{tS_n} \geq e^{ta}), \quad t > 0.
+\]
+By Markov, the RHS can be bounded by
+\[
+    e^{-ta} \bE \prod e^{tX_i} = e^{-ta} \prod \bE e^{tX_i}.
+\]
+One can then compute ths $e^{tX_i}$'s (or use the Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
+
+As a side note, observe $e^{tX}$ is the moment generating function of $X$. That is, if $e^{tX}$ is expanded as a power series, the coefficents are the moments of $X$ multiplied by some $t^m/m!$.
