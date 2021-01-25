@@ -14,10 +14,24 @@ There are two methods used to derive bounds to control the behavior of $S_n$ (al
 \[
     \bP(S_n \geq a) = \bP( e^{tS_n} \geq e^{ta}), \quad t > 0.
 \]
-By Markov, the RHS can be bounded by
+If we can bound $\bE e^{tS_n}$ then applying Markov's inequality (as before), we can bound $\bP( e^{tS_n} \geq e^{ta})$ and thus $\bP(S_n \geq a)$.
+
+The value $\bE e^{tS_n}$ can be computed/bounded in different fashions. If we have joint independence, then
 \[
-    e^{-ta} \bE \prod e^{tX_i} = e^{-ta} \prod \bE e^{tX_i}.
+    \bE e^{tS_n} = \prod \bE e^{tX_i}.
 \]
-One can then compute ths $e^{tX_i}$'s (or use the Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
+One can then compute the $e^{tX_i}$'s (or use the Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
 
 As a side note, observe $e^{tX}$ is the moment generating function of $X$. That is, if $e^{tX}$ is expanded as a power series, the coefficents are the moments of $X$ multiplied by some $t^m/m!$.
+
+\paragraph{Results.} Using higher moments for the moment method produces stronger large deviation inequalities, but requires stronger boundedness and independence conditions. The exponential moment method likewise produces a strong inequality, but requires strong conditions.
+
+\paragraph{Truncation.} To control the behavior of a unbounded random variable $X$, we can split the random variable into a bounded body and an unbounded tail:
+\[
+    X = X_{\leq N} + X_{\geq N}.
+\]
+Similarly, if we have a sum $S_n$ of many unbounded random variables $X_i$, we can define
+\[
+    S_{n, \leq N} = \sum X_{i, \leq N}, \quad S_{n, \geq N} = \sum X_{i, \geq N}.
+\]
+We then bound the two parts differently. We apply stronger inequalities to $S_{\leq N}$ (as it has strong boundedness conditions) and weaker inequalities to $S_{\geq N}$ (which is unbounded). This technique is called truncation and can be used to partially extend strong results on $S_n$ to situations that lack strong boundedness conditions.
