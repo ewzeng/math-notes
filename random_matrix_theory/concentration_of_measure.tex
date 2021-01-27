@@ -1,6 +1,6 @@
 \section*{Concentration of Measure}
 
-Concentration of measure is the notion that it is hard for independent variables to work together. For instance, if we have independent random variables $X_1, \dots, X_n$ that lie in the interval $O(1)$, then
+Concentration of measure is the notion that it is hard for independent random variables to work together. For instance, if we have independent random variables $X_1, \dots, X_n$ that lie in the interval $O(1)$, then
 \[
     S_n = \sum X_i
 \]
@@ -20,18 +20,32 @@ The value $\bE e^{tS_n}$ can be computed/bounded in different fashions. If we ha
 \[
     \bE e^{tS_n} = \prod \bE e^{tX_i}.
 \]
-One can then compute the $e^{tX_i}$'s (or use the Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
+One can then compute the $e^{tX_i}$'s (or use Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
 
 As a side note, observe $e^{tX}$ is the moment generating function of $X$. That is, if $e^{tX}$ is expanded as a power series, the coefficents are the moments of $X$ multiplied by some $t^m/m!$.
 
-\paragraph{Results.} Using higher moments for the moment method produces stronger large deviation inequalities, but requires stronger boundedness and independence conditions. The exponential moment method likewise produces a strong inequality, but requires strong conditions.
+\paragraph{Results.} Using higher moments for the moment method produces stronger large deviation inequalities, but requires stronger boundedness and independence conditions. The exponential moment method likewise produces a strong inequality (a Gaussian falloff!), but requires strong conditions.
 
-\paragraph{Truncation.} To control the behavior of a unbounded random variable $X$, we can split the random variable into a bounded body and an unbounded tail:
+\paragraph{Truncation.} How do we bound $S_n$ if the strong boundedness conditions aren't met (i.e. the $X_i$'s are unbounded)? First, we split each random variable into a bounded body and an unbounded tail
 \[
     X = X_{\leq N} + X_{\geq N}.
 \]
-Similarly, if we have a sum $S_n$ of many unbounded random variables $X_i$, we can define
+Then, we define
 \[
     S_{n, \leq N} = \sum X_{i, \leq N}, \quad S_{n, \geq N} = \sum X_{i, \geq N}.
 \]
-We then bound the two parts differently. We apply stronger inequalities to $S_{\leq N}$ (as it has strong boundedness conditions) and weaker inequalities to $S_{\geq N}$ (which is unbounded). This technique is called truncation and can be used to partially extend strong results on $S_n$ to situations that lack strong boundedness conditions.
+We then bound the two parts differently and combine the results. We apply stronger inequalities to $S_{\leq N}$ (as it has strong boundedness conditions) and weaker inequalities to $S_{\geq N}$ (which is unbounded). This divide-and-conquer technique is called truncation and can be used to partially extend strong results to situations that lack strong boundedness conditions.
+
+\paragraph{Lipschitz.} More generally, we need not consider $S_n$ but rather any function
+\[
+    F = F(X_1, \dots, X_n)
+\]
+with certain regularity conditions (e.g. Lipschitz and convex). To derive bounds to control the behavior of $F$, we can generalize the exponential moment method to compute
+\[
+    \bP(F \geq a) = \bP(e^{tF} \geq e^{ta}), \quad t > 0
+\]
+by bounding the value $\bE e^{tF}$ and applying Markov. The exact bounds on $\bE e^{tF}$ depend on the regularity conditions of $F$ and certain tricks (like log-Solobev with Herbst's argument), but they are usually Gaussian falloffs.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

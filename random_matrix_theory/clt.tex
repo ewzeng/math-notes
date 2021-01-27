@@ -1,0 +1,44 @@
+\section*{Central Limit Theorem}
+
+CLT states that for iid (real) random variables $X_1, \dots, X_n$ of mean $\mu$ and variance $\s^2$, the distribution of the random variable
+\[
+    Z_n = \frac{S_n - n\mu}{\sqrt{n}\s}
+\]
+approaches the unit Gaussian as $n \to \i$. (Note we divide by $\sqrt{n}$ because in the previous section we noted $S_n$ is concentrated in an interval of size $O(\sqrt{n})$). Here we give different proofs of CLT to showcase different techniques.
+
+\paragraph{Fourier Method.} For a (real-valued) random variable $X$, define the characteristic function
+\[
+    F_X(t) = \bE e^{itX} = \int e^{itX} d\mu = \int_\bR e^{itX} f(X) dX
+\]
+where $f(X)$ is the pdf of $X$. Note:
+\begin{itemize}
+    \item $F_X(t)$ is the Fourier transform of $f(X)$. By Fourier transform properties, we thus expect
+    \[
+        \text{$X$ and $Y$ have same pdf} \iff F_X(t) = F_Y(t).
+    \]
+    \item Thus to prove CLT, it suffices to show
+    \[
+        F_{Z_n}(t) \to F_{N(0,1)} = e^{-t^2/2}
+    \]
+    as $n \to \i$. We can compute $F_{Z_n}(t)$ by computing $F_{X_i}(t)$'s (say, with power series), and putting everything together with the identity $F_{X+Y}(t) = F_{X}(t)F_{Y}(t)$.
+\end{itemize}
+
+\paragraph{Moment Method.} The basic idea of the moment method is to note that under nice conditions (e.g. Gaussian falloff for the $Y_i$'s), we have
+\[
+    Y_i \to Y \iff \bE Y_i^k \to \bE Y^k \text{ for all } k \in \bN.
+\]
+The proof comes from noting that the $\bE Y_i^k$'s encode the same information as characteristic function $F_{Y_i}$. (In fact, from this perspective, the moment method is exactly the same as the Fourier method. However, later we will see that the moment method is easier to generalize.)
+
+The proof of CLT then works as follows:
+\begin{enumerate}
+    \item Suppose the $X_i$'s are bounded (can generalize to unbounded by truncation). By concentration inequalities previously deduced, the $Z_n$'s have Gaussian falloffs.
+    \item Thus it suffices to show
+    \[
+        \bE Z_n^k \to \bE N(0,1)^k \text{ for all } k \in \bN.
+    \]
+    $\bE Z_n^k$ can be computed by expanding and applying counting arguments.
+\end{enumerate}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
