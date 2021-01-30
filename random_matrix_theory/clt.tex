@@ -8,11 +8,11 @@ approaches the unit Gaussian as $n \to \i$. (Note we divide by $\sqrt{n}$ becaus
 
 \paragraph{Fourier Method.} For a (real-valued) random variable $X$, define the characteristic function
 \[
-    F_X(t) = \bE e^{itX} = \int e^{itX} d\mu = \int_\bR e^{itX} f(X) dX
+    F_X(t) = \bE e^{itX} = \int e^{itX} d\mu = \int_\bR e^{itx} f(x) dx
 \]
-where $f(X)$ is the pdf of $X$. Note:
+where $f(x)$ is the pdf of $X$. Note:
 \begin{itemize}
-    \item $F_X(t)$ is the Fourier transform of $f(X)$. By Fourier transform properties, we thus expect
+    \item $F_X(t)$ is the Fourier transform of $f(x)$. By Fourier transform properties, we thus expect
     \[
         \text{$X$ and $Y$ have same pdf} \iff F_X(t) = F_Y(t).
     \]
@@ -36,7 +36,11 @@ The proof of CLT then works as follows:
     \[
         \bE Z_n^k \to \bE N(0,1)^k \text{ for all } k \in \bN.
     \]
-    $\bE Z_n^k$ can be computed by expanding and applying counting arguments.
+    The $\bE Z_n^k$'s can be evaluted with direct computation. An alternative to direct computation is a common trick known as the \textbf{Lindeberg Swapping Trick}, which works in the following general manner:
+    \begin{enumerate}
+        \item Analytical step: to compute $F(X_1, \dots, X_n)$ for some $F$, we show $F(X_1, \dots, X_n)$ is well-approximated by $F(G, \dots, G)$, where $G$ is a Gaussian (for this proof in particular, we choose $G = N(0,1)$).
+        \item Algebraic step: we then compute $F(G, \dots, G)$, utilizing nice properities of Gaussians.
+    \end{enumerate}
 \end{enumerate}
 
 %%% Local Variables:

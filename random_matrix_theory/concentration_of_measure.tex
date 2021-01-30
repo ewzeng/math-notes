@@ -4,7 +4,7 @@ Concentration of measure is the notion that it is hard for independent random va
 \[
     S_n = \sum X_i
 \]
-sharpy concentrates in the interval $O(\sqrt{n})$ (which is much smaller than $O(n)$).
+sharply concentrates in the interval $O(\sqrt{n})$ (which is much smaller than $O(n)$).
 
 There are two methods used to derive bounds to control the behavior of $S_n$ (also called large deviation inequalities). They are the moment method and the exponential moment method.
 
@@ -20,7 +20,7 @@ The value $\bE e^{tS_n}$ can be computed/bounded in different fashions. If we ha
 \[
     \bE e^{tS_n} = \prod \bE e^{tX_i}.
 \]
-One can then compute the $e^{tX_i}$'s (or use Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
+One can then compute the $e^{tX_i}$'s (e.g. use Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
 
 As a side note, observe $e^{tX}$ is the moment generating function of $X$. That is, if $e^{tX}$ is expanded as a power series, the coefficents are the moments of $X$ multiplied by some $t^m/m!$.
 
@@ -40,11 +40,11 @@ We then bound the two parts differently and combine the results. We apply strong
 \[
     F = F(X_1, \dots, X_n)
 \]
-with certain regularity conditions (e.g. Lipschitz and convex). To derive bounds to control the behavior of $F$, we can generalize the exponential moment method to compute
+with certain regularity conditions (e.g. Lipschitz and convex). To derive bounds to control the behavior of $F$, we can generalize the exponential moment method to bound
 \[
     \bP(F \geq a) = \bP(e^{tF} \geq e^{ta}), \quad t > 0
 \]
-by bounding the value $\bE e^{tF}$ and applying Markov. The exact bounds on $\bE e^{tF}$ depend on the regularity conditions of $F$ and certain tricks (like log-Solobev with Herbst's argument), but they are usually Gaussian falloffs.
+by bounding the value $\bE e^{tF}$ and applying Markov. The exact bounds on $\bE e^{tF}$ depend on the regularity conditions of $F$ and certain tricks (like log-Solobev with Herbst's argument).
 
 %%% Local Variables:
 %%% TeX-master: "main"
