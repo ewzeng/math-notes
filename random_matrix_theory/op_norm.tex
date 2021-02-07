@@ -1,0 +1,20 @@
+\section*{Operator Norm of Random Matrices}
+
+There are different ways to control the operator norm of random matrices.
+
+\paragraph{Epsilon-net argument.} An $\e$-net is a maximal set of points on the unit sphere $S$ such that each point is separated by a distance at least $\e$. The $\e$-net argument works as follows: let $\S$ be a $1/2$-net (other $\e$ choices work too). Observe the triangle inequality implies
+\[
+    \begin{split}
+        \|M\|_{op} \ge \l & \implies \text{for some $y \in S$ we have } |My| > \l            \\
+                          & \implies \text{for some $y \in \S$ we have } |My| > \frac{\l}{2} \\
+    \end{split}
+\]
+Then by the union bound, we have
+\[
+    \bP(\|M\|_{op} \ge \l) \le \sum_{y \in \S} \bP\left(|My| > \frac{\l}{2}\right).
+\]
+Note we have transformed a difficult value to control (operator norm) into controlling a finite number of simpler events. This is the essence of the $\e$-net argument: reduce a complex event into simpler events, and the use metric arguments to reduce into a finite number of simpler events.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

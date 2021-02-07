@@ -1,0 +1,43 @@
+\section*{Convergence}
+
+In probability theory, the two most powerful forms of convergence are 1. convergence almost surely and 2. convergence in probability.
+
+Given a sequence of random variables $X_1, X_2, \dots$ (defined in the \textbf{same sample space}), we say the sequence converges to $X$
+\begin{itemize}
+    \item almost surely if $X_n \to X$ pointwise a.e.
+    \item in probability if for any $\e > 0$, we have $\lim_{n \to \i} \bP(|X_n-X| > \e) = 0$.
+\end{itemize}
+Here, we will show the subtle differences between these two definitions.
+
+\subsection*{Weak Law of Large Numbers}
+The weak law states that given a sequence $Y_1, Y_2, \dots$ of i.i.d. random variables with $Y_i \equiv Y$, the partial averages
+\[
+    Z_n = \frac{Y_1 + Y_2 + \dots + Y_n}{n}
+\]
+converge in probability to $\bE[Y]$.
+
+First, we would like to clarify this statement a little:
+\begin{itemize}
+    \item Let the sample space of $Y_i$ be $S_i$. The sample space we are considering the $Z_i$'s to be defined is the sequence sample space $S = S_1 \times S_2 \times S_3 \dots$. This way, all the $Z_i$'s are defined in the same sample space.
+    \item The weak law states that the $Z_i$'s converge in probability to the constant random variable defined on $S$ and taking the value $\bE[Y]$.
+\end{itemize}
+Thus the weak law states that given any $\e > 0$, if we randomly pick a sequence $s \in S$, it is likely that the resulting value of $Z_n$ (for large $n$) is $\e$-close to $\bE[Y]$.
+
+\subsection*{Strong Law of Large Numbers}
+The strong law makes the same statement, except convergence in probability is replaced by convergence a.e.
+
+Thus the strong law states that given any $\e > 0$, if we randomly pick a sequence $s \in S$, the resulting value of $Z_n$ will be $\e$-close to $\bE[Y]$ for all large $n$.
+
+For a visualization of the difference between the strong law and weak law, look at the second answer to the following stackexchange post:
+\begin{center}
+   https://stats.stackexchange.com/questions/2230/convergence-in-probability-vs-almost-sure-convergence}
+\end{center}
+
+\subsection*{Implications}
+Convergence almost surely implies convergence in probability. And often with strong enough conditions, convergence in probability can be upgraded to almost sure convergence using the Borel-Cantelli Lemmas.
+
+A much weaker form of convergence is convergence in distribution (i.e. convergence of the cdfs), which is used in the CLT. This form of convergence does not even require the variables to be in the same sample space!
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
