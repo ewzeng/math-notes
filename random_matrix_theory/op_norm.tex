@@ -1,6 +1,6 @@
 \section*{Operator Norm of Random Matrices}
 
-There are different ways to control the operator norm of random matrices.
+There are two different ways to control the operator norm of random matrices.
 
 \paragraph{Epsilon-net argument.} An $\e$-net is a maximal set of points on the unit sphere $S$ such that each point is separated by a distance at least $\e$. The $\e$-net argument works as follows: let $\S$ be a $1/2$-net (other $\e$ choices work too). Observe the triangle inequality implies
 \[
@@ -14,6 +14,18 @@ Then by the union bound, we have
     \bP(\|M\|_{op} \ge \l) \le \sum_{y \in \S} \bP\left(|My| > \frac{\l}{2}\right).
 \]
 Note we have transformed a difficult value to control (operator norm) into controlling a finite number of simpler events. This is the essence of the $\e$-net argument: reduce a complex event into simpler events, and the use metric arguments to reduce into a finite number of simpler events.
+
+\paragraph{Moment method.} This method works only for Hermitian random matrices. If an $n \times n$ Hermitian matrix $M$ has eigenvalues $\l_i$, then
+\[
+    \|M\|_{op} = \max |\l_i|.
+\]
+Then it is not difficult to show
+\[
+    \|M\|^k_{op} \leq \Tr(M^k) = \sum \l_i^k \leq n\|M\|^k_{op}
+\]
+when $k$ is even. Thus, to control the operator norm, it suffices to bound $\bE \Tr(M^k)$ and apply Markov. This bounding be done with careful combinatorial arguments.
+
+The moment method yields a slighter weaker upper bound than $\e$-net with an extra $\log n$ factor (lower bound fine). Removing the $\log n$ factor is rather technical.
 
 %%% Local Variables:
 %%% TeX-master: "main"

@@ -8,7 +8,11 @@ sharply concentrates in the interval $O(\sqrt{n})$ (which is much smaller than $
 
 There are two methods used to derive bounds to control the behavior of $S_n$ (also called large deviation inequalities). They are the moment method and the exponential moment method.
 
-\paragraph{Moment Method.} The moment method involves bounding the $k$-th moment $\bE S_n^k$ and then applying Markov's inequality to bound $\bP(S_n^k \geq a^k)$. For even $k$, this allows us to compute bounds for $\bP(S_n \geq a)$.
+\paragraph{Moment Method.} The $k$-th moment method involves bounding $\bE |S_n|^k$ and then applying Markov's inequality to bound $\bP(|S_n|^k \geq a^k) = \bP(|S_n| \geq a)$.
+
+For even $k$, $\bE|S_n|^k = \bE S_n^k$, the $k$-th moment, which can estimated via a combinatorial argument. $\bE|S_n|^k$ is also easy to bound when $k = 1$. However, it is hard to bound $\bE|S_n|^k$ for odd $k > 1$, so this moment method does not work with odd $k > 1$.
+
+(For odd $k > 1$ could we try bounding $\bE S_n^k$ instead? Yes, but because Markov's inequality requires nonnegative RVs, we cannot bound $\bP(S_n^k \geq a^k) $ by bounding $\bE S_n^k$.)
 
 \paragraph{Exponential Moment Method.} The exponential moment method works by noting
 \[
@@ -22,9 +26,17 @@ The value $\bE e^{tS_n}$ can be computed/bounded in different fashions. If we ha
 \]
 One can then compute the $e^{tX_i}$'s (e.g. use Hoeffding's lemma) and optimize over $t > 0$. (This is essentially the proof of Chernoff's inequality).
 
-As a side note, observe $e^{tX}$ is the moment generating function of $X$. That is, if $e^{tX}$ is expanded as a power series, the coefficents are the moments of $X$ multiplied by some $t^m/m!$.
+As a side note, observe $e^{tX}$ is the moment generating function of $X$. This is because
+\[
+    \begin{split}
+        \bE e^{tX} & = \bE \left( 1 + tX + \frac{(tX)^2}{2!} + \dots \right) \\
+                   & = 1 + t\bE X + \frac{t^2}{2!}\bE X^2 + \dots
+    \end{split}
+\]
 
-\paragraph{Results.} Using higher moments for the moment method produces stronger large deviation inequalities, but requires stronger boundedness and independence conditions. The exponential moment method likewise produces a strong inequality (a Gaussian falloff!), but requires strong conditions.
+\paragraph{Results.} Using higher moments for the moment method produces stronger large deviation inequalities, but requires stronger boundedness and independence conditions. More precisely, the $k$-th moment method produces a $\l^{-k}$ falloff, but requires the existence of $\bE |S_n|^k$ and $k$-wise independence.
+
+The exponential moment method likewise produces a strong inequality (a Gaussian falloff!), but requires bounded RVs (to ensure the existence of the moment generating function) and joint independence.
 
 \paragraph{Truncation.} How do we bound $S_n$ if the strong boundedness conditions aren't met (i.e. the $X_i$'s are unbounded)? First, we split each random variable into a bounded body and an unbounded tail
 \[

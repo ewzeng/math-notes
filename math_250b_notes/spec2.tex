@@ -5,19 +5,26 @@ Eisenbud develops the spectrum of a ring from a slightly different perspective t
 Let $R = k[x_1, \dots, x_n]$ be the ring of polynomials defined on $k^n$. We make the following definitions:
 \begin{itemize}
     \item For ideal $I \subset R$ define $Z(I) \subset k^n$ as the set of common zeros of polynomials in $I$. These sets are called \textbf{(affine) algebraic subsets}.
-    \item Call an algebraic subset an \textbf{algebraic variety} if it is not the union of smaller algebraic subsets.
+    \item Call an algebraic subset an \textbf{algebraic variety} if it is not the union of smaller algebraic subsets. (In other words, an irreducible algebraic subset.)
     \item For any $X \subset k^n$, define $I(X)$ as the set of polynomials vanishing on $X$.
 \end{itemize}
 Call an ideal $I$ radical if $I = \sqrt{I}$. Hilbert's Nullstellensatz states that for algebraically closed $k$, there is an (order-reserving) correspondence between radical ideals and algebraic subsets given by the maps
 \[
     I \to Z(I), \quad X \to I(X).
 \]
-One further analysis, one can show:
+On further analysis, one can show:
 \begin{itemize}
     \item Maximal ideals $\leftrightarrow$ points.
     \item Prime ideals $\leftrightarrow$ algebraic varieties.
 \end{itemize}
-Thus, $\Spec_m(R) = k^n$ and $\Spec(R)$ is the space of algebraic varieties in $k^n$.
+Thus, $\Spec_m(R) = k^n$ and $\Spec(R)$ is the space of algebraic varieties in $k^n$. Personally, I prefer this concrete example over the handwavy ``$R$ can roughly be seen as the space of continuous functions over $\Spec(R)$.''
+
+As another cool fact, the quotient space
+\[
+    A(X) = \frac{k[x_1, \dots, x_n]}{I(X)}
+\]
+can be indentified as the space of polynomial functions defined on $X \subset k^n$ (as our quotient is an equivalence relation between two polynomials taking the same value over $X$).
+
 
 %%% Local Variables:
 %%% TeX-master: "main"
