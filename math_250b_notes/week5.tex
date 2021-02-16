@@ -1,0 +1,53 @@
+\section{Week 5}
+
+\subsection{Localization of Modules}
+We can define localization of modules in the same manner as localization of rings: given a $R$-module $M$ and a multiplicative subset $S \subset R$, define $M[S^{-1}]$ to be the $R[S^{-1}]$-module of fractions $m/s$ where $m \in M$ and $s \in S$, where $m_1/s_1 = m_2/s_2$ if $s(m_1s_2-s_1m_2) = 0$ for some $s \in S$.
+
+One key result (that is not difficult to check) is that localization is an exact functor. As a natural consequence, localization preserves (i.e. commutes with) quotients, kernels, and direct sums.
+
+\subsection{Flatness}
+Call a $R$-module $M$ flat if the tensor product with $M$ is an exact functor. (Flat modules are very important in commutative algebra and algebraic geometry and behave very well.) By tensoring the exact sequence
+\[
+    0 \to R \xrightarrow{\times a} R \to R/aR \to 0,
+\]
+with $M$, one can conclude that flat modules are torsion-free (at least when $R$ is an integral domain).
+
+The key link between tensor products and localization is the natural isomorphism
+\[
+    M[S^{-1}] \cong M \otimes_R R[S^{-1}], \quad ms^{-1} \mapsto m \otimes s^{-1}.
+\]
+Because localization is exact, we can conclude that $R[S^{-1}]$ (as a $R$-module) is flat.
+
+\subsection{Local Properties}
+Often times, global properties can be verified by checking them locally. We present three examples:
+\begin{enumerate}
+    \item $M = 0 \iff M_{\mathfrak p} = 0$ for all $\mathfrak p \in \Spec(R)$.
+    \item $0 \to A \to B \to C \to 0$ exact $\iff$ $0 \to A_{\mathfrak p} \to B_{\mathfrak p} \to C_{\mathfrak p} \to 0$ exact for all $\mathfrak p \in \Spec(R)$. (Proof: use 1. and the fact that localization is exact).
+    \item $M$ flat $\iff$ $M_{\mathfrak p}$ flat for all $\mathfrak p \in \Spec(R)$.
+\end{enumerate}
+
+\subsection{Flat Extensions}
+Let $S$ be an $R$-algebra. For a $R$-module $M$, note the $R$-module $S \otimes_R M$ can also be viewed as an $S$-module (with  $a(s \otimes m) = (as) \otimes m$). This gives us a natural way to turn $R$-modules into $S$-modules.
+
+On further study, one notes that for $R$-modules $M, N$, there is a natural map of $S$-modules
+\[
+    \a: S \otimes_R \Hom(M, N) \to \Hom_S(S \otimes_R M, S \otimes_R N).
+\]
+It happens that if $S$ is flat and $M$ is finitely presented, then $\a$ is an isomorphism. To prove this, we do the following:
+\begin{enumerate}
+    \item Prove $\a$ is an isomorphism when $M = R$. Extend to the case $M = R^m$ via direct sums.
+    \item As $M$ is finitely presented, there exists an exact sequence
+    \[
+        R^m \to R^n \to M \to 0.
+    \]
+    \item Apply the tensor and Hom functors to the exact sequence in different ways to get two different exact sequences. Then use the result from 1 to relate the two exact sequences, and apply the Fives Lemma (or equivalently, diagram chase).
+\end{enumerate}
+A consequence of this result is that by setting $S = R[U^{-1}]$, we get the isomorphism
+\[
+    \Hom_{R[U^{-1}]}(M[U^{-1}], N{U^{-1}}) \cong \Hom_R(M,N)[U^{-1}].
+\]
+In other words, homomorphisms between localizations of nice modules come from homomorphisms between the original modules.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
