@@ -27,6 +27,11 @@ when $k$ is even. Thus, to control the operator norm, it suffices to bound $\bE 
 
 The moment method yields a slighter weaker upper bound than $\e$-net with an extra $\log n$ factor (lower bound fine). Removing the $\log n$ factor is rather technical.
 
+The advantage of the moment method is that not only does it show $\|M\| \sim O(\sqrt{n})$, it produces the exact bound:
+\[
+    \limsup_{n \to \i} \frac{\|M_n\|}{\sqrt{n}} \le 2 \ \text{a.e.} \quad (\text{i.e. the Bai-Yin Theorem}).
+\]
+
 %%% Local Variables:
 %%% TeX-master: "main"
 %%% End:

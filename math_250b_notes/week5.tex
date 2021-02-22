@@ -1,7 +1,7 @@
 \section{Week 5}
 
 \subsection{Localization of Modules}
-We can define localization of modules in the same manner as localization of rings: given a $R$-module $M$ and a multiplicative subset $S \subset R$, define $M[S^{-1}]$ to be the $R[S^{-1}]$-module of fractions $m/s$ where $m \in M$ and $s \in S$, where $m_1/s_1 = m_2/s_2$ if $s(m_1s_2-s_1m_2) = 0$ for some $s \in S$.
+We can define localization of modules in the same manner as localization of rings: given a $R$-module $M$ and a multiplicative subset $S \subset R$, define $M[S^{-1}]$ to be the $R[S^{-1}]$-module of fractions $m/s$ where $m \in M$, $s \in S$, and $m_1/s_1 = m_2/s_2$ if $s(m_1s_2-s_1m_2) = 0$ for some $s \in S$.
 
 One key result (that is not difficult to check) is that localization is an exact functor. As a natural consequence, localization preserves (i.e. commutes with) quotients, kernels, and direct sums.
 
@@ -33,7 +33,7 @@ On further study, one notes that for $R$-modules $M, N$, there is a natural map 
 \[
     \a: S \otimes_R \Hom(M, N) \to \Hom_S(S \otimes_R M, S \otimes_R N).
 \]
-It happens that if $S$ is flat and $M$ is finitely presented, then $\a$ is an isomorphism. To prove this, we do the following:
+It happens that if $S$ is flat and $M$ is finitely presented, then $\a$ is an isomorphism. The proof consists of 3 steps:
 \begin{enumerate}
     \item Prove $\a$ is an isomorphism when $M = R$. Extend to the case $M = R^m$ via direct sums.
     \item As $M$ is finitely presented, there exists an exact sequence
@@ -44,9 +44,49 @@ It happens that if $S$ is flat and $M$ is finitely presented, then $\a$ is an is
 \end{enumerate}
 A consequence of this result is that by setting $S = R[U^{-1}]$, we get the isomorphism
 \[
-    \Hom_{R[U^{-1}]}(M[U^{-1}], N{U^{-1}}) \cong \Hom_R(M,N)[U^{-1}].
+    \Hom_{R[U^{-1}]}(M[U^{-1}], N[U^{-1}]) \cong \Hom_R(M,N)[U^{-1}].
 \]
 In other words, homomorphisms between localizations of nice modules come from homomorphisms between the original modules.
+
+\subsection{Artinian Modules and Rings}
+Call a module $M$ Artinian if every decreasing chain of modules stabilizes (equivalently, every set of modules has a minimal element). Call a ring $R$ Artinian if it is an Artinian $R$-module (just like the relationship between Noetherian rings and modules). Like Noetherian modules, Artinian modules also satisfy the exact sequence property.
+
+\subsection{Noetherian and Artinian Modules}
+Call a module simple if there are no nontrivial submodules (analog of 1-dim vector subspaces). Define a module $M$ to be of finite length if there exists a finite ascending chain of modules
+\[
+    0 \subset M_1 \subset M_2 \subset \dots \subset M_n = M
+\]
+where every $M_i/M_{i-1}$ is simple.
+
+Let $M$ be both a Noetherian and Artinian $R$-module. By choosing a minimal submodule $M_1 \neq 0$, and then choosing a minimal submodule $M_2 \supset M_1$ and so on, we can show that $M$ is finite length. Conversely, if $M$ is of finite length, we can apply the exact sequence properties of Artinian and Noetherian modules to the ascending chain of modules iteratively to show that $M$ is Artinian and Noetherian. Thus, \textit{being both Noetherian and Artinian is equivalent to the finite length condition}.
+
+In fact, if a module has finite length, then all maximal ascending chains have the same length (Borcherd's proof uses a grid argument). This is somewhat analogous to Jordan Holder theorem for groups and allows us to have a well-defined notion of ``dimension'' for modules of finite length. Furthermore, this ``dimension'' is additive on exact sequences (not hard to show). Thus, modules that are both Noetherian and Artinian are kind of like vector spaces.
+
+\subsection{Artinian Rings}
+It is an amazing fact that Artinian rings are automatically Noetherian. The proof consists of two main steps:
+\begin{enumerate}
+    \item We show for Artinian ring $R$, there exists maximal ideals such that
+    \[
+        \mathfrak m_1 \mathfrak m_2 \cdots \mathfrak m_n = 0.
+    \]
+    This proof is short and elementary but extremely hairy (probably the most hairy of this semester).
+    \item From step 1, we can construct the following ascending chain
+    \[
+        0 = \mathfrak m_1 \mathfrak m_2 \cdots \mathfrak m_n \subset 
+        \mathfrak m_1 \mathfrak m_2 \cdots \mathfrak m_{n-1} \subset \dots \subset \mathfrak m_1 \subset R.
+    \]
+    Observing that the quotients of consecutive elements are finite dimensional (by the Artinian condition), this allows us to construct a chain where the quotients are simple. Thus $R$ is of finite length and hence Noetherian.
+\end{enumerate}
+
+Suppose for an Artinian ring $R$, there exists maximal ideals $\mathfrak m_i$ such that
+\[
+    0 = \mathfrak m_1^{k_1}\cdots\mathfrak m_j^{k_j}
+\]
+Then by CRT, we have
+\[
+    R = \frac{R}{\{0\}} \cong \prod_i \frac{R}{\mathfrak m_i^{k_i}}
+\]
+As a consequence, we conclude that every Artinian ring is a product of local Artinian rings.
 
 %%% Local Variables:
 %%% TeX-master: "main"
