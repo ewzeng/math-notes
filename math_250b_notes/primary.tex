@@ -1,0 +1,19 @@
+\section{Primary Decomposition}
+
+We pause for a moment to discuss certain motivations for the results in the coming section. In $\bZ$, every number $n$ can be uniquely factorized into primes $\prod p_i^{m_i}$. Equivalently, we may write
+\[
+    (n) = \bigcap \left( p_i^{m_i} \right).
+\]
+Although most rings are not uniquely factorizable, one can still hope for some analogous result. Indeed, for (nice) commutative rings, Noether proved that every ideal can be written as the finite intersection of primary ideals (which are a generalization of prime powers). And when one restricts the intersection to be ``minimal,'' sometimes one regains some partial notion of uniqueness. (Writing as an finite intersection of primary ideals is called primary decomposition.)
+
+In these notes, we develop primary decomposition not from the theory of ideals, but the more general theory of modules (because it is convenient). For a module $M$ over a ring $R$, call a submodule $N$ primary if
+\[
+    rm \in N \implies m \in N \text{ or } r^nM \subset N.
+\]
+If $N$ is primary w/r/t $M$, the call the module $M/N$ coprimary. (Note $M/N$ coprimary = every zero divisor is nilpotent.)
+
+When primary decomposition is applied to a radical ideal $I$ in a polynomial ring, the result is geometrically equivalent to taking the algebraic set $Z(I)$ and decomposing it into the finite union of irreducible sets (intersections of ideals become unions of sets).
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

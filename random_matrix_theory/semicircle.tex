@@ -1,20 +1,51 @@
-\section*{The Semicircular Law}
+\section*{Semicircular Law}
 
-We would like to study the asympototic behavior of eigenvalues. As the number of eigenvalues varies with the size of a matrix, it only really makes sense to study the distribution of eigenvalues (as matrix size $\to \i$). As the natural object to represent ``distributions'' are pdfs (i.e. probability measures) and cdfs, thus for a matrix $M_n$ (of size $n \times n$), we define the associated distribution of eigenvalues (aka the ESD) to be the probability measure
+We would like to study the asymptotic behavior of eigenvalues. Because the number of eigenvalues varies with the size of a matrix, it only really makes sense to study the distribution of eigenvalues as matrix size $\to \i$. As the natural object to represent ``distributions'' are pdfs (i.e. probability measures) and cdfs, thus for a matrix $M_n$ (of size $n \times n$), we define the associated distribution of eigenvalues (aka the ESD) to be the probability measure
 \[
     \mu_{M_n} = \frac{1}{n} \sum_{j = 1}^n \d_{\l_j}.
 \]
 
-When $M_n$ is a random matrix, the associated probability measure will be a random probability measure (i.e. a probability-measure-valued RV).
+When $M_n$ is a random matrix, the associated probability measure will be a random probability measure (i.e. a probability-measure-valued RV). We will sometimes use the word ``deterministic'' to emphasize a probability measure is not random.
 
-\paragraph{Convergence.} Given a sequence $Y_i$ of ESDs, say $Y_i \to Y$ if the corresponding cdfs convergence pointwise. (Note: even though we often visualize ESD convergence as convergence of respective pdfs, cdf convergence is the more rigorous and correct definition).
+\paragraph{Convergence.} Given a sequence $Y_i$ of (deterministic) ESDs, say $Y_i \to Y$ if the corresponding cdfs convergence pointwise. (Note: even though we often visualize ESD convergence as convergence of the respective pdfs, cdf convergence is the more rigorous and correct definition).
 
 \paragraph{Semicircular Law.} Let $M_n$ be the top left $n \times n$ minors of an infinite Wigner matrix (i.e. Hermitian random matrix, i.i.d. entries except diagonal, which must be bounded). Then almost surely
 \[
     \mu_{\frac{M_n}{\sqrt{n}}} \to \mu_{\text{sc}} = \frac{1}{2\pi}(4 - |x|)_+^{1/2}dx.
 \]
-To prove the semicircular law, we first make a simplifying observation: as eigenvalues are stable under matrix pertubations, we can perturb the matrix a little to set all diagonal entries to 0 and only consider bounded entries (takes a little work to show, second statement requires truncation argument). From here, there are two ways to proceed: the moment method and the Stieltjes method.
+To prove the semicircular law, we first make a simplifying observation: as eigenvalues are stable under matrix pertubations, we can perturb the matrix a little to set all diagonal entries to 0 and only consider bounded entries (second statement requires truncation argument). From here, there are two ways to proceed: the moment method and the Stieltjes method.
 
+\paragraph{Moment Method.} The key observation of the moment method is that for every (deterministic) probability measure $\nu$, we can choose a random variable $X_{\nu}$ distributed according to $\nu$. Then to show $\nu_i \to \nu$, it suffices to show the $X_{\nu_i}$'s converge in distribution to $X_{\nu}$. And one way to show the $X_{\nu_i}$'s converge in distribution to $X_{\nu}$ is to compute moments and show
+\[
+    \bE X_{\nu_i}^k \to \bE X_{\nu}^k, \quad k \in \bN,
+\]
+as seen for the CLT moment method.
+
+Applying this observation to the deterministic ESDs $\bE \mu_{\frac{M_n}{\sqrt{n}}}$, one can show (with some computation) that the measures
+\[
+    \bE \mu_{\frac{M_n}{\sqrt{n}}} \to \mu_{\text{sc}}.
+\]
+Then via concentration inequalities, one can upgrade this convergence to the one in the semicircular law.
+
+\paragraph{Stieltjes Method.} For an ESD $\mu_{M_n}$ we can define its Stieltjes transform to be the function $s_{\mu}: \bC \backslash \bR \to \bC$ given by
+\[
+    s_\mu(z) = \int_\bR \frac{1}{x-z}d\mu = \frac{1}{n}\Tr\left( M_n - zI \right)^{-1}.
+\]
+The key observation is that
+\[
+    \nu_n \to \nu \iff s_{\nu_n}(z) \to s_{\nu}(z) \text{ pointwise everywhere.}
+\]
+The Stieltjes method then proceeds in two steps:
+\begin{enumerate}
+    \item Using linear algebra and Arzela-Ascoli, we can show
+    \[
+        \bE s_{\mu_\frac{M_n}{\sqrt{n}}}(z) \to s_{\mu_{\text{sc}}}(z).
+    \]
+    \item The stability of eigenvalues as $n \to \i$ by the Cauchy interlacing law allows us to apply strong concentration inequalities to show this upgrades to
+    \[
+        s_{\mu_\frac{M_n}{\sqrt{n}}}(z) \to s_{\mu_{\text{sc}}}(z) \ \text{a.s.}
+    \]
+\end{enumerate}
 
 %%% Local Variables:
 %%% TeX-master: "main"
