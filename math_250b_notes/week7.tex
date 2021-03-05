@@ -1,0 +1,71 @@
+\section{Week 7}
+
+\subsection{Nullstellensatz}
+
+We now provide a proof of Hilbert's Nullstellensatz introduced earlier. The proof consists of two main steps, each with several substeps.
+\begin{enumerate}
+    \item We show that for algebraically closed $k$, the maximal ideals of $k[x_1, \dots, x_n]$ are precisely the ideals $(x_1 - a_1, x_2 - a_2, \dots)$. This is called the ``weak'' Nullstellensatz.
+    \begin{itemize}
+        \item[(a)] For any maximal $\mathfrak m$, we can consider the field extension
+        \[
+            \frac{k[x_1, \dots, x_n]}{\mathfrak m}
+        \]
+        This is a f.g. algebra, and thus by Zariski's lemma [proved below], it is a finite dimensional extension over $k$. Hence it is an algebraic extension of $k$ (recall transcendental extensions are infinite dimensional). But as $k$ is algebraically closed, this implies
+        \[
+            k = \frac{k[x_1, \dots, x_n]}{\mathfrak m}
+        \]
+        and from this we deduce the form of $\mathfrak m$.
+    \end{itemize}
+    \item Use step 1 to prove the ``strong'' Nullstellensatz. That is, for ideal $I \subset k[x_1, \dots, x_n]$, we want to show if $f = Z(I)$ then $f^m \in I$ (the other direction is easy). To do this, we do something called Rabinowitsch's trick:
+    \begin{itemize}
+        \item[(a)] We introduce a dummy variable $x_0$ and consider the ideal $(I, 1 - x_0f)$ in $k[x_0, \dots, x_k]$. As it has no common roots, it is not contained in any maximal ideal by step 1, so it is the whole ring $k[x_0, \dots, x_k]$ and we may write
+        \[
+            1 = a_1b_1 + \dots a_nb_n + a(1 - x_0f), \quad a_i \in k[x_0, \dots, x_n], b_* \in I.
+        \]
+        \item[(b)] We now quotient the ring $k[x_0, \dots, x_n]$ by $(1 - x_0f)$ (note we are basically localizing $k[x_1, \dots, x_n]$ at $f$ and writing $x_0 = \frac{1}{f}$). Then we have
+        \[
+            1 = a_1b_1 + \dots a_nb_n, \quad a_i \in k[x_1, \dots, x_n, \frac{1}{f}], b_* \in I.
+        \]
+        After clearing denominators, we get
+        \[
+            f^m = c_1b_1 + \dots c_nb_n \in I.
+        \]
+        [Caution: in this proof, be careful of $k[x_1, \dots, x_n]$ vs. $k[x_0, \dots, x_n]$.]
+    \end{itemize}
+\end{enumerate}
+
+Zariski's lemma states that if the field extension $K/k$ is a f.g. algebra over $k$, then $K/k$ is a finite dimensional extension. The proof of Zariski's lemma is a little tricky, so we first present a simple case:
+\begin{itemize}
+    \item Let $K = k(x_1, \dots, x_m)$, the space of rational functions, which is an infinite dimensional extension. Suppose the generators of $K$ as a $k$-algebra are
+    \[
+        \left\{\frac{f_i(x_1,\dots x_m)}{g_i(x_1, \dots, x_m)} \Bigm\vert i \in I \right\}.
+    \]
+    Note that every irreducible polynomial must be a factor of one the $g_i$'s. However as $k(x_1, \dots, x_m)$ has infinite number of irreducible polynomials (copy Euclid's proof for infinite number of primes), we conclude $I$ is an infinite index set.
+\end{itemize}
+For general $K$, we write
+\[
+    K = k(\underbrace{x_1, \dots, x_m}_{\text{alg. indep.}}, \underbrace{x_{m+1}, \dots, x_n}_{\text{alg. over } k[x_1, \dots, x_m]} )
+\]
+and try to copy the proof above, but do technical stuff to deal with $x_{m+1}, \dots, x_n$.
+
+\subsection{Integral Elements}
+
+We now go on a slight tangent to discuss ring extensions. Let $R$ be a ring and $S$ a $R$-algebra. Call an element $s \in S$ integral if it is a root of a monic polynomial with coefficents in $R$. As expected from the theory of field extensions, if $s$ is integral, then $R[s]$ is f.g. over $R$.
+
+The Cayley-Hamilton theorem for modules states any endomorphism (i.e. square matrix) of f.g. $R$-module $M$ satisfies its own characteristic equation, and as a consequence, every endomorphism of $M$ is integral.
+
+\subsection{Normalization}
+
+For an integral domain $R$, let $K$ be its field of fractions. We call the normalization of $R$ to be the integral closure of $R$ in $K$ (i.e. find all integral elements over $R$). If $R$ is equal to its integral closure, we say $R$ is normal.
+
+Geometrically, normalization can be interpreted as singularity removal in the spectrum. For instance, the ring
+\[
+    k[t^2, t^3] \cong \frac{k[x,y]}{y^2-x^3}
+\]
+represents the polynomials defined on the curve $y^2 = x^3$, which has a singularity at the origin. The normalization of $k[t^2, t^3]$ is $k[t]$, whose spectrum is a straight line (no singularities).
+
+In fact, Serre proved that under mild assumptions (that are usually met), normal $\iff$ singularities of spectrum have codim $\ge 2$. A common trick in algebraic geometry is to normalize (remove singularities of codim 1), blowup (remove other singularities but may create singularities of codim 1), and repeat.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

@@ -7,13 +7,13 @@ We would like to study the asymptotic behavior of eigenvalues. Because the numbe
 
 When $M_n$ is a random matrix, the associated probability measure will be a random probability measure (i.e. a probability-measure-valued RV). We will sometimes use the word ``deterministic'' to emphasize a probability measure is not random.
 
-\paragraph{Convergence.} Given a sequence $Y_i$ of (deterministic) ESDs, say $Y_i \to Y$ if the corresponding cdfs convergence pointwise. (Note: even though we often visualize ESD convergence as convergence of the respective pdfs, cdf convergence is the more rigorous and correct definition).
+\paragraph{Convergence.} Given a sequence $Y_i$ of (deterministic) ESDs, we say $Y_i \to Y$ if the corresponding cdfs converge pointwise. (Note: even though we often visualize ESD convergence as convergence of the respective pdfs, cdf convergence is the more rigorous and correct definition).
 
 \paragraph{Semicircular Law.} Let $M_n$ be the top left $n \times n$ minors of an infinite Wigner matrix (i.e. Hermitian random matrix, i.i.d. entries except diagonal, which must be bounded). Then almost surely
 \[
     \mu_{\frac{M_n}{\sqrt{n}}} \to \mu_{\text{sc}} = \frac{1}{2\pi}(4 - |x|)_+^{1/2}dx.
 \]
-To prove the semicircular law, we first make a simplifying observation: as eigenvalues are stable under matrix pertubations, we can perturb the matrix a little to set all diagonal entries to 0 and only consider bounded entries (second statement requires truncation argument). From here, there are two ways to proceed: the moment method and the Stieltjes method.
+To prove the semicircular law, we first make a simplifying observation: as eigenvalues are stable under matrix pertubations, we can perturb the matrix a little to set all diagonal entries to 0 and only consider bounded entries (second statement requires a truncation argument). From here, there are two ways to proceed: the moment method and the Stieltjes method.
 
 \paragraph{Moment Method.} The key observation of the moment method is that for every (deterministic) probability measure $\nu$, we can choose a random variable $X_{\nu}$ distributed according to $\nu$. Then to show $\nu_i \to \nu$, it suffices to show the $X_{\nu_i}$'s converge in distribution to $X_{\nu}$. And one way to show the $X_{\nu_i}$'s converge in distribution to $X_{\nu}$ is to compute moments and show
 \[

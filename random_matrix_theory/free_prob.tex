@@ -1,0 +1,66 @@
+\section*{Free Probability}
+
+\paragraph{Abstract Probability Theory.} In traditional probability theory, random variables commute (because they are $\bC$-valued or $\bR$-valued measurable functions). This is not the case of random matrices, so we would like to develop theory for non-commutative spaces. We do this by abstracting out important properties from familiar examples, as seen in the table on the next page.
+
+\newpage
+\clearpage
+\begin{sidewaystable}
+    \begin{tabular}{|l|l|l|l|l|l|}
+      \hline
+      \thead{Space}  & \thead{Elements}                 & \thead{$*$-operation                                                                                                                                                                                                                                                                                                                                          \\ (Adjoints)} & \thead{$\t: \_\_ \to \bC$ \\ $\t(X^*) = \t(X)^*$} & \thead{Spec. Meas. $\mu_X$ \\ $\t(X^k) = \int_\bC X^k d\mu_X$} & \thead{Spec. Radius $\rho$ for $X=X^*$ \\ $\Supp(\mu_X) \subset [-\rho(X), \rho(X)]$}\\
+      \hline
+      \hline
+      Reg. Prob.     & $X: \Omega \to \bC$              & Conjugation                                                                                                                                                                                  & $\t(X) = \bE[X]$                                  & $\mu_X = $ pdf                                                 & $\rho = \|X\|_\i$                         \\
+      \hline
+      Matrices       & $X: \bC^{n \times n}$            & Adjoint                                                                                                                                                                                      & $\t(X) = \frac{1}{n}\Tr(X)$                       & $\mu_X = $ ESD                                                 & $\rho = |\text{Largest Eigenvalue}|$      \\
+      \hline
+      Rand. Matrices & $X: \Omega \to \bC^{n \times n}$ & Adjoint                                                                                                                                                                                      & $\t(X) = \bE\frac{1}{n}\Tr(X)$                    & $\mu_X = \bE$ ESD                                              & $\rho = \|\text{Largest Eigenvalue}\|_\i$ \\
+      \hline
+    \end{tabular}
+\end{sidewaystable}
+\clearpage
+\newpage
+
+Thus we define a noncommutative probability space to be a unital $*$-algebra equipped with a nice $*$-linear complex-valued map $\t$ (called trace or expectation). More specifically, we require
+\begin{itemize}
+    \item $\t(1) = 1$ (e.g. total measure of probability space = 1).
+    \item $\t(X^*X) \ge 0$ (nonnegativity, makes $\mu_X$ a nonnegative meaure and allows us to define a semi-definite inner product via $\langle X, Y \rangle = \t(X^*Y)$).
+    \item $\t(XY) = \t(YX)$ (not strictly required, but makes things easier).
+\end{itemize}
+
+From these axioms, we can actually construct $\mu_X$ and $\rho$. For self-adjoint $X$, define
+\[
+    \rho(X) = \lim_{k \to \i}|\t(X^{2k})|^{\frac{1}{2k}}
+\]
+(this limit exists by monotonicity). The construction of $\mu_X$ is trickier. The basic idea for bounded (i.e. $\rho < \i$) self-adjoint $X$ is as follows:
+\begin{enumerate}
+    \item Define the Stieltjes transform
+    \[
+        s_X(z) = \t\left( (X - z)^{-1} \right)
+    \]
+    and use power series to extend to $\bC\backslash [-\rho(X), \rho(X)]$.
+    \item Use the Stieltjes transform and complex analytic techniques to show
+    \[
+        |\t(P(X))| \le \sup_{x \in [-\rho(X), \rho(X)]} |P(x)|
+    \]
+    for any polynomial $P: \bC \to \bC$. The key is to apply Cauchy's integral formula to the Stieltjes transform (see below) and compute the integral over certain circles in the domain.
+    \item Using 2 and the Weierstrass approximation theorem, $\t$ can be extended to a (positive) continuous linear functional on $C[-\rho(X), \rho(X)]$. Then by Reisz-Markov, we get a unique (Radon) measure $\mu_X$ supported on $[-\rho(X), \rho(X)]$ such that
+    \[
+        \t(P(X)) = \int_\bC P(x) d\mu_X.
+    \]
+    [Note we said $\t$ ``can be extended...'' but did not define $\t(f(X))$ for continuous $f$ because $f(X)$ may not even exist if our space is not complete. However if our space is indeed complete, then the extension allows us to define a continuous functional calculus.]
+\end{enumerate}
+
+\paragraph{Stieltjes Transform Revisited.} Observe we have
+\[
+    s_X(z) = - \sum_{k = 0}^\i \frac{\t(X^k)}{z^{k+1}}
+\]
+so $s_X(z)$ can be thought as a generating function of the $k$-th $\t$-moments. Furthermore, using Cauchy's integral formula, we can recover the moments with
+\[
+    \t(X^k) = - \frac{1}{2\pi i} \int_{|z| = R} \frac{s_X(z)}{z^{-k}}dz.
+\]
+Therefore, it is conceviable that the pointwise convergence of $s_X(z)$ is equivalent to the convergence of all moments $\t(X^k)$, which in turn is equivalent to the convergence of the probability distributions $\mu_X$. From this perspective, we can clearly see the relationship between the moment method and the Stieltjes method in proving the semicircular law. This relationship is very similar to the Fourier method vs. moment method in CLT.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
