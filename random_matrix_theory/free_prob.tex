@@ -61,6 +61,52 @@ so $s_X(z)$ can be thought as a generating function of the $k$-th $\t$-moments. 
 \]
 Therefore, it is conceviable that the pointwise convergence of $s_X(z)$ is equivalent to the convergence of all moments $\t(X^k)$, which in turn is equivalent to the convergence of the probability distributions $\mu_X$. From this perspective, we can clearly see the relationship between the moment method and the Stieltjes method in proving the semicircular law. This relationship is very similar to the Fourier method vs. moment method in CLT.
 
+[In both CLT and the semicircular law, each $X_i$ in the sequence $X_1, X_2, \dots$ comes from a different probability space, but the above argument still applies to show the convergence of the $\mu_{X_i}$'s.]
+
+\paragraph{Free Independence.} Defining independence on a noncommutative probability space is tricky because such spaces do not have notions of sample spaces and events. The main object of a noncomm. prob. space is the expectation $\t$, so we try to draw inspiration by rewriting the tradictional notion of independence using expectation.
+
+In a trad. prob. space, $X$, $Y$ are independent iff $\bE[f(X)g(Y)] = \bE[f(X)]\bE[g(Y)]$ for any polynomials $f, g$. (Pf: approximate indicator functions with polynomials.) This form happens to be too strong to generalize, but we can reformulate it equivalently as
+\[
+    \bE[f(X)] = 0, \bE[g(Y)] = 0 \implies \bE[f(X)g(Y)] = 0.
+\]
+Modeling after this, in a noncomm. prob. space we say $X$, $Y$ are \textbf{freely independent} if
+\[
+    \begin{split}
+        & \bE[f_i(X)] = 0, \bE[g_i(Y)] = 0, \forall 1 \le i \le n,\\
+        & \implies \bE[f_1(X)g_1(Y)f_2(X)g_2(Y)\dots f_n(X)g_n(Y)] = 0.
+    \end{split}
+\]
+This notion can then be further extended to $k$-wise free independence. [Note: despite being modeled after independence, free independence is much stronger than independence in trad. prob. spaces.]
+
+\paragraph{Limits.} It is not hard to show convergence of all moments $\t(X^k)$ is equivalent to convergence of probability distributions $\mu_X$ (when the $X$'s self-adjoint and have uniformly bounded spectral radius). This motivates the following definition of limits of elements in noncomm. prob. spaces: for $X_{n,1}, \dots, X_{n,k} \in (\cA_n, \t_n)$, say $X_{n,1}, \dots X_{n,k}$ converges \textbf{in the sense of moments} to $X_{\i, 1}, \dots, X_{\i,k} \in (\cA_\i, \t_\i)$ if for any sequence $i_1, \dots, i_m \in [1,k]$, we have
+\[
+    \t_n(X_{n, i_1},\dots, X_{n,i_m}) \to \t_\i(X_{\i, i_1}, \dots, X_{\i,i_m})
+\]
+as $n \to \i$. If adding the adjoints still preserves this convergence, we say it converges in the sense of $*$-moments (which is far stronger when dealing with not self-adjoint elements).
+
+\newpage
+
+\section*{More on Free Probability}
+
+\paragraph{Free Independence Revisited.} Let $X,Y$ be classically independent random matrices (i.e. entries between matrices independent) with expected traces = 0. The key observation is that inspersing the matrices largely destroys any correlation; that is,
+\[
+    \bE[XYXY] \text{ is small.}
+\]
+In the commutative prob., this would not be the case as $\bE[XYXY] = \bE[X^2Y^2] = \bE[X^2]\bE[Y^2]$. This fundamental property of random matrices is exploited by the definition of free independence, which is the reason why free independence is the appropriate ``independence'' to consider in non-comm. prob. theory. (In fact, one fundamental result in RMT is that Wigner matrices are \textbf{asymptotically freely independent}.)
+
+Indeed, it is free independence that turns free probability into a completely different beast. Results from classical prob. cannot be extended to the non-comm. case (because of the loss of commutativity); conversely, results from non-comm. prob. spaces cannot be extended to the classical case because free independence is such a strong notion that random variables in the classical case can only satisfy free independence in trivial scenarios. Thus, by giving up commutativity we obtain a more subtle notion of independence.
+
+\paragraph{$R$-Transform.} For freely independent $X,Y$, Voiculescu proved the existence of an $R$-transform with the property
+\[
+    R_{X + Y} = R_X + R_Y
+\]
+(Source: Srivastava). The explicit transform was found later, magically turning out to be
+\[
+    R_X(s) = s_X^{-1}(-s) - s^{-1}.
+\]
+This further solidifies the importance of the Stieltjes transform as a fundamental tool of free probability, and allows for a way to compute $\mu_{X + Y}$ from $\mu_X$ and $\mu_Y$ (called the free convolution).
+
+
 %%% Local Variables:
 %%% TeX-master: "main"
-%%% End:
+%%% End:  
