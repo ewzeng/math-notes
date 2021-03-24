@@ -1,0 +1,137 @@
+These notes are partially based on J. Novak's wonderful \textit{Three Lectures on Free Probability}, which can be found at \url{https://arxiv.org/abs/1205.2097}.
+
+\section*{Connected Graphs}
+Let $[n]$ denote the vertex set $\{1, 2, \dots, n\}$. Define $m_n$ to be the number of simple, undirected graphs on $[n]$ and define $c_n$ to be the number of (simple, undirected) connected graphs on $[n]$. If we denote $P(n)$ as the set of partitions of $[n]$, then observe we have the relation
+\[
+    m_n = \sum_{\pi \in P(n)} \prod_{B \in \pi} c_{|B|}.
+\]
+This expresses a fundamental enumerative relationship between ``structures'' and ``connected structures'' that can be found in many areas in mathematics and physics.
+
+\section*{Moments and Cumulants}
+Given a random variable $X$, we can consider its moments $m_n(X) = \bE[X^n]$ and study its moment sequence
+\[
+    (m_1(X), m_2(X), m_3(X), \dots).
+\]
+This is a powerful technique in probability because the moments of $X$ uniquely determine the distribution of $X$. Indeed, a common proof of the CLT is to show the moments of the normalized partial sums converge pointwise to the moments of the Gaussian.
+
+However, we wish to show that the correct perspective of studying a RV is not through its moment sequence, but through its cumulant sequence $c_n(X)$, which is derived from the moment sequence via the relation we saw for connected graphs:
+\[
+    m_n(X) = \sum_{\pi \in P(n)} \prod_{B \in \pi} c_{|B|}(X).
+\]
+On the surface, it is not obvious the cumulant sequence is useful. It is not clear how the moment sequence represents the number of ``structures,'' so it seems we are blindly applying some polynomial change of coordinates to get from moments to cumulants.
+
+\paragraph{The Gaussian.} A first hint we are onto something is when we compute the cumulant sequence of the Gaussian.
+
+Recall the moment sequence on the Gaussian is
+\[
+    m_n\left(\cN(0,1)\right) =
+    \begin{cases}
+        0                            & n = 2m + 1\\
+        (2k-1) \cdot (2k-3) \cdots 1 & n = 2m
+    \end{cases}
+\]
+Observe $m_n(\cN(0,1))$ can be reinterpreted as the number of ways to partition $[n]$ into blocks of size $2$, or equivalently, the number of 1-regular graphs on $[n]$. Then we conclude that $c_n(\cN(0,1))$ is the number of connected 1-regular graphs on $[n]$, i.e. the cumulant sequence of $\cN(0,1)$ is
+\[
+    (0, 1, 0, 0, \dots).
+\]
+This is a remarkable fact.
+
+\paragraph{Building New Structures.} We now go back to graph theory. For a given $n$, we can consider the following type of graph on $[n]$:
+\begin{itemize}
+    \item Every vertex and edge is colored red or green.
+    \item A red edge can only connect two red vertices (and same for green). That is, we are partitioning $[n]$ into red and green subgraphs.
+\end{itemize}
+Denote the number of such graphs on $[n]$ to be $m'_n$. Define $c'_n$ via the graph-to-connected-graph relation, and observe that $c'_n$ is the number of connected graphs on $[n]$, i.e. the number of connected graphs when all vertices are the same color. Then observe
+\[
+    m'_n = \sum \binom{n}{k}m_km_{n-k}, \quad c'_n = c_n + c_n.
+\]
+Thus given any two (possibly different) types of structures, we can construct a new type of structure such that the number of connected structures add. Furthermore, by using $> 2$ colors, this construction can be generalized to $> 2$ structures.
+
+\paragraph{Independence.} Recall now that for independent $X$, $Y$ we have
+\[
+    \begin{split}
+        m_n(X+Y) & = \bE[(X+Y)^n] \\
+                 & = \sum \binom{n}{k}m_n(X)m_{n-k}(Y).
+    \end{split}
+\]
+This is exactly the construction we have seen before! Thus we expect
+\[
+    c_n(X + Y) = c_n(X) + c_n(Y)
+\]
+even though we are not certain what types of structures, if any, $m_n(X)$, $c_n(X)$, $m_n(Y)$, and $c_n(Y)$ represent. In other words:
+\[
+    \boxed{\text{Cumulants linearize addition of independent random variables.}}
+\]
+Hence cumulants are natural tools to study random variables.
+
+\paragraph{Another Proof of the CLT.} Because the cumulants encode the same information as moments, to prove CLT it suffices to show the cumulant sequence of the partial sums
+\[
+    S_N = \frac{X_1 + \dots + X_N}{\sqrt{N}}
+\]
+converges to $(0, 1, 0, 0, \dots)$ for i.i.d. $X_i$ with mean 0.
+
+The key is to note that while cumulants linearize addition, then don't linearize scalar multiplication. In fact, one can show
+\[
+    c_n(\l X) = \l^nc_n(X).
+\]
+From this and linearity of addition, one can easily see for large $N$ that the normalization kills off $c_n(S_N)$ for $n > 2$, leaving us converging to the desired sequence.
+
+\paragraph{Cumulants in the Everyday.} When we describe the distribution of random variables, we don't talk about its second or third moments. Instead, we talk about the mean, standard deviation, skew, and kurtosis (if we are fancy). These happen to be the first four entries to the cumulant sequence! So we already view random variables through the lens of cumulants, we just don't call them that.
+
+\section*{Geometrically Connected Graphs}
+We now consider a variation on the connected graphs problem by first arranging the vertex set $[n]$ clockwise on the unit circle. Call a graph on $[n]$ geometrically connected if the underlying geometric structure (formed by the edges of the graph) is path-connected. This is a weaker condition than being connected (e.g. for $n = 4$, the crosshair graph is geometrically connected but not connected).
+
+Call a partition of $[n]$ non-crossing $a < b < c < d$, then $a, c$ cannot lie in one partition while $b, d$ lie in another. In other words, partition $\pi$ is non-crossing iff for any $A, B \in \pi$, any graph on the vertex sets $A$ and $B$ will not intersect.
+
+If we let $\kappa_n$ denote the number of geometrically connected graphs on $[n]$, then observe we have the relation
+\[
+    m_n = \sum_{\pi \in NC(n)} \prod_{B \in \pi} \kappa_{|B|}.
+\]
+We will see by passing from $P(n)$ to $NC(n)$, the set of non-crossing partitions to $[n]$, will allow us to go from classical probability to free probability.
+
+\section*{Free Probability}
+From the moment sequence of a RV in a non-commutative probability space, we can use the above relation to define the \textit{free cumulants} $\kappa_n(X)$.
+
+\paragraph{The Semicircle.} The moments of the semicircular distribution $\mu_{sc}$ are
+\[
+    m_n\left(\mu_{sc}\right) =
+    \begin{cases}
+        0            & n = 2m + 1 \\
+        \text{Cat}_m & n = 2m
+    \end{cases}
+\]
+where $\text{Cat}_m$ is the $m$-th Catalan number. Passing to the free cumulant sequence, one can show we get
+\[
+    (0, 1, 0, 0, \dots).
+\]
+This suggests the semicircle is the analog of the Gaussian in free probability.
+
+\paragraph{Building New Structures.} Like before, we can try to construct new types structures on $[n]$ in the following manner:
+\begin{itemize}
+    \item Every vertex and edge is colored red or green.
+    \item A red edge can only connect two red vertices (and same for green).
+\end{itemize}
+However, this time we add a new restriction: a red edge cannot intersect with a green edge. As a consequence, we get a new type of structure where the number of \textit{geometrically connected} structures add.
+
+Unfortunately, it is no longer easy to write a recursive relation for the moment sequence of this new structure. But using inclusion-exclusion one can show such structures must satisfy a free-independence relation. [For more detail, see my notes on free independence.] Consequently, we expect that:
+\[
+    \boxed{\text{Free cumulants linearize addition of freely independent random variables.}}
+\]
+In a exactly the manner as before, one can use free cumulants to prove the free CLT (where everything converges to the semicircle).
+
+\section*{Two Transforms}
+Let $F_X(t)$ be the characteristic function of a classical RV $X$. Then one can show that
+\[
+    \log F_X(t) = \sum_{n=1}^\i \frac{c_n(X)}{n!}(it)^n.
+\]
+Thus, by working with the characteristic function (a common technique), we are implicitly working with the cumulant sequence!
+
+The analog in free probability is Voiculescu's $R$-transform, which can be expressed as
+\[
+    R_X(s) = \sum_{n = 1}^\i \kappa_n(X)s^{n-1}.
+\]
+Hence, by working with the $R$-transform (and taking advantage of its nice properties), we are implicitly working with the free cumulant sequence!
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
