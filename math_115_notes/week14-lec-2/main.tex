@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+\newtheorem{claim}{Claim}
+\newtheorem*{remark}{Remark}
+
+\title{A Proof Sketch of the Prime Number Theorem (incomplete)}
+\author{Edward Zeng}
+\date{May 14, 2019}
+
+\begin{document}
+\maketitle
+\section{Introduction and Overview}
+
+\section{Analytic Continuation}
+In complex analysis, certain \textit{nice} functions can be \textbf{continued}, that is, have their domain extended uniquely. Dirichlet series, and in particular the zeta function, can have their domains extended from the real line to the complex plane.
+\begin{claim}
+    If $f(s)$ is an extended Dirichlet series that converges somewhere, then there exists real $s_{0}$ such that if $\Re(s) > s_{0}$ then $f(s)$ converges and if $\Re(s) < s_{0}$ then $f(s)$ diverges. 
+\end{claim}
+
+\section{Continuation of the Zeta Function}
+We will define a hand-wavy partial extension of the zeta function. Note for $s > 1$ we have
+\begin{equation}
+    \zeta(s) - 2\frac{\zeta(s)}{2^{s}} = 
+    \frac{1}{1^{s}} - \frac{1}{2^{s}} + \frac{1}{3^{s}} - ...
+\end{equation}
+Also note the RHS converges by AST for all real $s > 0$. If we denote the RHS by $\mu(s)$, then we can define $\zeta(s)$ for all positive $s$ not equal to 1 by
+\begin{equation}
+    \zeta(s) = \frac{\mu(s)}{1 - 2^{1-s}}.
+\end{equation}
+We extend this definition to all complex numbers with $\Re(s) > 0$ such that
+\begin{equation}
+    1 - 2^{1-s} \neq 0.
+\end{equation}
+Observe (3) implies that
+\begin{equation}
+    s \neq 1 - \frac{2\pi k}{\log(2)}.
+\end{equation}
+To define $\zeta(s)$ for such $s$ other than $s = 1$, we can consider the equation
+\begin{equation}
+    \zeta(s) - 2\frac{\zeta(s)}{3^{s}} = 
+    \frac{1}{1^{s}} + \frac{1}{2^{s}} - \frac{1}{3^{s}} + ...
+\end{equation}
+If we denote the RHS of (5) by $\mu_{3}(s)$, then we define
+\begin{equation}
+    \zeta(s) = \frac{\mu_{3}(s)}{1 - 2^{1-s}}.
+\end{equation}
+for all $s \neq 1$ that do not satisfy (4).
+\begin{remark}
+    These definitions require (2) and (6) to be convergent when their denominators are nonzero as $\Re(s) > 0$. We will assume this is true. The careful reader will also note that $\zeta(s)$ is undefined for $s = 1$. We simply define it to be $\infty$.
+\end{remark}
+
+\section{$\Re(s) > 1$}
+From now on, $\zeta(s)$ will denote the analytic continuation of the original Dirichlet series. We would like to show that if $\Re(s) > 1$ then $\zeta(s) \neq 0$.
+
+\begin{claim}
+    The Euler product
+    \begin{equation}
+        \zeta(s) = (\frac{1}{1 - 2^{-s}})(\frac{1}{1 - 3^{-s}})...
+    \end{equation}
+    still converges and holds for complex $s$ if $\Re(s) > 1$.
+\end{claim}
+By taking log on both sides of (7), we get
+\begin{equation}
+    \log \zeta(s) = -\sum_{p} \log(1 - p^{-s}) \approx \sum_{p}p^{-s}
+\end{equation}
+by the Taylor expansion of log. As (we claim) the RHS is finite for complex $s$ if $\Re(s) > 1$, thus we reach our desired conclusion.
+
+\section{$\Re(s) = 1$}
+The more tricky part is this: we would like to show that if $\Re(s) = 1$, then $\zeta(s) \neq 0$. Consider the artificially constructed function
+\begin{equation}
+    f(s) = \zeta(s - 2it)\zeta(s - it)^{4}\zeta(s)^{6}
+    \zeta(s + it)^{4}\zeta(s + 2it).
+\end{equation}
+By (once again) the Taylor expansion of log, we get
+\begin{equation}
+    \log \zeta(s) = \sum_{p, n}\frac{p^{ns}}{n}
+\end{equation}
+hence
+\begin{equation}
+    \log f(s)
+    = 
+    \sum_{p,n}\frac{p^{ns}}{n}
+    (
+    p^{-2nit} + 4p^{-nit} + 6 + 4p^{nit} + p^{2nit} 
+    ).
+\end{equation}
+However, this is equivalent to
+\begin{equation}
+    \sum_{p,n}\frac{p^{ns}}{n}(p^{nit} + p^{-nit})^{4}
+\end{equation}
+by the binomial expansion! Hence (11) is always positive and $f(s) \geq 1$ whenever $s > 1$.
+
+\subsection{Notion of Order}
+In complex analysis, there is a notation of the \textbf{order} of a zero (basically the multiplicity of the root). We will give partial definition:
+\begin{definition}
+If $f(z)=0$ and $n$ is the smallest positive integer with $f^{(n)}(z)=0$, then the zero $z$ of $f(z)$ has order $n$.
+\end{definition}
+\begin{claim}
+    Suppose $\zeta(1 + it) = 0$. Then $\zeta(1 - it) \neq 0$ and $f(1 + it)$ has zero of order $\geq 4 - 6 + 4 > 0$.
+\end{claim}
+By claim 3, thus $f(1 + it) = 0$. However, by continuity of $f$, we have
+\begin{equation}
+    \lim_{s \rightarrow 1}f(s + it) = 0
+\end{equation}
+which contradicts our previous conclusion as $f(s) \geq 1$ when $s > 1$.
+
+\section{Newman's Tauberian Theorem}
+\end{document}

@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+
+\begin{enumerate}
+    \item Show the following identities using the Euler Product:
+    \begin{equation}
+        \sum \frac{\phi(n)}{n^{s}} = \frac{\zeta(1-s)}{\zeta(s)}
+    \end{equation}
+    \begin{equation}
+        \sum \frac{\tau(n)}{n^{s}} = \zeta(s)^{2}
+    \end{equation}
+    \begin{equation}
+        \sum \frac{\sigma(n)}{n^{s}} = \zeta(s-1)\zeta(s)
+    \end{equation}
+    \begin{equation}
+        \sum \frac{\sigma_{k}(n)}{n^{s}} = \zeta(s-k)\zeta(s)
+    \end{equation}
+    \begin{equation}
+        \sum \frac{\mu(n)}{n^{s}} = \frac{1}{\zeta(s)}.
+    \end{equation}
+    Recall $\phi$ is the totient function, $\tau$ is the number of divisors, $\sigma$ is the sum of divisors, $\sigma_{k}$ is the sum of divisors to the k-th power, and $\mu$ is the Mobius inversion function.
+    \item Use (5) to show
+    \begin{equation}
+        \sum_{d \mid n}b_{d} \cdot \mu(\frac{n}{d}) = a_{n}
+    \end{equation}
+    if
+    \begin{equation*}
+        \sum_{d \mid n}a_{d} = b_{n}.
+    \end{equation*}
+    \item Show that
+    \begin{equation}
+        \sum_{d \mid n} \phi(d) = n. 
+    \end{equation}
+    Then combine with (6) and (3) to deduce
+    \begin{equation}
+        \sum \frac{\phi(n)}{n^{s}} = \frac{\zeta(s-1)}{\zeta(s)}.
+    \end{equation}
+    \item Show that
+    \begin{equation}
+        \frac{d}{ds}\zeta(s) = -\sum\frac{\log(n)}{n^{s}}
+    \end{equation}
+    and use the Taylor expansion (which you should verify) of
+    \begin{equation}
+        \log(1-x) = -x - \frac{x^{2}}{2} ...
+    \end{equation}
+    to deduce
+    \begin{equation}
+        \log \zeta(s) = \sum_{p}(p^{-2} + \frac{p^{-2s}}{2} + ...).
+    \end{equation}
+    \item From (11), conclude
+    \begin{equation}
+        \frac{\zeta'(s)}{\zeta(s)} 
+        = -\sum_{p}\sum_{m}\frac{\log(p)}{p^{ms}}
+        = -\sum_{n}\frac{\Lambda(n^{s})}{n^{s}}
+    \end{equation}
+    where $\Lambda(s) = \log(p)$ if $s = p^{k}$.
+    \item Prove the equation
+    \begin{equation}
+        \Lambda(n)\log(n) + \sum_{d \mid n}\Lambda(d)\Lambda(\frac{n}{d})
+        = \sum_{d \mid n} \mu(d) \cdot \log^{2}(\frac{n}{d})
+    \end{equation}
+    by noting the following identities:
+    \begin{equation}
+        \sum n^{-s}\sum_{d \mid n} \mu(d) \cdot \log^{2}(\frac{n}{d}) = \frac{\zeta''(s)}{\zeta(s)}
+    \end{equation}
+    \begin{equation}
+        \sum n^{-s} \Lambda(n)\log(n) =
+        - \frac{d}{ds}(\frac{\zeta'(s)}{\zeta(s)})
+    \end{equation}
+    \begin{equation}
+        \sum n^{-s} \sum_{d \mid n}\Lambda(d)\Lambda(\frac{n}{d}) =
+        (\frac{\zeta'(s)}{\zeta(s)})^{2}
+    \end{equation}
+    the last two of which come from (12).
+\end{enumerate}
+
+\end{document}

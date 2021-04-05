@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mdframed}
+
+\newmdtheoremenv{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{defn}{Definition}
+
+\title{2/12 Lecture Notes}
+\author{Edward Zeng}
+\date{February 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection{Standing Assumptions}
+All variables are in the domain of integers, unless otherwise specified.
+
+\subsubsection{}
+To solve the equation $f(x) \equiv 0 \pmod{m}$, we employ three steps, the first of which will be discussed here:
+\begin{enumerate}
+    \item reduce modulo by $m$ into modulo by prime powers of $m$ (C.R.T.)
+    \item reduce modulo by prime powers into modulo by primes (Hensel's lemma)
+    \item solve the equation modulo primes
+\end{enumerate}
+
+\subsubsection{}
+Suppose $(m_{1},m_{2}) = 1$ and consider the simultaneous equations
+\begin{equation}
+    x \equiv a_{1} \pmod{m_{1}}
+\end{equation}
+\begin{equation}
+    x \equiv a_{2} \pmod{m_{2}}.
+\end{equation}
+There are many ways to solve (1) and (2). We can set (1) and (2) equal to obtain
+\begin{equation}
+    x = a_{1} + bm_{1} = a_{2} + cm_{2}.
+\end{equation}
+Rearranging, we have
+\begin{equation}
+    a_{1} - a_{2} = cm_{2} - bm_{1}
+\end{equation}
+and $b$ and $c$ can be solved by the Euclidean algorithm. We can then substitute $b$ or $c$ into (3) to solve for $x$.
+
+\subsubsection{}
+$\S$ 0.03 is a explicit demonstration of the following result:
+\begin{thm}[Chinese Remainder Theorem]
+    There is a unique solution $\pmod{m_{1}m_{2}}$ for the simultaneous equations (1) and (2) so long as $m_{1}$ and $m_{2}$ are co-prime.
+\end{thm}
+Proof. Look at the map
+\begin{equation}
+    \underbrace{x \textrm{ mod } m_{1}m_{2}}_{m_{1}m_{2}\textrm{ possible values}} \rightarrow (\overbrace{x \textrm{ mod } m_{1}}^{m_{1}\textrm{ possible values}}, \underbrace{x \textrm{ mod } m_{2}}_{m_{2}\textrm{ possible values}}).
+\end{equation}
+It suffices to show that (5) is surjective (why?). As we are dealing with a mapping between finite sets of equal size, this is equivalent to showing that (5) is injective. Suppose the contrary, i.e. for some $x$ and $y$, we have
+\begin{equation}
+    x-y \equiv 0 \pmod{m_{1}}
+\end{equation}
+\begin{equation}
+    x-y \equiv 0 \pmod{m_{2}}.
+\end{equation}
+However, (6) and (7) imply
+\begin{equation}
+    x-y \equiv 0 \pmod{m_{1}m_{2}}
+\end{equation}
+as $m_{1}$ and $m_{2}$ or co-prime.
+
+\subsubsection{}
+\begin{thm}
+    If $(m_{1},m_{2}) = 1$, then $\phi(m_{1})\phi(m_{2}) = \phi(m_{1}m_{2})$. That is, Euler's totient function is multiplicative.
+\end{thm}
+Proof idea. Use (5) and consider only the residue classes co-prime to $m_{1}m_{2}$, $m_{1}$, and $m_{2}$ respectively.
+
+\subsubsection{}
+\begin{exercise}
+    How many solutions does $x^{2} \equiv -1 \pmod{170}$ have?
+\end{exercise}
+Solution. It suffices to solve the simultaneous equations
+\begin{equation}
+    x^{2} \equiv -1 \pmod{2}
+\end{equation}
+\begin{equation}
+    x^{2} \equiv -1 \pmod{5}
+\end{equation}
+\begin{equation}
+    x^{2} \equiv -1 \pmod{17}.
+\end{equation}
+There is one solution for (9), and by Wilson's theorem, there exists at least one solution for both (10) and (11). Consider (10), and suppose
+\begin{equation}
+    a^{2} \equiv -1 \pmod{5}
+\end{equation}
+and
+\begin{equation}
+    b^{2} \equiv -1 \pmod{5}.
+\end{equation}
+Then
+\begin{equation}
+    (ab)^{2} \equiv 1 \pmod{5}
+\end{equation}
+that is,
+\begin{equation}
+    ab \equiv \pm 1 \pmod{5}
+\end{equation}
+(see Lemma 2.10 in the book). Hence
+\begin{equation}
+    b \equiv \pm a^{-1} \pmod{5}.
+\end{equation}
+From (12), we note $a \equiv - a^{-1} \pmod{5}$, and thus
+\begin{equation}
+    b \equiv a \pmod{5}, \quad b \equiv a^{-1} \pmod{5}
+\end{equation}
+hence, there are only two solutions for (10). WLOG, we can also conclude there are two solutions for (11). Then, by the C.R.T. and some combinatorics, we conclude there are $1 \times 2 \times 2 = 4$ solutions overall.
+
+\subsubsection{}
+Exercise 1 is an example of step 1 detailed in $\S$0.02. The following exercise is another.
+\begin{exercise}
+    Find a 5 digit number $x$ such that $x^{2}$ has the same last few digits as $x$. 
+\end{exercise}
+Hint. We are trying to solve
+\begin{equation}
+    x^{2} \equiv x \pmod{10^{k}}
+\end{equation}
+and we note $10^{k} = 5^{k}2^{k}$. Look for simple solutions mod ${2^{k}}$ and mod ${5^{k}}$.
+\end{document}

@@ -1,0 +1,331 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{problem}{Problem}
+
+\newcommand{\legendre}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+
+\title{Week 10 Lecture Notes: Quadratic Reciprocity}
+\author{Edward Zeng}
+\date{March 2019}
+
+\begin{document}
+\maketitle
+\subsubsection{Standing Assumptions}
+Unless otherwise specified:
+\begin{itemize}
+    \item all variables are integers; further restrictions depend on context
+    \item $p$ and $q$ \textbf{denote primes}, and sometimes, odd primes
+\end{itemize}
+
+\section{Preliminaries}
+\subsubsection{Introduction}
+Here, we will discuss a new way to studying quadratic congruences, more specifically, whether a solution exists for
+\begin{equation}
+    x^{2} = a \pmod{p}.
+\end{equation}
+
+\subsubsection{}
+\begin{definition}[Legendre Symbol]
+    For nonzero $a$, define
+    \begin{equation}
+   \legendre{a}{p} = \Bigg\{
+  \begin{tabular}{cl}
+  1 & \textrm{(1) has nonzero solutions} \\
+  0 & $a \mid p$ \\
+  -1 & \textrm{(1) has no solution}
+  \end{tabular}
+\end{equation}
+\end{definition}
+Recall from Euler's criterion that
+\begin{equation}
+    \legendre{a}{p} \equiv a^{\frac{p-1}{2}} \pmod{p}.
+\end{equation}
+hence
+\begin{equation}
+    \legendre{-1}{p} \equiv (-1)^{\frac{p-1}{2}} \pmod{p}
+\end{equation}
+\begin{equation}
+    \legendre{ab}{p} = \legendre{a}{p}\legendre{b}{p}.
+\end{equation}
+
+\subsubsection{}
+\begin{theorem}[Gauss's Lemma]
+Let $n$ be the number of distinct residue classes between $\frac{p}{2}$ and $p$ in the set $(a, 2a, ..., \frac{p-1}{2}a)$. Then 
+    \begin{equation}
+        \frac{a}{p} = (-1)^{n}.
+    \end{equation}
+\end{theorem}
+\begin{proof}
+Recall the residue classes of $p$ can be written as
+\begin{equation*}
+    {\pm1, \pm2, ..., \pm \frac{p-1}{2}}
+\end{equation*}
+and those between $\frac{p}{2}$ and $p$ are simply the negative residue classes. Hence
+\begin{equation}
+    (a)(2a)...(\frac{p-1}{2}a) = (-1)^{n}(1)(2)...(\frac{p-1}{2}) \pmod{p}
+\end{equation}
+which yields (6) by taking inverses and applying (3).
+\end{proof}
+
+\subsubsection{}
+\begin{exercise}
+    Complete the following steps.
+    \begin{enumerate}
+        \item Show that
+        \begin{equation}
+            \legendre{2}{p} = (-1)^{\frac{p-1}{2} - \lfloor\frac{p-1}{4}\rfloor}
+        \end{equation}
+        by Gauss's Lemma.
+        \item From (8), show that $x^{2} = 2 \pmod{p}$ has solutions if $p = 1, 7 \pmod{8}$ or $p = 2$.
+        \item Then use the statement above to prove there are infinite primes equal to $7 \pmod{8}$. (Hint: consider $x^{2} - 2$).
+    \end{enumerate}
+\end{exercise}
+Similarly, with some work, we can show $x^{2} = 3 \pmod{p}$ has solutions if $p = 1, 11 \pmod{12}$ or $p = 2, 3$.
+\begin{exercise}
+    Use the above statement to show that there are infinite primes equal to $11 \pmod{12}$. (Hint: we would have to show that $x^{2} - 3$ cannot only contain the prime factors of the form 2, 3, $1 + 11n$. Consider $\frac{x^{2} - 3}{2}$ for $x$ such that $(x,6) = 1$).
+\end{exercise}
+\begin{exercise}
+    What is the difference between part 3 of Exercise 1 and Exercise 2?
+\end{exercise}
+
+\subsubsection{}
+We are now ready to state Gauss's Law of Quadratic Reciprocity.
+\begin{theorem}[Law of Quadratic Reciprocity]
+For odd primes $p, q$, we have
+\begin{equation}
+    \legendre{q}{p}\legendre{p}{q} = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}.
+\end{equation}
+\end{theorem}
+\subsubsection{}
+It is a peculiar fact that all proofs of (9) have steps where the motivation is seemingly elusive. Professor Borcherds presented three proofs in class. Here, two proofs will be presented in detail, while the third proof is only sketched (as it in Niven's book). Interestingly, only the third proof uses Gauss's Lemma.
+
+\section{The First Proof}
+\subsubsection{Overview}
+Note the \textbf{reduced} residues of $pq$ can be written as
+\begin{equation}
+    {\pm1, \pm2, ... \pm \frac{pq-1}{2}}.
+\end{equation}
+We consider products $\pmod{pq}$ of half the elements in (10) by either including $a$ or $-a$ in the product. These products are well-defined up to sign. There are three natural ways to take these products, and by comparing them, we deduce the Reciprocity Law.
+
+\subsubsection{The First Product}
+We want to find
+\begin{equation}
+    1\cdot2...\cdot \frac{pq-1}{2}\pmod{pq}.
+\end{equation}
+\begin{remark}
+    As we are considering reduced residues, (11) was not written as a factorial, which would have been incorrect.
+\end{remark}
+We first compute (11) $\pmod{p}$. To do so, we consider the product of (11) and residues not co-prime to $q$, which we denote $A$. As
+\begin{equation}
+    A = \underbrace{\big(1\cdots(p-1)\big)}_{p-1 \textrm{ elements}}
+    \underbrace{\big((p+1)\cdots(2p-1)\big)}_{p-1 \textrm{ elements}}
+    \cdots
+    \underbrace{\big((\frac{p(q-1)}{2}+1)\cdots\frac{pq-1}{2}\big)}_{\frac{p-1}{2} \textrm{ elements}}
+\end{equation}
+thus
+\begin{equation}
+    A \equiv \big((p-1)!\big)^{\frac{q-1}{2}}(\frac{p-1}{2})! \equiv (-1)^{\frac{q-1}{2}}(\frac{p-1}{2})! \pmod{p}. 
+\end{equation}
+The residue classes co-prime to $q$ form the product
+\begin{equation}
+    B = (q)(2q)\cdots(\frac{q(p-1)}{2}) \equiv q^{\frac{p-1}{2}}(\frac{q(p-1)}{2})! \equiv \legendre{q}{p}(\frac{q(p-1)}{2})!\pmod{p}.
+\end{equation}
+Note we are trying to compute $AB^{-1}\pmod{p}$, and we have
+\begin{equation}
+    AB^{-1} \equiv (-1)^{\frac{q-1}{2}}\legendre{q}{p} \pmod{p}.
+\end{equation}
+Similarly, (11) $\pmod{q}$ is
+\begin{equation}
+    (-1)^{\frac{p-1}{2}}\legendre{p}{q}
+\end{equation}
+and (11) can be represented as the ordered pair
+\begin{equation}
+    \Big((-1)^{\frac{q-1}{2}}\legendre{q}{p}, (-1)^{\frac{p-1}{2}}\legendre{p}{q} \Big).
+\end{equation}
+as (mod $pq$) and ((mod $p$), (mod $q$)) convey equivalent information.
+
+\subsubsection{The Second Product}
+We want to find to the product of all pairs $(a,b) \in (Z/pz)^{*} \times (Z/qz)^{*}$ with $0 < a < p$, $0 < b \leq \frac{q-1}{2}$. It takes a little work to see that this indeed is the correct type of product described in the Overview. It is not hard to show that this product is
+\begin{equation}
+    \Big(\big((p-1)!\big)^{\frac{q-1}{2}}, \big((\frac{q-1}{2})!\big)^{p-1}
+    \Big)
+    =
+    \Big(-1)^{\frac{q-1}{2}}, \big((\frac{q-1}{2})!\big)^{p-1}
+    \Big)
+\end{equation}
+
+\subsubsection{The Third Product}
+Similarly, we want to find to the product of all pairs $(a,b) \in (Z/pz)^{*} \times (Z/qz)^{*}$ with $0 < a \leq \frac{p-1}{2}$, $0 < b < q$. This product is
+\begin{equation}
+        \Big( \big((\frac{p-1}{2})!\big)^{q-1}, (-1)^{\frac{p-1}{2}}
+    \Big).
+\end{equation}
+\subsubsection{Relationship Between the Second and Third Products}
+We claim the second and third products differ by $(-1)^{\frac{p-1}{2}}{\frac{q-1}{2}}$. To see this geometrically, we have the following diagram.
+\begin{equation}
+    \begin{tikzcd}
+{(0, q-1)} \arrow[r, no head]                                                & {(\frac{p-1}{2},q-1)} \arrow[r, no head]                                                 & {(p-1, q-1)}                              \\
+{(0,\frac{q-1}{2})} \arrow[d, no head] \arrow[r, no head] \arrow[u, no head] & {(\frac{p-1}{2},\frac{q-1}{2})} \arrow[d, no head] \arrow[r, no head] \arrow[u, no head] & {(\frac{q-1}{2}, p-1)} \arrow[u, no head] \\
+{(0,0)}                                                                      & {(\frac{p-1}{2},0)} \arrow[l, no head] \arrow[r, no head]                                & {(p-1,0)} \arrow[u, no head]             
+\end{tikzcd}
+\end{equation}
+Let I denote the bottom left region, and number counterclockwise. Then I and II form the elements of the second product, and I and IV form the elements of the thrid product. It is not hard to see that multiplying by (-1) to an element in II gives an element in IV.
+
+\subsubsection{Comparsion with the First Product}
+Finally, we note
+\begin{equation}
+    (18)\cdot \legendre{p}{q} = (17) = (19)\cdot \legendre{q}{p}.
+\end{equation}
+Then with the claim in $\S2.0.5$, this gives the Reciprocity Law.
+
+\section{The Second Proof}
+\subsubsection{Overview}
+This is a more computational proof that requires a clever definition of a value which we will call a Gaussian Sum $\tau$. We then compute $\tau^{2}$ and $\tau^{q}$ and compare them to obtain the final answer.
+
+\subsubsection{}
+As the Gaussian Sum requires both modular arithmetic and roots of unity, we will define a specific field where we will perform our calculations. Consider the polynomial
+\begin{equation}
+    \epsilon^{p-1} + \epsilon^{p-2} ... + 1
+\end{equation}
+and choose an irreducible factor $g(x)$. Then we construct the field
+\begin{equation}
+    \frac{(Z/qZ)[\epsilon]}{\textrm{multiples of }g}.
+\end{equation}
+(For a similar construction, see the Application (last) section for Week 9). This field consists of polynomials with coefficients in $(Z/qZ)[\epsilon]$ and relation $\epsilon^{p} = 1$.
+
+\subsubsection{Definition}
+\begin{definition}
+    We define the Gaussian Sum as
+    \begin{equation}
+    \tau(p) = \sum_{x \in (Z/pZ)^{*}}\legendre{x}{p}\epsilon^{x}.
+\end{equation}
+\end{definition}
+As $p$ is fixed in this proof, we will denote $\tau(p)$ as $\tau$. For the rest of this section, $x$ and $y$ will denote elements of $(Z/pZ)$.
+
+\subsubsection{}
+Before we begin, we will note a simple few equations that will aid us in the computation, so we do not need to prove them as we go (despite that being the most natural thought process).
+\begin{equation}
+    \legendre{q}{p} = \legendre{q^{-1}}{p}, \quad qq^{-1} \equiv 1 \pmod{p}
+\end{equation}
+\begin{equation}
+    (a_{1} + ... + a_{n})^{q} \equiv a_{1}^{q} + ... + a_{n}^{q} \pmod{q}
+\end{equation}
+\begin{equation}
+    \sum_{x \neq 0}\legendre{x}{p} = 0
+\end{equation}
+(27) comes from the fact that $\legendre{ax}{p} = -\legendre{x}{p}$ if $\legendre{a}{p} = -1$, and we perform some cancellation. The existence of such $a$ comes from the existence of primitive roots of $p$ and Euler's Criterion.
+
+\subsubsection{$\tau^{2}$}
+We note:
+\begin{equation}
+    \begin{split}
+        \tau^{2} & = \big(\sum_{x \neq 0}\legendre{x}{p}\epsilon^{x}\big) \cdot \big(\sum_{y \neq 0}\legendre{y}{p}\epsilon^{y}\big)
+        = \sum_{x \neq 0}\big(\legendre{x}{p}\epsilon^{x}\sum_{y \neq 0}\legendre{y}{p}\epsilon^{y}\big) \\
+        & = \sum_{x \neq 0}\big(\legendre{x}{p}\sum_{y \neq 0}\legendre{xy}{p}\epsilon^{xy}\big) \\
+        & = \sum_{x,y \neq 0}\big(\legendre{xy^{2}}{p}\epsilon^{xy+x}\big) \\
+        & = \sum_{x,y \neq 0}\big(\legendre{x}{p}\epsilon^{(x+1)y}\big) \\
+        & = \sum_{x \neq 0}\big(\sum_{y}\legendre{x}{p}\epsilon^{(x+1)y}\big).
+    \end{split}
+\end{equation}
+where (27) was used in the last step. As $\epsilon$ can be seen as a root of unity, we have
+\begin{equation}
+    \sum_{y}\legendre{x}{p}\epsilon^{(x+1)y} = 0
+\end{equation}
+unless $x+1 = 0$, in which (29) evaluates to
+\begin{equation}
+    \legendre{-1}{p}p = (-1)^{\frac{p-1}{2}}p.
+\end{equation}
+Hence
+\begin{equation}
+    \tau^{2} = (-1)^{\frac{p-1}{2}}p.
+\end{equation}
+
+\subsubsection{$\tau^{q}$}
+We have:
+\begin{equation}
+    \begin{split}
+        \tau^{q} & = \big(\sum_{x \neq 0}\legendre{x}{p}\epsilon^{x}\big)^{q} \\
+        & = \sum_{x \neq 0}(\legendre{x}{p})^{q}\epsilon^{qx} \\
+        & = \sum_{x \neq 0}(\legendre{q^{-1}x}{p})^{q}\epsilon^{x} \\
+        & = \legendre{q^{-1}}{p}\sum_{x \neq 0}(\legendre{x}{p})^{q}\epsilon^{x} \\
+        & = \legendre{q}{p}\tau.
+    \end{split}
+\end{equation}
+Both (25) and (26) were used above (can you find where?). It is a useful reminder to note that we are working over our specially constructed field, which behaves like $(Z/qZ)$ (it has characteristic $q$) with roots of unity.
+
+\subsubsection{Comparsion}
+Note from (32), we have
+\begin{equation}
+    \tau^{q-1} = \legendre{q}{p}
+\end{equation}
+and from (31), we have
+\begin{equation}
+    (\tau^{2})^{\frac{q-1}{2}} = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}\legendre{p}{q}.
+\end{equation}
+Reciprocity follows from (33) and (34).
+
+\subsubsection{Optional Reading}
+It is interesting to note that Gaussian Sums have a strong analogy to the Gamma Function from Rudin. The Gamma function is
+\begin{equation}
+    \Gamma(x) = \int_{0}^{\infty}e^{-t}t^{x-1}dt.
+\end{equation}
+Note both $e^{-t}$ and $\epsilon^{x}$ satisfy the property
+\begin{equation}
+    f(a+b) = f(a)f(b)
+\end{equation}
+and both $t^{x-1}$ and $\legendre{x}{p}$ satisfy
+\begin{equation}
+    f(ab) = f(a) + f(b).
+\end{equation}
+As a result, there are many analogous theorems between Gaussian Sums and the Gamma Function.
+
+\section{Third Proof}
+\subsubsection{Proof Sketch}
+We return to the geometric picture (20) with added lines.
+\begin{equation}
+    \begin{tikzcd}
+{(0, q-1)} \arrow[r, no head]                                                & {(\frac{p-1}{2},q-1)} \arrow[r, no head]                                                                     & {(p-1, q-1)}                              \\
+{(0,\frac{q-1}{2})} \arrow[d, no head] \arrow[r, no head] \arrow[u, no head] & {(\frac{p-1}{2},\frac{q-1}{2})} \arrow[d, no head] \arrow[r, no head] \arrow[u, no head] \arrow[ru, no head] & {(\frac{q-1}{2}, p-1)} \arrow[u, no head] \\
+{(0,0)} \arrow[ru, no head]                                                  & {(\frac{p-1}{2},0)} \arrow[l, no head] \arrow[r, no head]                                                    & {(p-1,0)} \arrow[u, no head]             
+\end{tikzcd}
+\end{equation}
+There are $\frac{p-1}{2}\frac{q-1}{2}$ points in I (lower left box). We show, using Gauss's Lemma, that if $n$ is the number of points in the lower triangle of I, then $(-1)^{n} = \legendre{p}{q}$. Similarly, if $m$ is the number of points in the upper triangle of I, then $(-1)^{m} = \legendre{p}{q}$. We put these two equations together to complete the proof.
+
+\subsubsection{}
+One lemma is required to make this proof work:
+\begin{lemma}
+    If $[a]$ denotes the greatest integer function, and $p$, $q$ are distinct odd primes, then
+    \begin{equation}
+    \legendre{p}{q} = (-1)^{[\frac{p}{q}] + \cdots
+                                + [\frac{(\frac{q-1}{2})p}{q}]}.
+    \end{equation}
+\end{lemma}
+We note
+\begin{equation}
+    p(1+2+\dots + \frac{q-1}{2}) = q([\frac{p}{q}] + \cdots
+                        + [\frac{(\frac{q-1}{2})p}{q}]
+                        + r_{1} + \dots r_{\frac{q-1}{2}})
+\end{equation}
+where $r_{i}$ is of the form $s_{i}$, or $q-s_{i}$. (Like Gauss's Lemma, it is not hard to show that all the $s_{i}$ are distinct). If we take modulo 2 on both sides, we get
+\begin{equation}
+    1+2+\dots+\frac{q-1}{2} \equiv [\frac{p}{q}] + \cdots
+                        + [\frac{(\frac{q-1}{2})p}{q}]
+                        + nq \pm s_{1} \pm ...
+\end{equation}
+where $n$ is the number of residue classes between $\frac{q}{2}$ and $q$. As $\pm s_{1} \pm s_{2} ...$ has the same parity as $1+2\dots \frac{q-1}{2}$. Hence
+\begin{equation}
+    [\frac{p}{q}] + \cdots
+                        + [\frac{(\frac{q-1}{2})p}{q}] \equiv n
+\end{equation}
+and we apply Gauss's Lemma.
+\end{document}

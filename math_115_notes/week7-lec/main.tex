@@ -1,0 +1,293 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mdframed}
+
+\newmdtheoremenv{thm}{Theorem}
+\newmdtheoremenv{lemma}{Lemma}
+\newtheorem{exercise}{Exercise}
+\newtheorem{defn}{Definition}
+
+\title{Week 7 Lecture Notes}
+\author{Edward Zeng}
+\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection{Standing Assumptions}
+In these notes, all variables are in the domain of integers, with $p$ and $q$ \textbf{denoting primes}, unless otherwise specified. Similarly, all functions, unless otherwise specified, are polynomials with integer coefficients.
+
+\subsubsection{Overview}
+Recall from the Week 4 Lecture Notes that solving the equation $f(x) \equiv 0 \pmod{m}$ generally involves three steps:
+\begin{enumerate}
+    \item reduce modulo by $m$ into modulo by prime powers of $m$ (C.R.T.)
+    \item reduce modulo by prime powers into modulo by primes (Hensel's lemma)
+    \item solve the equation modulo primes
+\end{enumerate}
+Steps 2 and 3 will be discussed here, in sections 1 and 2, respectively.
+
+\section{Modulo By Prime Powers}
+What can we do about the equation $f(x) \equiv 0 \pmod{p^{n}}$?
+
+\subsubsection{Motivation}
+We can first find a solution $x_{0}$ such that $f(x_{0}) \equiv 0 \pmod{p}$. Then we look for solution $f(x_{1}) \equiv 0 \pmod{p^2}$ by trying
+\begin{equation}
+    x_{1} = x_{0} + np \quad (0 \leq n < p)
+\end{equation}
+until we find a solution $x_{1}$. We may then iteratively repeat this process for $x_{2}$
+\begin{equation}
+    x_{2} = x_{1} + np^{2} \quad (0 \leq n < p)
+\end{equation}
+and so on. We say $x_{0}$ \textit{lifts} to $x_{1}$ and $x_{1}$ \textit{lifts} to $x_{2}$.
+
+\subsubsection{}
+The above method works fine, but cannot guarantee it will find all solutions. But there is an even greater problem: some solutions $x_{i}$ do not lift to any $x_{i+1}$, in which case we reach a dead end and need to backtrack. We can ask ourselves: can we look ahead to avoid that scenario?
+
+\begin{thm}
+    Suppose $f(x_{i-1}) \equiv 0 \pmod{p^{i}}$ and $f'(x) \not\equiv 0 \pmod{p}$. Then $x_{i}$ lifts to a unique $x_{i-1}$ such that $f(x_{i}) \equiv 0 \pmod{p^{i+1}}$.
+\end{thm}
+Proof. By Taylor's Theorem, we can expand
+\begin{equation}
+    f(x_{i}+np^{i}) = f(x_{i}) + np^{i}f'(x_{i}) +
+    (np^{i})^{2}\frac{f''(x_{i})}{2!} + ...
+\end{equation}
+Note $$\frac{f^{(n)}}{n!}$$ is always an integer (why?) and therefore every term except the first two are divisible by $p^{i+1}$. We want an unique $n$ such that
+\begin{equation}
+    f(x_{i+1}) = f(x_{i}+np^{i}) \equiv 0 \pmod{p^{i+1}}.
+\end{equation}
+i.e.
+\begin{equation}
+    f(x_{i}) +  np^{i}f'(x_{i}) \equiv \pmod{p^{i+1}}
+\end{equation}
+or
+\begin{equation}
+    \frac{f(x_{i})}{p^{i}} +  nf'(x_{i}) \equiv \pmod{p}
+\end{equation}
+and as $f'(x) \not\equiv 0 \pmod{p}$, we can find an inverse of $f'(x)$ to solve for $n$.
+There is a simple consequence of Theorem 1, as follows:
+\begin{thm}[Hensel]
+    Suppose $f(x_{0}) \equiv 0 \pmod{p}$ and $f'(x) \not\equiv 0 \pmod{p}$. Then $x_{0}$ lifts to a unique $x_{i}$ such that $f(x_{i}) \equiv 0 \pmod{p^{i+1}}$.
+\end{thm}
+
+\subsubsection{}
+Employing Hensel's Lemma in conjunction with the lifting procedure provides a good method to solve the equation $f(x) \equiv 0 \pmod{p^{n}}$, although we cannot guarantee all solutions can be found. Interestingly, there is a parallel, but faster algorithm to solve the equation known as Newton's Method and it is analogous to Newton's Method for approximating polynomial roots.
+
+\subsubsection{Newton's Method for Real Polynomials}
+(Draw a picture for this). Pick a point $x_{0}$ such that $f(x_{0})$ is close to zero. Suppose $f'(x_{0}) \neq 0$. Draw the tangent line at that point and find the x-intercept of the tangent that. That is $x_{1}$. Repeat for $x_{1}$ and so on. 
+    Note the relationship between $x_{0}$ and $x_{1}$ is
+\begin{equation}
+    (x_{0} - x_{1})f'(x_{0}) = f(x_{0}).
+\end{equation}
+Newton's method usually provides better and better approximations of a root, but sometimes goes haywire, especially for small $f'(x_{0})$. Professor Borcherd's explanation for this was that a small $f(x_{0})$ with a large (positive or negative) derivative guarantees a nearby root (draw a picture to see), but this not true for small derivatives.
+
+\subsubsection{Newton's Method}
+Pick a point $x_{0}$ such that $f(x_{0}) \equiv 0 \pmod{p^{n}}$. Suppose $f'(x_{0}) \not\equiv 0 \pmod{p}$ and
+\begin{equation}
+    (x_{0} - x_{1})f'(x_{0}) \equiv f(x_{0}) \pmod{p^{2n}}
+\end{equation}
+i.e.
+\begin{equation}
+    x_{1} \equiv x_{0} - \big(f'(x_{0})\big)^{-1}f(x_{0}) \pmod{p^{2n}}.
+\end{equation}
+\begin{thm}[Newton]
+    If the above conditions are satisfied, then $f(x_{1}) \equiv 0 \pmod{p^{2n}}$.
+\end{thm}
+Proof. Look at the Taylor expansion
+\begin{equation}
+    f(x_{1}) = f(x_{0}) + \frac{-f(x_{0})}{f'(x_{0})}f'(x_{0})
+    + (\frac{-f(x_{0})}{f'(x_{0})})^{2}\frac{f''(x_{0})}{2!}
+    + ...
+\end{equation}
+(Here $\frac{f(x_{0})}{f'(x_{0})}$ really means $\big(f'(x_{0})\big)^{-1}f(x_{0}) \pmod{p^{n}}$). Note the first two terms cancel and every other term is divisible by $p^{2n}$ (why?).
+
+\subsubsection{Comparison}
+Although Hensel's Lemma/Theorem 1 and Newton's Method have different origins, they have the same hypotheses with nearly identical conclusions. Note Theorem 1 states
+\begin{equation}
+    f(x_{0}) \equiv 0 \pmod{p^{n}} \implies
+    f(x_{0}-\frac{f(x_{0})}{f'(x_{0})} \equiv 0 \pmod{p^{n+1}}
+\end{equation}
+where division is the inverse mod $p$, and Newton's Method concludes
+\begin{equation}
+    f(x_{0}) \equiv 0 \pmod{p^{n}} \implies
+    f(x_{0}-\frac{f(x_{0})}{f'(x_{0})} \equiv 0 \pmod{p^{2n}}
+\end{equation}
+where division is the inverse mod $p^{n}$. Hence Newton's method more powerful and faster.
+
+\subsubsection{Thoughts}
+The relationship between Newton's Method for Real Polynomials and Newton's Method is not entirely clear to me. (7) and (8) have the same form, but it is an interesting to consider why they work similarly over completely different structures. Perhaps this is a nice office hour question.
+
+\subsubsection{}
+What if $f'(x_{0}) \not\equiv 0 \pmod{p}$? There turns out to be a simple fix.
+\begin{thm}[Revised Newton]
+    Suppose $f(x_{0}) \equiv 0 \pmod{p^{2d+k}}$, $f'(x_{0}) \equiv 0 \pmod{p^{d}}$, and $f'(x_{0}) \not\equiv 0 \pmod{p^{d+1}}$. Let
+    \begin{equation}
+        x_{1} = x_{0} - \frac{f(x_{0})}{f'(x_{0})} \pmod{p^{2d+2k}}
+    \end{equation}
+    then $f(x_{1})\equiv 0 \pmod{p^{2d+2k}}$.
+\end{thm}
+Here the division in (13) is the inverse mod ${p^{2n+k}}$ after taking out a factor of $p^{d}$ from top and bottom. The proof is identical with that of Newton's Method.
+
+\section{Modulo by Primes}
+Hensel and Newton's Method both rely on solving the base case $f(x_{0}) \equiv 0 \pmod{p}$. For a general function $f$, such an equation is usually unsolvable without testing all possibilities. However, there are fast algorithms of solving these concurrences if $f$ is a polynomial (a future lecture). This section is an introduction to a few sundry methods. The main properties of modulo by primes are: 
+\begin{itemize}
+    \item $ab \equiv 0 \pmod{p} \implies a \equiv 0$ or $b \equiv 0$ 
+    \item Nonzero elements have inverses
+    \item Fermat's theorem (both forms)
+    \item Primitive Roots Exists (see future lecture)
+\end{itemize}
+
+\subsubsection{}
+\begin{thm}
+    If $n$ is the degree of $f$, then $f(x) \equiv 0 \pmod{p}$ has at most $n$ roots modulo $p$.
+\end{thm}
+Proof. We use induction and the division algorithm. Suppose $f(a) \equiv 0 \pmod{p}$. Then as
+\begin{equation}
+    f(x) = g(x)(x-a) + r_{a}
+\end{equation}
+hence $r_{a} \equiv 0 \pmod{p}$, i.e.
+\begin{equation}
+    f(x) \equiv g(x)(x-a) \pmod{p}.
+\end{equation}
+Now suppose $f(b) \equiv 0 \pmod{p}$ and $b \neq a$. Thus we have
+\begin{equation}
+    0 = f(b) = g(b)(b-a) + r_{a} \equiv g(b)(b-a) \pmod{p}
+\end{equation}
+and as $p$ is prime, $g(b) \equiv 0 \pmod{p}$. As a result, any other root is a solution to the equation
+\begin{equation}
+    g(x) \equiv 0 \pmod{p}
+\end{equation}
+which has degree $n-1$. Using induction gives the proof.
+
+\subsubsection{}
+\begin{thm}
+    \begin{equation}
+        x^{p}-x \equiv x(x-1)\cdot \cdot \cdot (x-(p-1)) \pmod{p}
+    \end{equation}
+\end{thm}
+Proof. By Fermat's Theorem, every residue class is a solution. Repeated applications of (15) will give us
+\begin{equation}
+    f(x) \equiv g_{1}(x)x \equiv g_{2}(x)(x-1)x ...
+\end{equation}
+Finally, we note that the leading coefficients of $g_{i}$ is always 1.
+Note Theorem 6 implies Wilson's Theorem.
+
+\subsubsection{Application}
+Theorem 6 happens to be very useful, and both the LHS and RHS are independently important. We take the chance here to present a tangential application.
+\begin{thm}[Wolstenholme]
+    The most simplified numerator of $1 + \frac{1}{2} + ... + \frac{1}{p-1}$ contains the factor $p^{2}$ if $p$ is a prime larger than 3.
+\end{thm}
+Proof. Let
+\begin{equation}
+        x(x-1)\cdot \cdot \cdot (x-(p-1))        =  x^{p} - \sigma_{1}x^{p-1} + ... + \sigma_{p-1}x
+\end{equation}
+which by Theorem 6 reduces to
+\begin{equation}
+    0 \equiv - \sigma_{1}x^{p-1} + ... + (\sigma_{p-1}+1)x \pmod{p}.
+\end{equation}
+As this polynomial has $p$ roots but a degree of at most $p-1$, hence all the coefficients are equivalent to 0 modulo $p$ by Theorem 5. We now note
+\begin{equation}
+    1 + \frac{1}{2} + ... + \frac{1}{p-1} = \frac{\sigma_{p-2}}{\sigma_{p-1}}.
+\end{equation}
+From (21), $p \nmid \sigma_{p-1}$, hence is remains to show $p^{2} \mid \sigma_{p-2}$. Substituting $p$ for $x$ in (20), we obtain
+\begin{equation}
+    p! = p^{p} - \sigma_{1}p^{p-1} + ... + \sigma_{p-1}p
+\end{equation}
+and as $\sigma_{p} = (p-1)!$, we can simplify to get
+\begin{equation}
+    0 = p^{p} - \sigma_{1}p^{p-1} +... - \sigma_{p-2}p^2.
+\end{equation}
+Dividing and rearranging, we have
+\begin{equation}
+    \sigma_{p-2} = p\sigma_{p-3} + p^{2}(...).
+\end{equation}
+As $p \mid \sigma_{p-3}$, thus $p^{2} \mid \sigma_{p-2}$.
+
+\subsubsection{Euclidean Algorithm}
+One idea to solve for $f(x) \equiv 0 \pmod{p}$ is to find the G.C.D. of the polynomials $x^{p}-x$ and $f(x)$ by the polynomial Euclidean Algorithm. As the final result is a linear combination of the said polynomials, thus the final result is equivalent to a linear combination of $f(x)$ and the RHS of (18) mod $p$. Hence the G.C.D. has the same roots as $f(x)$. However, this in general does not work because the Euclidean Algorithm for polynomials is much slower than for integers (in Week 8, methods for dealing with this will be introduced). Sometimes, though, it can still be useful, as we will see next.
+
+\subsubsection{}
+\begin{exercise}
+    When does $x^{2} \equiv a \pmod{p}$ have a root? How many?
+\end{exercise}
+Solution. Apply Euclid once to get
+\begin{equation}
+    x^{p-1}-1 = (x^{2}-a)(x^{p-1-2} + ax^{p-1-4} + ... + a^{\frac{p-3}{2}}) + a^{\frac{p-1}{2}} - 1.
+\end{equation}
+If
+$$a^{\frac{p-1}{2}} \not \equiv 1 \pmod{p}$$
+then there are no roots. Else
+\begin{equation}
+    (x^{2}-a)(x^{p-1-2} + ax^{p-1-4} + ... + a^{\frac{p-3}{2}}) \equiv 0 \pmod{p}
+\end{equation}
+has $p-1$ solutions. The second term can have at most $p-1-2 = p-3$ solutions (by Theorem 5), so the first term must have at least 2 solutions. As the first term is quadratic, it can only have 2 solutions, hence $x^{2} \equiv a \pmod{p}$ has two solutions.
+
+\subsubsection{}
+\begin{exercise}
+    Show that if $d \mid p-1$ then the equation $x^{d} \equiv 1 \pmod{p}$ has $d$ roots.
+\end{exercise}
+Solution. Suppose $x^{p-1} - 1 = f(x)g(x)$. Then by Theorem 5, $f(x) \equiv 0 \pmod{p}$ has the same number of roots as its degree. As
+$$x^{d} - 1 \mid (x^{d})^{\frac{p-1}{d}}-1 $$
+thus $x^{d} - 1$ has $d$ solutions.
+
+\subsubsection{Chevalley/Warning}
+We end with a rather surprising existence theorem by Chevalley/Warning.
+\begin{thm}[Chevalley/Warning]
+    If the number of variables is greater than the degree, then the number of solutions of $f(x_{1},...x_{n}) = 0 \pmod{p}$ is divisible by $p$.
+\end{thm}
+
+\subsubsection{Proof}
+We first prove the following lemma.
+\begin{lemma}
+    For $0 \leq i < p-1$, we have $0^{i} + 1^{i} + ... + (p-1)^{i} \equiv 0 \pmod{p}.$
+\end{lemma}
+Proof. By Theorem 5, there exists nonzero $m$ such that $m^{i} \not\equiv 1 \pmod{p}$. Denote the sum as $S$ and note
+\begin{equation}
+    m^{i}S = (m\cdot0)^{i} + (m\cdot1)^{i} + ... + (m\cdot(p-1))^{i} = S
+\end{equation}
+as we have an rearrangement. Hence $S \equiv 0 \pmod{p}$.
+
+\subsubsection{}
+Consider the expression
+\begin{equation}
+    1 - f(x_{1},...x_{n})^{p-1} \pmod{p}
+\end{equation}
+and note it evaluates as 1 for a solution and 0 otherwise, by Fermat's Last Theorem. Hence the number of integral roots of $f$ mod $p$ is equal to
+\begin{equation}
+    \sum_{x_{1},...,x_{n}} 1 - f(x_{1},...x_{n})^{p-1} \pmod{p}
+\end{equation}
+where the sum is taken over all possible values (residue classes) of $x_{1},...,x_{n}$. (30) is also equal to
+\begin{equation}
+    \sum_{x_{1},...,x_{n}} \sum x_{1}^{m_{1}}...x_{n}^{m_{n}}c_{m_{1},...,m_{n}} \pmod{p}.
+\end{equation}
+Let us consider one term in the inner expression, say
+\begin{equation}
+    x_{1}^{m_{1}}...x_{n}^{m_{n}}c_{m_{1},...,m_{n}}.
+\end{equation}
+If $d$ was the original degree of $f$, then (32) has a maximum degree of $d(p-1)$. If $n$ is greater than $d$, then there exist some $i$ such that $m_{i} < p-1$. WLOG let $i = 1$. However,
+\begin{equation}
+    \sum_{x_{1},...,x_{n}} x_{1}^{m_{1}}...x_{n}^{m_{n}}c_{m_{1},...,m_{n}} =
+    (\sum_{x_{1}}x_{1}^{m_{1}})(\sum_{x_{2},...,x_{n}} x_{2}^{m_{2}}...x_{n}^{m_{n}}c_{m_{1},...,m_{n}})
+\end{equation}
+and the first term on the RHS is divisible by $p$ (Lemma 1). Hence (31), and thus the number of integral solutions, is divisible by $p$.
+\subsubsection{Application}
+Often we can apply Chevalley/Warning by introducing variables and finding trivial solutions, as the following exercise shows.
+\begin{exercise}
+    Does $x^{2} + y^{2} = a \pmod{p}$, where $p$ is a prime of the form $4n+3$, have solutions?
+\end{exercise}
+Solution. Consider
+\begin{equation}
+    x^{2} + y^{2} \equiv az^{2} \pmod{p}.
+\end{equation}
+It has a trivial solution $(0,0,0)$ and hence it has at least $p$ solutions by Chevalley-Warning. Suppose there is another solution where $z = 0$. WLOG let $x$ be nonzero. Then
+\begin{equation}
+    (x^{-1}y)^{2} = -1 \pmod{p}.
+\end{equation}
+Previously (see Week 3 Lecture Notes) we have seen that the above equation is unsolvable for primes of the form $4n+3$, so all other solutions have nonzero $z$. Thus we can multiply by inverses to obtain
+\begin{equation}
+    (z^{-1}x)^{2}+ (z^{-1}y)^{2} = a \pmod{p}
+\end{equation}
+and hence we have shown the existence of at least one solution.
+\end{document}

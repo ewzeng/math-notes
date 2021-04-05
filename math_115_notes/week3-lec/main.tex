@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mdframed}
+
+\newmdtheoremenv{thm}{Theorem}
+\newtheorem{exercise}{Exercise}
+\newtheorem{defn}{Definition}
+
+\title{Week 3 Lecture Notes}
+\author{Edward Zeng}
+\date{February 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection{Standing Assumptions}
+In these notes, all variables are in the domain of integers, with $p$ and $q$ \textbf{denoting primes}, unless otherwise specified.
+
+\subsubsection{}
+\begin{thm}
+    If $(a,b) = 1$ then there exists $a'$ such that $aa' = 1 \pmod{b}$.
+\end{thm}
+This is an easy application of Euclid's algorithm.
+\subsubsection{}
+\begin{thm}[Fermat]
+    $a^{p} \equiv a \pmod{p}$. In particular, if $p\nmid a$ then applying Theorem 1, we obtain $a^{p-1} \equiv 1 \pmod{p}$.
+\end{thm}
+Note
+\begin{equation}
+    p \mid {\binom{p}{k}}
+\end{equation}
+for all integers $k$ between 1 and $p-1$. Thus
+\begin{equation}
+    a^{p} \equiv (a-1 + 1)^{p}
+          \equiv (a-1)^{p} + 1 \pmod{p}
+\end{equation}
+and the theorem follows by induction.
+
+\subsubsection{}
+\begin{exercise}
+    If $p$ divides $n^{2}+1$, then show $p = 2$ or $p \equiv 1 \pmod{4}$.
+\end{exercise}
+From Exercise 1, it is not hard to show that there are infinite primes of the form $4n+1$.
+
+\subsubsection{Application}
+Theorem 2 provides us with a useful test for testing composite numbers, which is best illustrated in the following seemingly absurd question:
+    is 35 prime or composite? Let us assume it is prime and reach a contradiction. By Fermat's theorem, we have
+    \begin{equation}
+        2^{35} \equiv 2 \pmod{35}.
+    \end{equation}
+Many simplifications can be done to compute the LHS of (3), e.g.
+\begin{equation}
+    2^{4} \equiv 16 \pmod{35}
+\end{equation}
+\begin{equation}
+    2^{8} \equiv 256 \equiv 11 \pmod{35}
+\end{equation}
+and proceeding in this manner, we will find 35 is not prime. For larger numbers, this method is faster than factoring. We note this test can show a number is composite, but cannot show if a number is prime. If (3) holds, we would have to test
+\begin{equation}
+        3^{35} \equiv 3 \pmod{35}
+\end{equation}
+and so on. But even then, the number we are testing may be composite.
+\begin{exercise}
+    Show that $n^{561} = n \pmod{561}$ but $561 = 11 \cdot 13 \cdot 17$.
+\end{exercise}
+\subsubsection{}
+\begin{defn}
+    The order of $a \pmod{b}$ is the smallest positive integer $n$ such that $a^{n} \equiv 1 \pmod{b}.$
+\end{defn}
+\begin{thm}[Lagrange]
+    If $n$ is the order of $a \pmod{p}$ then $n$ divides $p-1$.
+\end{thm}
+The proof comes from Theorem 2 and some routine calculations.
+\subsubsection{Application}
+\begin{exercise}
+    Suppose $p$ divides $2^{2^{n}}+1$. Show the order of $2^{2^{n}}+1 \pmod{p}$ is $2^{n+1}$.
+\end{exercise}
+Then, applying Theorem 3, we see that any prime factor of $2^{32}+1$ is of the form $64n+1$. This helped Euler immensely to find the prime factor 641 and show Fermat numbers were not all primes.
+
+\subsubsection{}
+We now state a simple consequence of Theorem 3.
+\begin{thm}
+    Suppose $a^{q} \equiv 1 \pmod{p}$. Then either $q \mid p-1$ or $p \mid a-1$.
+\end{thm}
+It is easy to show the order of $a \pmod{p}$ is either 1 or $q$. The proof follows.
+
+\subsubsection{}
+\begin{exercise}
+    Recall
+    \begin{equation}
+        \frac{x^{5}-1}{x-1} = x^{4} + x^{3} + x^{2} + x + 1.
+    \end{equation}
+    If $p$ divides (7) for some integer $x$, show that $p = 5$ or $p = 1 \pmod{5}$.
+\end{exercise}
+From this, some routine calculations can then be done to show there are infinitely many primes of the form $5n+1$, i.e. that end in the last digit of 1.
+
+\subsubsection{}
+\begin{defn}[Euler's Totient Function]
+    Let $\phi(m)$ denote the number of residue classes co-prime to $m$.
+\end{defn}
+We then have Euler's famous generalization of Fermat's theorem.
+\begin{thm}
+    If $(a,m) = 1$, then $a^{\phi(m)} \equiv 1 \pmod{m}$. 
+\end{thm}
+
+\subsubsection{}
+We will first prove a even greater generalization, courtesy of Lagrange.
+\begin{thm}
+    If $G$ is a finite commutative group with $g$ elements, then $a^{g} = 1$ for all $a \in G$.
+\end{thm}
+Actually, commutativity is not required, but it will result in an easier proof. Label the elements in the group $x_{1},...,x_{g}$, let $x$ be one of the elements, and note $f(x) = x_{i}x$ has the inverse $f^{-1}(x) = x_{i}^{-1}x$. Hence $f(x)$ is a bijection. Thus
+\begin{equation}
+\begin{split}
+    x_{1}...x_{g} &= (x_{1}x)...(x_{g}x) \\
+    &= x^{g}(x_{1}...x_{g})
+\end{split}
+\end{equation}
+Multiplying by inverses on both sides, we obtain the final result.
+
+\subsubsection{}
+Theorem 5 follows if we consider the group formed by all the residue classes co-prime to $m$. The ideas of the order of $a \pmod{b}$ can also be generalized into a group context.
+
+\subsubsection{}
+Calculating $\phi(m)$ requires careful counting, and some methods require the inclusion-exclusion argument. If the prime decomposition of $m$ is
+\begin{equation}
+    p^{a_{1}}_{1}p^{a_{2}}_{2}...p^{a_{n}}_{n}
+\end{equation}
+then
+\begin{equation}
+    \phi(m) = p^{a_{1}}_{1}...p^{a_{n}}_{n}(1-\frac{1}{p_{1}})...(1-\frac{1}{p_{n}}).
+\end{equation}
+\begin{exercise}
+    What is the last digit of $7^{7^{7}}$?
+\end{exercise}
+
+\subsubsection{}
+\begin{thm}[Wilson]
+    $(p-1)! \equiv -1 \pmod{p}$
+\end{thm}
+Observe that residue classes come in inverse pairs (not hard to use proof by contradiction to show that residue class cannot simultaneously be the inverse of two other distinct residue classes), so we need to only investigate those that are inverses of themselves, namely
+\begin{equation}
+    x^{2} = 1 \pmod{p}.
+\end{equation}
+which implies
+\begin{equation}
+    p \mid x^{2} -1.
+\end{equation}
+\begin{exercise}
+    Finish the proof of Wilson's theorem.
+\end{exercise}
+\begin{exercise}
+    If $p = 4n+1$, does $p$ divide $m^2+1$ for some integer $m$?
+\end{exercise}
+\end{document}

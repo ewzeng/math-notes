@@ -1,0 +1,291 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{exercise}{Exercise}
+\newtheorem{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{problem}{Problem}
+
+\title{Week 8 Lecture Notes: Primitive Roots and Polynomial Congruences}
+\author{Edward Zeng}
+\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+\subsubsection{Standing Assumptions}
+Unless otherwise specified:
+\begin{itemize}
+    \item all variables are integers; further restrictions depend on context
+    \item $p$ and $q$ \textbf{denote primes}, and sometimes, odd primes
+    \item all functions are polynomials with integer coefficients
+    \item ``$x$ has order $a$ (mod $p$)" means $x$ has order $a$ in the group formed by the residue classes of $p$
+\end{itemize}
+
+\section{Primitive Roots}
+\begin{definition}
+    A primitive root $g$ (mod m) is a number that has order $\phi(m)$.
+\end{definition}
+As we will see, primitive roots will be important in our investigation of polynomial concurrences, so they will receive some treatment in this section.
+
+\subsubsection{}
+Before we begin, we introduce some preliminary lemmas.
+\begin{lemma}
+    Suppose $x$ has order $a$ and $y$ has order $b$ (mod $p$). Then $xy$ has order $ab$ (mod $p$) if $(a,b) = 1$.
+\end{lemma}
+\begin{proof}
+    We simply show $(xy)^{c}$ runs through different values as $1 \leq c \leq ab$.
+\end{proof}
+\begin{lemma}
+    Suppose and $x$ has order $a$ (mod $m$). Then $x$ has an order that is an multiple of $a$ (mod $mn$) if $(x,n) = 1$.
+\end{lemma}
+\begin{proof}
+    Exercise!
+\end{proof}
+
+\subsubsection{}
+A natural question: which numbers $m$ have primitive roots (mod $m$)?
+\begin{theorem}
+    If $p$ is prime, then $p$ has a primitive root.
+\end{theorem}
+\begin{proof}
+    Suppose $p-1 = p_{1}^{n_{1}}...p_{k}^{n_{k}}$. We want to find an element of order $p_{1}^{n_{1}}...p_{k}^{n_{k}}$. We first find an element with order $p_{i}^{n_{i}}$. Recall from Week 7 Lecture Notes that $x^{d} - 1$ has $d$ roots (mod $p$) if $d \mid p-1$. Hence there are $p_{i}^{n_{i}}$ elements with order at most $p_{i}^{n_{i}}$ and $p_{i}^{n_{i}-1}$ elements with order at most $p_{i}^{n_{i}-1}$ (why?). In other words, there exist an $a_{i}$ with order exactly $p_{i}^{n_{i}}$. The proof follows when we consider the product of the $a_{i}$'s and Lemma 1.
+\end{proof}
+
+\begin{remark}
+    The proof also gives rise to a method of finding primitive roots of primes.
+\end{remark}
+
+\begin{exercise}
+    Show the number of primitive roots (mod $p$) is $\phi(p-1)$. Hint: write all the residue classes as powers of a primitive root $g$.
+\end{exercise}
+
+\subsubsection{}
+We will now prove a few interesting theorems involving similar ideas and themes as the lifting algorithm and Hensel's Lemma from Week 7.
+\begin{theorem}
+        If $g$ is a primitive root (mod $p$) and $p$ is odd, then $g$ or $g + p$ is a primitive root (mod $p^{2}$).
+\end{theorem}
+\begin{proof}
+    Let $g$ be a primitive root of $p$. Then by Lemma 2, $g$ has order $p-1$ or $p(p-1)$ (mod $p^{2}$). If $g$ has order $p(p-1)$, we are done. Otherwise, consider $(g+p)$, which also has order $p-1$ or $p(p-1)$ (mod $p^{2}$). Note:
+    \begin{equation}
+        (g+p)^{p-1} = 1 + g^{p-2}p(p-1) \pmod{p^{2}}
+    \end{equation}
+    and hence $(g+p)$ has order $p(p-1)$.
+\end{proof}
+Theorem 4 happens to be an edge case version of Theorem 5.
+
+\begin{theorem}
+    If $g$ is a primitive root (mod $p^{i}$) with $i > 1$ and $p$ is odd, then $g$ is a primitive root (mod $p^{i+1}$).
+\end{theorem}
+\begin{proof}
+    We note
+    \begin{itemize}
+        \item $g^{\phi(p^{i-1})} = 1 \pmod{p^{i-1}}$
+        \item $g^{\phi(p^{i-1})} \neq 1 \pmod{p^{i}}$
+    \end{itemize}
+    Hence 
+    \begin{equation}
+        g^{\phi(p^{i-1})} = 1 + tp^{i-1} \quad (t,p) = 1.
+    \end{equation}
+    Then
+    \begin{equation}
+        g^{\phi(p^{i})} = (1 + tp^{i-1})^{p}
+        = 1 + tp^{i} + sp^{2i-1}
+    \end{equation}
+    and thus
+        \begin{equation}
+            g^{\phi(p^{i})} \neq 1 \pmod{p^{i+1}}.
+        \end{equation}
+    From Lemma 2, we know the order of $g$ (mod $p^{i+1}$) is divisible by $\phi(p^{i})$ (why?). Hence the order of $g$ is $\phi(p^{i+1})$.
+\end{proof}
+Putting Theorem 4 and 5 together, we have
+\begin{theorem}
+    The powers of odd primes have primitive roots.
+\end{theorem}
+
+\subsubsection{}
+Suppose $m$ has a primitive root $g$. As all the reduced residue classes are powers of $g$, the equation:
+\begin{equation}
+    x^{2} \equiv 1 \pmod{m}
+\end{equation}
+can be rewritten as
+\begin{equation}
+    g^{2i} \equiv 1 \pmod{m}
+\end{equation}
+which yields the solutions: $1, g^{\frac{\phi(m)}{2}}$ (why?). Note the second solution only occurs $\phi(m)$ is even. Hence
+\begin{lemma}
+    If $m$ has a primitive root, then there are at most two solutions to the equation
+    $x^{2} \equiv 1 \pmod{m}$.
+\end{lemma}
+We will use Lemma 7 to show that ``most" numbers do not have a primitive root.
+
+\subsubsection{}
+Suppose $m = 2^{n}p_{1}^{n_{1}}...p_{k}^{n_{k}}$. Then solving (5) is equivalent to solving the system of equations:
+\begin{equation}
+\begin{split}
+    &x^{2} \equiv 1 \pmod{2^{n}}\\
+    &x^{2} \equiv 1 \pmod{p^{n_{1}}}\\
+    &. . .\\
+    &x^{2} \equiv 1 \pmod{p^{n_{k}}}.
+\end{split}
+\end{equation}
+With the possible exception of the first equation, every other equation has 2 solutions (see previous section) and hence there are more than two solutions to (7) if $k > 1$.
+\begin{exercise}
+    If $n > 2$, show that the first equation in (7) has three or more solutions.
+\end{exercise}
+Hence anything with a primitive root must be of three forms:
+\begin{itemize}
+    \item 1, 2, 4
+    \item $p^{m}$ with $p > 2$
+    \item $2p^{m}$ with $p > 2$.
+\end{itemize}
+It happens that all of the above indeed have primitive roots.
+\begin{exercise}
+    If $g$ is a primitive root (mod $p^{m}$) for an odd prime $p$, show $g$ or $g + p^{m}$ is a primitive root (mod $2p^{m}$). Hint: Employ Lemma 2, and use $g$ if $g$ is odd and use $g + p^{m}$ if $g$ is even.
+\end{exercise}
+\subsubsection{}
+The conclusions from the previous section can help us prove that some large $n$ is prime given that $n-1$ is factorable. We first apply the peusdoprime tests. We then choose random numbers $g$ to see they are primitive roots, i.e. 
+\begin{equation}
+\begin{split}
+    &g^{\frac{n-1}{p_{1}}} \not \equiv 1 \pmod{n}\\
+    &g^{\frac{n-1}{p_{2}}} \not \equiv 1 \pmod{n}\\
+    &. . .\\
+    &g^{\frac{n-1}{p_{k}}} \not \equiv 1 \pmod{n}.
+\end{split}
+\end{equation}
+which is fast to check. Note if $n$ has a primitive root, there is a
+\begin{equation}
+    \frac{\phi(n-1)}{n}
+\end{equation}
+probability each random choice is a primitive root. If we find a primitive root, then combined with the fact that $n$ passes the pseudoprime test, we can deduce that $n$ is a prime (using the pseudoprime test to rule out the other possibilities).
+
+\section{Polynomial Congruences}
+Previously, we learned some miscellaneous techniques to solve the equation:
+\begin{equation}
+    f(x) \equiv 0 \pmod{p}.
+\end{equation}
+In section, we will provide a fuller introduction and a few general algorithms.
+
+\begin{exercise}[Euler's Criterion]
+    Show that $x^{2} = a \pmod{p}$ has solutions if and only if $a^{\frac{p-1}{2}} \equiv 1 \pmod{p}$. Hint: use primitive roots!
+\end{exercise}
+
+\subsubsection{Quadratics}
+If $f(x)$ is a quadratic equation, we can complete the square to obtain the equation
+\begin{equation}
+    x^{2} \equiv d \pmod{p}.
+\end{equation}
+We may attempt to guess a few solutions. Let us set $x = d^{i}$. We get
+\begin{equation}
+    d^{2i-1} \equiv 1 \pmod{p}.
+\end{equation}
+If we assume some solution exists, then we know
+\begin{equation}
+    d^{\frac{p-1}{2}} \equiv 1 \pmod{p}
+\end{equation}
+(why?) and hence we can set $2i-1 = \frac{p-1}{2}$ assuming $p = 4n + 3$. Similarly, if $p = 8n + 5$ and we assume some solution exists, we have
+\begin{equation}
+    d^{\frac{p-1}{2}} \equiv 1 \pmod{p}
+    \implies
+    d^{\frac{p-1}{4}} \equiv \pm 1 \pmod{p}.
+\end{equation}
+Hence if we set $\frac{p-1}{4} = 2i-1$, we obtain two possible cases:
+\begin{equation}
+    x^{2} \equiv d \pmod{p}, \quad x^{2} \equiv -d \pmod{p}.
+\end{equation}
+In the second case, we would just have to solve $i^{2} \equiv -1 \pmod{p}$, whose existence is guaranteed by Wilson's Theorem, and produce the solution $xi$. 
+\begin{remark}
+    Once we find solutions, we need to check if they are indeed solutions, as we have made the assumption that solutions exist.
+\end{remark}
+
+\subsubsection{}
+Understandably, the methods above were rather sketchy, but they are examples of employing \textit{Ansatz} to roughly guess the form of the solution. We now turn to the general case.
+\begin{problem}
+Suppose $G$ is a cyclic group generated by $g$. Given $d$ in $G$, solve $x^{2} = d$.
+\end{problem}
+
+\subsubsection{}
+Case 1. The order $a$ of $G$ (cardinality) is odd. We may employ our Ansatz strategy to solve:
+\begin{equation}
+    d^{2i-1} = 1
+\end{equation}
+by setting $2i-1 = a$.
+
+\subsubsection{}
+Case 2. The order $a$ of $G$ is $2^{k}$. Let $g$ be the generator (primitive root) of $G$. Let $d$ have the order $2^{i}$ (we induct on the order for $d$, assuming $d$ is not a primitive root, i.e. $i < k$). Then for some odd $m$, we have
+\begin{equation}
+    d = g^{2^{k-i}m}.
+\end{equation}
+Note $g^{2^{k-i}}$ also has order $2^{i}$, and
+\begin{equation}
+    dg^{2^{k-i}} = g^{2^{k-i}(m+1)}
+\end{equation}
+has order $2^{i-1}$. By induction, we know how to solve the equation
+\begin{equation}
+    y^{2} = dg^{2^{k-i}}
+\end{equation}
+which gives
+\begin{equation}
+    (yg^{-2^{k-i-1}})^{2} = d.
+\end{equation}
+\subsubsection{}
+Case 3. The order $a$ of $G$ is $2^{k}n$ where $n$ is odd. We consider the two separate cyclic subgroups that are the powers of $d^{n}$ and $d^{2^{k}}$ that have $2^{k'}$ and $n'$ elements, respectively ($n'$ is odd). In these subgroups, we find the ``square" roots of $d^{tn}$ and $d^{s2^{k}}$ where
+\begin{equation}
+    s2^{k} + tn = 1.
+\end{equation}
+Then the square root of $d$ is the product of the two square roots (why?).
+
+\begin{exercise}
+    How would we generalize the algorithm above to solve the equations of the form
+    \begin{equation}
+        x^{n} = 1?
+    \end{equation}
+\end{exercise}
+
+\subsubsection{}
+For more complicated polynomials $f$, we will return to our strategy of finding the GCD of $f$ and $x^{p} - x$. We can do this by employing an analogous method of fast exponentiation exposited in Week 3 Lecture Notes, i.e. we work out
+\begin{equation}
+    \begin{split}
+        &x \pmod{f}\\
+        &x^{2} \pmod{f}\\
+        &x^{4} \pmod{f}\\
+        &...\\
+    \end{split}
+\end{equation}
+where (mod $f$) just means the remainder after dividing by $f$. Note we are assuming $p$ to be large, and the degree of $f$ to be relatively small, and so this method is useful in cutting down the time to find the GCD. However, we still have to employ the division algorithm after finding the remainder (mod $f$) to compute the GCD.
+
+\subsubsection{}
+Once we find the GCD $g$, there is a probabilistic method to find the roots of $g$. Note
+\begin{equation}
+    (x^{\frac{p-1}{2}}-1)(x^{\frac{p-1}{2}}+1) \mid x^{p} - x
+\end{equation}
+hence we can try to compute the GCD of
+\begin{equation}
+    (g, ((x-a)^{\frac{p-1}{2}}-1))
+    \quad
+    (g, ((x-a)^{\frac{p-1}{2}}+1))
+\end{equation}
+for some randomly choosen $a$. If successful, this process will yield two smaller polynomials to compute the roots of. Then we can try to factor each of the smaller polynomials by choosing a different $a$ and reapplying (25).
+
+\section{Optional Reading}
+\subsubsection{}
+We can formulate $\S2.0.4$ in a more efficient manner. To solve
+\begin{equation}
+    x^{2} = d
+\end{equation}
+where $d$ has order $2^{i}$, we can find $c$ with order $2^{i-1}$ and solve
+\begin{equation}
+    (cx)^{2} = c^{2}d
+\end{equation}
+where $c^{2}d$ has order $i' < i$. We can repeat this step and incrementally decrease the order of the LHS to finally obtain
+\begin{equation}
+    (c'x)^{2} = 1
+\end{equation}
+in which we can then solve for $x$. This change, as well as other tweaks, results in the RESSOL algorithm presented in Niven's book.
+\end{document}
