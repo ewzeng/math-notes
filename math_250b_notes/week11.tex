@@ -1,0 +1,43 @@
+\section{Week 11}
+
+\subsection{Hensel's Lemma}
+Let $\hat{R}$ be the completion of $R$ w/r/t to ideal $I$. For a polynomial $f(x)$, Hensel's lemma allows us to lift solutions of the equation
+\[
+    f(x) \equiv 0 \pmod{I}
+\]
+to solutions to $f(x) = 0$ in $\hat{R}$. Consequently, this allows to solve equations in $\hat{R}$ by solving them in $R/I$. (Note if we set $R = \bZ$ and $I = (p)$, we get Hensel's lemma in number theory.)
+
+Formally, Hensel's lemma states that for $f \in R[x]$, a solution $f(a) \equiv 0 \pmod{I}$ can be lifted to $\hat{R}$ if $f'(a)$ is invertible in $R/I$. The proof is to iteratively lift a solution from $R/I^n$ to $R/I^{n+1}$ using Taylor series.
+
+Like in number theory, Hensel's lemma can be tweaked in various ways, e.g.
+\begin{itemize}
+    \item Can only require $f(a) = 0 \pmod{I^{2d+1}}$ and $f'(a)$ invertible in $R/I^{d+1}$.
+    \item Have $f \in \hat{R}[x]$, not just $f \in R[x]$.
+\end{itemize}
+
+\subsection{Flatness of Completions}
+We will now show that completions of Noetherian rings are flat. To do this, we try to emulate the proof that localizations of modules are flat:
+\begin{enumerate}
+    \item First, we show that completions are exact on the category of finitely generated $R$-modules. That is, for f.g. $A, B, C$, we have
+    \[
+        0 \to A \to B \to C \to 0 \implies 0 \to \hat{A} \to \hat{B} \to \hat{C} \to 0.
+    \]
+    The proof is to note
+    \[
+        0 \to \frac{A}{I^nB \cap A} \to \frac{B}{I^nB} \to \frac{C}{I^nC} \to 0
+    \]
+    is exact, check the Mittag-Leffler condition, take direct limits, and finally use Artin-Rees to show
+    \[
+        \varprojlim \frac{A}{I^nB \cap A} = \varprojlim \frac{A}{I^nA} = \hat{A}.
+    \]
+    \item Using some diagram chasing and applying the Five lemma, one can show if $M$ is f.g. over Noetherian $R$, then the map $M \otimes \hat{R} \to \hat{M}$ is an isomorphism.
+    \item From the previous two steps we conclude that for any f.g. $R$-module $M$ we have
+    \[
+        \Tor_1^R(\hat{R}, M) = 0.
+    \]
+    As $\Tor$ commutes with direct limits and every module is a direct limit of its f.g. submodules, we conclude that the above equation is true for all $R$-modules $M$, as desired.
+\end{enumerate}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

@@ -1,0 +1,68 @@
+\section*{Least Singular Value}
+
+For a $n \times n$ matrix $M$, we are often interested in the least singular value
+\[
+    \s_n(M) = \inf_{\|x\| = 1}\|Mx\|.
+\]
+More generally, for a rectangular $n \times p$ matrix $M$ (WLOG $p \le n$), we want to study the least non-trivial singular value
+\[
+    \s_p(M) = \inf_{\|x\| = 1}\|Mx\|.
+\]
+
+\paragraph{Compressible and Incompressible Vectors.} Although exact details vary, we call a unit vector compressible if it is close to being very sparse, and incompressible (i.e. more generic) otherwise.
+
+The key advantage of a vector $x$ being incompressible is that we can better control the value of
+\[
+    Y \cdot x = \sum Y_ix_i
+\]
+for a random vector $Y$ of independent entries. (Reason: more nonzero entries = more random values to sum, so things cancel out. Can formalize with CLT or concentration inequalities.)
+
+For random matrix $M$, the general strategy to control the least singular value is to control $\|Mx\|$ differently depending on whether $x$ is compressible or incompressible (in which case we can apply finer bounds using dot products).
+
+\paragraph{Rectangular Matrices.} For strictly rectangular matrices, we can establish (with high probability) the lower bound $\s_p(M) \ge c \sqrt{n}$, where $c$ depends only on $p/n < 1 - \d$, with an $\e$-net argument. More specifically, by taking an $\e$-net $\S$ and applying the union bound, we find it suffices to show that
+\[
+    \sum_{x \in \S} \bP\left( \|Mx\| \le 2C\e\sqrt{n} \right), \quad \|M\|_{op} \le C\sqrt{n}
+\]
+is exponentially small. There are not many compressible $x \in \S$, so their contributions can be (crudely) bounded. For incompressible $x \in \S$, it happens we can bound
+\[
+    \bP\left( \|Mx\| \le 2C\e\sqrt{n} \right) \le 2^n \bP\left( |Y \cdot x| \le \sqrt{8/\d}C\e \right)^{\left( 1 - \frac{\d}{2} \right)n},
+\]
+where $Y$ is a row of $M$. The proof then follows after using Berry-Esseen to control $|Y \cdot x|$.
+
+The intuitive reason why $\e$-net is suitable for rectangular matrices is because by a volume packing argument we have
+\[
+    |\S| \le O(1/\e)^p = O(1/\e)^{(1 - \d)n}
+\]
+which can be overpowered by a $O(\e)^{\left( 1 - \frac{\d}{2} \right)n}$ term later on. However, note this fails when $n = p$.
+
+\paragraph{Square Matrices.} Before we attack square matrices, we make a few observations.
+
+Let $Y_i$ be the columns of random matrix $M$ and let $W_i$ be the subspace spanned by $Y_j$ for $j \neq i$. Note that
+\[
+    |x_i|\text{dist}\left( Y_i, W_i \right) \le \|x_1Y_1 + \dots + x_nY_n\| = \|Mx\|.
+\]
+Thus the least singular value is strongly related to the distances between a row and the subspace spanned by the other rows (which intuitively makes sense).
+
+If $x$ is incompressible, the above inequality relates $\|Mx\|$ to many lower bounds, making it more powerful. Furthermore, if $n_i$ is the normal vector to $W_i$, note we have
+\[
+    \text{dist}\left( Y_i, W_i \right) = |Y_i \cdot n_i|
+\]
+which we can control in the likely case that $n_i$ is incompressible.
+
+Bounding then least singular value for square matrices then simplifies to the following argument:
+\begin{enumerate}
+    \item Bounding the probability that $\|Mx\|$ is small for compressible $x$ reduces to bounding the least singular value (with high probability) in the rectangular case.
+    \item For incompressible $x$, we apply our above observations to control the value of $\|Mx\|$.
+\end{enumerate}
+
+\paragraph{Moral.} Dot products often come up when controlling $\|Mx\|$, making classifying vectors on compressibility a natural trick to use. (Srivastava: in the literature, some people classify vectors into dozens of classes, and deal with each one separately.)
+
+\paragraph{Random.} Two things Nikhil said to me that I thought were very interesting:
+\begin{itemize}
+    \item Probability is the art of knowing when to use the union bound.
+    \item The only thing in probability that is always linear is expection. Used correctly, linearity of expectation is extremely powerful.
+\end{itemize}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
