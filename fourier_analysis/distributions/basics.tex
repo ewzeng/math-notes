@@ -1,0 +1,100 @@
+This is a short note with material drawn from \textit{A Guide to Distribution Theory and Fourier Transforms} by Strichartz. It's a wonderful book.
+
+\sepline
+
+\section{Motivation}
+Objects like the Dirac delta occur frequently in PDEs. Our goal is to rigorously define these ``generalized functions'' and define nice ways to manipulate them (e.g. taking derivatives or Fourier transforms). Among other things, this will allow us to introduce these ``generalized functions'' as solutions to PDEs, giving us the ability to describe a wider class of physical scenarios.
+
+\section{Generalized Functions}
+Suppose $f(x)$ represents the temperature at position $x$. Because the bulb of a thermometer has nonzero size, if we try to measure the heat at $x = c$, we will really be measuring the weighted average
+\[
+    \langle f, \var \rangle = \int f(x)\var(x)dx
+\]
+where $\var(x)$ is concentrated near $c$. Therefore, as long as the ``measurements'' $\langle f, \var \rangle$ behave nicely, we can drop the hypothesis that $f$ is a classical function and consider a larger class of objects. This gives us the freedom describe more physical situations (e.g. Dirac delta distribution of heat).
+
+Our excursion suggests the following:
+\begin{enumerate}
+    \item We first define a space $\cT$ of test functions (the measuring tools).
+    \item The space of generalized functions is then $\cT'$.
+\end{enumerate}
+
+Different choices of $\cT$ will lead to different families of generalized functions. We will consider two in particular.
+
+\section{Distributions}
+For open set $\O \subset \bR^n$, define $\cD(\O)$ to be the space of $C^\i$ functions with compact support that stays away from $\partial \O$. For the test functions $\cD(\O)$, the corresponding generalized functions $\cD'(\O)$ are called distributions. For $f \in \cD'(\O)$, we write
+\[
+    f(\var) = \langle f, \var \rangle.
+\]
+
+\section{Calculus of Distributions}
+We now want to define the derivative of a distribution. This is when our choice of test functions serves an additional purpose that was not evident a priori.
+
+First observe $\cD(\O) \subset \cD'(\O)$ as any locally-integrable function is also a distribution.
+
+Then using the trick that
+\[
+    \psi(x) =
+    \begin{cases}
+        e^{-1/x^2}                                                      & x > 0 \\
+        0                                                               & x \le 0
+    \end{cases}
+\]
+is $C^\i$ and generalizing to higher dimensions, one can construct test functions piecewise. This flexibility allows one to show $\cD(\O)$ is dense in $\cD'(\O)$ in the sense that for any $f \in \cD'(\O)$, there exists a sequence of $\var_n \in \cD(\O)$ such that
+\[
+    \var_n \to f
+\]
+in distribution. Therefore, we can define $\frac{\partial}{\partial x}f$ by
+\[
+    \begin{split}
+        \left\langle \frac{\partial}{\partial x}f, \var \right\rangle : & = \lim_{n \to \i} \left\langle \frac{\partial}{\partial x}\var_n, \var \right\rangle \\
+                                                                        & = \lim_{n \to \i} -\left\langle \var_n, \frac{\partial}{\partial x}\var \right\rangle\\
+                                                                        & = -\left\langle f, \frac{\partial}{\partial x}\var \right\rangle
+    \end{split}
+\]
+where the second inequality follows from integration by parts.
+
+In summary, $\cD(\O)$ has served two somewhat unrelated purposes:
+\begin{enumerate}
+    \item $\cD(\O)$ determines what $\cD'(\O)$ looks like.
+    \item As differentiation maps $\cD(\O) \to \cD(\O)$ and $\cD(\O)$ is dense in $\cD'(\O)$, we can lift differentiation to $\cD'(\O) \to \cD'(\O)$.
+\end{enumerate}
+
+\section{Tempered Distributions}
+Define the Schwartz space $\cS(\bR^n)$ to be the space of $C^\i$ functions that are rapidly decreasing, i.e. for any $f \in \cS(\bR^n)$,
+\[
+    f(x)p(x)
+\]
+is bounded for any polynomial $p(x)$. The corresponding space of distributions $\cS'(\bR^n)$ are called the tempered distributions. This is because classical functions in $\cS'(\bR^n)$ cannot blow up as fast as some classical functions in $\cD'(\bR^n)$.
+
+\section{Fourier Transform of Tempered Distributions}
+Our goal is to define the FT of elements in $\cS'(\bR^n)$. As we have seen, to do this we need two conditions:
+\begin{enumerate}
+    \item The FT must map $\cS(\bR^n) \to \cS(\bR^n)$.
+    \item $\cS(\bR^n)$ must be dense in $\cS'(\bR^n)$.
+\end{enumerate}
+The second condition follows from the observation that
+\[
+    \cD(\bR^n) \subset \cS(\bR^n) \subset \cS'(\bR^n) \subset \cD'(\bR^n)
+\]
+and recalling that $\cD(\bR^n)$ is dense in $\cD'(\bR^n)$.
+
+The first condition follows from the observations that:
+\begin{itemize}
+    \item Rapidly decreasing $\to$ Fourier transform smooth.
+    \item Smooth $\to$ Fourier transform rapidly decreasing.
+\end{itemize}
+These observations are why we defined $\cS(\bR^n)$ in this way. Note we couldn't use $\cD(\bR^n)$ because the only element $\in \cD(\bR^n)$ whose FT is in $\cD(\bR^n)$ is 0.
+
+As our conditions have been met, we thus define the FT of $f \in \cS'(\bR^n)$ to be
+\[
+    \begin{split}
+        \left\langle \hat{f}, \var \right\rangle : & = \lim_{n \to \i} \left\langle \hat{\var_n}, \var \right\rangle \\
+                                                   & = \lim_{n \to \i} \left\langle \var_n, \hat{\var} \right\rangle \\
+                                                   & = \left\langle f, \hat{\var} \right\rangle
+    \end{split}
+\]
+where $\var_n \in \cS(\bR^n)$, and $\var_n \to f$ in distribution.
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
