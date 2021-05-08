@@ -1,0 +1,50 @@
+\section{Harmonic Functions}
+A function $f: \bR^2 \to \bR$ is harmonic if
+\[
+    \Delta f = \nabla^2 f = 0.
+\]
+Recall that a harmonic function represents an equilibrium state, e.g. heat equilibrium.
+
+From the C-R equations, one can show that the real and imaginary parts of a holomorphic function are harmonic. Conversely, one can show that every harmonic function is locally the real part of a holomorphic function. This is why complex analysis is often used to study harmonic functions.
+
+The Dirichlet problem concerns the construction of harmonic functions for given boundary values. For instance, the Dirichlet problem on $\bD \subset \bC$ is to find a harmonic function $g$ defined on $\bD$ such that
+\[
+    \lim_{r \to 1} g(re^{i\theta}) = f(\theta)
+\]
+for a given continuous $f$. We will solve the Dirichlet problem on the unit disk by considering the Fourier problem.
+
+\section{Fourier Problem}
+
+Given $f: [0, 2\pi) \to \bC$, we can decompose $f$ into its Fourier series
+\[
+    f(\theta) = \sum_{n = -\i}^\i \hat{f}(n)e^{in\theta}
+\]
+where the equality is convergence of the infinite sum in the $\cL^2$ Hilbert space. However, sometimes we want something stronger. More specifically, how can we recover $f$ \textit{pointwise} from its Fourier coefficents?
+
+The naive solution is to define
+\[
+    (s_Nf)(\theta) = \sum_{n = -N}^N \hat{f}(n)e^{in\theta}
+\]
+and let $N \to \i$. However, this converges pointwise to $f$ only if $f$ is $C^1$ (when seen as a function on $S^1$). A better solution is to define for $0 \le r < 1$
+\[
+    (D_rf)(\theta) = \sum_{n = -\i}^\i r^{|n|}\hat{f}(n)e^{in\theta}
+\]
+and let $r \uparrow 1$. As multiplication in the Fourier domain is convolution, we rewrite $D_r$ as a convolution and get
+\[
+    D_r(f)(\theta) = \int_{-\pi}^\pi \frac{1 -r^2}{1 - 2r\cos(\theta-t) + r^2}f(t)dt = \int_{-\pi}^\pi P_r(\theta-t)f(t)dt
+\]
+where $P_r$ is called the \textbf{Poisson kernel}. Then a divide-and-conquer computation of the integral
+\[
+    |D_r(f)(\theta) - f(t)| \le \int P_r(\theta - t)|f(\theta)-f(t)|dt
+\]
+yields that $D_r(f) \to f$ uniformly as $r \uparrow 1$ when $f$ is continuous. (Another perspective: $P_r(\xi)$ converges to the Dirac delta as $r \uparrow 1$.)
+
+\section{Dirichlet Problem on the Unit Disk}
+Remarkably, it happens that we can solve the Dirichlet problem on the unit disk by setting
+\[
+    g(re^{i\theta}) = D_r(f)(\theta).
+\]
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
