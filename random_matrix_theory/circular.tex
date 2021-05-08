@@ -1,0 +1,77 @@
+\section*{Circular Law}
+
+\paragraph{Statement.} Let $M_n$ be the top left $n \times n$ minor of an infinite matrix of i.i.d. entries of mean zero and variance one (note: not Hermitian). Then almost surely we have
+\[
+    \mu_{\frac{1}{\sqrt{n}}M_n} \to \mu_{\text{circ}} = \frac{1}{\pi}1_{|x|^2+|y|^2 \le 1}.
+\]
+
+\paragraph{Failure of Traditional Methods.} When dealing with non-Hermitian random matrices, our previous methods fail in two important ways:
+\begin{enumerate}
+    \item We have spectral instability: small pertubations can lead to large fluctuations in the spectrum. Therefore we cannot use the truncation method and must work with unbounded random variables.
+
+    One can show that
+    \[
+        \begin{split}
+            \s_n(M-zI) < \e \iff & z \text{ is an eigenvalue of $M + E$} \\
+                                 & \text{for some pertubation } \|E\| < \e.
+        \end{split}
+    \]
+    Thus controlling spectral instability is strongly related to bounding the least singular value.
+    \item If $\mu$ is the ESD of a Hermitian matrix (i.e. a measure on $\bR$), then by Stone-Weierstrass one deduces that the moment sequence
+    \[
+        \Tr(M^k) = \int x^k d\mu
+    \]
+    uniquely determines $\mu$. However, in the non-Hermitian case, $\mu$ is a measure on $\bC$, and thus we can no longer apply Stone-Weierstrass (need conjugation for polynomials to be dense). Thus the moments do not determine the ESD, and consequently the moment method and the techniques of free probability (the free cumulant sequence comes from the moment sequence!) do not apply.
+\end{enumerate}
+
+\paragraph{Stieltjes Transform.} Recall in the section on free probability we established the relations
+\[
+    s_X(z) \iff \text{Moments} \iff \mu_X,
+\]
+allowing us to frame convergence of the $\mu_X$'s as convergence of the $s_X(z)$'s. [Alternatively, apply Plemelj.] When $X$ is not self-adjoint, then not only do the moments no longer determine $\mu_X$ (as we have seen), but they also no longer determine $s_X(z)$. This is because although outside the spectral radius we still have
+\[
+    s_X(z) = - \sum_{k = 0}^\i \frac{\t(X^k)}{z^{k+1}},
+\]
+there may be many ways to analytically continue $s_X(z)$ to inside the spectral radius. (The loss of self-adjointness means we have less conditions to enforce on this analytic continuation.) 
+
+Therefore the relations become
+\[
+    s_X(z) \implies \text{Moments} \impliedby \mu_X.
+\]
+[Plemelj also no longer works.] However, $\mu_X$ can still be reconstructed from $s_X(z)$ (just look at where the poles are). Thus even with the loss of the use of moments, we can still use the Stieltjes transform to attack the circular law.
+
+\paragraph{Hermitization.} The key idea to prove the circular law is to pull things back into the Hermitian world with the following trick.
+\begin{enumerate}
+    \item Define
+    \[
+        f_n(z) = \int_\bC \log{|w-z|}d\mu_{\frac{1}{\sqrt{n}}M_n}(w)
+    \]
+    and observe we have the distributional derivative
+    \[
+        \left( -\frac{\partial}{\partial x} + i \frac{\partial}{\partial y}\right)f_n(z) = s_{\frac{1}{\sqrt{n}}M_n}(z).
+    \]
+    As $s_{X}(z)$ determines $\mu_{X}$ (see above), one can show that
+    \[
+        f_n(z) \to f_{\text{circ}}(z) \iff \mu_{\frac{1}{\sqrt{n}}M_n} \to \mu_{\text{circ}}.
+    \]
+    \item Because the product of eigenvalues has the same magnitude as the product of singular values, we note
+    \[
+        \begin{split}
+            f_n(z) &= \frac{1}{n}\sum_{j = 1}^n \log \left| \frac{\l_j(M_n)}{\sqrt{n}} - z \right|\\
+            &= \frac{1}{n} \log \left| \det\left( \frac{M_n}{\sqrt{n}} - zI \right) \right|\\
+            &= \frac{1}{2} \int_0^\i \log(x) d\nu_{n,z}
+        \end{split}
+    \]
+    where $\nu_{n,z}$ is the ESD of the Hermitian matrix $(\frac{1}{\sqrt{n}}M_n - zI)^*(\frac{1}{\sqrt{n}}M_n - zI)$. In other words, we pass from eigenvalues to (the squares of the) singular values.
+\end{enumerate}
+
+\paragraph{Remaining Proof Sketch.} To prove the circular law, it then suffices to show that the
+\[
+    \frac{1}{2}\int_0^\i \log(x)d\nu_{n,z}
+\]
+converge appropriately. Using our traditional methods, we can indeed show the $\nu_{n,z}$'s converge to the appropriate measure in the vague topology. However, this is not enough because $\log(x)$ blows up at 0. To solve this technical difficulty, we have to appeal to results bounding the least singular value. (As expected, bounding the least singular value shows up somewhere.)
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
