@@ -113,7 +113,9 @@ The idea is that if $\Spec(R)$ has Krull dimension $d$, we pick $x_1, \dots, x_d
     \item Hilbert definition: has its own advantages (e.g. can trivially show that completions preserve dimension).
 \end{itemize}
 
-\paragraph{Krull's Principal Ideal Theorem.} PIT states that the codimension of (the zero set of) a non-zero divisor $x$ in a Noetherian ring $R$ is 1. The proof is to pick a minimal prime $\mathfrak p \supset (x)$, show the localization $R_{\mathfrak p}$ does not change the codimension of $(x)$ but has dimension 1, and then rule out the case when the codimension is 0.
+\paragraph{Krull's Principal Ideal Theorem.} PIT states that the codimension of (the zero set of) $x$ in a Noetherian ring $R$ is 1 if $x$ is not a zero divisor or a unit. The proof is to pick a minimal prime $\mathfrak p \supset (x)$, show the localization $R_{\mathfrak p}$ does not change the codimension of $(x)$ but has dimension 1, and then rule out the case when the codimension is 0.
+
+As a consequence, quotienting a Noetherian local ring by an element that is not a zero divisor or a unit reduces the dimension by 1.
 
 %%% Local Variables:
 %%% TeX-master: "main"
