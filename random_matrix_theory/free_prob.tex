@@ -10,11 +10,11 @@
       \thead{Space}  & \thead{Elements}                 & \thead{$*$-operation                                                                                                                                                                                                                                                                                                                                          \\ (Adjoints)} & \thead{$\t: \_\_ \to \bC$ \\ $\t(X^*) = \t(X)^*$} & \thead{Spec. Meas. $\mu_X$ \\ $\t(X^k) = \int_\bC X^k d\mu_X$} & \thead{Spec. Radius $\rho$ for $X=X^*$ \\ $\Supp(\mu_X) \subset [-\rho(X), \rho(X)]$}\\
       \hline
       \hline
-      Reg. Prob.     & $X: \Omega \to \bC$              & Conjugation                                                                                                                                                                                  & $\t(X) = \bE[X]$                                  & $\mu_X = $ pdf                                                 & $\rho = \|X\|_\i$                         \\
+      Reg. Prob.     & $X: \Omega \to \bC$              & Conjugation                                                                                                                                                                                  & $\t(X) = \bE[X]$                                  & $\mu_X = $ pdf                                                 & $\rho = \|\mu_X\|_\i = \|X\|_\i$                         \\
       \hline
-      Matrices       & $X: \bC^{n \times n}$            & Adjoint                                                                                                                                                                                      & $\t(X) = \frac{1}{n}\Tr(X)$                       & $\mu_X = $ ESD                                                 & $\rho = |\text{Largest Eigenvalue}|$      \\
+      Matrices       & $X: \bC^{n \times n}$            & Adjoint                                                                                                                                                                                      & $\t(X) = \frac{1}{n}\Tr(X)$                       & $\mu_X = $ ESD                                                 & $\rho = \|\mu_X\|_\i = |\text{Largest Eig}|$      \\
       \hline
-      Rand. Matrices & $X: \Omega \to \bC^{n \times n}$ & Adjoint                                                                                                                                                                                      & $\t(X) = \bE\frac{1}{n}\Tr(X)$                    & $\mu_X = \bE$ ESD                                              & $\rho = \|\text{Largest Eigenvalue}\|_\i$ \\
+      Rand. Matrices & $X: \Omega \to \bC^{n \times n}$ & Adjoint                                                                                                                                                                                      & $\t(X) = \bE\frac{1}{n}\Tr(X)$                    & $\mu_X = \bE$ ESD                                              & $\rho = \|\mu_X\|_\i$ \\
       \hline
     \end{tabular}
 \end{sidewaystable}
@@ -63,7 +63,7 @@ Therefore, it is conceviable that the pointwise convergence of $s_X(z)$ is equiv
 
 [In both CLT and the semicircular law, each $X_i$ in the sequence $X_1, X_2, \dots$ comes from a different probability space, but the above argument still applies to show the convergence of the $\mu_{X_i}$'s.]
 
-\paragraph{Free Independence.} Defining independence on a noncommutative probability space is tricky because such spaces do not have notions of sample spaces and events. The main object of a noncomm. prob. space is the expectation $\t$, so we try to draw inspiration by rewriting the tradictional notion of independence using expectation.
+\paragraph{Free Independence.} Defining independence on a noncommutative probability space is tricky because such spaces do not have notions of sample spaces and events. The main object of a noncomm. prob. space is the expectation $\t$, so we try to draw inspiration by rewriting the traditional notion of independence using expectation.
 
 In a trad. prob. space, $X$, $Y$ are independent iff $\bE[f(X)g(Y)] = \bE[f(X)]\bE[g(Y)]$ for any polynomials $f, g$. (Pf: approximate indicator functions with polynomials.) This form happens to be too strong to generalize, but we can reformulate it equivalently as
 \[
