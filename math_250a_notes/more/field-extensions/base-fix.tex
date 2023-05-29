@@ -1,11 +1,11 @@
-\section{Fixing the Base Field}
-In the theory of fields, we will often encounter scenarios where we have a base field $F$ embedded inside larger fields $E_1$, $E_2$, and we want to study homomorphisms $\s: E_1 \rightarrow E_2$ that fix $F$. The key trick is to note that such homomorphisms $\s$ ``fix" polynomials in $F$. More precisely, for every $f \in F[x]$, we have
+\section{Fixing the Base Field} \label{base-fix}
+In the theory of field extensions, we will often encounter scenarios where we have a base field $F$ embedded inside larger fields $E_1$, $E_2$, and we want to study homomorphisms $\s: E_1 \rightarrow E_2$ that fix $F$. The key trick is to note that such homomorphisms $\s$ ``fix" polynomials in $F$. More precisely, for every $f \in F[x]$, we have
 \[
     \s: f(\a) \mapsto f(\s(\a))
 \]
-because $\s$ acts as the identity on the coefficents of $f$.
+because $\s$ acts as the identity on the coefficients of $f$.
 This implies that if $\a$ is a root of $f$, then so is $\s(\a)$. A natural consequence is that:
 \begin{center}
-    $\s$ acts as a bijection between the roots of $f$ in $E_1$ and the roots of $f$ in $E_2$.
+    $\s$ is an injection from the roots of $f$ in $E_1$ to the roots of $f$ in $E_2$.
 \end{center}
-This is an innocent observation that turns out to be very important. For example, we can use this result to show that every endomorphism $\s: E \rightarrow E$ of an algebraic extension $E$ of $F$ that fixes $F$ is an automorphism. To see this, we first note that because $\s$ is a nontrivial homomorphism of fields, it is injective. Surjectivity follows from the fact that every element of $E$ is a root of some polynomial in $F$, and $\s$ acts as a bijection on the roots, so every element is in the range of $\s$.
+In particular, $\s$ is a bijection of roots if $E_1$ is algebraically closed (see next section) or if $E_1 = E_2$. This is an innocent observation that turns out to be very important. For example, we can use this result to show that every endomorphism $\s: E \rightarrow E$ of an algebraic extension $E$ of $F$ that fixes $F$ is an automorphism. To see this, we first note that because $\s$ is a nontrivial homomorphism of fields, it is injective. Surjectivity follows from the fact that every element of $E$ is a root of some polynomial in $F$, and $\s$ is a bijection of roots.

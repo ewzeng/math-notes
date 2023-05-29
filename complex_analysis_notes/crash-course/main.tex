@@ -1,20 +1,39 @@
-\documentclass[letterpaper]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb}
-\usepackage{parskip}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{hyperref}
 
 % TOC
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
-% Tables
-\usepackage{rotating} % For landscape tables
-\usepackage{makecell}
-
 % Cool looking font.
 \usepackage{newpxmath}
 \usepackage{newpxtext}
+
+% Format paragraphs by setting indents to zero and modifying the space
+% between paragraphs.
+\usepackage{parskip}
+
+% Create nice looking boxes for equations. Rule of thumb: don't use
+% for more than 10% of the equations. Usage:
+% \begin{empheq}[box=\mybluebox]{equation*}
+%     [Equation here]
+% \end{empheq}
+\usepackage{empheq, xcolor}
+\definecolor{myblue}{rgb}{.8, .8. 1}
+\newcommand*\mybluebox[1]{%
+    \colorbox{myblue}{\hspace{1em}#1\hspace{1em}}}
+
+% Theorem Environments.
+% Note: everything is un-numbered.
+\theoremstyle{definition} % Hack to make theorem environments not
+                          % italicized.
+\newtheorem*{thm}{Theorem}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{dfn}{Definition}
 
 %Macros for Greek Letters
 \renewcommand{\a}{\alpha}
@@ -67,41 +86,37 @@
 \newcommand{\bF}{{\mathbb F}}
 \newcommand{\bE}{{\mathbb E}}
 \newcommand{\bP}{{\mathbb P}}
+\newcommand{\bD}{{\mathbb D}}
 
 %Other macros
 \renewcommand{\i}{\infty}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\cdf}{cdf}
-\DeclareMathOperator{\Supp}{Supp}
-\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\DeclareMathOperator{\Res}{Res}
 
-\renewcommand{\abstractname}{About}
-\title{Notes on Random Matrix Theory}
+\title{Complex Analysis Crash Course}
 \author{Edward Zeng \\
         \href{mailto:edwardzeng@berkeley.edu}{edwardzeng@berkeley.edu}}
-\date{May 2021}
+\date{Original: May 2021 \\
+      Last Updated: July 2022}
+
 \begin{document}
 \maketitle
-\begin{abstract}
-    In Spring 2021, I took a reading course on random matrix theory with Professor Nikhil Srivastava. These are my notes.
-\end{abstract}
-
+\setcounter{tocdepth}{0}
 \tableofcontents
 \newpage
-% Start notes
-\input{concentration_of_measure.tex}
+
+\part{Basics}
+\input{basics.tex}
+
 \newpage
-\input{clt.tex}
+\part{Harmonic Functions}
+\input{harmonic.tex}
+
 \newpage
-\input{op_norm.tex}
+\part{P\'olya Vector Fields}
+\input{polya.tex}
+
 \newpage
-\input{semicircle.tex}
-\newpage
-\input{free_prob.tex}
-\newpage
-\input{least_singular.tex}
-\newpage
-\input{circular.tex}
-% End notes
+\bibliographystyle{alpha}
+\bibliography{ref}
 
 \end{document}

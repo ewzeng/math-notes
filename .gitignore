@@ -4,6 +4,7 @@
 *.log
 *.nav
 *.snm
+*.bbl
 master.pdf
 main.pdf
 **/auto

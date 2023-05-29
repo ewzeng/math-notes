@@ -12,7 +12,7 @@ The main theorem of Galois Theory states that there is bijection between interme
     \item Conversely, to an subgroup $H \subset \Gal(E/F)$ we associate the largest field that elements of $H$ leave fixed. This field is denoted as $E^H$.
 \end{itemize}
 
-Pictorally, the Galois correspondence can be expressed as:
+Pictorially, the Galois correspondence can be expressed as:
 \[
     \begin{tikzcd}
         E \arrow[d, no head]   & e \arrow[d, no head] \\
@@ -20,7 +20,7 @@ Pictorally, the Galois correspondence can be expressed as:
         F                      & \Gal(E/F)           
     \end{tikzcd}
 \]
-Notice the Galois correspondence is order-reversing: larger fields correspond to smaller groups and vice versa. The importance of the Galois correspondence has led mathematicians to call any order-reversing bijection a \textbf{Galois connection}.
+Notice the Galois correspondence is order-reversing: larger fields correspond to smaller groups and vice versa.
 
 \subsection{Proof}
 The proof of the main theorem can be broken into two halves:
@@ -30,7 +30,7 @@ The proof of the main theorem can be broken into two halves:
 \end{enumerate}
 
 \subsubsection{First Half: $E^{\Gal(E/K)} = K$}
-To prove $E^{\Gal(E/K)} = K$, it suffices to show that no element $\a \in E-K$ is fixed by every $\s \in \Gal(E/K)$. Indeed, if we let $p$ be the minimal polynomial of $\a$ over $K$, we note that $\a$ can be mapped to any of the (distinct) roots of $p$. (The roots of $p$ are distinct because $E/K$ is Galois and thus separable).
+To prove $E^{\Gal(E/K)} = K$, it suffices to show that no element $\a \in E-K$ is fixed by every $\s \in \Gal(E/K)$. Indeed, if $p$ is the minimal polynomial of $\a$ over $K$, then $\a$ can be mapped to any of the (distinct) roots of $p$.
 
 \subsubsection{Second Half: $H = \Gal(E/E^H)$}
 The proof of this half is more tricky. The basic idea is to show $[E : E^H] \leq |H|$, which implies $|\Gal(E/E^H)| \leq |H|$. But because $H \subset \Gal(E/E^H)$, we conclude $\Gal(E/E^H) = H$.
@@ -41,8 +41,8 @@ Showing $[E : E^H] \leq |H|$ takes three steps:
         \[
             p(x) = \prod_{\b \in H\a} (x - \b)
         \]
-        where $H\a$ denotes the orbit of $\a$ under the action of $H$. As $p$ is invariant under $H$, all the coefficents of $p$ are in $E^H$, and thus $\a$ satifies a polynomial over $E^H$ with distinct roots. Hence the minimal polynomial of $\a$ has distinct roots and therefore $E^H(\a)/E^H$ is separable.
+        where $H\a$ denotes the orbit of $\a$ under the action of $H$. As $p$ is invariant under $H$, all the coefficients of $p$ are in $E^H$, and thus $\a$ satisfies a polynomial over $E^H$ with distinct roots. Hence the minimal polynomial of $\a$ has distinct roots and therefore $E^H(\a)/E^H$ is separable.
     \item We show if $E^H(\a)/E^H$ is separable for all $\a \in E$, then $E/E^H$ is separable. (Build a tower from $E^H$ to $E$ and iteratively apply the multiplicativity of separable degrees.)
-    \item Applying the primitive element theorem, we conclude $[E : E^H]$ is equal to the largest possible $[E^H(\a): E^H]$, which is bounded by $|H\a| \leq |H|$ as $\a$ is a root of the polynomial $p$ above.
+    \item Applying the primitive element theorem, we conclude $[E : E^H]$ is equal to the largest possible $[E^H(\a): E^H]$, which is bounded by $|H\a| \leq |H|$.
 \end{enumerate}
 

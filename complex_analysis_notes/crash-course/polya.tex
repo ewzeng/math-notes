@@ -1,0 +1,38 @@
+We present a powerful interpretation of holomorphic functions and contour integration found in Chapter 11 of \cite{Nee97}.
+
+\section{P\'olya Vector Fields}
+Observe every $g: U \to \bC$ represents a vector field on $U \subset \bR^2$. Given $f: U \to \bC$, the \textbf{P\'olya vector field} $\tilde{f}$ of $f$ is the vector field represented by $\bar{f}$.
+
+\section{Integrals}
+Historically, complex path integrals came about in an attempt to generalize real integrals; complex integration was not created with a geometric (or physical) interpretation in mind. However, this does not mean there is no such interpretation.
+
+Suppose $f: U \to \bC$ is continuous and $\g \subset U$ is a piecewise smooth path. Define $F[\tilde{f}, \g]$ to be the flux of $\tilde{f}$ through $\g$ and define $W[\tilde{f}, \g]$ to be the work done by moving along $\g$ in $\tilde{f}$. Then one can verify that
+\begin{empheq}[box=\mybluebox]{equation*}
+    \int_\g f dz = W[\tilde{f}, \g] + i F[\tilde{f}, \g].
+\end{empheq}
+
+\section{Holomorphic Functions} \label{polya-holo}
+Let us suppose that $U$ is simply connected, $f: U \to \bC$, and $f$ is differentiable when regarded as a function $\bR^2 \supset U \to \bR^2$. Then
+\begin{align*}
+    \{f \text{ holomorphic on } U\} &\iff \{f \text{ satisfies C-R equations on } U\} \\
+                                    &\iff \{\text{div}(\tilde{f}) = 0, \text{curl}(\tilde{f}) = 0 \text{ on }U\} \\
+                                    &\iff \{F[\tilde{f}, \g] = 0, W[\tilde{f}, \g] = 0 \text{ for any closed loop } \g \subset U\} \\
+                                    &\iff \{\tilde{f} \text{ is sourceless and conservative on } U\}.
+\end{align*}
+This provides an alternative characterization of holomorphic functions as well as an intuitive explantation of why homotopic paths in $U$ have the same integral.
+
+\section{Laurent Series}
+Suppose we can expand $f$ as the Laurent series
+\[
+    f(z) = \sum_{n = -\i}^\i a_n (z-z_0)^n.
+\]
+Then $\tilde{f}$ is a superposition of P\'olya vector fields, one for each term in the sum. However, one can show that the only term whose P\'olya vector field generates flux and/or circulation is $a_{-1} (z-z_0)^{-1}$. (For a visual illustration, see pages 488-492 in \cite{Nee97}). This provides an intuitive explanation for both Cauchy's integral formula and the residue formula.
+
+\section{Harmonic Functions}
+Continuing the discussion in Section \ref{polya-holo}, for $f = u + iv$, it is not hard to conclude
+\[
+    \{\tilde{f} \text{ is sourceless and conservative on } U\} \implies \{u, v \text{ harmonic on } U\}.
+\]
+By Gauss' mean value theorem, this implies the average of $\tilde{f}$ on a circle in $U$ is equal to the value of $\tilde{f}$ at the center of the circle.
+
+What is a physical manifestation of this implication? Consider a 2D universe with a circular mass $c$ and a point mass $p$ that are far apart. The 2D gravity vector field induced by $p$ is sourceless and conservative near $c$. In this scenario, Gauss's mean value theorem is Newton's shell theorem, which states that $c$ affects $p$ gravitationally as if all the mass of $c$ is concentrated at its center.

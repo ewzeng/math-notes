@@ -2,19 +2,24 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{parskip}
-\usepackage{hyperref}
-
-% TOC
-\usepackage{tocloft}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 % Tables
 \usepackage{rotating} % For landscape tables
 \usepackage{makecell}
+\renewcommand\theadfont{\bfseries\sffamily}
 
-% Cool looking font.
-\usepackage{newpxmath}
-\usepackage{newpxtext}
+% For links
+\usepackage{hyperref}
+
+% For underbrackets and underbraces.
+\usepackage{mathtools}
+
+% For figures.
+\usepackage{float}
+
+% Change font for section and subsection headings to san serif.
+\usepackage{sectsty}
+\allsectionsfont{\bfseries\sffamily}
 
 %Macros for Greek Letters
 \renewcommand{\a}{\alpha}
@@ -74,34 +79,3 @@
 \DeclareMathOperator{\cdf}{cdf}
 \DeclareMathOperator{\Supp}{Supp}
 \newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
-
-\renewcommand{\abstractname}{About}
-\title{Notes on Random Matrix Theory}
-\author{Edward Zeng \\
-        \href{mailto:edwardzeng@berkeley.edu}{edwardzeng@berkeley.edu}}
-\date{May 2021}
-\begin{document}
-\maketitle
-\begin{abstract}
-    In Spring 2021, I took a reading course on random matrix theory with Professor Nikhil Srivastava. These are my notes.
-\end{abstract}
-
-\tableofcontents
-\newpage
-% Start notes
-\input{concentration_of_measure.tex}
-\newpage
-\input{clt.tex}
-\newpage
-\input{op_norm.tex}
-\newpage
-\input{semicircle.tex}
-\newpage
-\input{free_prob.tex}
-\newpage
-\input{least_singular.tex}
-\newpage
-\input{circular.tex}
-% End notes
-
-\end{document}

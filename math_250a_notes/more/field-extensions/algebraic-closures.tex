@@ -11,17 +11,17 @@ We will now show that algebraic closures are ``as small as they can be." More pr
 
 At first glance, it is not obvious $L$ is a field. Suppose $\a$ and $\b$ are roots of two polynomials in $F[x]$. How do we show $\a + \b$ is a root of some polynomial in $F[x]$? Constructing a polynomial with $\a + \b$ as a root is very difficult. However, we can bypass the constructive proof with a very elegant argument:
 \begin{enumerate}
-    \item As $\a$ and $\b$ are algebraic, $F(\a, \b)$ is finite dimensional over $F$.
-    \item Note $\a + \b \in F(\a, \b)$. As a result, $F(\a + \b) \subset F(\a, \b)$ is finite dimensional over $F$, and thus $\a + \b$ is algebraic.
+    \item As $\a$ and $\b$ are algebraic, $F(\a, \b)$ is finite-dimensional over $F$.
+    \item Note $\a + \b \in F(\a, \b)$. As a result, $F(\a + \b) \subset F(\a, \b)$ is finite-dimensional over $F$, and thus $\a + \b$ is algebraic.
 \end{enumerate}
-The same argument suffices for $\a\b$ and $\a/\b$. The fact that $L$ is a field follows. We apply a similar argument to show $L$ is algebraically closed:
+The same argument suffices for $\a\b$ and $\a/\b$ and it follows that $L$ is a field. We apply a similar argument to show $L$ is algebraically closed:
 \begin{enumerate}
-    \item Let $a_0 + a_1x + \dots + a_nx^n \in L[x]$, and let $\a \in E$ be a root. Note $F[a_0, \dots, a_n, \a]$ is finite dimensional over $F[a_0, \dots, a_n]$, which is finite dimensional over $F$.
-    \item We conclude $F[\a]$ is finite dimensional over $F$, and thus $\a$ is algebraic, i.e. $\a \in L$.
+    \item Let $a_0 + a_1x + \dots + a_nx^n \in L[x]$, and let $\a \in E$ be a root. Note $F[a_0, \dots, a_n, \a]$ is finite-dimensional over $F[a_0, \dots, a_n]$, which is finite-dimensional over $F$.
+    \item We conclude $F[\a]$ is finite-dimensional over $F$, and thus $\a$ is algebraic, i.e. $\a \in L$.
 \end{enumerate}
 
 \subsection{Uniqueness}
-In this section, we will prove the following theorem:
+Algebraic closures are unique:
 \begin{center}
     If $K$ and $L$ are algebraic closures of $F$, then $K$ and $L$ are isomorphic.
 \end{center}
@@ -29,19 +29,19 @@ The proof is to construct a map $\s: K \rightarrow L$ that is identity on $F$. T
 \[
     F \subset \s(K) \subset L
 \]
-will allow us to conclude $\s(K) = L$, and thus $\s$ is an isomorphism. (Alternatively, we could make an argument similar to the one presented in the discussion on fixed base fields to deduce that $\s$ is an isomorphism.)
+will allow us to conclude $\s(K) = L$, implying that $\s$ is an isomorphism. (Alternatively, we could make an argument similar to the one in Section \ref{base-fix} to deduce that $\s$ is an isomorphism.)
 
 To construct $\s$, we start with the natural inclusion $F \rightarrow L$, and keep extending it until we get a map $K \rightarrow L$. More precisely:
 \begin{enumerate}
     \item Start with $\s_F : F \rightarrow L$.
-    \item Given $\s_M: M \rightarrow L$, we can extend to $\s_{M(\a)}: M(\a) \rightarrow L$ for some algebraic $\a \not \in M$ by defining
+    \item Given $\s_M: M \rightarrow L$, we extend $\s_M$ to $\s_{M(\a)}: M(\a) \rightarrow L$ for some algebraic $\a \not \in M$ by making
         \[
             \a \mapsto \text{ a root of the minimal polynomial $p$ of $\a$.}
         \]
-        This is indeed a homomorphism because $M(\a)$ is isomorphic to $M[x]/(p)$, so if a map $M[x] \rightarrow L$ vanishes on $(p)$, then it induces a map $M[x]/(p) = M(\a) \rightarrow L$. The map $\s_{M(\a)}$ is induced from this way.
-    \item Repeat until we get a map $\s: K \rightarrow L$. Because every element in $K$ is algebraic, this process will ``eventually" end. (We can put things in more formal terms using Zorn's lemma.)
+        To construct $\s_{M(\a)}$ rigorously, note $M(\a)$ is isomorphic to $M[x]/(p)$, so if a map $M[x] \rightarrow L$ has kernel $(p)$, then it induces a map $M[x]/(p) = M(\a) \rightarrow L$.
+    \item Repeat step 2 until we get a map $\s: K \rightarrow L$. Because every element in $K$ is algebraic, this process will ``eventually" end. (We can formalize this with Zorn's lemma.)
 \end{enumerate}
 
-\subsection{}
-In the proof above, the argument of starting with a homomorphism $\s$ (that maps into an algebraically closed field) and repeatedly extending it will be a recurring motif used in the theory of fields.
-
+\begin{remark}
+Starting with a homomorphism $\s$ (that maps into an algebraically closed field) and repeatedly extending it is a recurring argument in the theory of field extensions.
+\end{remark}

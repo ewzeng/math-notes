@@ -10,7 +10,7 @@
 % ==========================================================================
 % The design of this document is inspired by Berkeley EECS
 % The exam class creates cooler looking documents than the article class
-\documentclass[letterpaper, 12pt]{exam} 
+\documentclass[letterpaper]{exam}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm}
 
@@ -20,25 +20,26 @@
 \pagestyle{headandfoot}
 \extraheadheight[1.3in]{0in}
 \extrafootheight{-.2in}
-\rhead[\Large \textsf{Notes}\\
+\rhead[\Large \textbf{\textsf{Notes}}\\
        \vspace{10pt}
 ]{}
 \chead[\hrule height 3pt
        \vspace{10pt}
-       \Large \textsf{Math 250A}\\
+       \Large \textbf{\textsf{Math 250A}}\\
        \vspace{5pt}
-       \Large \textsf{\topic}\\
+       \Large \textbf{\textsf{\topic}}\\
        \vspace{10pt}
        \hrule height 3pt
 ]{}
 \footer{}{\thepage}{}
 
 % Change font for section and subsection headings to san serif
-% The font sizes are kept default
-\usepackage{titlesec}
-\titleformat*{\section}{\Large\sffamily}
-\titleformat*{\subsection}{\large\sffamily}
-\titleformat*{\subsubsection}{\normalsize\sffamily}
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\bfseries}
+
+% Cool looking font.
+\usepackage{newpxmath}
+\usepackage{newpxtext}
 
 % Format paragraphs by setting indents to zero and modifying the space between
 % paragraphs

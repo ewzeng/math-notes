@@ -5,7 +5,7 @@ Call $f$ differentiable (or \textbf{holomorphic}) on open set $U \subset \bC$ if
 \[
     f(x + h) = f(x) + f'(x)h + \mathfrak r(h), \quad \lim_{h \to 0} \frac{\mathfrak r(h)}{h} = 0.
 \]
-In other words, seen as a function $\bR^2 \to \bR^2$, the Jacobian of $f$ represents multiplication by a complex number (i.e. scale + rotate). That is,
+In other words, when $f$ is seen as a function $\bR^2 \to \bR^2$, $f$ is holomorphic if the derivative of $f$ represents multiplication by a complex number (i.e. scale + rotate). That is,
 \[
     \text{Jacobian}(f) =
     \begin{pmatrix}
@@ -14,9 +14,10 @@ In other words, seen as a function $\bR^2 \to \bR^2$, the Jacobian of $f$ repres
     \end{pmatrix},
     \quad f'(x) = a + bi.
 \]
-This is equivalently expressed by the Cauchy-Riemann equations.
-
-Conversely, if the Jacobian exists and has this form, $f$ is holomorphic. Thus satisfying C-R equations + additional mild conditions (for Jacobian existence) implies complex differentiability.
+Having a Jacobian of this form is equivalent to satisfying the Cauchy-Riemann equations. Hence, if $f$ is differentiable as a $\bR^2 \to \bR^2$ function, then
+\begin{quote}
+    satisfying C-R equations $\iff$ complex differentiability.
+\end{quote}
 
 \section{Power Series}
 Define a formal power series (around 0) to be a series of the form
@@ -27,7 +28,7 @@ A formal power series represents a function $f(z)$ inside the radius of converge
 \[
     \frac{1}{r} = \limsup_{n \to \i} |a_n|^{\frac{1}{n}}.
 \]
-Inside the radius of convergence, formal power series can be manipulated formally (i.e. like polynomials). That is, adding, multiplying, inverting, differentiating, integrating, and composing power series formally will correspond to adding, multiplying... the corresponding functions they represent. The reason is because inside the radius of convergence formal power series converge absolutely and uniformly, which allows us to exchange limits (and thus makes power series act as polynomials).
+Formal power series can be manipulated formally (i.e. like polynomials) inside the radius of convergence. That is, adding, multiplying, inverting, differentiating, integrating, and composing power series formally will correspond to adding, multiplying, $\dots$ the corresponding functions they represent. The reason is because formal power series converge absolutely and uniformly on any radius $<$ the radius of convergence, which allows us to exchange limits (and thus make power series act as polynomials).
 
 We can also consider formal power series centered at $z_0$, not necessarily 0:
 \[
@@ -35,10 +36,10 @@ We can also consider formal power series centered at $z_0$, not necessarily 0:
 \]
 The theory is the same.
 
-Call a function $\textbf{analytic}$ if at every point $x$ in domain, the function can be represented as a power series (centered at $x$) in a neighborhood of $x$. In other words, the Taylor expansion around a point converges locally to the function itself.
+Call a function $f: U \to \bC$ $\textbf{analytic}$ if for every $x \in U$, $f$ can be represented as a power series (centered at $x$) in a neighborhood of $x$. In other words, the Taylor expansion around each $x \in U$ converges locally to $f$.
 
 \section{Integrals}
-Suppose $f: U \to \bC$ is continuous, and $\g \subset U$ is a smooth path. We define the complex path integral to be
+Suppose $f: U \to \bC$ is continuous and $\g \subset U$ is a smooth path. We define the complex path integral to be
 \begin{empheq}[box=\mybluebox]{equation*}
     \int_\g fdz = \int_a^b f(\g(t))\g'(t)dt
 \end{empheq}
@@ -56,7 +57,7 @@ where $\g(t): [a, b] \to \bC$ is a parameterization of $\g$. Via change of varia
 
 By approximating any path with polygonal paths, one can show via Goursat that for any closed path $P$, if $f$ is holomorphic on $P$ and in the interior of $P$, then the integral of $f$ over $P$ is 0. In fact, one can show that any two homotopic paths (in the domain of $f$) have the same integral.
 
-This allows us to find the \textbf{primitive} $F$ (i.e. complex antiderivative) of any holomorphic function $f$ defined on a path-connected domain $U$. We pick $z_0 \in U$, set $F(z_0) = 0$, and define
+This allows us to find the \textbf{primitive} $F$ (i.e. complex antiderivative) of any holomorphic function $f$ defined on a simply connected domain $U$. We pick $z_0 \in U$, set $F(z_0) = 0$, and define
 \[
     F(z_0) = \int_\g f(z)dz
 \]
@@ -70,12 +71,10 @@ The fact that any two homotopic paths have the same integral also allows us to p
         f(z_0) = \frac{1}{2\pi i}\int_{\partial D} \frac{f(z)}{z - z_0}dz.
     \end{empheq}
 \end{thm}
-In other words, the value of $f$ at $z_0$ is some weird weighted average of the values of $f$ on a circle surrounding $z_0$. This is an amazing fact (and perhaps reflects the fact that the real and imaginary components of $f$ satisfy Laplace's equation, which describes the equilibrium of heat).
-
 By using a geometric series trick, one can use Cauchy's integral formula to show that holomorphic functions are analytic, and thus infinitely differentiable. Moreover, using Cauchy's integral formula, one can show that if an sequence of holomorphic functions $f_1, f_2, \dots$ converges uniformly on each compact $K$, then the limit will be holomorphic.
 
 \section{Laurent Series and Singularities}
-Define a Laurent series (around 0) is a series of the form
+Define a Laurent series (around 0) to be a series of the form
 \[
     \sum_{n = -\i}^\i a_nz^n.
 \]
@@ -116,7 +115,7 @@ One important application of the residue formula (and complex analysis in genera
 \[
     \int_{-\i}^\i g(x)dx.
 \]
-One way to compute this (and similar integrals) is to extend $g$ to part of the complex plane, compute the integral over a nice closed path that gets bigger and bigger, show the integral over certain paths limit to 0, and note that the remaining part of the path is the desired integral (or something close).
+One way to compute this (and similar integrals) is to extend $g$ to a subset of the complex plane, compute the integral over a nice closed path that gets bigger and bigger, show the integral over certain paths limit to 0, and note that the remaining part of the path is the desired integral (or something close).
 
 %%% Local Variables:
 %%% TeX-master: "main"

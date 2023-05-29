@@ -3,10 +3,10 @@ This is a short note with material drawn from \textit{A Guide to Distribution Th
 \sepline
 
 \section{Motivation}
-Objects like the Dirac delta occur frequently in PDEs. Our goal is to rigorously define these ``generalized functions'' and define nice ways to manipulate them (e.g. taking derivatives or Fourier transforms). Among other things, this will allow us to introduce these ``generalized functions'' as solutions to PDEs, giving us the ability to describe a wider class of physical scenarios.
+Objects like the Dirac delta occur frequently in PDEs. Our goal is to rigorously define these ``generalized functions'' and define nice ways to manipulate them (e.g. taking derivatives or Fourier transforms). Among other things, this allows us to introduce these ``generalized functions'' as solutions to PDEs, giving us the ability to describe a wider class of physical scenarios.
 
 \section{Generalized Functions}
-Suppose $f(x)$ represents the temperature at position $x$. Because the bulb of a thermometer has nonzero size, if we try to measure the heat at $x = c$, we will really be measuring the weighted average
+Suppose $f(x)$ represents the temperature at position $x$. Because the bulb of a thermometer has nonzero size, if we try to measure the heat at $x = c$, we are really measuring the weighted average
 \[
     \langle f, \var \rangle = \int f(x)\var(x)dx
 \]
@@ -18,7 +18,7 @@ Our excursion suggests the following:
     \item The space of generalized functions is then $\cT'$.
 \end{enumerate}
 
-Different choices of $\cT$ will lead to different families of generalized functions. We will consider two in particular.
+Different choices of $\cT$ lead to different families of generalized functions. We consider two in particular.
 
 \section{Distributions}
 For open set $\O \subset \bR^n$, define $\cD(\O)$ to be the space of $C^\i$ functions with compact support that stays away from $\partial \O$. For the test functions $\cD(\O)$, the corresponding generalized functions $\cD'(\O)$ are called distributions. For $f \in \cD'(\O)$, we write
@@ -27,10 +27,9 @@ For open set $\O \subset \bR^n$, define $\cD(\O)$ to be the space of $C^\i$ func
 \]
 
 \section{Calculus of Distributions}
-We now want to define the derivative of a distribution. This is when our choice of test functions serves an additional purpose that was not evident a priori.
+We now define the derivative of a distribution.
 
 First observe $\cD(\O) \subset \cD'(\O)$ as any locally-integrable function is also a distribution.
-
 Then using the trick that
 \[
     \psi(x) =
@@ -43,57 +42,61 @@ is $C^\i$ and generalizing to higher dimensions, one can construct test function
 \[
     \var_n \to f
 \]
-in distribution. Therefore, we can define $\frac{\partial}{\partial x}f$ by
+in distribution. Therefore, it is natural to define $\frac{\partial}{\partial x}f$ as
+\[
+        \left\langle \frac{\partial}{\partial x}f, \var \right\rangle := \lim_{n \to \i} \left\langle \frac{\partial}{\partial x}\var_n, \var \right\rangle, \quad \forall \var \in \cD(\O).
+\]
+Note integration of parts implies
 \[
     \begin{split}
-        \left\langle \frac{\partial}{\partial x}f, \var \right\rangle : & = \lim_{n \to \i} \left\langle \frac{\partial}{\partial x}\var_n, \var \right\rangle \\
-                                                                        & = \lim_{n \to \i} -\left\langle \var_n, \frac{\partial}{\partial x}\var \right\rangle\\
-                                                                        & = -\left\langle f, \frac{\partial}{\partial x}\var \right\rangle
+        \lim_{n \to \i} \left\langle \frac{\partial}{\partial x}\var_n, \var \right\rangle & = \lim_{n \to \i} -\left\langle \var_n, \frac{\partial}{\partial x}\var \right\rangle\\
+                                                                                           & = -\left\langle f, \frac{\partial}{\partial x}\var \right\rangle, \quad \forall \var \in \cD(\O)
     \end{split}
 \]
-where the second inequality follows from integration by parts.
+so we have
+\[
+        \left\langle \frac{\partial}{\partial x}f, \var \right\rangle = -\left\langle f, \frac{\partial}{\partial x}\var \right\rangle, \quad \forall \var \in \cD(\O).
+\]
 
-In summary, $\cD(\O)$ has served two somewhat unrelated purposes:
-\begin{enumerate}
-    \item $\cD(\O)$ determines what $\cD'(\O)$ looks like.
-    \item As differentiation maps $\cD(\O) \to \cD(\O)$ and $\cD(\O)$ is dense in $\cD'(\O)$, we can lift differentiation to $\cD'(\O) \to \cD'(\O)$.
-\end{enumerate}
+This limiting definition works more generally. In fact, suppose we have the adjoint identity
+\[
+    \left\langle T\psi, \var \right\rangle = \left\langle \psi, S\var \right\rangle, \quad \forall \psi, \var \in \cD(\O)
+\]
+where $T, S: \cD(\O) \to \cD(\O)$ and $T$ is the operator we are interested in. Then the limiting definition implies
+\begin{equation}
+    \label{second-def}
+    \left\langle Tf, \var \right\rangle = \left\langle f, S\var \right\rangle, \quad \forall \var \in \cD(\O).
+\end{equation}
+We can take (\ref{second-def}) as an alternative definition of $Tf$. The advantage of this definition is that it does not require the density condition that the limiting definition requires.
 
 \section{Tempered Distributions}
-Define the Schwartz space $\cS(\bR^n)$ to be the space of $C^\i$ functions that are rapidly decreasing, i.e. for any $f \in \cS(\bR^n)$,
+Define the Schwartz space $\cS(\bR^n)$ to be the space of $C^\i$ functions that are rapidly decreasing, i.e. for any $\var \in \cS(\bR^n)$,
 \[
-    f(x)p(x)
+    \var(x)p(x)
 \]
 is bounded for any polynomial $p(x)$. The corresponding space of distributions $\cS'(\bR^n)$ are called the tempered distributions. This is because classical functions in $\cS'(\bR^n)$ cannot blow up as fast as some classical functions in $\cD'(\bR^n)$.
 
 \section{Fourier Transform of Tempered Distributions}
-Our goal is to define the FT of elements in $\cS'(\bR^n)$. As we have seen, to do this we need two conditions:
+Our goal is to define the FT of elements in $\cS'(\bR^n)$ by using definition (\ref{second-def}). Thus, we need to show:
 \begin{enumerate}
-    \item The FT must map $\cS(\bR^n) \to \cS(\bR^n)$.
-    \item $\cS(\bR^n)$ must be dense in $\cS'(\bR^n)$.
+    \item FT maps $\cS(\bR^n) \to \cS(\bR^n)$.
+    \item FT has an adjoint operator that also maps $\cS(\bR^n) \to \cS(\bR^n)$.
 \end{enumerate}
-The second condition follows from the observation that
-\[
-    \cD(\bR^n) \subset \cS(\bR^n) \subset \cS'(\bR^n) \subset \cD'(\bR^n)
-\]
-and recalling that $\cD(\bR^n)$ is dense in $\cD'(\bR^n)$.
-
-The first condition follows from the observations that:
+The first item follows from the observation that:
 \begin{itemize}
     \item Rapidly decreasing $\to$ Fourier transform smooth.
     \item Smooth $\to$ Fourier transform rapidly decreasing.
 \end{itemize}
-These observations are why we defined $\cS(\bR^n)$ in this way. Note we couldn't use $\cD(\bR^n)$ because the only element $\in \cD(\bR^n)$ whose FT is in $\cD(\bR^n)$ is 0.
+This is why we use $\cS(\bR^n)$. Note we cannot use $\cD(\bR^n)$ because the only element $\in \cD(\bR^n)$ whose FT is in $\cD(\bR^n)$ is 0.
 
-As our conditions have been met, we thus define the FT of $f \in \cS'(\bR^n)$ to be
+Now observe we have the adjoint identity
 \[
-    \begin{split}
-        \left\langle \hat{f}, \var \right\rangle : & = \lim_{n \to \i} \left\langle \hat{\var_n}, \var \right\rangle \\
-                                                   & = \lim_{n \to \i} \left\langle \var_n, \hat{\var} \right\rangle \\
-                                                   & = \left\langle f, \hat{\var} \right\rangle
-    \end{split}
+    \left\langle \hat{\psi}, \var \right\rangle =  \left\langle \psi, \hat{\var} \right\rangle, \quad \forall \psi, \var \in \cS(\bR^n)
 \]
-where $\var_n \in \cS(\bR^n)$, and $\var_n \to f$ in distribution.
+Hence we define the FT of $f \in \cS'(\bR^n)$ to be
+\[
+    \left\langle \hat{f}, \var \right\rangle := \left\langle f, \hat{\var} \right\rangle, \quad \forall \var \in \cS(\bR^n).
+\]
 
 %%% Local Variables:
 %%% TeX-master: "main"

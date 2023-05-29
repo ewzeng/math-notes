@@ -4,19 +4,16 @@
 \usepackage{parskip}
 \usepackage{hyperref}
 
-% TOC
-\usepackage{tocloft}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-
 % For figures.
 \usepackage{float}
 \usepackage{graphicx}
 
-% Cat. diagrams.
+% Diagrams.
 \usepackage{tikz-cd}
 
-% For url links.
-\usepackage{hyperref}
+% Change font for section and subsection headings to san serif.
+\usepackage{sectsty}
+\allsectionsfont{\bfseries\sffamily}
 
 % Cool looking font.
 \usepackage{newpxmath}
@@ -74,87 +71,23 @@
 \newcommand{\bF}{{\mathbb F}}
 \newcommand{\bE}{{\mathbb E}}
 \newcommand{\bP}{{\mathbb P}}
-\newcommand{\bA}{{\mathbb A}}
 
 %Other macros
 \renewcommand{\i}{\infty}
 \newcommand{\sepline}{\noindent\rule{\textwidth}{1pt}}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Ass}{Ass} % Not what you think.
-\DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Ima}{Im}
-\DeclareMathOperator{\Fitt}{Fitt}
 
-% Colimits
-\makeatletter
-\newcommand{\colim@}[2]{%
-  \vtop{\m@th\ialign{##\cr
-    \hfil$#1\operator@font colim$\hfil\cr
-    \noalign{\nointerlineskip\kern1.5\ex@}#2\cr
-    \noalign{\nointerlineskip\kern-\ex@}\cr}}%
-}
-\newcommand{\colim}{%
-  \mathop{\mathpalette\colim@{\rightarrowfill@\textstyle}}\nmlimits@
-}
-\makeatother
-
-\begin{document}
-
-\renewcommand{\abstractname}{About}
-\title{Commutative Algebra}
+\title{A Note on Distributions}
 \author{Edward Zeng \\
-        \href{mailto:edwardzeng@berkeley.edu}{edwardzeng@berkeley.edu}}
-\date{May 2021}
+        \href{mailto:edwardzeng@berkeley.edu}{\texttt{edwardzeng@berkeley.edu}}}
+\date{April 2021}
+\begin{document}
 \maketitle
-\begin{abstract}
-I took MATH 250B with Professor Richard Borcherds in Spring 2021. These are my notes.
-
-Due to COVID-19, all the lectures were online. They can be found at
-\begin{center}
-    \url{https://www.youtube.com/playlist?list=PL8yHsr3EFj53rSexSz7vsYt-3rpHPR3HB}
-\end{center}
-\end{abstract}
-\tableofcontents
-\newpage
 
 % Start notes
-\input{week1.tex}
-\newpage
-\input{week2.tex}
-\newpage
-\input{week3.tex}
-\newpage
-\input{spec2.tex}
-\newpage
-\input{week4.tex}
-\newpage
-\input{week5.tex}
-\newpage
-\input{primary.tex}
-\newpage
-\input{week6.tex}
-\newpage
-\input{week7.tex}
-\newpage
-\input{week8.tex}
-\newpage
-\input{week9.tex}
-\newpage
-\input{week10.tex}
-\newpage
-\input{week11.tex}
-\newpage
-\input{spec3.tex}
-\newpage
-\input{week12.tex}
-\newpage
-\input{week13.tex}
-\newpage
-\input{week14.tex}
+\input{basics.tex}
 % End notes
 
 \end{document}
